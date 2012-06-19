@@ -1,0 +1,36 @@
+[user]
+    name = kubosho_
+    email = ta2@o2p.jp
+
+[color]
+    ui = true
+    status = auto
+    diff = auto
+    branch = auto
+    grep = auto
+
+[color "status"]
+   added = yellow
+   changed = green
+
+[color "diff"]
+   meta = yellow bold
+   frag = magenta bold
+   old = red bold
+   new = green bold
+   whitespace = red reverse
+
+[color "branch"]
+   current = yellow reverse
+   local = yellow
+   remote = green
+
+[core]
+    excludesfile = ~/.gitignore # globalな.gitignoreの指定
+    autocrlf = input            # CRLFを自動変換
+
+[alias]
+    st = status
+    ft = fetch
+    ci = commit
+    co = checkout
