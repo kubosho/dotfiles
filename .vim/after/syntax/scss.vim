@@ -1,4 +1,3 @@
-syntax cluster sassCssAttributes add=@cssColors
 runtime! syntax/css/html5-elements.vim
 runtime! syntax/css/css3-animations.vim
 runtime! syntax/css/css3-background.vim
