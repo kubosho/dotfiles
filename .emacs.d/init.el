@@ -58,19 +58,28 @@
 ;; ------------------------------------------------------------------------
 ;; @ IME
 
-(setq default-input-method "MacOSX")
+;; インラインパッチ適応されているかどうか
+(defvar is_inline-patch (eq (boundp 'mac-input-method-parameters) t))
 
-(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `cursor-color "#003760")
-(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "漢")
+;; インラインパッチ適応の場合は次の設定にする
+(when is_inline-patch
+  (setq default-input-method "MacOSX")
+  (mac-set-input-method-parameter
+   "com.google.inputmethod.Japanese.base" 'cursor-color "red")
+  (mac-set-input-method-parameter
+   "com.google.inputmethod.Japanese.base" `title "漢")
+  )
 
 ;; ------------------------------------------------------------------------
 ;; @ Disable
 
-;; ツールバー
-(setq tool-bar-mode 0)
+(custom-set-variables
+ '(tool-bar-mode nil)    ; hide tool bar
+ '(scroll-bar-mode nil)  ; hide scroll bar
+ '(menu-bar-mode nil))
 
-;; スクロールバー
-(scroll-bar-mode 0)
+(if (eq window-system 'ns)
+(add-hook 'window-setup-hook 'menu-bar-mode t))
 
 ;; 起動時のメッセージ
 (setq inhibit-startup-message t)
@@ -82,7 +91,8 @@
 ;; @ window
 
 ;; フルスクリーン
-(add-hook 'window-setup-hook 'ns-toggle-fullscreen)
+(if (eq window-system 'ns)
+(add-hook 'window-setup-hook 'ns-toggle-fullscreen))
 
 ;; 行の折り返し
 (setq truncate-lines nil)
@@ -128,13 +138,15 @@
 ;; ------------------------------------------------------------------------
 ;; @ font
 
-(when (display-graphic-p)
-  (add-to-list 'default-frame-alist '(font . "ricty-13"))
-
-  (set-fontset-font
-   (frame-parameter nil 'font)
-   'mule-unicode-0100-24ff
-   '("ricty" . "iso10646-1")))
+(set-face-attribute 'default nil
+                  :family "DejaVu Sans Mono"
+                  :height 120)
+(set-fontset-font "fontset-default"
+                  'japanese-jisx0208
+                  '("ricty" . "iso10646-1"))
+(set-fontset-font "fontset-default"
+                  'katakana-jisx0201
+                  '("ricty" . "iso10646-1"))
 
 ;; ------------------------------------------------------------------------
 ;; @ backup
@@ -150,14 +162,14 @@
 (setq auto-save-list-file-prefix nil)
 
 ;; 編集中ファイルのバックアップ先
-(setq auto-save-file-name-transforms
-`((".*" ,temporary-file-directory t)))
+;; (setq backup-directory-alist (cons "." "~/.emacs.d/backups/"))
+;; (setq auto-save-file-name-transforms `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;; 編集中ファイルのバックアップ間隔(秒)
-(setq auto-save-timeout 3)
+(setq auto-save-timeout 30)
 
 ;; 編集中ファイルのバックアップ間隔(打鍵)
-(setq auto-save-interval 300)
+(setq auto-save-interval 100)
 
 ;; バックアップ世代数
 (setq kept-old-versions 1)
@@ -208,6 +220,9 @@
 
 ;; ------------------------------------------------------------------------
 ;; @ scroll
+
+;; 1行ずつスクロール
+(setq scroll-conservatively 1)
 
 ;; バッファの先頭までスクロールアップ
 (defadvice scroll-up (around scroll-up-around)
@@ -280,10 +295,3 @@
 
 ;; エラー時に音と画面のフラッシュを起こさせないようにする
 (setq ring-bell-function 'ignore)
-
-;; after init
-(add-hook 'after-init-hook
-  (lambda ()
-    ;; show init time
-    (message "init time: %.3f sec"
-             (float-time (time-subtract after-init-time before-init-time)))))

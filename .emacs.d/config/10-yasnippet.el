@@ -3,10 +3,10 @@
 
 (require 'yasnippet)
 (yas/initialize)
+(yas/load-directory "~/.emacs.d/site-lisp/yasnippet/snippets")
+(yas/load-directory "~/.emacs.d/site-lisp/yasnippet/extras/imported")
 (yas/global-mode t)
 
-(setq yas/root-directory "~/.emacs.d/site-lisp/yasnippet/snippets")
-(yas/load-directory yas/root-directory)
 (global-set-key (kbd "C-c s") 'yas/insert-snippet)
 
 (setq yas/prompt-functions '(yas/dropdown-prompt))

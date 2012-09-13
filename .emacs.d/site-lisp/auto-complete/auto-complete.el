@@ -1,6 +1,6 @@
 ;;; auto-complete.el --- Auto Completion for GNU Emacs
 
-;; Copyright (C) 2008, 2009, 2010  Tomohiro Matsuyama
+;; Copyright (C) 2008, 2009, 2010, 2011, 2012  Tomohiro Matsuyama
 
 ;; Author: Tomohiro Matsuyama <m2ym.pub@gmail.com>
 ;; URL: http://cx4a.org/software/auto-complete
@@ -138,7 +138,14 @@
   :group 'auto-complete)
 (defvaralias 'ac-user-dictionary-files 'ac-dictionary-files)
 
-(defcustom ac-dictionary-directories nil
+(defcustom ac-dictionary-directories
+  (ignore-errors
+    (when load-file-name
+      (let ((installed-dir (file-name-directory load-file-name)))
+        (loop for name in '("ac-dict" "dict")
+              for dir = (concat installed-dir name)
+              if (file-directory-p dir)
+              collect dir))))
   "Dictionary directories."
   :type '(repeat string)
   :group 'auto-complete)
@@ -180,14 +187,15 @@
   '(emacs-lisp-mode lisp-mode lisp-interaction-mode
     slime-repl-mode
     c-mode cc-mode c++-mode
-    java-mode malabar-mode clojure-mode scala-mode
+    java-mode malabar-mode clojure-mode clojurescript-mode  scala-mode
     scheme-mode
     ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode
-    perl-mode cperl-mode python-mode ruby-mode
+    perl-mode cperl-mode python-mode ruby-mode lua-mode
     ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode
     makefile-mode sh-mode fortran-mode f90-mode ada-mode
     xml-mode sgml-mode
-    ts-mode)
+    ts-mode
+    sclang-mode)
   "Major modes `auto-complete-mode' can run on."
   :type '(repeat symbol)
   :group 'auto-complete)
@@ -283,6 +291,11 @@ a prefix doen't contain any upper case letters."
 (defface ac-candidate-face
   '((t (:background "lightgray" :foreground "black")))
   "Face for candidate."
+  :group 'auto-complete)
+
+(defface ac-candidate-mouse-face
+  '((t (:background "blue" :foreground "white")))
+  "Mouse face for candidate."
   :group 'auto-complete)
 
 (defface ac-selection-face
@@ -381,7 +394,9 @@ If there is no common part, this will be nil.")
 (defvar ac-completing-map
   (let ((map (make-sparse-keymap)))
     (define-key map "\t" 'ac-expand)
+    (define-key map [tab] 'ac-expand)
     (define-key map "\r" 'ac-complete)
+    (define-key map [return] 'ac-complete)
     (define-key map (kbd "M-TAB") 'auto-complete)
     (define-key map "\C-s" 'ac-isearch)
 
@@ -415,9 +430,13 @@ If there is no common part, this will be nil.")
 
 (defvar ac-menu-map
   (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map ac-completing-map)
     (define-key map "\C-n" 'ac-next)
     (define-key map "\C-p" 'ac-previous)
-    (set-keymap-parent map ac-completing-map)
+    (define-key map [mouse-1] 'ac-mouse-1)
+    (define-key map [down-mouse-1] 'ac-ignore)
+    (define-key map [mouse-4] 'ac-mouse-4)
+    (define-key map [mouse-5] 'ac-mouse-5)
     map)
   "Keymap for completion on completing menu.")
 
@@ -597,7 +616,7 @@ If there is no common part, this will be nil.")
         (ignore-errors
           (with-temp-buffer
             (insert-file-contents filename)
-            (setq result (split-string (buffer-string) "\n"))))
+            (setq result (split-string (buffer-string) "\n" t))))
         (puthash filename result ac-file-dictionary)
         result))))
 
@@ -744,10 +763,13 @@ You can not use it in source definition like (prefix . `NAME')."
         (popup-create point width height
                       :around t
                       :face 'ac-candidate-face
+                      :mouse-face 'ac-candidate-mouse-face
                       :selection-face 'ac-selection-face
                       :symbol t
                       :scroll-bar t
-                      :margin-left 1)))
+                      :margin-left 1
+                      :keymap ac-menu-map ; for mouse bindings
+                      )))
 
 (defun ac-menu-delete ()
   (when ac-menu
@@ -922,7 +944,7 @@ You can not use it in source definition like (prefix . `NAME')."
                 (setq point nil))
             (if point
                 (setq prefix-def prefix))))
-        
+
         if (equal prefix prefix-def) do (push source sources)
 
         finally return
@@ -1255,7 +1277,11 @@ that have been made before in this function."
 
 (defun ac-quick-help (&optional force)
   (interactive)
-  (when (and (or force (null this-command))
+  ;; TODO don't use FORCE
+  (when (and (or force
+                 (called-interactively-p)
+                 ;; ac-isearch'ing
+                 (null this-command))
              (ac-menu-live-p)
              (null ac-quick-help))
       (setq ac-quick-help
@@ -1410,17 +1436,14 @@ that have been made before in this function."
       (ac-complete)
     (when (and (ac-inline-live-p)
                ac-common-part)
-      (ac-inline-hide) 
+      (ac-inline-hide)
       (ac-expand-string ac-common-part (eq last-command this-command))
       (setq ac-common-part nil)
       t)))
 
-(defun ac-complete ()
-  "Try complete."
-  (interactive)
-  (let* ((candidate (ac-selected-candidate))
-         (action (popup-item-property candidate 'action))
-         (fallback nil))
+(defun ac-complete-1 (candidate)
+  (let ((action (popup-item-property candidate 'action))
+        (fallback nil))
     (when candidate
       (unless (ac-expand-string candidate)
         (setq fallback t))
@@ -1437,6 +1460,11 @@ that have been made before in this function."
      (fallback
       (ac-fallback-command)))
     candidate))
+
+(defun ac-complete ()
+  "Try complete."
+  (interactive)
+  (ac-complete-1 (ac-selected-candidate)))
 
 (defun* ac-start (&key
                   requires
@@ -1479,6 +1507,23 @@ that have been made before in this function."
   (interactive)
   (setq ac-selected-candidate nil)
   (ac-abort))
+
+(defun ac-ignore (&rest ignore)
+  "Same as `ignore'."
+  (interactive))
+
+(defun ac-mouse-1 (event)
+  (interactive "e")
+  (popup-awhen (popup-menu-item-of-mouse-event event)
+    (ac-complete-1 it)))
+
+(defun ac-mouse-4 (event)
+  (interactive "e")
+  (ac-previous))
+
+(defun ac-mouse-5 (event)
+  (interactive "e")
+  (ac-next))
 
 (defun ac-trigger-key-command (&optional force)
   (interactive "P")
@@ -1785,7 +1830,8 @@ completion menu. This workaround stops that annoying behavior."
          ((fboundp symbol)
           ;; import help-xref-following
           (require 'help-mode)
-          (let ((help-xref-following t))
+          (let ((help-xref-following t)
+                (major-mode 'help-mode)) ; avoid error in Emacs 24
             (describe-function-1 symbol))
           (buffer-string))
          ((boundp symbol)
@@ -1909,18 +1955,20 @@ completion menu. This workaround stops that annoying behavior."
 (defvar ac-filename-cache nil)
 
 (defun ac-filename-candidate ()
-  (unless (file-regular-p ac-prefix)
-    (ignore-errors
-      (loop with dir = (file-name-directory ac-prefix)
-            with files = (or (assoc-default dir ac-filename-cache)
-                             (let ((files (directory-files dir nil "^[^.]")))
-                               (push (cons dir files) ac-filename-cache)
-                               files))
-            for file in files
-            for path = (concat dir file)
-            collect (if (file-directory-p path)
-                        (concat path "/")
-                      path)))))
+  (let (file-name-handler-alist)
+    (unless (or (string-match comment-start-skip ac-prefix)
+                (file-regular-p ac-prefix))
+      (ignore-errors
+        (loop with dir = (file-name-directory ac-prefix)
+              with files = (or (assoc-default dir ac-filename-cache)
+                               (let ((files (directory-files dir nil "^[^.]")))
+                                 (push (cons dir files) ac-filename-cache)
+                                 files))
+              for file in files
+              for path = (concat dir file)
+              collect (if (file-directory-p path)
+                          (concat path "/")
+                        path))))))
 
 (ac-define-source filename
   '((init . (setq ac-filename-cache nil))

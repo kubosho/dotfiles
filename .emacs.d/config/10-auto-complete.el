@@ -1,30 +1,24 @@
 ;; ------------------------------------------------------------------------
 ;; @ auto-complete
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete-dict")
-(ac-config-default)
-(setq ac-delay 0.1)
-(setq ac-use-menu-map t)
-(set-default 'ac-sources '(ac-source-yasnippet
-                           ac-source-abbrev
-                           ac-source-words-in-buffer))
+(when (require 'auto-complete-config nil t)
+  (ac-config-default)
 
-;; ruby-modeにてendで補完させない設定
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (make-local-variable 'ac-ignores)
-            (add-to-list 'ac-ignores "end")))
+  (setq ac-auto-start 1)
+  (setq ac-dwim t)
+  (setq ac-use-menu-map t) ;; C-n/C-pで候補選択可能
 
-(setq ac-modes
-      '(css-mode
-        js2-mode
+  (setq ac-modes
+      '(html-mode
         nxml-mode
-        html-mode
+        css-mode
         scss-mode
-        emacs-lisp-mode
+        javascript-mode
+        js2-mode
+        js3-mode
         ))
 
-;; key bind
-(define-key ac-menu-map (kbd "C-n") 'ac-next)
-(define-key ac-menu-map (kbd "C-p") 'ac-previous)
+  (add-to-list 'ac-sources 'ac-source-yasnippet) ;; 常にYASnippetを補完候補に
+  (setq ac-dictionary-directories "~/.emacs.d/ac-dict") ;; 辞書ファイルのディレクトリ
+  (setq ac-comphist-file "~/.emacs.d/ac-comphist.dat") ;; 補完履歴のキャッシュ先
+)

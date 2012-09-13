@@ -3,7 +3,10 @@
 
 (line-number-mode t)
 (column-number-mode t)
+;; 電池残量表示
 (display-battery-mode t)
+;; ファイルサイズ表示
+(size-indication-mode t)
 
 ;; モードラインの割合表示を総行数表示
 (defvar my-lines-page-mode t)

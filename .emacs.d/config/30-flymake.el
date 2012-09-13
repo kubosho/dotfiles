@@ -1,5 +1,10 @@
 (require 'flymake)
 
+;; color
+(custom-set-faces
+  '(flymake-errline ((((class color)) (:background "#333333"))))
+  '(flymake-warnline ((((class color)) (:background "#FFF450")))))
+
 ;; ------------------------------------------------------------------------
 ;; @ error
 
@@ -89,5 +94,9 @@
             (flymake-js-load)))
 
 (add-hook 'js2-mode-hook
+          (lambda ()
+            (flymake-js-load)))
+
+(add-hook 'js3-mode-hook
           (lambda ()
             (flymake-js-load)))

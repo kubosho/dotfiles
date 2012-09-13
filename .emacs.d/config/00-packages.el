@@ -23,7 +23,7 @@
 ;; @ auto-save-buffers
 
 (require 'auto-save-buffers)
-(run-with-idle-timer 0.1 t 'auto-save-buffers)
+(run-with-idle-timer 10.0 t 'auto-save-buffers)
 
 ;; ------------------------------------------------------------------------
 ;; @ color-theme
@@ -90,6 +90,15 @@
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
 
 ;; ------------------------------------------------------------------------
+;; @ markdown-mode
+
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdonw files" t)
+(setq auto-mode-alist
+      (cons '("\\.mdwn$" . markdown-mode) auto-mode-alist)
+      (cons '("\\.md$" . markdown-mode) auto-mode-alist))
+
+;; ------------------------------------------------------------------------
 ;; @ markup-preview
 
 (require 'markup-preview)
@@ -101,6 +110,17 @@
 
 (require 'recentf-ext)
 (setq recentf-max-saved-items 3000)
+
+;; ------------------------------------------------------------------------
+;; @ smartchr
+;; (auto-install-from-url "https://raw.github.com/imakado/emacs-smartchr/master/smartchr.el")
+
+(require 'smartchr)
+(define-key global-map (kbd "(")  (smartchr '("(`!!')" "(")))
+(define-key global-map (kbd "{")  (smartchr '("{`!!'}" "{")))
+(define-key global-map (kbd "[")  (smartchr '("[`!!']" "[")))
+(define-key global-map (kbd "'")  (smartchr '("'`!!''" "'")))
+(define-key global-map (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
 
 ;; ------------------------------------------------------------------------
 ;; @ popwin

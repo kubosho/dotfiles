@@ -5,7 +5,24 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ll -a"
 
+alias app="open -a"
+
+alias g="git"
 alias ta="tmux attach"
+
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+alias e="emacs"
+
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
+alias vi="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
+alias v="vim"
+
+alias oe="open -a Emacs"
+alias ov="open -a MacVim"
+
+alias gochisou-server='/Applications/GoogleAppEngineLauncher.app/Contents/Resources/GoogleAppEngine-default.bundle/Contents/Resources/google_appengine/dev_appserver.py --high_replication --debug .'
+alias gochisou-develop='~/work/kayac/gochisoudan/gochisoudan-develop.sh'
+alias gochisou-product='~/work/kayac/gochisoudan/gochisoudan-product.sh'
 
 ##################################################
 # change directory
@@ -55,6 +72,13 @@ setopt no_beep
 # color
 
 export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+##################################################
+# Editor
+
+export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 ##################################################
 # history
