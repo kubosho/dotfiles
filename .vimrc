@@ -143,29 +143,30 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
-NeoBundle 'tpope/vim-surround'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/vimproc'
+NeoBundle "osyo-manga/shabadou.vim"
+NeoBundle "osyo-manga/vim-watchdogs"
+NeoBundle "jceb/vim-hier"
+
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/renamer.vim'
+NeoBundle 'sjl/gundo.vim'
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'AtsushiM/jasmine-helper.vim'
-NeoBundle 'mattn/zencoding-vim'
-
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'walm/jshint.vim'
 NeoBundle 'kchmck/vim-coffee-script' 
 NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'mattn/zencoding-vim'
  
-NeoBundle 'tell-k/vim-browsereload-mac'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'thinca/vim-quickrun'
-" 
-NeoBundle 'vim-scripts/YankRing.vim'
-NeoBundle 'sjl/gundo.vim'
+" NeoBundle 'tell-k/vim-browsereload-mac'
+" NeoBundle 'AtsushiM/jasmine-helper.vim'
 
 filetype plugin on
 filetype indent on
@@ -199,7 +200,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'php' : $HOME . '/.vim/dict/php.dict',
     \ }
 
-" SCSSを　CSSのオムニ補完にする
+" SCSSをCSSのオムニ補完にする
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
@@ -237,6 +238,69 @@ function! s:unite_my_settings()
   nmap <silent><buffer> <ESC><ESC> q
   imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
+
+" --------------------------------------------------
+" vim-indent-guides
+" --------------------------------------------------
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+" --------------------------------------------------
+" jscomplete-vim
+" --------------------------------------------------
+autocmd FileType javascript
+  \ :setl omnifunc=jscomplete#CompleteJS
+
+" ---------------------------------------- 
+" quickrun
+" ---------------------------------------- 
+let g:quickrun_config = {
+\   "syntax_checker/ruby" : {
+\       "command" : "ruby",
+\       "exec"    : "%c %s:p %o",
+\       "cmdopt"  : "-c",
+\   },
+\
+\   "syntax_checker/jshint" : {
+\       "command" : "jshint",
+\       "exec"    : "%c %s:p",
+\       "quickfix/errorformat" : "%f: line %l\\,\ col %c\\, %m",
+\   },
+\}
+let g:quickrun_config._ = {'runner' : 'vimproc'}
+
+" --------------------------------------------------
+" watchdogs
+" --------------------------------------------------
+" 書き込み後にシンタックスチェックを行う
+let g:watchdogs_check_BufWritePost_enable = 1
+ 
+" こっちは一定時間キー入力がなかった場合にシンタックスチェックを行う
+" バッファに書き込み後、1度だけ行われる
+let g:watchdogs_check_CursorHold_enable = 1 
+
+call watchdogs#setup(g:quickrun_config)
+
+" " ----------------------------------------
+" " vim-browsereload-mac
+" " ----------------------------------------
+" " アプリに戻らない設定
+" " let g:returnAppFlag = 0
+" 
+" " リロード後に戻ってくるアプリ
+" let g:returnApp = "MacVim"
+" 
+" nmap <Space>bc :ChromeReloadStart<CR>
+" nmap <Space>bC :ChromeReloadStop<CR>
+" nmap <Space>bf :FirefoxReloadStart<CR>
+" nmap <Space>bF :FirefoxReloadStop<CR>
+" nmap <Space>bs :SafariReloadStart<CR>
+" nmap <Space>bS :SafariReloadStop<CR>
+" nmap <Space>bo :OperaReloadStart<CR>
+" nmap <Space>bO :OperaReloadStop<CR>
+" nmap <Space>ba :AllBrowserReloadStart<CR>
+" nmap <Space>bA :AllBrowserReloadStop<CR>
 
 " --------------------------------------------------
 " Powerline
@@ -391,47 +455,3 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ }),
   \ ])
 let g:Powerline_colorscheme='my' 
-
-" --------------------------------------------------
-" vim-indent-guides
-" --------------------------------------------------
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-
-" --------------------------------------------------
-" jscomplete-vim
-" --------------------------------------------------
-autocmd FileType javascript
-  \ :setl omnifunc=jscomplete#CompleteJS
-
-" --------------------------------------------------
-" Syntastic
-" --------------------------------------------------
-" syntastic
-let g:syntastic_mode_map = { 'mode': 'active',
-  \ 'active_filetypes': ['ruby','javascript'],
-  \ 'passive_filetypes': ['html'] }
-let g:syntastic_auto_loc_list=1
-let g:syntastic_javascript_checker = 'jshint'
-nnoremap ,sc :<C-u>SyntasticCheck<CR>
-
-" ----------------------------------------
-" vim-browsereload-mac
-" ----------------------------------------
-" アプリに戻らない設定
-" let g:returnAppFlag = 0
-
-" リロード後に戻ってくるアプリ
-let g:returnApp = "MacVim"
-
-nmap <Space>bc :ChromeReloadStart<CR>
-nmap <Space>bC :ChromeReloadStop<CR>
-nmap <Space>bf :FirefoxReloadStart<CR>
-nmap <Space>bF :FirefoxReloadStop<CR>
-nmap <Space>bs :SafariReloadStart<CR>
-nmap <Space>bS :SafariReloadStop<CR>
-nmap <Space>bo :OperaReloadStart<CR>
-nmap <Space>bO :OperaReloadStop<CR>
-nmap <Space>ba :AllBrowserReloadStart<CR>
-nmap <Space>bA :AllBrowserReloadStop<CR>
