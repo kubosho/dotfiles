@@ -20,12 +20,6 @@
 ;; (auto-install-update-emacswiki-package-name t)
 
 ;; ------------------------------------------------------------------------
-;; @ auto-save-buffers
-
-(require 'auto-save-buffers)
-(run-with-idle-timer 10.0 t 'auto-save-buffers)
-
-;; ------------------------------------------------------------------------
 ;; @ color-theme
 
 (require 'color-theme)
@@ -88,15 +82,6 @@
 
 (require 'ibuffer)
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
-
-;; ------------------------------------------------------------------------
-;; @ markdown-mode
-
-(autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdonw files" t)
-(setq auto-mode-alist
-      (cons '("\\.mdwn$" . markdown-mode) auto-mode-alist)
-      (cons '("\\.md$" . markdown-mode) auto-mode-alist))
 
 ;; ------------------------------------------------------------------------
 ;; @ markup-preview

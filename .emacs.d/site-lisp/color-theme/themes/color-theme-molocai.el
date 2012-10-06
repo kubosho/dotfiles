@@ -40,7 +40,7 @@
      ;; 特定キーワード
      (font-lock-keyword-face ((t (:foreground "#F92672"))))
 
-     ;; if / false など
+     ;; Boolean
      (font-lock-constant-face((t (:foreground "#AE81BC"))))
 
      ;; 括弧
@@ -73,10 +73,3 @@
      )))
 
 (provide 'color-theme-molocai)
-
-
-
-
-
-
-

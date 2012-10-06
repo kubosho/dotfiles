@@ -4,6 +4,7 @@ set lines=50
 
 "フォント
 set guifont=DejaVu\ Sans\ Mono:h12
+" set guifont=Source\ Code\ Pro \Regular:h13
 
 "バックスラッシュ入力
 noremap! ¥ \

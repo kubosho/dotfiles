@@ -20,6 +20,10 @@ alias v="vim"
 alias oe="open -a Emacs"
 alias ov="open -a MacVim"
 
+alias gochisou-server='/Applications/GoogleAppEngineLauncher.app/Contents/Resources/GoogleAppEngine-default.bundle/Contents/Resources/google_appengine/dev_appserver.py --high_replication --debug .'
+alias gochisou-develop='~/work/kayac/gochisoudan/gochisoudan-develop.sh'
+alias gochisou-product='~/work/kayac/gochisoudan/gochisoudan-product.sh'
+
 ##################################################
 # change directory
 
@@ -140,3 +144,14 @@ source ~/perl5/perlbrew/etc/bashrc
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
     PATH > ~/.emacs.d/shellenv.el
+
+##################################################
+# rvm
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source "$HOME/.rvm/scripts/rvm"
+
+##################################################
+# nvm
+
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
