@@ -8,6 +8,7 @@ alias la="ll -a"
 alias app="open -a"
 
 alias g="git"
+alias s="svn"
 alias ta="tmux attach"
 
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
@@ -117,11 +118,15 @@ bindkey "^N" history-beginning-search-forward-end
 autoload colors
 colors
 
+setopt correct
+
 PROMPT="
- %{${fg[yellow]}%}%~%{${reset_color}%}
-[%n]$ "
+%{${fg[yellow]}%}%~%{${reset_color}%}
+%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%} "
 
 PROMPT2='[%n]> '
+
+SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
 
 ##################################################
 # etc
@@ -148,6 +153,13 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source "$HOME/.rvm/scripts/rvm"
 
 ##################################################
-# nvm
+# vim
 
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+export VIMHOME=$HOME/.vim
+
+##################################################
+# phpenv
+if [ -f ${HOME}/.phpenv/bin/phpenv ]; then
+    export PATH=${PATH}:${HOME}/.phpenv/bin
+    eval "$(phpenv init -)"
+fi
