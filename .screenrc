@@ -1,1 +1,18 @@
+# ステータスラインの見た目変更
+utf8 on
+caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{= g.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
+
+windowlist title  '%{u .g}Num Flags Title%='
+windowlist string '%{.g}%3n %{.y}%f%09=%{-} %t %='
+
 shell -${SHELL}
+
+# バックスクロール行数変更
+scrollback 10000
+
+# マウス操作対応
+mousetrack on
+
+# 画面の表示内容をCtrl-Sで自分宛にメールで送る
+bind S eval "exec sh -c 'screen -X hardcopy -h hardcopy; cat hardcopy | tail -n 10000 | /usr/sbin/sendmail ta2@o2p.jp'"

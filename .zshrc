@@ -1,27 +1,4 @@
 ##################################################
-# aliases
-
-alias ls="ls -G"
-alias ll="ls -l"
-alias la="ll -a"
-
-alias app="open -a"
-
-alias g="git"
-alias s="svn"
-alias ta="tmux attach"
-
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
-alias e="emacs"
-
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
-alias vi="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
-alias v="vim"
-
-alias oe="open -a Emacs"
-alias ov="open -a MacVim"
-
-##################################################
 # change directory
 
 ## ディレクトリ名だけでcdする。
@@ -46,6 +23,11 @@ HISTFILE=~/.zsh_history
 ## 補完
 autoload -Uz compinit
 compinit
+
+## http://d.hatena.ne.jp/guyon/20120116/1326725427
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                             /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
+                             /usr/local/git/bin
 
 ## 補完候補に色を付ける。
 ### "": 空文字列はデフォルト値を使うという意味。
@@ -120,6 +102,14 @@ colors
 
 setopt correct
 
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+
+# PCRE 互換の正規表現を使う
+setopt re_match_pcre
+
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+
 PROMPT="
 [%n] %{${fg[yellow]}%}%~%{${reset_color}%}
 %(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%} "
@@ -138,28 +128,21 @@ bindkey -e
 ## 自動的に消費時間の統計情報を表示する。
 REPORTTIME=3
 
-## perlbrew
-source ~/perl5/perlbrew/etc/bashrc
-
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
     PATH > ~/.emacs.d/shellenv.el
 
-##################################################
-# rvm
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source "$HOME/.rvm/scripts/rvm"
-
-##################################################
-# vim
-
-export VIMHOME=$HOME/.vim
-
-##################################################
-# phpenv
-if [ -f ${HOME}/.phpenv/bin/phpenv ]; then
-    export PATH=${PATH}:${HOME}/.phpenv/bin
-    eval "$(phpenv init -)"
-fi
+## Googleで検索
+function google() {
+  local str opt
+  if [ $# != 0 ]; then
+    for i in $*; do
+      str="$str+$i"
+    done
+    str=`echo $str | sed 's/^\+//'`
+    opt='search?num=50&hl=ja&lr=lang_ja'
+    opt="${opt}&q=${str}"
+  fi
+  open -a Google\ Chrome http://www.google.co.jp/$opt
+}

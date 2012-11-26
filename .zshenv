@@ -1,48 +1,51 @@
 ##################################################
+# aliases
+
+alias ls="ls -G"
+alias ll="ls -l"
+alias la="ll -a"
+
+alias app="open -a"
+
+alias g="git"
+alias s="svn"
+alias ta="tmux attach"
+
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+alias e="emacs"
+
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
+alias vi="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
+alias v="vim"
+
+alias oe="open -a Emacs"
+alias ov="open -a MacVim"
+
+##################################################
 # path
 
-## 重複したパスを登録しない。
+# fpath=(~/.zsh-completions $fpath)
+
+# 重複したパスを登録しない。
 typeset -U path
 typeset -U sudo_path
 
-path=(
-    ## my directory
-    $HOME/local/bin(N-/)
+# homebrew
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
-    ## homebrew
-    /usr/local/bin(N-/)
-    /usr/local/sbin(N-/)
+# my directory
+export PATH=$HOME/local/bin:$PATH
 
-    ## system
-    /usr/bin(N-/)
-    /usr/sbin(N-/)
-    /bin(N-/)
-    /sbin(N-/)
-    /usr/X11/bin(N-/)
-)
+# node.js
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodebrew/node/v0.8.14/lib/node_modules:$PATH
 
-## sudo
-sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
+# rvm
+export PATH=$HOME/.rvm/bin:$PATH
 
-## -x: export SUDO_PATHも一緒に行う。
-## -T: SUDO_PATHとsudo_pathを連動する。
-typeset -xT SUDO_PATH sudo_path
+# gems
+export GEM_HOME=$HOME/.rvm/gems/ruby-1.9.3-p194/gems
 
-export PATH=/usr/local/Cellar/php/5.3.10/bin:$PATH
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
-# 設定を有効にする
-if [[ -f ~/.nvm/nvm.sh ]]; then
-  source ~/.nvm/nvm.sh
-
-  if which nvm >/dev/null 2>&1 ;then
-    _nodejs_use_version="v0.8.11"
-    if nvm ls | grep -F -e "${_nodejs_use_version}" >/dev/null 2>&1 ;then
-      nvm use "${_nodejs_use_version}" >/dev/null
-      export NODE_PATH=${NVM_PATH}_modules${NODE_PATH:+:}${NODE_PATH}
-    fi
-    unset _nodejs_use_version
-  fi
-fi
+# use rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"

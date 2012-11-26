@@ -1,37 +1,32 @@
 " 色の有効化
 syntax on
 set background=dark
-colorscheme molokai 
+" colorscheme railscasts
+" colorscheme jellybeans
+" colorscheme pyte
+colorscheme newspaper
 
 " set filetype to scss
 au BufNewFile,BufRead *.scss setf scss
 
-" backup
-set backupdir=~/work/vim/backup
+" 行番号
+set nu
 
-" swap
-set directory=~/work/vim/swap
+" ファイルを保存しなくても他バッファを表示できるようにする
+set hidden
+
+" コマンドライン補完を便利にする
+set wildmenu
 
 " insertモードを抜けるとIMEオフ
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-
-" 行番号
-set nu
+runtime macros/editexisting.vim
 
 " 勝手にcd
 au BufEnter * execute ":lcd ".expand("%:p:h")
-
-" ツールバーを削除
-set guioptions-=T
-
-" 起動時にフルスクリーン
-if has("gui_running")
-  set fuoptions=maxvert,maxhorz
-  au GUIEnter * set fullscreen
-endif
 
 " ファイル名、文字エンコード、改行形式をステータスラインに表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%=%l,%c%V(%L)%8P 
@@ -42,9 +37,6 @@ set showmatch
 
 " 一行前のインデントにあわせてインデントする
 set noautoindent
-
-" 全角スペースを表示する
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 
 " 前回終了時の位置を記憶
 if has("autocmd")
@@ -57,11 +49,14 @@ endif
 " 自殺コマンド
 command! Suicide call system('kill -KILL' . getpid()) 
 
+" 行末の空白を保存時に削除
+autocmd BufWritePre * :%s/\s\+$//e
+
 " --------------------------------------------------
 " キーバインド
 " --------------------------------------------------
 " <leader>割り当て
-let mapleader = "¥"
+let mapleader = "\"
 
 " おれは<ESC>をやめるぞ、jj------!
 inoremap <expr> j getline('.')[col('.')-2] ==# 'j' ? "\<BS>\<ESC>" : 'j' 
@@ -80,6 +75,42 @@ inoremap <C-h> <BS>
 " http://d.hatena.ne.jp/akihito_s/20120122
 " --------------------------------------------------
 
+"  --------------------------------------------------
+"  非表示
+"  --------------------------------------------------
+" ツールバーを削除
+set guioptions-=T
+set guioptions-=l
+set guioptions-=r
+
+" --------------------------------------------------
+" 可視化
+" --------------------------------------------------
+" 全角スペースを表示
+hi FullWidthSpace term=underline ctermbg=blue guibg=darkgray
+autocmd BufNew,BufRead * match FullWidthSpace /　/
+
+" ハードタブと行末のスペースを表示
+hi SpecialKey ctermfg=blue guifg=#555555
+set listchars=tab:>\ ,trail:_
+set list
+
+" --------------------------------------------------
+" 連番
+" --------------------------------------------------
+nnoremap <silent> co :ContinuousNumber <C-a><CR>
+vnoremap <silent> co :ContinuousNumber <C-a><CR>
+command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
+
+" --------------------------------------------------
+" ディレクトリ指定
+" --------------------------------------------------
+" backup
+set backupdir=~/work/vim/backup
+
+" swap
+set directory=~/work/vim/swap
+ 
 " --------------------------------------------------
 " インデント
 " --------------------------------------------------
@@ -89,6 +120,16 @@ set tabstop=8
 set shiftwidth=4
 " タブを使わない
 set expandtab
+
+" --------------------------------------------------
+" テンプレート
+" --------------------------------------------------
+autocmd BufNewFile * silent! 0r $VIMHOME/templates/%:e.tpl
+
+" --------------------------------------------------
+" 辞書
+" --------------------------------------------------
+autocmd FileType javascript :set dictionary=javascript.dict<CR>
 
 " --------------------------------------------------
 " 検索	
@@ -129,6 +170,12 @@ noremap! 
 set backspace=indent,eol,start
 
 " --------------------------------------------------
+" 起動時に実行
+" --------------------------------------------------
+if has('vim_starting')
+endif
+
+" --------------------------------------------------
 " NeoBundle
 " --------------------------------------------------
 set nocompatible
@@ -161,12 +208,21 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'walm/jshint.vim'
-NeoBundle 'kchmck/vim-coffee-script' 
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'mattn/zencoding-vim'
- 
-" NeoBundle 'tell-k/vim-browsereload-mac'
-" NeoBundle 'AtsushiM/jasmine-helper.vim'
+
+NeoBundle 'tell-k/vim-browsereload-mac'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'thinca/vim-template'
+
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/solarized'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'therubymug/vim-pyte'
 
 filetype plugin on
 filetype indent on
@@ -228,6 +284,8 @@ nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file file/new<CR>
+" colorscheme
+nnoremap <silent> ,uc :<C-u>Unite colorscheme -auto-preview<CR>
 
 " unite.vim上でのキーマッピング
 autocmd FileType unite call s:unite_my_settings()
@@ -276,31 +334,27 @@ let g:quickrun_config._ = {'runner' : 'vimproc'}
 " 書き込み後にシンタックスチェックを行う
 let g:watchdogs_check_BufWritePost_enable = 1
  
-" こっちは一定時間キー入力がなかった場合にシンタックスチェックを行う
-" バッファに書き込み後、1度だけ行われる
-let g:watchdogs_check_CursorHold_enable = 1 
-
 call watchdogs#setup(g:quickrun_config)
 
-" " ----------------------------------------
-" " vim-browsereload-mac
-" " ----------------------------------------
-" " アプリに戻らない設定
-" " let g:returnAppFlag = 0
-" 
-" " リロード後に戻ってくるアプリ
-" let g:returnApp = "MacVim"
-" 
-" nmap <Space>bc :ChromeReloadStart<CR>
-" nmap <Space>bC :ChromeReloadStop<CR>
-" nmap <Space>bf :FirefoxReloadStart<CR>
-" nmap <Space>bF :FirefoxReloadStop<CR>
-" nmap <Space>bs :SafariReloadStart<CR>
-" nmap <Space>bS :SafariReloadStop<CR>
-" nmap <Space>bo :OperaReloadStart<CR>
-" nmap <Space>bO :OperaReloadStop<CR>
-" nmap <Space>ba :AllBrowserReloadStart<CR>
-" nmap <Space>bA :AllBrowserReloadStop<CR>
+" ----------------------------------------
+" vim-browsereload-mac
+" ----------------------------------------
+" アプリに戻らない設定
+" let g:returnAppFlag = 0
+
+" リロード後に戻ってくるアプリ
+let g:returnApp = "MacVim"
+
+nmap <Space>bc :ChromeReloadStart<CR>
+nmap <Space>bC :ChromeReloadStop<CR>
+nmap <Space>bf :FirefoxReloadStart<CR>
+nmap <Space>bF :FirefoxReloadStop<CR>
+nmap <Space>bs :SafariReloadStart<CR>
+nmap <Space>bS :SafariReloadStop<CR>
+nmap <Space>bo :OperaReloadStart<CR>
+nmap <Space>bO :OperaReloadStop<CR>
+nmap <Space>ba :AllBrowserReloadStart<CR>
+nmap <Space>bA :AllBrowserReloadStop<CR>
 
 " --------------------------------------------------
 " Powerline
