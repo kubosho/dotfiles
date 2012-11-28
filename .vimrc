@@ -1,10 +1,12 @@
 " 色の有効化
 syntax on
-set background=dark
+set background=light
+" set background=dark
 " colorscheme railscasts
 " colorscheme jellybeans
 " colorscheme pyte
-colorscheme newspaper
+colorscheme solarized
+" colorscheme newspaper
 
 " set filetype to scss
 au BufNewFile,BufRead *.scss setf scss
@@ -29,7 +31,7 @@ runtime macros/editexisting.vim
 au BufEnter * execute ":lcd ".expand("%:p:h")
 
 " ファイル名、文字エンコード、改行形式をステータスラインに表示
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%=%l,%c%V(%L)%8P 
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%=%l,%c%V(%L)%8P
 set laststatus=2
 
 " 対応する括弧をハイライト表示
@@ -47,7 +49,7 @@ if has("autocmd")
 endif
 
 " 自殺コマンド
-command! Suicide call system('kill -KILL' . getpid()) 
+command! Suicide call system('kill -KILL' . getpid())
 
 " 行末の空白を保存時に削除
 autocmd BufWritePre * :%s/\s\+$//e
@@ -59,7 +61,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 let mapleader = "\"
 
 " おれは<ESC>をやめるぞ、jj------!
-inoremap <expr> j getline('.')[col('.')-2] ==# 'j' ? "\<BS>\<ESC>" : 'j' 
+inoremap <expr> j getline('.')[col('.')-2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 
 " key remap
 imap { {}<LEFT>
@@ -110,7 +112,7 @@ set backupdir=~/work/vim/backup
 
 " swap
 set directory=~/work/vim/swap
- 
+
 " --------------------------------------------------
 " インデント
 " --------------------------------------------------
@@ -132,7 +134,7 @@ autocmd BufNewFile * silent! 0r $VIMHOME/templates/%:e.tpl
 autocmd FileType javascript :set dictionary=javascript.dict<CR>
 
 " --------------------------------------------------
-" 検索	
+" 検索
 " --------------------------------------------------
 " 検索のとき、大文字小文字を無視する
 set ignorecase
@@ -232,24 +234,24 @@ filetype indent on
 " --------------------------------------------------
 " 補完ウィンドウの設定
 set completeopt=menuone
- 
+
 " 起動時に有効化
 let g:neocomplcache_enable_at_startup = 1
- 
+
 " 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplcache_enable_smart_case = 1
- 
+
 " _(アンダースコア)区切りの補完を有効化
 let g:neocomplcache_enable_underbar_completion = 1
- 
+
 let g:neocomplcache_enable_camel_case_completion  =  1
- 
+
 " ポップアップメニューで表示される候補の数
 let g:neocomplcache_max_list = 20
- 
+
 " シンタックスをキャッシュするときの最小文字長
 let g:neocomplcache_min_syntax_length = 3
- 
+
 " ディクショナリ定義
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
@@ -310,9 +312,9 @@ let g:indent_guides_guide_size=1
 autocmd FileType javascript
   \ :setl omnifunc=jscomplete#CompleteJS
 
-" ---------------------------------------- 
+" ----------------------------------------
 " quickrun
-" ---------------------------------------- 
+" ----------------------------------------
 let g:quickrun_config = {
 \   "syntax_checker/ruby" : {
 \       "command" : "ruby",
@@ -333,7 +335,7 @@ let g:quickrun_config._ = {'runner' : 'vimproc'}
 " --------------------------------------------------
 " 書き込み後にシンタックスチェックを行う
 let g:watchdogs_check_BufWritePost_enable = 1
- 
+
 call watchdogs#setup(g:quickrun_config)
 
 " ----------------------------------------
@@ -508,4 +510,4 @@ let g:Powerline#Colorschemes#my#colorscheme = Pl#Colorscheme#Init([
     \ 'n': ['white', 'darkestpurple'],
     \ }),
   \ ])
-let g:Powerline_colorscheme='my' 
+let g:Powerline_colorscheme='my'
