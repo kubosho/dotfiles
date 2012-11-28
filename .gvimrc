@@ -3,9 +3,9 @@ set columns=200
 set lines=50
 
 "フォント
-" set guifont=DejaVu\ Sans\ Mono:h12
+set guifont=DejaVu\ Sans\ Mono:h12
 " set guifont=Source\ Code\ Pro \Regular:h13
-set guifont=Inconsolata:h13
+" set guifont=Inconsolata:h13
 
 "バックスラッシュ入力
 noremap! ¥ \
@@ -21,11 +21,13 @@ set cursorline
 
 "kayoriyaのgvimrcで上書きされるのでもう一回設定
 set cmdheight=1
-set background=dark
+set background=light
+" set background=dark
 " colorscheme railscasts
 " colorscheme jellybeans
 " colorscheme pyte
-colorscheme newspaper
+colorscheme solarized
+" colorscheme newspaper
 
 "不透明度
 set transparency=10
