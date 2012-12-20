@@ -23,14 +23,13 @@
 ;; @ color-theme
 
 (require 'color-theme)
-(require 'color-theme-solarized)
-(color-theme-initialize)
-(color-theme-molocai)
-;; (color-theme-solarized-dark)
+;; (require 'color-theme-solarized)
 
+(color-theme-initialize)
+(color-theme-molokai)
+;; (color-theme-solarized-dark)
 ;; (color-theme-tangotango)
 ;; (color-theme-arjen)
-;; (color-theme-molokai)
 
 ;; ------------------------------------------------------------------------
 ;; @ c/migemo
@@ -47,21 +46,6 @@
 (set-process-query-on-exit-flag migemo-process nil)
 
 ;; ------------------------------------------------------------------------
-;; @ edit-server
-
-(if (and (daemonp) (locate-library "edit-server"))
-     (progn
-       (require 'edit-server)
-       (edit-server-start)))
-(setq edit-server-new-frame nil)
-
-;; ------------------------------------------------------------------------
-;; @ flyspell
-
-(setq-default flyspell-mode t)
-(setq ispell-dictionary "american")
-
-;; ------------------------------------------------------------------------
 ;; @ grep
 
 ;; grep-a-lot
@@ -69,7 +53,22 @@
 (grep-a-lot-setup-keys)
 
 ;; grep-edit
+(require 'grep)
 (require 'grep-edit)
+
+(defadvice grep-edit-change-file (around inhibit-read-only activate)
+  ""
+  (let ((inhibit-read-only t))
+    ad-do-it))
+;; (progn (ad-disable-advice 'grep-edit-change-file 'around 'inhibit-read-only)(ad-update 'grep-edit-change-file))
+
+(defun my-grep-edit-setup ()
+  (define-key grep-mode-map '[up] nil)
+  (define-key grep-mode-map "\C-c\C-c" 'grep-edit-finish-edit)
+  (message (substitute-command-keys "\\[grep-edit-finish-edit] to apply changes."))
+  (set (make-local-variable 'inhibit-read-only) t)
+  )
+(add-hook 'grep-setup-hook 'my-grep-edit-setup t)
 
 ;; ------------------------------------------------------------------------
 ;; @ highlight indentation
@@ -82,13 +81,6 @@
 
 (require 'ibuffer)
 (define-key global-map (kbd "C-x C-b") 'ibuffer)
-
-;; ------------------------------------------------------------------------
-;; @ markup-preview
-
-(require 'markup-preview)
-;(global-set-key (kbd "M--") 'markup-preview) ; key bind example
-;(defalias 'mp 'markup-preview)
 
 ;; ------------------------------------------------------------------------
 ;; @ recentf-ext

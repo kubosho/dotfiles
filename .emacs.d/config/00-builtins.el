@@ -20,20 +20,10 @@
 (require 'generic-x)
 
 ;; ------------------------------------------------------------------------
-;; @ linum
-(global-linum-mode)
-
-;; ------------------------------------------------------------------------
 ;; @ saveplace
 
 (require 'saveplace)
 (setq-default save-place t)
-
-;; ------------------------------------------------------------------------
-;; @ session
-
-(when (require 'session nil t)
-  (add-hook 'after-init-hook 'session-initialize))
 
 ;; ------------------------------------------------------------------------
 ;; @ server
@@ -62,17 +52,11 @@
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
 
-;; 遅延なし
-(setq show-paren-delay 0)
-
 ;: 対応する括弧を強調表示
 (show-paren-mode t)
 
 ;; 対応しない括弧を探す
 (setq show-paren-ring-bell-on-mismatch t)
-
-;; 対応する括弧がウィンドウ内にないときだけ括弧内も光らせる
-(setq show-paren-style 'mixed)
 
 ;; ------------------------------------------------------------------------
 ;; @ uniquify

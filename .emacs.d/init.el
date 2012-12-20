@@ -29,6 +29,9 @@
 ;; command to control
 (setq mac-command-modifier 'control)
 
+;; Quicksilverによる切り替えをしたいのでscroll-downをnil
+(define-key global-map (kbd "M-v") nil)
+
 (define-key global-map (kbd "C-c a") 'align)
 (define-key global-map (kbd "C-c f") 'ns-toggle-fullscreen)
 (define-key global-map (kbd "C-c i") 'indent-region)
@@ -162,8 +165,8 @@
 (setq auto-save-list-file-prefix nil)
 
 ;; 編集中ファイルのバックアップ先
-;; (setq backup-directory-alist (cons "." "~/.emacs.d/backups/"))
-;; (setq auto-save-file-name-transforms `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+(setq backup-directory-alist (cons "." "~/.emacs.d/backups/"))
+(setq auto-save-file-name-transforms `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;; 編集中ファイルのバックアップ間隔(秒)
 (setq auto-save-timeout 30)
@@ -197,7 +200,7 @@
 (setq comment-style 'multi-line)
 
 ;; インデント
-(setq-default    c-basic-offset 4      ;; インデント量
+(setq-default    c-basic-offset 2      ;; インデント量
                  tab-width 8           ;; タブでインデントされていた場合の幅
                  indent-tabs-mode nil) ;; インデントにスペースを使う
 
