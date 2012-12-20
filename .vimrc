@@ -2,10 +2,9 @@
 syntax on
 set background=light
 " set background=dark
-" colorscheme railscasts
-" colorscheme jellybeans
-" colorscheme pyte
-colorscheme solarized
+" colorscheme molokai
+colorscheme jellybeans
+" colorscheme solarized
 " colorscheme newspaper
 
 " set filetype to scss
@@ -117,9 +116,9 @@ set directory=~/work/vim/swap
 " インデント
 " --------------------------------------------------
 " タブを何文字分として表示するか
-set tabstop=8
+set tabstop=2
 " インデントのスペース設定
-set shiftwidth=4
+set shiftwidth=2
 " タブを使わない
 set expandtab
 
@@ -202,6 +201,7 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/renamer.vim'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'AtsushiM/oop-js.vim'
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'othree/html5.vim'
@@ -219,12 +219,10 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
 
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'altercation/solarized'
-NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'vim-scripts/newspaper.vim'
-NeoBundle 'therubymug/vim-pyte'
 
 filetype plugin on
 filetype indent on
@@ -311,6 +309,20 @@ let g:indent_guides_guide_size=1
 " --------------------------------------------------
 autocmd FileType javascript
   \ :setl omnifunc=jscomplete#CompleteJS
+
+" --------------------------------------------------
+" oop-js
+" --------------------------------------------------
+let g:oopjs_autocheck = 1 "自動実行有り
+let g:oopjs_ignorecheckfile = ['min\.js', 'combine\.js', 'lib\/.\+\.js']
+" 1ファイルの限界行数
+let g:oopjs_linelimitnum = 200
+" 1行で使える.(ドット)の数
+let g:oopjs_dotlimitnum = 5
+" 1ファイル内の無名関数の限界数
+let g:oopjs_anonymousfunctionlimitnum = 20
+" 1ファイル内のvar宣言の限界数
+let g:oopjs_varlimitnum = 20
 
 " ----------------------------------------
 " quickrun
