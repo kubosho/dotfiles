@@ -24,13 +24,13 @@ set cmdheight=1
 set background=light
 " set background=dark
 " colorscheme railscasts
-" colorscheme jellybeans
+colorscheme jellybeans
 " colorscheme pyte
-colorscheme solarized
+" colorscheme solarized
 " colorscheme newspaper
 
 "不透明度
-set transparency=10
+set transparency=20
 
 "IME
 set imdisableactivate
