@@ -22,7 +22,7 @@ HISTFILE=~/.zsh_history
 
 ## 補完
 autoload -Uz compinit
-compinit
+compinit -u
 
 ## http://d.hatena.ne.jp/guyon/20120116/1326725427
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
@@ -138,13 +138,13 @@ setopt prompt_subst
 
 PROMPT="
 [%n] %{${fg[yellow]}%}%~%{${reset_color}%}
-%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%} "
+%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(＠ﾟ□ﾟ)ノ <!ZzZz(＠￣￢￣%)ノ <)%{${reset_color}%} "
 
 PROMPT2='[%n]> '
 
 RPROMPT='`prompt-git-current-branch`'
 
-SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
 
 ##################################################
 # etc

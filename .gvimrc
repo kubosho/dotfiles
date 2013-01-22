@@ -29,8 +29,15 @@ colorscheme jellybeans
 " colorscheme solarized
 " colorscheme newspaper
 
-"不透明度
-set transparency=20
-
 "IME
 set imdisableactivate
+
+"Vimにフォーカスが当たっていない場合は透けさせる
+"http://vim-users.jp/2011/10/hack234/
+augroup hack234
+  autocmd!
+  if has('mac')
+    autocmd FocusGained * set transparency=20
+    autocmd FocusLost * set transparency=100
+  endif
+augroup END

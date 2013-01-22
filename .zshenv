@@ -1,7 +1,9 @@
+export LANG=ja_JP.UTF-8
+
 ##################################################
 # aliases
 
-alias ls="ls -G"
+alias ls="ls -Gv"
 alias ll="ls -l"
 alias la="ll -a"
 
@@ -9,7 +11,6 @@ alias app="open -a"
 
 alias g="git"
 alias s="svn"
-alias ta="tmux attach"
 
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias e="emacs"
@@ -20,6 +21,10 @@ alias v="vim"
 
 alias oe="open -a Emacs"
 alias ov="open -a MacVim"
+
+alias tm="/usr/local/bin/tmuxx"
+alias tmux="/usr/local/bin/tmuxx"
+alias ta="tmux attach"
 
 ##################################################
 # path
@@ -39,7 +44,12 @@ export PATH=$HOME/local/bin:$PATH
 
 # node.js
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH=$HOME/.nodebrew/node/v0.8.14/lib/node_modules:$PATH
+
+# nodebrew
+if [[ -f ~/.nodebrew/nodebrew ]]; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+  nodebrew use latest
+fi
 
 # rvm
 export PATH=$HOME/.rvm/bin:$PATH
@@ -49,3 +59,6 @@ export GEM_HOME=$HOME/.rvm/gems/ruby-1.9.3-p194/gems
 
 # use rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# perlbrew
+source ~/perl5/perlbrew/etc/bashrc

@@ -26,7 +26,7 @@
    remote = green
 
 [core]
-    excludesfile = ~/.gitignore # globalな.gitignoreの指定
+	excludesfile = /Users/kubosho/.gitignore
     autocrlf = input            # CRLFを自動変換
 
 [alias]
