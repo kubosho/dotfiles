@@ -1,0 +1,5 @@
+(:name auto-save-buffers-enhanced
+ :type github
+ :website "https://github.com/kentaro/auto-save-buffers-enhanced"
+ :description "バッファを自動保存するElisp"
+ :pkgname "kentaro/auto-save-buffers-enhanced")
