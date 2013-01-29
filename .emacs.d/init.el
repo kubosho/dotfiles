@@ -11,14 +11,14 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; -------------------------------------------
-;; load
+;; load(el-init)
 ;; -------------------------------------------
 
-;; 標準で付いているElispの設定
-(load "config/builtins")
+(require 'el-init)
+(el-init:provide)
+(setq el-init:load-directory-list '("base"))
 
-;; インストールしたElispの設定
-(load "config/packages")
+(el-init:load "~/.emacs.d/config")
 
 ;; -------------------------------------------
 ;; Encoding
@@ -243,6 +243,11 @@
 
 ;; 電池残量表示
 (display-battery-mode t)
+
+;; Mac OS Xのみ適用
+(cond
+  ((string-match "apple-darwin" system-configuration)
+(add-hook 'window-setup-hook 'ns-toggle-fullscreen)))
 
 ;; ファイルサイズ表示
 (size-indication-mode t)

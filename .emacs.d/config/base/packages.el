@@ -51,6 +51,7 @@
   '(el-get
     anything
     auto-save-buffers-enhanced
+    el-init
     markdown-mode
     smart-compile
     wdired
