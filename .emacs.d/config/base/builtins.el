@@ -10,6 +10,7 @@
 ;; emacs-lisp-mode
 ;; Elisp編集モード
 ;; -------------------------------------------
+
 ;; emacs-lisp-modeでバッファーを開いたときに行う設定
 (add-hook
   'emacs-lisp-mode-hook
@@ -36,6 +37,7 @@
 ;; recentf-mode
 ;; 最近使ったファイルを表示する
 ;; -------------------------------------------
+
 (require 'cl)
 
 (defvar my-recentf-list-prev nil)
