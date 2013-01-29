@@ -29,8 +29,6 @@ alias ta="tmux attach"
 ##################################################
 # path
 
-# fpath=(~/.zsh-completions $fpath)
-
 # 重複したパスを登録しない。
 typeset -U path
 typeset -U sudo_path
@@ -61,4 +59,4 @@ export GEM_HOME=$HOME/.rvm/gems/ruby-1.9.3-p194/gems
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # perlbrew
-source ~/perl5/perlbrew/etc/bashrc
+source $HOME/perl5/perlbrew/etc/bashrc
