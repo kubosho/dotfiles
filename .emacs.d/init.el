@@ -6,7 +6,7 @@
   "~/.emacs.d"
 ) load-path))
 
-(let ((default-directory "~/.emacs.d/el-get/"))
+(let ((default-directory "~/.emacs.d/el-get"))
   (setq load-path (cons default-directory load-path))
   (normal-top-level-add-subdirs-to-load-path))
 
@@ -247,6 +247,7 @@
 ;; Mac OS Xのみ適用
 (cond
   ((string-match "apple-darwin" system-configuration)
+;; Emacs起動後にフルスクリーンにする
 (add-hook 'window-setup-hook 'ns-toggle-fullscreen)))
 
 ;; ファイルサイズ表示
@@ -259,17 +260,17 @@
 (when my-lines-page-mode
   (setq my-mode-line-format "%d")
   (if size-indication-mode
-      (setq my-mode-line-format (concat my-mode-line-format " of %%I")))
+    (setq my-mode-line-format (concat my-mode-line-format " of %%I")))
   (cond ((and (eq line-number-mode t) (eq column-number-mode t))
-         (setq my-mode-line-format (concat my-mode-line-format " (%%l,%%c)")))
-        ((eq line-number-mode t)
-         (setq my-mode-line-format (concat my-mode-line-format " L%%l")))
+    (setq my-mode-line-format (concat my-mode-line-format " (%%l,%%c)")))
+      ((eq line-number-mode t)
+        (setq my-mode-line-format (concat my-mode-line-format " L%%l")))
         ((eq column-number-mode t)
-         (setq my-mode-line-format (concat my-mode-line-format " C%%c"))))
+          (setq my-mode-line-format (concat my-mode-line-format " C%%c"))))
 
   (setq mode-line-position
-        '(:eval (format my-mode-line-format
-                        (count-lines (point-max) (point-min))))))
+    '(:eval (format my-mode-line-format
+      (count-lines (point-max) (point-min))))))
 
 ;; 選択範囲の文字数カウント
 (defun count-lines-and-chars ()
@@ -280,7 +281,7 @@
     ""))
 
 (add-to-list 'default-mode-line-format
-             '(:eval (count-lines-and-chars)))
+  '(:eval (count-lines-and-chars)))
 
 ;; -------------------------------------------
 ;; その他
