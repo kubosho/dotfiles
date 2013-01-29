@@ -25,6 +25,15 @@
   ;; (define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
   ;; (define-key ruby-mode-map (kbd "C-c C-c") (kbd "C-c c C-m"))
 
+
+;; -------------------------------------------
+;; wdired
+;; ディレクトリの名前を編集する
+;; -------------------------------------------
+(require 'wdired)
+(setq wdired-allow-to-change-permissions t)
+(define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
+
 ;; -------------------------------------------
 ;; el-get
 ;; Elispパッケージ管理システム
