@@ -52,6 +52,7 @@
     anything
     auto-save-buffers-enhanced
     el-init
+    emacs-powerline
     markdown-mode
     smart-compile
     wdired

@@ -1,0 +1,5 @@
+(:name emacs-powerline
+ :type github
+ :website "https://github.com/jonathanchu/emacs-powerline"
+ :description "モードラインをカッコよくするElisp"
+ :pkgname "jonathanchu/emacs-powerline")
