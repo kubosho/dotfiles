@@ -1,0 +1,6 @@
+(:name auto-complete
+ :type github
+ :website "https://github.com/auto-complete/auto-complete"
+ :description "The most intelligent auto-completion extension."
+ :pkgname "auto-complete/auto-complete"
+ :depends (popup fuzzy))
