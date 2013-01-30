@@ -147,6 +147,14 @@ RPROMPT='`prompt-git-current-branch`'
 SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
 
 ##################################################
+# z
+
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+  _z --add "$(pwd -P)"
+}
+
+##################################################
 # etc
 
 ## Emacsキーバインドを使う。
