@@ -26,8 +26,6 @@
     auto-complete
     auto-save-buffers-enhanced
     el-init
-    emacs-powerline
-    flycheck
     markdown-mode
     rhtml
     rinari
