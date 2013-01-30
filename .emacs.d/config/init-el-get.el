@@ -29,6 +29,7 @@
     emacs-powerline
     flycheck
     markdown-mode
+    rinari
     ruby-end
     smart-compile
     wdired
