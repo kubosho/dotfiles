@@ -22,7 +22,7 @@
 
 (require 'el-init)
 (el-init:provide)
-(setq el-init:load-directory-list '("base"))
+(setq el-init:load-directory-list '("base" "mode"))
 
 (el-init:load "~/.emacs.d/config")
 
@@ -304,20 +304,3 @@
 
 ;; 先頭に#!...があるファイルを保存した時に実行権をを追加
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-
-;; RSense
-(setq rsense-home "~/.emacs.d/rsense")
-(add-to-list 'load-path (concat rsense-home "/etc"))
-
-(require 'rsense)
-
-(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
-(setq rsense-rurema-refe "refe-1_9_3")
-
-(add-hook 'ruby-mode-hook
-  '(lambda ()
-    ;; .や::を入力直後から補完開始
-    (add-to-list 'ac-sources 'ac-source-rsense-method)
-    (add-to-list 'ac-sources 'ac-source-rsense-constant)
-    ;; C-x .で補完出来るようキーを設定
-    (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
