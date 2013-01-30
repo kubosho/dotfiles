@@ -311,6 +311,9 @@
 
 (require 'rsense)
 
+(setq rsense-rurema-home (concat rsense-home "/doc/ruby-refm-1.9.3-dynamic-snapshot"))
+(setq rsense-rurema-refe "refe-1_9_3")
+
 (add-hook 'ruby-mode-hook
   '(lambda ()
     ;; .や::を入力直後から補完開始
