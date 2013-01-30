@@ -28,16 +28,17 @@
         javascript-mode
         js2-mode
         js3-mode
+        ruby-mode
         ))
 
   ;; 常にYASnippetを補完候補に
   ; (add-to-list 'ac-sources 'ac-source-yasnippet)
 
   ;; 辞書ファイルのディレクトリ
-  (setq ac-dictionary-directories "~/.emacs.d/ac-dict")
+  (setq ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
 
   ;; 補完履歴のキャッシュ先
-  (setq ac-comphist-file "~/.emacs.d/ac-comphist.dat")
+  (setq ac-comphist-file "~/.emacs.d/el-get/auto-complete/ac-comphist.dat")
 )
 
 ;; -------------------------------------------
