@@ -164,11 +164,6 @@ bindkey -e
 ## 自動的に消費時間の統計情報を表示する。
 REPORTTIME=3
 
-## create emacs env file
-perl -wle \
-    'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH > ~/.emacs.d/shellenv.el
-
 ## Googleで検索
 function google() {
   local str opt
