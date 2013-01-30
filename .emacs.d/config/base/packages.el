@@ -20,6 +20,7 @@
   ;; C-n/C-pで候補を選択可能にする
   (setq ac-use-menu-map t)
 
+  ;; auto-completeを有効にするモード
   (setq ac-modes
       '(html-mode
         nxml-mode
@@ -32,7 +33,7 @@
         ))
 
   ;; 常にYASnippetを補完候補に
-  ; (add-to-list 'ac-sources 'ac-source-yasnippet)
+  (add-to-list 'ac-sources 'ac-source-yasnippet)
 
   ;; 辞書ファイルのディレクトリ
   (setq ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
@@ -51,14 +52,6 @@
 (setq auto-save-buffers-enhanced-interval 1)
 
 ;; -------------------------------------------
-;; flycheck
-;; flymakeの各言語用設定まとめパッケージ
-;; -------------------------------------------
-
-;; Ruby
-(add-hook 'ruby-mode-hook 'flycheck-mode)
-
-;; -------------------------------------------
 ;; popwin
 ;; ヘルプバッファや補完バッファをポップアップで表示
 ;; -------------------------------------------
@@ -72,9 +65,6 @@
 ;; -------------------------------------------
 
 (require 'smart-compile)
-  ;; ruby-mode
-  ;; (define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
-  ;; (define-key ruby-mode-map (kbd "C-c C-c") (kbd "C-c c C-m"))
 
 ;; -------------------------------------------
 ;; wdired
