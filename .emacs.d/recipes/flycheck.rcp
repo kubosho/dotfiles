@@ -1,0 +1,5 @@
+(:name flycheck
+ :type github
+ :website "https://github.com/lunaryorn/flycheck"
+ :description "各言語用のflymakeの設定をまとめているパッケージ"
+ :pkgname "lunaryorn/flycheck")

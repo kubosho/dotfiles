@@ -16,6 +16,14 @@
 (setq auto-save-buffers-enhanced-interval 1)
 
 ;; -------------------------------------------
+;; flycheck
+;; flymakeの各言語用設定まとめパッケージ
+;; -------------------------------------------
+
+;; Ruby
+(add-hook 'ruby-mode-hook 'flycheck-mode)
+
+;; -------------------------------------------
 ;; smart-compile
 ;; 編集中のファイルをその場でコンパイル/実行
 ;; -------------------------------------------
@@ -59,9 +67,11 @@
 (el-get 'sync
   '(el-get
     anything
+    auto-complete
     auto-save-buffers-enhanced
     el-init
     emacs-powerline
+    flycheck
     markdown-mode
     smart-compile
     wdired
