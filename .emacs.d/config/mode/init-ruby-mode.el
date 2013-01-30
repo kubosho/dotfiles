@@ -33,5 +33,5 @@
     ;; .や::を入力直後から補完開始
     (add-to-list 'ac-sources 'ac-source-rsense-method)
     (add-to-list 'ac-sources 'ac-source-rsense-constant)
-    ;; C-x .で補完出来るようキーを設定
-    (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
+    ;; C-c ,で補完出来るようキーを設定
+    (define-key ruby-mode-map (kbd "C-c ,") 'ac-complete-rsense)))
