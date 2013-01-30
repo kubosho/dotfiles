@@ -34,4 +34,5 @@
     ruby-end
     smart-compile
     wdired
+    yasnippet
   ))
