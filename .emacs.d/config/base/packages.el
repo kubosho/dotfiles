@@ -7,6 +7,40 @@
 (define-key global-map (kbd "C-x b") 'anything-filelist+)
 
 ;; -------------------------------------------
+;; auto-complete
+;; 入力補完
+;; -------------------------------------------
+
+(when (require 'auto-complete-config nil t)
+  (ac-config-default)
+
+  (setq ac-auto-start 1)
+  (setq ac-dwim t)
+
+  ;; C-n/C-pで候補を選択可能にする
+  (setq ac-use-menu-map t)
+
+  (setq ac-modes
+      '(html-mode
+        nxml-mode
+        css-mode
+        scss-mode
+        javascript-mode
+        js2-mode
+        js3-mode
+        ))
+
+  ;; 常にYASnippetを補完候補に
+  ; (add-to-list 'ac-sources 'ac-source-yasnippet)
+
+  ;; 辞書ファイルのディレクトリ
+  (setq ac-dictionary-directories "~/.emacs.d/ac-dict")
+
+  ;; 補完履歴のキャッシュ先
+  (setq ac-comphist-file "~/.emacs.d/ac-comphist.dat")
+)
+
+;; -------------------------------------------
 ;; auto-save-buffers-enhanced
 ;; バッファを自動保存
 ;; -------------------------------------------
