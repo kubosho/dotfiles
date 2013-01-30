@@ -51,12 +51,10 @@ fi
 
 # rvm
 export PATH=$HOME/.rvm/bin:$PATH
+source $HOME/.rvm/scripts/rvm
 
 # gems
 export GEM_HOME=$HOME/.rvm/gems/ruby-1.9.3-p194/gems
-
-# use rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # perlbrew
 source $HOME/perl5/perlbrew/etc/bashrc
