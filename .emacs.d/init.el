@@ -11,6 +11,12 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; -------------------------------------------
+;; load(el-get)
+;; -------------------------------------------
+
+(load "config/init-el-get")
+
+;; -------------------------------------------
 ;; load(el-init)
 ;; -------------------------------------------
 
@@ -298,3 +304,17 @@
 
 ;; 先頭に#!...があるファイルを保存した時に実行権をを追加
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;; RSense
+(setq rsense-home "~/.emacs.d/rsense")
+(add-to-list 'load-path (concat rsense-home "/etc"))
+
+(require 'rsense)
+
+(add-hook 'ruby-mode-hook
+  '(lambda ()
+    ;; .や::を入力直後から補完開始
+    (add-to-list 'ac-sources 'ac-source-rsense-method)
+    (add-to-list 'ac-sources 'ac-source-rsense-constant)
+    ;; C-x .で補完出来るようキーを設定
+    (define-key ruby-mode-map (kbd "C-x .") 'ac-complete-rsense)))
