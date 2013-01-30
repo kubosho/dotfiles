@@ -35,3 +35,6 @@
     (add-to-list 'ac-sources 'ac-source-rsense-constant)
     ;; C-c ,で補完出来るようキーを設定
     (define-key ruby-mode-map (kbd "C-c ,") 'ac-complete-rsense)))
+
+;; Rinari
+(require 'rinari)
