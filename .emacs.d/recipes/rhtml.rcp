@@ -1,0 +1,5 @@
+(:name rhtml
+ :type github
+ :website "https://github.com/eschulte/rhtml"
+ :description "mmm-free mode for editing .rhtml files using Emacs"
+ :pkgname "eschulte/rhtml")
