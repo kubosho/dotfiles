@@ -22,15 +22,15 @@
 
   ;; auto-completeを有効にするモード
   (setq ac-modes
-      '(html-mode
-        nxml-mode
-        css-mode
-        scss-mode
-        javascript-mode
-        js2-mode
-        js3-mode
-        ruby-mode
-        ))
+        '(html-mode
+          nxml-mode
+          css-mode
+          scss-mode
+          javascript-mode
+          js2-mode
+          js3-mode
+          ruby-mode
+          ))
 
   ;; 常にYASnippetを補完候補に
   (add-to-list 'ac-sources 'ac-source-yasnippet)
@@ -39,8 +39,7 @@
   (setq ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
 
   ;; 補完履歴のキャッシュ先
-  (setq ac-comphist-file "~/.emacs.d/el-get/auto-complete/ac-comphist.dat")
-)
+  (setq ac-comphist-file "~/.emacs.d/el-get/auto-complete/ac-comphist.dat"))
 
 ;; -------------------------------------------
 ;; auto-save-buffers-enhanced

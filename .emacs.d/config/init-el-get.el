@@ -7,30 +7,30 @@
 
 (unless (require 'el-get nil t)
   (with-current-buffer
-    (url-retrieve-synchronously
-      "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (end-of-buffer)
     (eval-print-last-sexp)))
 
 ;; レシピ置き場
 (add-to-list 'el-get-recipe-path
-  (concat (file-name-directory load-file-name) "/el-get/recipes"))
+             (concat (file-name-directory load-file-name) "/el-get/recipes"))
 
 ;; 追加のレシピ置き場
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 
 ;; 取得するパッケージ
 (el-get 'sync
-  '(el-get
-    anything
-    auto-complete
-    auto-save-buffers-enhanced
-    el-init
-    markdown-mode
-    rhtml
-    rinari
-    ruby-end
-    smart-compile
-    wdired
-    yasnippet
-  ))
+        '(el-get
+          anything
+          auto-complete
+          auto-save-buffers-enhanced
+          el-init
+          markdown-mode
+          rhtml
+          rinari
+          ruby-end
+          smart-compile
+          wdired
+          yasnippet
+          ))

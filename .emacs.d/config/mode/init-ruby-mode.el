@@ -13,11 +13,11 @@
 
 ;; electric-pair-mode
 (add-hook 'ruby-mode-hook
-  '(lambda ()
-    (abbrev-mode 1)
-    (electric-pair-mode t)
-    (electric-indent-mode t)
-    (electric-layout-mode t)))
+          '(lambda ()
+             (abbrev-mode 1)
+             (electric-pair-mode t)
+             (electric-indent-mode t)
+             (electric-layout-mode t)))
 
 ;; RSense
 (setq rsense-home "/usr/local/lib/rsense")
@@ -29,12 +29,12 @@
 (setq rsense-rurema-refe "refe-1_9_3")
 
 (add-hook 'ruby-mode-hook
-  '(lambda ()
-    ;; .や::を入力直後から補完開始
-    (add-to-list 'ac-sources 'ac-source-rsense-method)
-    (add-to-list 'ac-sources 'ac-source-rsense-constant)
-    ;; C-c ,で補完出来るようキーを設定
-    (define-key ruby-mode-map (kbd "C-c ,") 'ac-complete-rsense)))
+          '(lambda ()
+             ;; .や::を入力直後から補完開始
+             (add-to-list 'ac-sources 'ac-source-rsense-method)
+             (add-to-list 'ac-sources 'ac-source-rsense-constant)
+             ;; C-c ,で補完出来るようキーを設定
+             (define-key ruby-mode-map (kbd "C-c ,") 'ac-complete-rsense)))
 
 ;; Rinari
 (require 'rinari)
@@ -42,4 +42,4 @@
 ;; rhtml-mode
 (require 'rhtml-mode)
 (add-hook 'rhtml-mode-hook
-  (lambda () (rinari-launch)))
+          (lambda () (rinari-launch)))

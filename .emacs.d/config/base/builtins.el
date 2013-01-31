@@ -45,11 +45,11 @@ do nothing. And suppress the output from `message' and
 `write-file' to minibuffer."
   (unless (equal recentf-list my-recentf-list-prev)
     (flet ((message (format-string &rest args)
-      (eval `(format ,format-string ,@args)))
-      (write-file (file &optional confirm)
-        (let ((str (buffer-string)))
-        (with-temp-file file
-        (insert str)))))
+                    (eval `(format ,format-string ,@args)))
+           (write-file (file &optional confirm)
+                       (let ((str (buffer-string)))
+                         (with-temp-file file
+                           (insert str)))))
       ad-do-it
       (setq my-recentf-list-prev recentf-list))))
 
@@ -57,7 +57,7 @@ do nothing. And suppress the output from `message' and
   (around no-message activate)
   "suppress the output from `message' to minibuffer"
   (flet ((message (format-string &rest args)
-    (eval `(format ,format-string ,@args))))
+                  (eval `(format ,format-string ,@args))))
     ad-do-it))
 
 (setq recentf-save-file (expand-file-name ".recentf" user-emacs-directory))
