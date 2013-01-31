@@ -22,7 +22,7 @@
 
 (require 'el-init)
 (el-init:provide)
-(setq el-init:load-directory-list '("base" "mode"))
+(setq el-init:load-directory-list '("base" "package" "mode"))
 
 (el-init:load "~/.emacs.d/config")
 
