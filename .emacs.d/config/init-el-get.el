@@ -33,4 +33,5 @@
           smart-compile
           wdired
           yasnippet
+          zencoding
           ))
