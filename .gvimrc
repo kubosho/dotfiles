@@ -21,13 +21,8 @@ set cursorline
 
 "kayoriyaのgvimrcで上書きされるのでもう一回設定
 set cmdheight=1
-set background=light
-" set background=dark
-" colorscheme railscasts
+set background=dark
 colorscheme jellybeans
-" colorscheme pyte
-" colorscheme solarized
-" colorscheme newspaper
 
 "IME
 set imdisableactivate
