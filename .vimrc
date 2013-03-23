@@ -66,6 +66,7 @@ if isdirectory(expand('~/.vim/config/'))
   source ~/.vim/config/status.vim
   source ~/.vim/config/unite.vim
   source ~/.vim/config/quickrun.vim
+  source ~/.vim/config/neocomp.vim
 endif
 
 " -------------------------------------------
@@ -82,6 +83,3 @@ imap ( ()<LEFT>
 " 入力モードで削除
 inoremap <C-d> <Del>
 inoremap <C-h> <BS>
-" 
-" おれは<ESC>をやめるぞ、jj------!
-inoremap <expr> j getline('.')[col('.')-2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
