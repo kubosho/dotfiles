@@ -25,7 +25,7 @@ NeoBundle 'scrooloose/nerdtree'
 
 " 補完
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'teramako/jscomplete-vim'
 
 " check syntax
