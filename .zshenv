@@ -58,3 +58,6 @@ export GEM_HOME=$HOME/.rvm/gems/ruby-1.9.3-p194/gems
 
 # perlbrew
 source $HOME/perl5/perlbrew/etc/bashrc
+
+# cabal
+export PATH=$HOME/.cabal/bin:$PATH
