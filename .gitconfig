@@ -1,42 +1,42 @@
 [user]
-    name = kubosho
-    email = ta2@o2p.jp
+  name = kubosho
+  email = ta2@o2p.jp
 
 [color]
-    ui = true
-    status = auto
-    diff = auto
-    branch = auto
-    grep = auto
+  ui = true
+  status = auto
+  diff = auto
+  branch = auto
+  grep = auto
 
 [color "status"]
-   added = yellow
-   changed = green
+  added = yellow
+  changed = green
 
 [color "diff"]
-   meta = yellow bold
-   frag = magenta bold
-   old = red bold
-   new = green bold
-   whitespace = red reverse
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 
 [color "branch"]
-   current = yellow reverse
-   local = yellow
-   remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [core]
-	excludesfile = /Users/kubosho/.gitignore
-    autocrlf = input            # CRLFを自動変換
+  excludesfile = /Users/kubosho/.gitignore
+  autocrlf = input            # CRLFを自動変換
 
 [alias]
-    st = status
-    ft = fetch
-    ci = commit
-    co = checkout
+  st = status
+  ft = fetch
+  ci = commit
+  co = checkout
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
