@@ -31,6 +31,7 @@ NeoBundle 'teramako/jscomplete-vim'
 " check syntax
 NeoBundle 'walm/jshint.vim'
 NeoBundle "osyo-manga/vim-watchdogs"
+NeoBundle "jceb/vim-hier"
 
 " フロントエンド
 NeoBundle 'othree/html5.vim'
@@ -47,8 +48,10 @@ NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
 
 " いろいろ便利なもの
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'tell-k/vim-browsereload-mac'
 
 " 外観
 NeoBundle 'Lokaltog/vim-powerline'
@@ -83,3 +86,34 @@ imap ( ()<LEFT>
 " 入力モードで削除
 inoremap <C-d> <Del>
 inoremap <C-h> <BS>
+
+" -------------------------------------------
+" zen-coding
+" -------------------------------------------
+" 日本語対応
+let g:user_zen_settings = {
+  \  'lang' : 'ja',
+  \  'html' : {
+  \    'filters' : 'html',
+  \    'indentation' : ' '
+  \  },
+  \  'css' : {
+  \    'filters' : 'fc',
+  \  },
+  \}
+}
+
+" -------------------------------------------
+" vim-browserreload-mac
+" -------------------------------------------
+let g:returnApp = "MacVim"
+nmap <Space>bc :ChromeReloadStart<CR>
+nmap <Space>bC :ChromeReloadStop<CR>
+nmap <Space>bf :FirefoxReloadStart<CR>
+nmap <Space>bF :FirefoxReloadStop<CR>
+nmap <Space>bs :SafariReloadStart<CR>
+nmap <Space>bS :SafariReloadStop<CR>
+nmap <Space>bo :OperaReloadStart<CR>
+nmap <Space>bO :OperaReloadStop<CR>
+nmap <Space>ba :AllBrowserReloadStart<CR>
+nmap <Space>bA :AllBrowserReloadStop<CR>
