@@ -1,6 +1,9 @@
 " 補完ウィンドウの設定
 set completeopt=menuone
 
+" 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
+
 " SCSSをCSSのオムニ補完にする
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
