@@ -1,15 +1,5 @@
-" Vi互換OFF
-set nocompatible
-filetype off
-
-" 構文ごとに色分けする
-syntax on
-
-" 行番号表示
-set nu
-
 " -------------------------------------------
-" NeoBundle設定
+" NeoBundle
 " -------------------------------------------
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
