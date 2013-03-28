@@ -44,7 +44,16 @@ NeoBundle 'tell-k/vim-browsereload-mac'
 
 " 外観
 NeoBundle 'Lokaltog/vim-powerline'
+
+" colorscheme
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'chriskempson/tomorrow-theme'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
 
 " ファイル形式別プラグインのロードを有効化
 filetype plugin on
