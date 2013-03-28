@@ -1,5 +1,5 @@
 " -------------------------------------------
-" neocomplcache
+" NeoCompleCache
 " -------------------------------------------
 " 補完ウィンドウの設定
 set completeopt=menuone
@@ -17,6 +17,17 @@ if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*' 
+
+" -------------------------------------------
+" NERDTree
+" http://blog.livedoor.jp/kumonopanya/archives/51048805.html
+" -------------------------------------------
+" <C-e>でNERDTreeをオンオフ。いつでもどこでも。
+nmap <silent> <C-e>      :NERDTreeToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-e>      :NERDTreeToggle<CR>
+imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
 
 " -------------------------------------------
 " vim-browserreload-mac
