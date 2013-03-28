@@ -1,7 +1,8 @@
 " カラーテーマ
 set cmdheight=1
 set background=dark
-colorscheme jellybeans
+colorscheme hybrid
+" colorscheme jellybeans
 
 " ウインドウサイズ
 set columns=200
