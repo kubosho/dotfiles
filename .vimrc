@@ -66,9 +66,7 @@ filetype indent on
 if isdirectory(expand('~/.vim/config/'))
   source ~/.vim/config/base.vim
   source ~/.vim/config/status.vim
-  source ~/.vim/config/unite.vim
-  source ~/.vim/config/quickrun.vim
-  source ~/.vim/config/neocomp.vim
+  source ~/.vim/config/plugin.vim
 endif
 
 " -------------------------------------------
@@ -85,34 +83,3 @@ imap ( ()<LEFT>
 " 入力モードで削除
 inoremap <C-d> <Del>
 inoremap <C-h> <BS>
-
-" -------------------------------------------
-" zen-coding
-" -------------------------------------------
-" 日本語対応
-let g:user_zen_settings = {
-  \  'lang' : 'ja',
-  \  'html' : {
-  \    'filters' : 'html',
-  \    'indentation' : ' '
-  \  },
-  \  'css' : {
-  \    'filters' : 'fc',
-  \  },
-  \}
-}
-
-" -------------------------------------------
-" vim-browserreload-mac
-" -------------------------------------------
-let g:returnApp = "MacVim"
-nmap <Space>bc :ChromeReloadStart<CR>
-nmap <Space>bC :ChromeReloadStop<CR>
-nmap <Space>bf :FirefoxReloadStart<CR>
-nmap <Space>bF :FirefoxReloadStop<CR>
-nmap <Space>bs :SafariReloadStart<CR>
-nmap <Space>bS :SafariReloadStop<CR>
-nmap <Space>bo :OperaReloadStart<CR>
-nmap <Space>bO :OperaReloadStop<CR>
-nmap <Space>ba :AllBrowserReloadStart<CR>
-nmap <Space>bA :AllBrowserReloadStop<CR>
