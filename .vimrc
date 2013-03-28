@@ -29,7 +29,6 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'teramako/jscomplete-vim'
 
 " check syntax
-NeoBundle 'walm/jshint.vim'
 NeoBundle "osyo-manga/vim-watchdogs"
 NeoBundle "jceb/vim-hier"
 
