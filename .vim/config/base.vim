@@ -1,5 +1,28 @@
+" Vi互換OFF
+set nocompatible
+filetype off
+
+" 構文ごとに色分けする
+syntax on
+
+" 行番号表示
+set nu
+
 " コマンドライン補完を便利にする
 set wildmenu
+
+ " 対応する括弧をハイライト表示
+set showmatch
+
+" 一行前のインデントにあわせてインデントする
+set noautoindent
+
+" フルスクリーン
+" http://d.hatena.ne.jp/acotie/20100123/1264271335
+if has("gui_running")
+  set fuoptions=maxvert,maxhorz
+  au GUIEnter * set fullscreen
+endif
 
 " insertモードを抜けるとIMEオフ
 set noimdisable
@@ -7,12 +30,6 @@ set iminsert=0 imsearch=0
 set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 runtime macros/editexisting.vim
- 
-" 対応する括弧をハイライト表示
-set showmatch
-
-" 一行前のインデントにあわせてインデントする
-set noautoindent
 
 " 前回終了時の位置を記憶
 if has("autocmd")
@@ -25,11 +42,6 @@ endif
 " --------------------------------------------------
 " 表示・非表示
 " --------------------------------------------------
-" ツールバーを削除
-set guioptions-=T
-set guioptions-=l
-set guioptions-=r
-
 " 全角スペースを表示
 hi FullWidthSpace term=underline ctermbg=blue guibg=darkgray
 autocmd BufNew,BufRead * match FullWidthSpace /　/
@@ -53,8 +65,10 @@ set directory=~/work/vim/swap
 " --------------------------------------------------
 " タブを何文字分として表示するか
 set tabstop=8
+
 " インデントのスペース設定
 set shiftwidth=2
+
 " タブを使わない
 set expandtab
 
