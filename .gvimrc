@@ -1,7 +1,8 @@
 " カラーテーマ
 set cmdheight=1
 set background=dark
-colorscheme hybrid
+colorscheme molokai
+" colorscheme hybrid
 " colorscheme jellybeans
 
 " ウインドウサイズ
@@ -9,8 +10,8 @@ set columns=200
 set lines=50
 
 " フォント
-set guifont=Menlo:h12
-set guifontwide=ヒラギノ丸ゴ\ ProN\ W4:h12
+set guifont=Menlo:h14
+set guifontwide=ヒラギノ丸ゴ\ ProN\ W4:h14
 " set guifont=Lucida\ Console:h12
 " set guifont=DejaVu\ Sans\ Mono:h12
 " set guifont=Source\ Code\ Pro \Regular:h12
