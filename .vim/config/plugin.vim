@@ -16,7 +16,7 @@ let g:neocomplcache_omni_patterns.scss = '^\s\+\w\+\|\w\+[):;]\?\s\+\|[@!]'
 if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*' 
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " -------------------------------------------
 " NERDTree
@@ -116,8 +116,10 @@ let g:watchdogs_check_BufWritePost_enable = 1
 let g:user_zen_settings = {
   \  'lang' : 'ja',
   \  'html' : {
-  \    'filters' : 'html',
-  \    'indentation' : ' '
+  \    'indentation' : ' ',
+  \    'snippets' : {
+  \      'html:5': "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n<meta charset=\"UTF-8\">\n<title></title>\n<meta name=\"description\" content=\"\">\n<meta name=\"keywords\" content=\"\">\n<meta name=\"viewport\" content=\"width=980\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<meta name=\"format-detection\" content=\"telephone=no\">\n<link rel=\"stylesheet\" href=\"css/lib/normalize.css\">\n<link rel=\"stylesheet\" href=\"css/style.css\">\n<!--[if lt IE 9]>\n<script src=\"js/lib/html5shiv-printshiv.js\"></script>\n<![endif]-->\n</head>\n\n<body>\n\n</body>\n</html>",
+  \    },
   \  },
   \  'css' : {
   \    'filters' : 'fc',
