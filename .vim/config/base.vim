@@ -8,6 +8,10 @@ syntax on
 " 行番号表示
 set nu
 
+" カレントディレクトリを変更するようにする
+" http://kaworu.jpn.org/kaworu/2008-06-06-1.php
+set autochdir
+
 " コマンドライン補完を便利にする
 set wildmenu
 
