@@ -1,8 +1,8 @@
 " カラーテーマ
 set cmdheight=1
 set background=dark
-colorscheme molokai
-" colorscheme hybrid
+colorscheme hybrid
+" colorscheme molokai
 " colorscheme jellybeans
 
 " ウインドウサイズ
