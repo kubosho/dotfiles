@@ -1,11 +1,20 @@
 " -------------------------------------------
-" NeoCompleCache
+" NeoComplCache
 " -------------------------------------------
 " 補完ウィンドウの設定
 set completeopt=menuone
 
 " 起動時に有効化
 let g:neocomplcache_enable_at_startup = 1
+
+" 大文字が入力されるまで大文字小文字の区別を無視
+let g:neocomplcache_enable_smart_case = 1
+
+" _区切りの補完を有効にする
+let g:neocomplcache_enable_underbar_completion = 1
+
+" シンタックスをキャッシュするときの最小文字長を設定
+let g:neocomplcache_min_syntax_length = 3
 
 " SCSSをCSSのオムニ補完にする
 if !exists('g:neocomplcache_omni_patterns')
@@ -23,11 +32,16 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " http://blog.livedoor.jp/kumonopanya/archives/51048805.html
 " -------------------------------------------
 " <C-e>でNERDTreeをオンオフ。いつでもどこでも。
-nmap <silent> <C-e>      :NERDTreeToggle<CR>
-vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-omap <silent> <C-e>      :NERDTreeToggle<CR>
-imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+nmap <silent> <C-n>      :NERDTreeToggle<CR>
+vmap <silent> <C-n> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-n>      :NERDTreeToggle<CR>
+imap <silent> <C-n> <Esc>:NERDTreeToggle<CR>
+cmap <silent> <C-n> <C-u>:NERDTreeToggle<CR>
+
+" -------------------------------------------
+" simple javascript indenter
+" -------------------------------------------
+let g:SimpleJsIndenter_BriefMode = 1
 
 " -------------------------------------------
 " vim-browserreload-mac
