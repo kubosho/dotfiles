@@ -16,7 +16,7 @@ NeoBundle 'scrooloose/nerdtree'
 " 補完
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'teramako/jscomplete-vim'
+" NeoBundle 'teramako/jscomplete-vim'
 
 " check syntax
 NeoBundle "osyo-manga/vim-watchdogs"
@@ -26,17 +26,25 @@ NeoBundle "jceb/vim-hier"
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'mattn/zencoding-vim'
 
 " quickrun関連
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+\ 'build' : {
+\     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'unix' : 'make -f make_unix.mak',
+\    },
+\ }
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
 
 " いろいろ便利なもの
+NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'plasticboy/vim-markdown'
@@ -58,7 +66,7 @@ NeoBundle 'vim-scripts/rdark'
 " ファイル形式別プラグインのロードを有効化
 filetype plugin on
 filetype indent on
- 
+
 " -------------------------------------------
 " 設定ファイル読み込み
 " -------------------------------------------
