@@ -48,14 +48,14 @@ set imdisableactivate
 " 透過
 " http://nanabit.net/blog/2007/11/01/vim-fullscreen/
 " -------------------------------------------
-set transparency=25
+set transparency=20
 
 " Vimにフォーカスが当たっていない場合は透けさせる
 " http://vim-users.jp/2011/10/hack234/
 augroup hack234
   autocmd!
   if has('mac')
-    autocmd FocusGained * set transparency=25
+    autocmd FocusGained * set transparency=20
     autocmd FocusLost * set transparency=100
   endif
 augroup END
