@@ -1,6 +1,0 @@
-(:name zencoding
- :type github
- :website "https://github.com/rooney/zencoding"
- :description "a new way of writing HTML and CSS code"
- :pkgname "rooney/zencoding")
-

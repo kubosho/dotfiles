@@ -1,5 +1,0 @@
-(:name rinari
- :type github
- :website "https://github.com/eschulte/rinari"
- :description "Rinari is an Emacs minor mode that is aimed towards making Emacs into a top-notch Ruby and Rails development environment."
- :pkgname "eschulte/rinari")

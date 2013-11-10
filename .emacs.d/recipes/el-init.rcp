@@ -1,5 +1,0 @@
-(:name auto-save-buffers-enhanced
- :type github
- :website "https://github.com/HKey/el-init"
- :description "特定のディレクトリ以下の設定ファイルを読み込むElisp"
- :pkgname "HKey/el-init")
