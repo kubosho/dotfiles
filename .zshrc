@@ -53,13 +53,6 @@ setopt no_beep
 export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 ##################################################
-# Editor
-
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-
-##################################################
 # history
 
 ## メモリ上の履歴数。
@@ -130,9 +123,6 @@ function prompt-git-current-branch {
     echo "[$color$name$action%f%b]"
 }
 
-# PCRE 互換の正規表現を使う
-setopt re_match_pcre
-
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 
@@ -145,6 +135,11 @@ PROMPT2='[%n]> '
 RPROMPT='`prompt-git-current-branch`'
 
 SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+
+##################################################
+# rbenv
+
+eval "$(rbenv init -)"
 
 ##################################################
 # z
@@ -177,3 +172,6 @@ function google() {
   fi
   open -a Google\ Chrome http://www.google.co.jp/$opt
 }
+
+# added by travis gem
+source /Users/kubosho/.travis/travis.sh

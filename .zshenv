@@ -12,11 +12,7 @@ alias app="open -a"
 alias g="git"
 alias s="svn"
 
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias e="emacs"
-
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
-alias vi="/Applications/MacVim.app/Contents/MacOS/Vim '$@'"
 alias v="vim"
 
 alias oe="open -a Emacs"
@@ -40,24 +36,15 @@ export PATH=/usr/local/sbin:$PATH
 # my directory
 export PATH=$HOME/local/bin:$PATH
 
-# node.js
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 # nodebrew
 if [[ -f ~/.nodebrew/nodebrew ]]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew use latest
 fi
+export PATH=$HOME/.nodebrew/node/v0.10.5/lib/node_modules:$PATH
 
-# rvm
-export PATH=$HOME/.rvm/bin:$PATH
-source $HOME/.rvm/scripts/rvm
-
-# gems
-export GEM_HOME=$HOME/.rvm/gems/ruby-1.9.3-p194/gems
+# gem
+export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
+export PATH=/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH
 
 # perlbrew
 source $HOME/perl5/perlbrew/etc/bashrc
-
-# cabal
-export PATH=$HOME/.cabal/bin:$PATH
