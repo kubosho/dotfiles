@@ -15,13 +15,6 @@ alias s="svn"
 alias e="emacs"
 alias v="vim"
 
-alias oe="open -a Emacs"
-alias ov="open -a MacVim"
-
-alias tm="/usr/local/bin/tmuxx"
-alias tmux="/usr/local/bin/tmuxx"
-alias ta="tmux attach"
-
 ##################################################
 # path
 
