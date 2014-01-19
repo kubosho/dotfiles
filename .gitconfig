@@ -27,7 +27,6 @@
 
 [core]
   excludesfile = /Users/kubosho/.gitignore
-  autocrlf = input            # CRLFを自動変換
 
 [alias]
   st = status
