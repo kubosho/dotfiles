@@ -10,7 +10,6 @@ alias la="ll -a"
 alias app="open -a"
 
 alias g="git"
-alias s="svn"
 
 alias e="emacs"
 alias v="vim"
@@ -33,11 +32,3 @@ export PATH=$HOME/local/bin:$PATH
 if [[ -f ~/.nodebrew/nodebrew ]]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
-export PATH=$HOME/.nodebrew/node/v0.10.5/lib/node_modules:$PATH
-
-# gem
-export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
-export PATH=/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH
-
-# perlbrew
-source $HOME/perl5/perlbrew/etc/bashrc
