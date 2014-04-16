@@ -1,3 +1,7 @@
+# boxen
+
+source /opt/boxen/env.sh
+
 ##################################################
 # change directory
 
@@ -146,7 +150,7 @@ eval "$(rbenv init -)"
 
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
-  _z --add "$(pwd -P)"
+  z --add "$(pwd -P)"
 }
 
 ##################################################
