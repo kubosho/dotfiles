@@ -26,9 +26,20 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
 # my directory
-export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # nodebrew
 if [[ -f ~/.nodebrew/nodebrew ]]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
+
+## rbenv
+#
+if [[ -s /opt/boxen/rbenv/bin ]] ; then
+fi
+
+## nodenv
+#
+if [[ -s /opt/boxen/nodenv/bin ]] ; then
+fi
+
