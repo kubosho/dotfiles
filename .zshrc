@@ -1,181 +1,86 @@
-# boxen
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-source /opt/boxen/env.sh
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
 
-##################################################
-# change directory
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-## ディレクトリ名だけでcdする。
-setopt auto_cd
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-## cdで移動してもpushdと同じようにディレクトリスタックに追加する。
-setopt auto_pushd
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-## カレントディレクトリ中に指定されたディレクトリが見つからなかった場合に
-## 移動先を検索するリスト。
-cdpath=(~)
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-## ディレクトリが変わったらディレクトリスタックを表示。
-chpwd_functions=($chpwd_functions dirs)
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-## ヒストリを保存するファイル
-HISTFILE=~/.zsh_history
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-##################################################
-# complement
+# Uncomment the following line to disable command auto-correction.
+# DISABLE_CORRECTION="true"
 
-## 補完
-autoload -Uz compinit
-compinit -u
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-## http://d.hatena.ne.jp/guyon/20120116/1326725427
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                             /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
-                             /usr/local/git/bin
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-## 補完候補に色を付ける。
-### "": 空文字列はデフォルト値を使うという意味。
-zstyle ':completion:*:default' list-colors ""
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
-## 補完候補がなければより曖昧に候補を探す。
-### m:{a-z}={A-Z}: 小文字を大文字に変えたものでも補完する。
-### r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完する。
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-## 補完候補をキャッシュする。
-zstyle ':completion:*' use-cache yes
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
 
-## 補完時にヒストリを自動的に展開する。
-setopt hist_expand
+source $ZSH/oh-my-zsh.sh
 
-## 補完候補がないときなどにビープ音を鳴らさない。
-setopt no_beep
+# User configuration
 
-##################################################
-# color
+export PATH="bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/rbenv/plugins/ruby-build/bin:node_modules/.bin:/opt/boxen/nodenv/shims:/opt/boxen/nodenv/bin:/opt/boxen/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/opt/boxen/nodenv/shims/npm:/Users/s.kubota/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
 
-export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-##################################################
-# history
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-## メモリ上の履歴数。
-## 大きな数を指定してすべての履歴を保存するようにしている。
-HISTSIZE=10000000
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-## 保存する履歴数
-SAVEHIST=$HISTSIZE
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-## 履歴ファイルにコマンドだけではなく実行時刻と実行時間も保存する。
-setopt extended_history
-
-## 重複した履歴を保存しない
-setopt hist_ignore_dups
-
-## スペースで始まるコマンドは履歴に追加しない。
-setopt hist_ignore_space
-
-## すぐに履歴ファイルに追記する。
-setopt inc_append_history
-
-## zshプロセス間で履歴を共有する。
-setopt share_history
-
-## C-sでの履歴検索が潰されてしまうため、出力停止・開始用にC-s/C-qを使わない。
-setopt no_flow_control
-
-## 履歴の検索
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
-
-##################################################
-# prompt
-
-autoload -U colors; colors
-
-setopt correct
-
-autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-
-function prompt-git-current-branch {
-    local name st color gitdir action
-    if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-        return
-    fi
-    name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-    if [[ -z $name ]]; then
-        return
-    fi
-
-    gitdir=`git rev-parse --git-dir 2> /dev/null`
-    action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
-
-    st=`git status 2> /dev/null`
-    if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-        color=%F{green}
-    elif [[ -n `echo "$st" | grep "^no changes added"` ]]; then
-        color=%F{yellow}
-    elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
-        color=%B%F{red}
-    else
-        color=%F{red}
-    fi
-
-    echo "[$color$name$action%f%b]"
-}
-
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
-
-PROMPT="
-[%n] %{${fg[yellow]}%}%~%{${reset_color}%}
-%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(＠ﾟ□ﾟ)ノ <!ZzZz(＠￣￢￣%)ノ <)%{${reset_color}%} "
-
-PROMPT2='[%n]> '
-
-RPROMPT='`prompt-git-current-branch`'
-
-SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
-
-##################################################
-# rbenv
-
-eval "$(rbenv init -)"
-
-##################################################
 # z
-
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
   z --add "$(pwd -P)"
 }
 
-##################################################
-# etc
+# save history file
+HISTFILE=~/.zsh_history
 
-## Emacsキーバインドを使う。
-bindkey -e
-
-## 実行したプロセスの消費時間が3秒以上かかったら
-## 自動的に消費時間の統計情報を表示する。
-REPORTTIME=3
-
-## Googleで検索
-function google() {
-  local str opt
-  if [ $# != 0 ]; then
-    for i in $*; do
-      str="$str+$i"
-    done
-    str=`echo $str | sed 's/^\+//'`
-    opt='search?num=50&hl=ja&lr=lang_ja'
-    opt="${opt}&q=${str}"
-  fi
-  open -a Google\ Chrome http://www.google.co.jp/$opt
-}
-
-# added by travis gem
-source /Users/kubosho/.travis/travis.sh
+# boxen
+source /opt/boxen/env.sh
