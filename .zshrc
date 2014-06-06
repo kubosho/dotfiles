@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="o2project"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -84,3 +84,18 @@ HISTFILE=~/.zsh_history
 
 # boxen
 source /opt/boxen/env.sh
+
+# 補完
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
+autoload -U compinit
+compinit -u
+
+# 色設定
+autoload -U colors; colors
+
+# もしかして機能
+setopt correct
+
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
