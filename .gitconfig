@@ -46,3 +46,6 @@
 protocol = https
 
 [credential]
+
+[ghq]
+  root = /Users/s.kubota/src
