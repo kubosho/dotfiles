@@ -3,6 +3,9 @@
 # 以下スクリプトをそのまま使用
 # https://github.com/sugyan/dotfiles/blob/master/create_symlink.sh
 cd $(dirname $0)
+
+ln -Fis "$PWD/brewfile" $HOME
+
 for dotfile in .?*; do
     case $dotfile in
         *.elc)

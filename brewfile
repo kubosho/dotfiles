@@ -1,0 +1,26 @@
+tap phinze/homebrew-cask || true
+tap homebrew/versions || true
+update || true
+
+nstall brew-cask || true
+install git || true
+install hg || true
+install hub || true
+install tmux || true
+install zsh || true
+install wget || true
+install curl || true
+install jq || true
+install go || true
+install ruby-build || true
+install rbenv || true
+
+cask install alfred || true
+cask install dropbox || true
+cask install github || true
+cask install google-chrome || true
+cask install keyremap4macbook || true
+cask install sourcetree || true
+cask install iterm2 || true
+
+clean || true
