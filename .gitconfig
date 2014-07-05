@@ -25,11 +25,6 @@
   local = yellow
   remote = green
 
-[core]
-  excludesfile = /opt/boxen/config/git/gitignore
-  precomposeunicode = true
-  quotepath = false
-
 [alias]
   st = status
   ft = fetch
@@ -49,3 +44,5 @@ protocol = https
 
 [ghq]
   root = /Users/s.kubota/src
+[push]
+	default = simple
