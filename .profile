@@ -12,13 +12,11 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # go
-export GOPATH=$HOME/go
-export GOROOT=/opt/boxen/homebrew/opt/go/libexec
+export GOPATH=$HOME
 export PATH=$GOPATH/bin:$PATH
-export PATH=$GOROOT/bin:$PATH
 
 # nodebrew
-if [[ -f ~/.nodebrew/nodebrew ]]; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-fi
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+# rbenv
+export PATH=$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:$PATH
