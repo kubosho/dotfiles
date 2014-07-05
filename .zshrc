@@ -1,3 +1,5 @@
+export EDITOR='vim'
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -81,9 +83,6 @@ function precmd () {
 
 # save history file
 HISTFILE=~/.zsh_history
-
-# boxen
-source /opt/boxen/env.sh
 
 # 補完
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
