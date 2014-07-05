@@ -1,19 +1,25 @@
 tap phinze/homebrew-cask || true
 tap homebrew/versions || true
+tap peco/peco || true
+
 update || true
 
-nstall brew-cask || true
+install brew-cask || true
+install curl || true
 install git || true
+install go || true
 install hg || true
 install hub || true
 install tmux || true
-install zsh || true
-install wget || true
-install curl || true
 install jq || true
-install go || true
+install node-brew || true
 install ruby-build || true
 install rbenv || true
+install tig || true
+install peco || true
+install wget || true
+install z || true
+install zsh || true
 
 cask install alfred || true
 cask install dropbox || true
@@ -22,5 +28,3 @@ cask install google-chrome || true
 cask install keyremap4macbook || true
 cask install sourcetree || true
 cask install iterm2 || true
-
-clean || true
