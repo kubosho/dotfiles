@@ -13,9 +13,11 @@ install hub || true
 install tmux || true
 install jq || true
 install node-brew || true
+install nkf || true
 install ruby-build || true
 install rbenv || true
 install tig || true
+install imagemagick || true
 install peco || true
 install wget || true
 install z || true
