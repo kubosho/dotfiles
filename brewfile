@@ -5,6 +5,7 @@ tap peco/peco || true
 update || true
 
 install brew-cask || true
+install bzr || true
 install curl || true
 install git || true
 install go || true
