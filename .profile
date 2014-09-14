@@ -12,8 +12,7 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # go
-export GOPATH=$HOME
-export PATH=$GOPATH/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
