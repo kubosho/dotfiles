@@ -13,6 +13,8 @@ export PATH=$HOME/bin:$PATH
 
 # go
 export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
