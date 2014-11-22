@@ -8,17 +8,23 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{html, jade, erb, slim}]
+[*.{html,jade,erb,slim}]
 indent_size = 2
 
-[*.{js, coffee, ts}]
+[*.{js,coffee,ts}]
 indent_size = 2
 
-[*.{css, sass, scss, less, styl}]
+[*.{css,sass,scss,less,styl}]
 indent_size = 2
+
+[*.py]
+indent_size = 4
 
 [*.rb]
 indent_size = 2
 
-[{Rakefile, Gemfile, Gemfile.lock}]
+[*.go]
+indent_size = 2
+
+[{Rakefile,Gemfile,Gemfile.lock}]
 indent_size = 2
