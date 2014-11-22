@@ -9,6 +9,9 @@
   branch = auto
   grep = auto
 
+[core]
+  editor = vim
+
 [color "status"]
   added = yellow
   changed = green
