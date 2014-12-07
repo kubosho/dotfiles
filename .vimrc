@@ -73,7 +73,7 @@ endif
 
 " クックック……我の名は暗黒美夢王。Vimを愛し、精神までVimに支配されてしまったものだ。
 " 我が作ったプラグインを使うか？良いだろう。
-" Plugins listを'Shougo/*.vim'で埋め尽くされることを覚悟するんだな、クックック……。
+" Plugin listを'Shougo/*'で埋め尽くされることを覚悟するんだな、クックック……。
 if !1 | finish | endif
 
 if has('vim_starting')
