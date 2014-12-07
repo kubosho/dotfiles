@@ -16,8 +16,15 @@ set number
 " ref: http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
 hi LineNr ctermfg=148 ctermbg=24
 set ruler
+set wrap
 set list
-set listchars=tab:>-,trail:.
+set listchars=tab:▸\ ,trail:-,eol:¬
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set backspace=2
+set laststatus=2
+set hidden
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -43,12 +50,6 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set smarttab
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -89,16 +90,31 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle has('lua') ? 'Shougo/neocomplete.vim' : ''
 NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'mac'     : 'make -f make_mac.mak',
+\     'linux'   : 'make',
+\     'unix'    : 'gmake',
+\   },
+\ }
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'elzr/vim-json'
 NeoBundle 'lilydjwg/colorizer'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-quickrun', { 'depends' : [ 'Shougo/vimproc.vim' ] }
+NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'mattn/jscomplete-vim'
 NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'groenewege/vim-less'
 
 call neobundle#end()
 
@@ -183,6 +199,21 @@ hi IndentGuidesEven ctermbg=232
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" quickrun.vim
+" ref: https://github.com/Layzie/dotfiles/blob/master/.vimrc#L692
+let g:quickrun_config = {}
+let g:quickrun_config['*'] =  {'runner': 'vimproc', 'runner/vimproc/updatetime' : 10}
+let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
+let g:quickrun_config['mkd'] = {
+\ 'outputter' : 'null',
+\ 'command'   : 'open',
+\ 'cmdopt'    : '-a',
+\ 'args'      : 'Marked\ 2',
+\ 'exec'      : '%c %o %a %s',
+\ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
