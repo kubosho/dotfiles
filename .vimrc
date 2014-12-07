@@ -102,7 +102,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'lilydjwg/colorizer'
@@ -183,20 +182,7 @@ set statusline+=%{fugitive#statusline()}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Indent Guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
-" color number
-" ref: http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
-hi IndentGuidesOdd  ctermbg=16
-hi IndentGuidesEven ctermbg=232
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Typescript Syntax for Vim
-
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
