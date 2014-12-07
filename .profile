@@ -6,6 +6,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # homebrew
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/bin
 export PATH=/usr/local/sbin:$PATH
 
 # my directory
