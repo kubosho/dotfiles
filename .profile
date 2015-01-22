@@ -23,4 +23,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # rbenv
 export PATH=$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:$PATH
 
+# python
+export PATH=~/Library/Python/2.7/bin:$PATH
+
 # TODO JDKとCabalの設定を吹き飛ばしてしまったので追加しておく
