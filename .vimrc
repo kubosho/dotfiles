@@ -101,7 +101,9 @@ NeoBundle 'Shougo/vimproc.vim', {
 \ }
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'rhysd/committia.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'lilydjwg/colorizer'
@@ -114,6 +116,7 @@ NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'groenewege/vim-less'
+NeoBundle 'Lokaltog/vim-powerline'
 
 call neobundle#end()
 
