@@ -36,12 +36,12 @@
   br = branch
 
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.4.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [hub]
   protocol = https
@@ -51,3 +51,10 @@
 
 [push]
   default = simple
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[user]
+	name = Shota Kubota
+	email = ta2+github@o2p.jp

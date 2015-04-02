@@ -9,6 +9,8 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/bin:/usr/bin
 export PATH=/usr/local/sbin:$PATH
 
+export PATH=$PATH:/usr/local/redpen/bin
+
 # my directory
 export PATH=$HOME/bin:$PATH
 
@@ -24,6 +26,11 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:$PATH
 
 # python
-export PATH=~/Library/Python/2.7/bin:$PATH
+export PATH=$HOME/Library/Python/2.7/bin:$PATH
 
-# TODO JDKとCabalの設定を吹き飛ばしてしまったので追加しておく
+# Cabal
+export PATH=$HOME/Library/Haskell/bin:$PATH
+
+# JDK
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+
