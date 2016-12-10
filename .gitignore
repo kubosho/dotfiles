@@ -1,11 +1,16 @@
+# Directories
 .sass-cache/
 .idea/
 
+# Files
 .DS_Store
-
 *.elc
 *.swp
+tags*
+.tags*
+.tern-project
 
+# Emacs
 .emacs.d/ac-comphist.dat
 .emacs.d/auto-save-list
 .emacs.d/history
@@ -14,13 +19,15 @@
 .emacs.d/site-lisp
 .emacs.d/rsense
 
-.emacs.d.old/ac-comphist.dat
-.emacs.d.old/auto-save-list
-.emacs.d.old/history
-.emacs.d.old/.recentf
-.emacs.d.old/el-get
-.emacs.d.old/site-lisp
-
+# Vim
 .vim/.netrwhist
 .vim/bundle
+
+# Sublime Text
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
 

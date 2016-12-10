@@ -1,21 +1,24 @@
 #!/bin/sh
 
-# 以下スクリプトをそのまま使用
-# https://github.com/sugyan/dotfiles/blob/master/create_symlink.sh
-cd $(dirname $0)
+readonly CURRENT_DIR=$(cd $(dirname $0);pwd)
+readonly IGNORE_FILES=("." ".." ".git" ".bin" "*.elc" "${0##*/}")
 
-ln -Fis "$PWD/brewfile" $HOME
+if [ $CURRENT_DIR != $PWD ]; then
+  cd $CURRENT_DIR
+fi
 
 for dotfile in .?*; do
-    case $dotfile in
-        *.elc)
-            continue;;
-        ..)
-            continue;;
-        .git)
-            continue;;
-        *)
-            ln -Fis "$PWD/$dotfile" $HOME
-            ;;
-    esac
+    is_ignored=0
+
+    for ignore_file in ${IGNORE_FILES[@]}; do
+      if [ $dotfile = $ignore_file ]; then
+        is_ignored=1
+        break
+      fi
+    done
+
+    if [ $is_ignored -ne 1 ]; then
+      ln -isv "$CURRENT_DIR/$dotfile" $HOME
+    fi
 done
+

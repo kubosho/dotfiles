@@ -3,14 +3,13 @@ scriptencoding utf-8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+colorscheme desert
 set background=dark
+syntax on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-filetype plugin indent on
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
+set cursorline
 set number
 " color number
 " ref: http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
@@ -23,8 +22,6 @@ set listchars=tab:▸\ ,trail:-,eol:¬
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 set backspace=2
-set laststatus=2
-set hidden
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -39,7 +36,7 @@ set smartcase
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-set backupdir=$HOME/tmp/vim-backup
+set backupdir=~/.vim-backup/
 set clipboard=unnamed,autoselect
 set noswapfile
 
@@ -50,6 +47,19 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set smarttab
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+augroup reload_vimrc
+  autocmd!
+  autocmd bufwritepost $HOME/.vimrc nested source $HOME/.vimrc
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -65,148 +75,299 @@ if has('syntax')
     autocmd ColorScheme * call ShowZenkakuSpace()
     autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ShowZenkakuSpace', '　')
   augroup END
-
   call ShowZenkakuSpace()
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" auto cursorline
+" http://thinca.hatenablog.com/entry/20090530/1243615055
 
-" クックック……我の名は暗黒美夢王。Vimを愛し、精神までVimに支配されてしまったものだ。
-" 我が作ったプラグインを使うか？良いだろう。
-" Plugin listを'Shougo/*'で埋め尽くされることを覚悟するんだな、クックック……。
-if !1 | finish | endif
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
+  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
+  autocmd WinEnter * call s:auto_cursorline('WinEnter')
+  autocmd WinLeave * call s:auto_cursorline('WinLeave')
 
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" Plugins
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle has('lua') ? 'Shougo/neocomplete.vim' : ''
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'mac'     : 'make -f make_mac.mak',
-\     'linux'   : 'make',
-\     'unix'    : 'gmake',
-\   },
-\ }
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'rhysd/committia.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'lilydjwg/colorizer'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'thinca/vim-quickrun', { 'depends' : [ 'Shougo/vimproc.vim' ] }
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'mattn/jscomplete-vim'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'Lokaltog/vim-powerline'
-
-call neobundle#end()
-
-NeoBundleCheck
+  let s:cursorline_lock = 0
+  function! s:auto_cursorline(event)
+    if a:event ==# 'WinEnter'
+      setlocal cursorline
+      let s:cursorline_lock = 2
+    elseif a:event ==# 'WinLeave'
+      setlocal nocursorline
+    elseif a:event ==# 'CursorMoved'
+      if s:cursorline_lock
+        if 1 < s:cursorline_lock
+          let s:cursorline_lock = 1
+        else
+          setlocal nocursorline
+          let s:cursorline_lock = 0
+        endif
+      endif
+    elseif a:event ==# 'CursorHold'
+      setlocal cursorline
+      let s:cursorline_lock = 1
+    endif
+  endfunction
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" UNITE-CHAN!
-let g:unite_enable_start_insert = 1
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Buffer list
-noremap <C-P> :Unite buffer<CR>
-" File list
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" Recent file list
-noremap <C-Z> :Unite file_mru<CR>
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" Esc key two press to exit Unite.
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo Plugin 'tpope/vim-fugitive'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neoyank.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'sorah/unite-ghq'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'szw/vim-tags'
+Plugin 'majutsushi/tagbar'
+Plugin 'soramugi/auto-ctags.vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'alvan/vim-closetag'
+Plugin 'vim-scripts/vim-auto-save'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplete
 
-" Neocomplete
-if neobundle#is_installed('neocomplete.vim')
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#sources#syntax#min_keyword_length = 1
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-  if !exists('g:neocomplete#keyword_patterns')
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" autosave
+
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+let g:auto_save_silent = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto-ctags.vim
+
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git', '.svn']
+set tags+=.git/tags
+set tags+=.svn/tags
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightline
+
+set laststatus=2
+
+let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'LightlineModified',
+        \   'readonly': 'LightlineReadonly',
+        \   'fugitive': 'LightlineFugitive',
+        \   'filename': 'LightlineFilename',
+        \   'fileformat': 'LightlineFileformat',
+        \   'filetype': 'LightlineFiletype',
+        \   'fileencoding': 'LightlineFileencoding',
+        \   'mode': 'LightlineMode'
+        \ }
+        \ }
+
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+    return fugitive#head()
+  else
+    return ''
+  endif
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" netrw
+
+let g:netrw_liststyle = 3 " tree view
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" tagbar
+
+nmap <F12> :TagbarToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim indent guides
+
+let g:indent_guides_enable_on_vim_startup = 1
+
+hi IndentGuidesOdd ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" unite
+
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+
+
+function! s:IgnoreUniteFileSources()
+  let sources = []
+  if filereadable('./.gitignore')
+    for file in readfile('./.gitignore')
+      " don't added comment and empty lines
+      if file !~ "^#\\|^\s\*$"
+        call add(sources, file)
+      endif
+    endfor
   endif
 
-  " Plugin key-mappings.
-  inoremap <expr><C-g> neocomplete#undo_completion()
-  inoremap <expr><C-l> neocomplete#complete_common_string()
+  if isdirectory('./.idea')
+    call add(sources, '.idea')
+  endif
 
-  let g:neocomplete#keyword_patterns._ = '\h\w*'
-endif
+  if isdirectory('./app/bower_components')
+    call add(sources, 'app/bower_components')
+  endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
+  let pattern = escape(join(sources, '|'), './|')
+  call unite#custom#source('file_rec/async', 'ignore_pattern', pattern)
+  call unite#custom#source('file_rec/git', 'ignore_pattern', pattern)
+endfunction
+call s:IgnoreUniteFileSources()
 
-" Neosnippet
-" Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+function! DispatchUniteFileRec()
+  if isdirectory(getcwd()."/.git")
+    Unite file_rec/git
+  else
+    Unite file_rec/async
+  endif
+endfunction
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" fugitive.vim
-set statusline+=%{fugitive#statusline()}
+nnoremap <silent> <Space>ug :<C-u>Unite ghq<CR>
+nnoremap <silent> <Space>up :<C-u>call DispatchUniteFileRec()<CR>
+nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Typescript Syntax for Vim
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
+let g:javascript_conceal_function       = "ƒ"
+let g:javascript_conceal_null           = "ø"
+let g:javascript_conceal_this           = "@"
+let g:javascript_conceal_return         = "⇚"
+let g:javascript_conceal_undefined      = "¿"
+let g:javascript_conceal_NaN            = "ℕ"
+let g:javascript_conceal_prototype      = "¶"
+let g:javascript_conceal_static         = "•"
+let g:javascript_conceal_super          = "Ω"
+let g:javascript_conceal_arrow_function = "⇒"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" quickrun.vim
-" ref: https://github.com/Layzie/dotfiles/blob/master/.vimrc#L692
-let g:quickrun_config = {}
-let g:quickrun_config['*'] =  {'runner': 'vimproc', 'runner/vimproc/updatetime' : 10}
-let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
-let g:quickrun_config['mkd'] = {
-\ 'outputter' : 'null',
-\ 'command'   : 'open',
-\ 'cmdopt'    : '-a',
-\ 'args'      : 'Marked\ 2',
-\ 'exec'      : '%c %o %a %s',
-\ }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" ref: NeoBundleを有効にすると、シンタックスハイライトが無効になる - 混沌とした備忘録
-" http://noboru.hatenablog.jp/entry/20130701/1372686224
-syntax enable
+au BufRead,BufNewFile *.jsx set filetype=javascript.jsx
 

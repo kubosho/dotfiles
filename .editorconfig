@@ -1,3 +1,6 @@
+# ==================================================
+# Common
+# ==================================================
 # top-most EditorConfig file
 root = true
 
@@ -8,29 +11,70 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{html,jade,erb,slim}]
+# ==================================================
+# Markup languages
+# ==================================================
+[*.html]
+indent_size = 4
+
+[*.{yml,md}]
 indent_size = 2
 
-[*.{js,coffee,json}]
+# ==================================================
+# Template engines
+# ==================================================
+[*.{jade,erb,slim}]
 indent_size = 2
+
+# ==================================================
+# JavaScript(altJS)
+# ==================================================
+[*.js]
+indent_size = 4
 
 [*.ts]
 indent_size = 4
 
-[*.{css,sass,scss,less,styl}]
+[*.coffee]
 indent_size = 2
 
+[*.json]
+indent_size = 2
+
+# ==================================================
+# CSS(altCSS)
+# ==================================================
+[*.css]
+indent_size = 4
+
+[*.{sass,scss}]
+indent_size = 4
+
+[*.less]
+indent_size = 4
+
+[*.styl]
+indent_size = 4
+
+# ==================================================
+# Python
+# ==================================================
 [*.py]
 indent_size = 4
 
+# ==================================================
+# Ruby
+# ==================================================
 [*.rb]
-indent_size = 2
-
-[*.go]
-indent_size = 2
-
-[*.yml]
 indent_size = 2
 
 [{Rakefile,Gemfile,Gemfile.lock}]
 indent_size = 2
+
+# ==================================================
+# Go
+# ==================================================
+[*.go]
+indent_size = 4
+indent_style = tab
+

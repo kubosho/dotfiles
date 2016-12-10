@@ -1,15 +1,11 @@
-export LANG=ja_JP.UTF-8
+#
+# Defines environment variables.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-##################################################
-# aliases
-
-alias ls="ls -Gv"
-alias ll="ls -l"
-alias la="ll -a"
-
-alias app="open -a"
-
-alias g="git"
-
-alias e="emacs"
-alias v="vim"
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi

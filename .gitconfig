@@ -1,6 +1,7 @@
 [user]
   name = kubosho
   email = ta2@o2p.jp
+  signingkey = D846E3AA0F56B753
 
 [color]
   ui = true
@@ -11,6 +12,19 @@
 
 [core]
   editor = vim
+  precomposeunicode = true
+  quotepath = false
+  excludesfile = ~/.gitignore
+
+[commit]
+  template = ~/.gitmessage.txt
+  gpgSign = true
+
+[init]
+  templatedir = ~/.git_template
+
+[push]
+  default = simple
 
 [color "status"]
   added = yellow
@@ -29,32 +43,39 @@
   remote = green
 
 [alias]
+  ad = add
   st = status
   ft = fetch
   ci = commit
   co = checkout
   br = branch
+  pl = pull
+  ps = push
+  df = diff
+  rb = rebase
+  logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cr %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  b = checkout -b
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.4.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 
 [hub]
   protocol = https
 
 [ghq]
-  root = /Users/s.kubota/src
+  root = ~/src
 
-[push]
-  default = simple
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[user]
-	name = Shota Kubota
-	email = ta2+github@o2p.jp
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+
+[grep]
+  lineNumber = true
+
