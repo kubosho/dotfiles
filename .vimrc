@@ -36,15 +36,24 @@ set smartcase
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-set backupdir=~/.vim-backup/
+set backupdir=~/.vim_backup/
+set undodir=~/.vim_backup/
 set clipboard=unnamed,autoselect
-set noswapfile
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set swapfile
+set directory=$HOME/.vim_swap
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set confirm
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 set autoindent
 set smartindent
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
 set smarttab
 
@@ -56,9 +65,12 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+" open .vimrc
+nnoremap <silent> <C-]> :<C-u>edit $MYVIMRC<CR>
+
 augroup reload_vimrc
   autocmd!
-  autocmd bufwritepost $HOME/.vimrc nested source $HOME/.vimrc
+  autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,8 +126,8 @@ augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " be iMproved, required
+filetype off     " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
