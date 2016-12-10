@@ -163,7 +163,8 @@ Plugin 'soramugi/auto-ctags.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'alvan/vim-closetag'
-Plugin 'vim-scripts/vim-auto-save'
+Plugin 'neomake/neomake'
+Plugin 'benjie/neomake-local-eslint.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -222,9 +223,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " autosave
 
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
-let g:auto_save_silent = 1
+autocmd CursorHold * wall
+set updatetime=1000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " auto-ctags.vim
@@ -365,6 +365,12 @@ nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" neomake
+
+autocmd! BufWritePost * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
