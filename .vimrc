@@ -27,6 +27,7 @@ set backspace=2
 
 set showmatch
 set showcmd
+set noshowmode
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -64,8 +65,8 @@ if !has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" .vimrc
 
-" open .vimrc
 nnoremap <silent> <C-]> :<C-u>edit $MYVIMRC<CR>
 
 augroup reload_vimrc
@@ -74,9 +75,9 @@ augroup reload_vimrc
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-" Show zenkaku space
+" show zenkaku space
 " ref: http://inari.hatenablog.com/entry/2014/05/05/231307
+
 function! ShowZenkakuSpace()
   highlight ShowZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
@@ -125,6 +126,12 @@ augroup vimrc-auto-cursorline
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" autosave
+
+autocmd CursorHold * wall
+set updatetime=1000
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible " be iMproved, required
 filetype off     " required
@@ -165,6 +172,12 @@ Plugin 'cocopon/iceberg.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'neomake/neomake'
 Plugin 'benjie/neomake-local-eslint.vim'
+Plugin 'kewah/vim-stylefmt'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fuenor/qfixgrep'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'nixprime/cpsm'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -221,12 +234,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" autosave
-
-autocmd CursorHold * wall
-set updatetime=1000
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto-ctags.vim
 
 let g:auto_ctags = 1
@@ -254,7 +261,9 @@ let g:lightline = {
         \   'filetype': 'LightlineFiletype',
         \   'fileencoding': 'LightlineFileencoding',
         \   'mode': 'LightlineMode'
-        \ }
+        \ },
+        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+        \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
         \ }
 
 function! LightlineModified()
@@ -320,11 +329,6 @@ hi IndentGuidesEven ctermbg=darkgrey
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " unite
 
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-
-
 function! s:IgnoreUniteFileSources()
   let sources = []
   if filereadable('./.gitignore')
@@ -340,31 +344,54 @@ function! s:IgnoreUniteFileSources()
     call add(sources, '.idea')
   endif
 
-  if isdirectory('./app/bower_components')
+  if isdirectory('./app')
     call add(sources, 'app/bower_components')
+    call add(sources, 'app/fonts')
+    call add(sources, 'app/images')
+    call add(sources, 'app/video')
+    call add(sources, '\(png\|gif\|jpe?g\)$')
   endif
 
   let pattern = escape(join(sources, '|'), './|')
   call unite#custom#source('file_rec/async', 'ignore_pattern', pattern)
   call unite#custom#source('file_rec/git', 'ignore_pattern', pattern)
 endfunction
+
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+let g:unite_source_rec_max_cache_files = 5000
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 call s:IgnoreUniteFileSources()
 
-function! DispatchUniteFileRec()
-  if isdirectory(getcwd()."/.git")
-    Unite file_rec/git
-  else
-    Unite file_rec/async
-  endif
-endfunction
+nnoremap <silent> <Space>u]  :<C-u>Unite ghq<CR>
+nnoremap <silent> <Space>ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> <Space>ugc :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+nnoremap <silent> <Space>ugr :<C-u>UniteResume search-buffer<CR>
+nnoremap <silent> <Space>uy  :<C-u>Unite history/yank<CR>
+nnoremap <silent> <Space>ub  :<C-u>Unite buffer<CR>
+nnoremap <silent> <Space>uf  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>ur  :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <Space>uu  :<C-u>Unite file_mru buffer<CR>
 
-nnoremap <silent> <Space>ug :<C-u>Unite ghq<CR>
-nnoremap <silent> <Space>up :<C-u>call DispatchUniteFileRec()<CR>
-nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp
+
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+nnoremap <silent> <Space>up :<C-u>CtrlP<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" fugitive
+
+nnoremap <silent> <Space>gb  :<C-u>Gblame<CR>
+nnoremap <silent> <Space>gdf :<C-u>Gdiff<CR>
+nnoremap <silent> <Space>gs  :<C-u>Gstatus<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " neomake
