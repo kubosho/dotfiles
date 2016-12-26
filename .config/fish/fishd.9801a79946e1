@@ -28,4 +28,5 @@ SET fish_pager_color_completion:\x1d
 SET fish_pager_color_description:B3A06D\x1eyellow
 SET fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SET fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SET fisher_dependency_count:peco_select_ghq_repository\x1ez\x2dfish
+SET fish_user_abbreviations:mux\x20tmuxinator
+SET fisher_dependency_count:peco_select_ghq_repository\x1ez\x2dfish\x1endenv

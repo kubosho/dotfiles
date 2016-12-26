@@ -1,10 +1,7 @@
 ##################################################
-# import
-
-. $HOME/.config/fisherman/z-fish/z.fish
-
-##################################################
 # startup
+
+set -x EDITOR vim
 
 if status --is-login
   # homebrew
@@ -19,15 +16,22 @@ if status --is-login
   set PATH $PATH $GOPATH/bin
 
   # anyenv
-  set PATH $PATH $HOME/.anyenv/bin
+  set -x PATH $PATH $HOME/.anyenv/bin
 
   for dir in (ls $HOME/.anyenv/envs)
-    set PATH $PATH $HOME/.anyenv/envs/$dir/bin
-    set PATH $PATH $HOME/.anyenv/envs/$dir/shims
+    set -x PATH $PATH $HOME/.anyenv/envs/$dir/bin
+    set -x PATH $PATH $HOME/.$dir/shims
   end
 
-  . $HOME/.anyenv/completions/anyenv.fish
+  # rbenv
+  rbenv init - | source
 end
+
+##################################################
+# import
+
+. $HOME/.config/fisherman/z-fish/z.fish
+. $HOME/.anyenv/completions/anyenv.fish
 
 ##################################################
 # aliases
@@ -86,3 +90,15 @@ function fish_prompt
   end
 end
 
+function fish_prompt
+  if [ $status -eq 0 ]
+    set status_face (set_color green)"(*'-') < "
+  else
+    set status_face (set_color blue)"(*;-;) < "
+  end
+
+  set prompt (set_color yellow)(prompt_pwd)
+
+  echo $prompt
+  echo $status_face
+end
