@@ -1,3 +1,7 @@
+if $SHELL =~ '/fish$'
+  set shell=zsh
+endif
+
 set encoding=utf-8
 scriptencoding utf-8
 
@@ -39,6 +43,7 @@ set smartcase
 
 set backupdir=~/.vim_backup/
 set undodir=~/.vim_backup/
+set tags=./tags;,tags;
 set clipboard=unnamed,autoselect
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -236,10 +241,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " auto-ctags.vim
 
-let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
 set tags+=.svn/tags
+
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git', '.svn']
+let g:auto_ctags_filetype_mode = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " lightline
@@ -317,6 +324,16 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " tagbar
 
 nmap <F12> :TagbarToggle<CR>
+let g:tagbar_type_coffee = {
+    \ 'ctagstype' : 'coffee',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'f:fields',
+    \ ]
+    \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " vim indent guides
