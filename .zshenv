@@ -1,4 +1,5 @@
-#
+zmodload zsh/zprof
+
 # Defines environment variables.
 #
 # Authors:

@@ -7,8 +7,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # homebrew
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-#export PATH=/usr/bin:$PATH
-#export PATH=/usr/sbin:$PATH
 export PATH=/bin:$PATH
 export PATH=/sbin:$PATH
 
@@ -32,17 +30,10 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 # redpen
 export PATH=/usr/local/redpen/bin:$PATH
 
-# anyenv
-if [ -d $HOME/.anyenv ] ; then
-  export PATH=$HOME/.anyenv/bin:$PATH
-  eval "$(anyenv init - zsh)"
-  for D in `ls $HOME/.anyenv/envs`
-    do
-      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
-fi
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-export PATH=$HOME/.anyenv/envs/ndenv/shims:$PATH
+# app engine
 export PATH=$HOME/go_appengine:$PATH
 
 # prott

@@ -1,4 +1,19 @@
 export LANG=ja_JP.UTF-8
+export EDITOR='vim'
+export TERM=xterm-256color
+
+##################################################
+# autoload
+
+autoload -Uz compinit
+compinit -C # skip to security check
+
+##################################################
+# import
+
+source ~/.tmuxinator/tmuxinator.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 ##################################################
 # aliases
@@ -7,82 +22,61 @@ alias ls="ls -Gv"
 alias ll="ls -l"
 alias la="ll -a"
 
-alias app="open -a"
-
-alias g="git"
-
 alias a="atom"
 alias e="emacs"
+alias g="git"
+alias t="tmux"
 alias v="vim"
-alias tmuxx="tmuxinator"
-alias nyarn="yarn"
-alias 君の名は。=whoami
-
-setopt nonomatch
-
+alias tn="tmuxinator"
 alias gco='git-checkout-with-peco'
-alias -g LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/\(\S*\)/\1 \0/"`'
 
 ##################################################
+# ghq
 
-export EDITOR='vim'
-export TERM=xterm-256color
-
-# ghq + peco
 # http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
 function peco-src () {
-    local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-    fi
-    zle clear-screen
+  local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+      BUFFER="cd ${selected_dir}"
+      zle accept-line
+  fi
+  zle clear-screen
 }
+
+function peco-godoc () {
+  godoc $(ghq list | peco) | less
+}
+
 zle -N peco-src
+zle -N peco-godoc
 bindkey '^]' peco-src
+bindkey '^[' peco-godoc
 
-# ls + git status
-# http://qiita.com/yuyuchu3333/items/e9af05670c95e2cc5b4d
-function do_enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    ls
-    # ↓おすすめ
-    # ls_abbrev
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -sb
-    fi
-    zle reset-prompt
-    return 0
-}
-zle -N do_enter
-bindkey '^m' do_enter
-
+##################################################
 # z
+
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
   z --add "$(pwd -P)"
 }
 
+##################################################
 # save history file
+
 export SAVEHIST=100000
 export HISTSIZE=1000
 export HISTFILE=${HOME}/.zsh_history
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 
+##################################################
 # 補完
+
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
-autoload -U compinit
-compinit -u
+##################################################
+# prompt
 
-# 色設定
 autoload -U colors; colors
 
 # もしかして機能
@@ -119,11 +113,3 @@ PROMPT2='[%n]> '
 
 # もしかして時のプロンプト指定
 SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source ~/.tmuxinator/tmuxinator.zsh
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
