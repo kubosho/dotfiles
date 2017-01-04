@@ -13,9 +13,20 @@ export PATH=/sbin:$PATH
 # my directory
 export PATH=$HOME/bin:$PATH
 
+
+# anyenv
+if [ -d $HOME/.anyenv ] ; then
+  export PATH=$HOME/.anyenv/bin:$PATH
+  eval "$(anyenv init - zsh)"
+  for D in `ls $HOME/.anyenv/envs`
+    do
+      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+fi
+
 # go
-export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 
 # python
@@ -30,9 +41,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 # redpen
 export PATH=/usr/local/redpen/bin:$PATH
 
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 # app engine
 export PATH=$HOME/go_appengine:$PATH
 
@@ -42,4 +50,3 @@ export PATH=$HOME/src/github.com/goodpatch/prott-commands/bin:$PATH
 # PostgreSQL Settings
 export ARCHFLAGS="-arch x86_64"
 export PGDATA="/usr/local/var/postgres"
-

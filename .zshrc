@@ -3,17 +3,35 @@ export EDITOR='vim'
 export TERM=xterm-256color
 
 ##################################################
+# import
+
+source ~/.zplug/init.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+##################################################
+# packages
+
+zplug "zsh-users/zsh-completions"
+zplug "zplug/zplug"
+
+if ! zplug check; then
+  zplug install
+fi
+
+zplug load
+
+##################################################
+# fpath
+
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fpath=($HOME/.zplug/repos/zsh-users/zsh-completions/src $fpath)
+
+##################################################
 # autoload
 
 autoload -Uz compinit
 compinit -C # skip to security check
-
-##################################################
-# import
-
-source ~/.tmuxinator/tmuxinator.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 ##################################################
 # aliases
@@ -29,50 +47,6 @@ alias t="tmux"
 alias v="vim"
 alias tn="tmuxinator"
 alias gco='git-checkout-with-peco'
-
-##################################################
-# ghq
-
-# http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
-function peco-src () {
-  local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-      BUFFER="cd ${selected_dir}"
-      zle accept-line
-  fi
-  zle clear-screen
-}
-
-function peco-godoc () {
-  godoc $(ghq list | peco) | less
-}
-
-zle -N peco-src
-zle -N peco-godoc
-bindkey '^]' peco-src
-bindkey '^[' peco-godoc
-
-##################################################
-# z
-
-. `brew --prefix`/etc/profile.d/z.sh
-function precmd () {
-  z --add "$(pwd -P)"
-}
-
-##################################################
-# save history file
-
-export SAVEHIST=100000
-export HISTSIZE=1000
-export HISTFILE=${HOME}/.zsh_history
-setopt hist_ignore_dups
-setopt EXTENDED_HISTORY
-
-##################################################
-# 補完
-
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 ##################################################
 # prompt
@@ -113,3 +87,47 @@ PROMPT2='[%n]> '
 
 # もしかして時のプロンプト指定
 SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+
+##################################################
+# ghq
+
+# http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
+function peco-src () {
+  local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+      BUFFER="cd ${selected_dir}"
+      zle accept-line
+  fi
+  zle clear-screen
+}
+
+function peco-godoc () {
+  godoc $(ghq list | peco) | less
+}
+
+zle -N peco-src
+zle -N peco-godoc
+bindkey '^]' peco-src
+bindkey '^[' peco-godoc
+
+##################################################
+# tmux
+
+source ~/.tmuxinator/tmuxinator.zsh
+
+##################################################
+# z
+
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+  z --add "$(pwd -P)"
+}
+
+##################################################
+# save history file
+
+export SAVEHIST=100000
+export HISTSIZE=1000
+export HISTFILE=${HOME}/.zsh_history
+setopt hist_ignore_dups
+setopt EXTENDED_HISTORY
