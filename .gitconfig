@@ -55,11 +55,12 @@
   rb = rebase
   logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cr %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  master-checkout = checkout -b master origin/master
   b = checkout -b
 
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+  path =
 
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
@@ -79,3 +80,7 @@
 [grep]
   lineNumber = true
 
+[github]
+	user = kubosho
+[ghi]
+	token = !security find-internet-password -a kubosho -s github.com -l 'ghi token' -w

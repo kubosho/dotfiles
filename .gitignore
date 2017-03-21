@@ -8,6 +8,7 @@
 *.swp
 tags*
 .tags*
+.node-version
 .tern-project
 
 # Emacs

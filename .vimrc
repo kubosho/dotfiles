@@ -7,7 +7,7 @@ scriptencoding utf-8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme desert
+colorscheme hybrid
 set background=dark
 syntax on
 
@@ -17,7 +17,8 @@ set cursorline
 set number
 " color number
 " ref: http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
-hi LineNr ctermfg=148 ctermbg=24
+hi LineNr    ctermfg=231 ctermbg=234=
+hi VertSplit ctermfg=231 ctermbg=234
 set ruler
 set wrap
 set list
@@ -134,7 +135,7 @@ augroup END
 " autosave
 
 autocmd CursorHold * wall
-set updatetime=1000
+set updatetime=5000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -178,11 +179,18 @@ Plugin 'alvan/vim-closetag'
 Plugin 'neomake/neomake'
 Plugin 'benjie/neomake-local-eslint.vim'
 Plugin 'kewah/vim-stylefmt'
+Plugin 'cohama/agit.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'rhysd/committia.vim'
 Plugin 'fuenor/qfixgrep'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'nixprime/cpsm'
+Plugin 'fatih/vim-go'
+Plugin 'mattn/emmet-vim'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'scrooloose/nerdtree'
+Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -411,10 +419,23 @@ nnoremap <silent> <Space>gdf :<C-u>Gdiff<CR>
 nnoremap <silent> <Space>gs  :<C-u>Gstatus<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+
+let g:NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+autocmd BufEnter * lcd %:p:h
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " neomake
 
 autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-go
+
+let g:go_fmt_command = "goimports"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 

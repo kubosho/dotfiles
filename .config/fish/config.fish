@@ -1,26 +1,26 @@
 ##################################################
 # startup
 
-set -x EDITOR vim
+set -gx EDITOR vim
 
 if status --is-login
   # homebrew
-  set PATH $PATH /usr/local/bin
-  set PATH $PATH /usr/local/sbin
+  set -gx PATH $PATH /usr/local/bin
+  set -gx PATH $PATH /usr/local/sbin
 
   # my directory
-  set PATH $PATH $HOME/bin
+  set -gx PATH $PATH $HOME/bin
 
   # go
-  set GOPATH $HOME
-  set PATH $PATH $GOPATH/bin
+  set -gx GOPATH $HOME
+  set -gx PATH $PATH $GOPATH/bin
 
   # anyenv
-  set -x PATH $PATH $HOME/.anyenv/bin
+  set -gx PATH $PATH $HOME/.anyenv/bin
 
   for dir in (ls $HOME/.anyenv/envs)
-    set -x PATH $PATH $HOME/.anyenv/envs/$dir/bin
-    set -x PATH $PATH $HOME/.$dir/shims
+    set -gx PATH $PATH $HOME/.anyenv/envs/$dir/bin
+    set -gx PATH $PATH $HOME/.$dir/shims
   end
 
   # rbenv
