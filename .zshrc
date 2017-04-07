@@ -126,8 +126,6 @@ fi
 #   zprof
 # fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/a14816/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/a14816/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/a14816/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/a14816/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -e $DOTFILES/.zprivate ]; then
+  source $DOTFILES/.zprivate
+fi

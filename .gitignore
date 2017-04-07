@@ -10,6 +10,7 @@ tags*
 .tags*
 .node-version
 .tern-project
+.zprivate
 
 # Emacs
 .emacs.d/ac-comphist.dat
