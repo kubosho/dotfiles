@@ -46,9 +46,9 @@ export PATH=/usr/local/redpen/bin:$PATH
 # app engine
 export PATH=$HOME/go_appengine:$PATH
 
-# prott
-export PATH=$HOME/src/github.com/goodpatch/prott-commands/bin:$PATH
-
 # PostgreSQL Settings
 export ARCHFLAGS="-arch x86_64"
 export PGDATA="/usr/local/var/postgres"
+
+# dotfiles
+export DOTFILES=$HOME/src/github.com/kubosho/dotfiles
