@@ -36,6 +36,7 @@ zplug load
 
 autoload -U colors; colors
 autoload -Uz vcs_info
+autoload -U history-search-end
 
 ##################################################
 # option
@@ -97,11 +98,19 @@ function precmd () {
 }
 
 ##################################################
-# save history file
+# history
 
 export SAVEHIST=1000000
 export HISTSIZE=10000
 export HISTFILE=${HOME}/.zsh_history
+
+setopt hist_ignore_dups
+setopt share_history
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 
 ##################################################
 # zcompile
@@ -116,3 +125,9 @@ fi
 # if (which zprof > /dev/null 2>&1); then
 #   zprof
 # fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/a14816/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/a14816/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/a14816/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/a14816/google-cloud-sdk/completion.zsh.inc'; fi
