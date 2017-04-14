@@ -26,9 +26,10 @@
 [push]
   default = simple
 
-[color "status"]
-  added = yellow
-  changed = green
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [color "diff"]
   meta = yellow bold
@@ -37,10 +38,14 @@
   new = green bold
   whitespace = red reverse
 
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+[color "grep"]
+  match = cyan
+  linenumber = bold white
+  filename = yellow
+
+[color "status"]
+  added = yellow
+  changed = green
 
 [alias]
   ad = add
