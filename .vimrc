@@ -7,7 +7,6 @@ scriptencoding utf-8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme hybrid
 set background=dark
 syntax on
 
@@ -162,7 +161,6 @@ Plugin 'Shougo/neoyank.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'sorah/unite-ghq'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
@@ -342,14 +340,6 @@ let g:tagbar_type_coffee = {
         \ 'f:fields',
     \ ]
     \ }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim indent guides
-
-let g:indent_guides_enable_on_vim_startup = 1
-
-hi IndentGuidesOdd ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " unite
