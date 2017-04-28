@@ -71,9 +71,7 @@ function peco-src () {
 }
 
 zle -N peco-src
-zle -N peco-godoc
 bindkey '^]' peco-src
-bindkey '^[' peco-godoc
 
 ##################################################
 # tmux
