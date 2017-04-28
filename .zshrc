@@ -67,16 +67,7 @@ alias gco='git-checkout-with-peco'
 
 # http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
 function peco-src () {
-  local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-      BUFFER="cd ${selected_dir}"
-      zle accept-line
-  fi
-  zle clear-screen
-}
-
-function peco-godoc () {
-  godoc $(ghq list | peco) | less
+  cd $(ghq list --full-path | peco --query "$LBUFFER")
 }
 
 zle -N peco-src
