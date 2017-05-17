@@ -17,12 +17,6 @@ if status --is-login
 end
 
 ##################################################
-# import
-
-. $HOME/.config/fisherman/z-fish/z.fish
-. $HOME/.anyenv/completions/anyenv.fish
-
-##################################################
 # aliases
 
 alias a="atom"
