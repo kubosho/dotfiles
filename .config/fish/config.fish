@@ -14,17 +14,6 @@ if status --is-login
   # go
   set -gx GOPATH $HOME
   set -gx PATH $PATH $GOPATH/bin
-
-  # anyenv
-  set -gx PATH $PATH $HOME/.anyenv/bin
-
-  for dir in (ls $HOME/.anyenv/envs)
-    set -gx PATH $PATH $HOME/.anyenv/envs/$dir/bin
-    set -gx PATH $PATH $HOME/.$dir/shims
-  end
-
-  # rbenv
-  rbenv init - | source
 end
 
 ##################################################
