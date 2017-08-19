@@ -1,7 +1,6 @@
 [user]
   name = kubosho
   email = ta2@o2p.jp
-  signingkey = D846E3AA0F56B753
 
 [color]
   ui = true
@@ -18,7 +17,6 @@
 
 [commit]
   template = ~/.gitmessage.txt
-  gpgSign = true
 
 [init]
   templatedir = ~/.git_template
