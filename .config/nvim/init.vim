@@ -18,11 +18,17 @@ Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
-Plug 'neomake/neomake'
 Plug 'rhysd/committia.vim'
 Plug 'ternjs/tern_for_vim'
+Plug 'w0rp/ale'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
+
+" ale
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = '⨉'
+let g:ale_echo_msg_warning_str = '⚠'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " keymap
 :noremap <ESC><ESC> :noh<CR>
