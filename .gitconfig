@@ -10,7 +10,7 @@
   grep = auto
 
 [core]
-  editor = vim
+  editor = nvim
   precomposeunicode = true
   quotepath = false
   excludesfile = ~/.gitignore
