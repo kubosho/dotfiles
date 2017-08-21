@@ -2,26 +2,29 @@ set background=light
 set clipboard=unnamed
 set number
 
+" indent
 set autoindent
 set expandtab
 
-" Plugin
+" plugin
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'cloudhead/neovim-fuzzy'
+Plug 'cohama/agit.vim'
 Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 Plug 'neomake/neomake'
+Plug 'rhysd/committia.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
 
-" Keymap
+" keymap
 :noremap <ESC><ESC> :noh<CR>
 :nnoremap <C-p> :FuzzyOpen<CR>
 
