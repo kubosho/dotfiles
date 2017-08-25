@@ -25,6 +25,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'bronson/vim-trailing-whitespace'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'cohama/agit.vim'
@@ -75,8 +77,9 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'vue'
                 \ ]
 
-" vimfiler
-:let g:vimfiler_as_default_explorer = 1
+" indentLine
+let g:indentLine_setColors = 239
+let g:indentLine_color_term = 0
 
 " lightline
 let g:lightline = {
@@ -100,3 +103,6 @@ endfunction
 function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction
+
+" vimfiler
+:let g:vimfiler_as_default_explorer = 1
