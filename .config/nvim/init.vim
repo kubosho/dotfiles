@@ -1,10 +1,24 @@
+" UI
 set background=light
-set clipboard=unnamed
+set cursorline
+set noshowmode
 set number
+
+" clipboard
+set clipboard=unnamed
+
+" IME
+set ttimeout
+set ttimeoutlen=50
 
 " indent
 set autoindent
 set expandtab
+set tabstop=4
+
+" search
+set incsearch
+set smartcase
 
 " plugin
 call plug#begin('~/.vim/plugged')
@@ -31,6 +45,10 @@ let g:ale_echo_msg_warning_str = '⚠'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " keymap
+let mapleader = "\<Space>"
+nmap <leader>ev :e $MYVIMRC<CR>
+nmap <leader>sv :so $MYVIMRC<CR>
+inoremap jj <ESC>
 :noremap <ESC><ESC> :noh<CR>
 :nnoremap <C-p> :FuzzyOpen<CR>
 
@@ -63,4 +81,22 @@ let g:deoplete#sources#ternjs#filetypes = [
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'readonly': 'LightlineReadonly',
+      \ },
       \ }
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
+
+function! LightlineReadonly()
+  return &readonly && &filetype !=# 'help' ? 'RO' : ''
+endfunction
