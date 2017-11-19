@@ -74,14 +74,6 @@ zle -N peco-src
 bindkey '^]' peco-src
 
 ##################################################
-# z
-
-. `brew --prefix`/etc/profile.d/z.sh
-function precmd () {
-  z --add "$(pwd -P)"
-}
-
-##################################################
 # history
 
 export SAVEHIST=1000000
