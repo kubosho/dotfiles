@@ -1,1 +1,0 @@
-/Users/ShotaKubota/.config/fisherman/z-fish/z.fish
