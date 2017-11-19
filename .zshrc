@@ -59,7 +59,6 @@ alias g="git"
 alias t="tmux"
 alias v="vim"
 alias bi="bundle install"
-alias tn="tmuxinator"
 alias rm="trash -i"
 alias gco='git-checkout-with-peco'
 
@@ -73,11 +72,6 @@ function peco-src () {
 
 zle -N peco-src
 bindkey '^]' peco-src
-
-##################################################
-# tmux
-
-source ~/.tmuxinator/tmuxinator.zsh
 
 ##################################################
 # z
