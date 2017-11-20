@@ -51,7 +51,6 @@ alias ls="ls -Gv"
 alias ll="ls -l"
 alias la="ll -a"
 
-alias vim="nvim"
 alias a="atom"
 alias c="code"
 alias e="emacs"
