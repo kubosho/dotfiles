@@ -26,12 +26,12 @@ if [ -d $HOME/.anyenv ] ; then
     done
 fi
 
-# go
+# Go
 export GOPATH=$HOME
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 
-# python
+# Python
 export PATH=$HOME/Library/Python/2.7/bin:$PATH
 
 # Cabal
@@ -40,11 +40,8 @@ export PATH=$HOME/Library/Haskell/bin:$PATH
 # JDK
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
-# redpen
+# Redpen
 export PATH=/usr/local/redpen/bin:$PATH
-
-# app engine
-export PATH=$HOME/go_appengine:$PATH
 
 # PostgreSQL Settings
 export ARCHFLAGS="-arch x86_64"
