@@ -49,6 +49,7 @@
   ad = add
   st = status
   ft = fetch
+  ch = cherry-pick
   ci = commit
   co = checkout
   br = branch
