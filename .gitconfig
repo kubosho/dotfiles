@@ -87,6 +87,10 @@
   lineNumber = true
 
 [github]
-	user = kubosho
+ user = kubosho
+
 [ghi]
-	token = !security find-internet-password -a kubosho -s github.com -l 'ghi token' -w
+  token = !security find-internet-password -a kubosho -s github.com -l 'ghi token' -w
+
+[rebase]
+  autosquash = true
