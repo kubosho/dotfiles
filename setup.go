@@ -14,8 +14,13 @@ func createSymlink(fn string) error {
 	}
 
 	n := filepath.Base(fn)
+	path := home + `/` + n
 
-	return os.Symlink(fn, home + `/` + n)
+	if _, err := os.Lstat(path); err == nil {
+		os.Remove(path)
+	}
+
+	return os.Symlink(fn, path)
 }
 
 func searchDotfiles() ([]string, error) {
