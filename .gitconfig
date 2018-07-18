@@ -60,6 +60,8 @@
   gr = grep
   grr = grep --break --heading
   logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cr %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+  fixup = fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+  ri = rebase --interactive --autosquash
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
   master-checkout = checkout -b master origin/master
   b = checkout -b
