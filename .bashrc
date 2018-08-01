@@ -101,3 +101,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# ------------------------------
+#  Git
+# ------------------------------
+
+if [ -f ~/.completion/git-completion.bash ]; then
+  . ~/.completion/git-completion.bash
+fi
