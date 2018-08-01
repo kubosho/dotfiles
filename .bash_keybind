@@ -1,0 +1,5 @@
+ghq-peco () {
+  cd $(ghq list --full-path | peco)
+}
+
+bind -x '"\C-]": ghq-peco'
