@@ -161,34 +161,15 @@ Plugin 'Shougo/neoyank.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'sorah/unite-ghq'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mxw/vim-jsx'
 Plugin 'Quramy/tsuquyomi'
-Plugin 'digitaltoad/vim-pug'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'szw/vim-tags'
-Plugin 'majutsushi/tagbar'
-Plugin 'soramugi/auto-ctags.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'cocopon/iceberg.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'neomake/neomake'
 Plugin 'benjie/neomake-local-eslint.vim'
-Plugin 'kewah/vim-stylefmt'
-Plugin 'cohama/agit.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rhysd/committia.vim'
-Plugin 'fuenor/qfixgrep'
-Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'nixprime/cpsm'
 Plugin 'fatih/vim-go'
-Plugin 'mattn/emmet-vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'scrooloose/nerdtree'
-Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -243,16 +224,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" auto-ctags.vim
-
-set tags+=.git/tags
-set tags+=.svn/tags
-
-let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['.git', '.svn']
-let g:auto_ctags_filetype_mode = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " lightline
@@ -396,25 +367,11 @@ nnoremap <silent> <Space>ur  :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>uu  :<C-u>Unite file_mru buffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp
-
-" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-nnoremap <silent> <Space>up :<C-u>CtrlP<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " fugitive
 
 nnoremap <silent> <Space>gb  :<C-u>Gblame<CR>
 nnoremap <silent> <Space>gdf :<C-u>Gdiff<CR>
 nnoremap <silent> <Space>gs  :<C-u>Gstatus<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-
-let g:NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=1
-autocmd BufEnter * lcd %:p:h
-nnoremap <C-n> :NERDTreeToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " neomake
