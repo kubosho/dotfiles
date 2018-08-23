@@ -1,3 +1,8 @@
+# for WSL
+if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+  alias code='/mnt/c/Program\ Files/Microsoft\ VS\ Code/Code.exe'
+fi
+
 alias c='code'
 alias e='emacs'
 alias g='git'
