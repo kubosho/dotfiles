@@ -18,9 +18,6 @@
 [commit]
   template = ~/.gitmessage.txt
 
-[init]
-  templatedir = ~/.git_template
-
 [push]
   default = simple
 
