@@ -1,5 +1,7 @@
 
 
+
+
 # ==== The Seven Rules ====
 # 1. Separate subject from body with a blank line
 # 2. Limit the subject line to 50 characters
@@ -22,19 +24,3 @@
 # build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
 # ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
 # chore: Other changes that don't modify `src` or `test` files
-
-# ==== Format ====
-# :emoji: Subject
-#
-# Commit body...
-
-# ==== Format (Angular style)
-
-# ```
-# <type>(<scope>): <subject>
-# <BLANK LINE>
-# <body>
-# <BLANK LINE>
-# <footer>
-# ```
-
