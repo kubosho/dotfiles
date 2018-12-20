@@ -1,5 +1,10 @@
-dotfiles
+.files
 ========
 
-基本Mac OS X向けに書かれています。
-ただし、Linux環境でも使うかもしれないので、その時は対応するかも。
+My dotfiles.
+
+environments
+========
+
+- Windows 10
+- macOS
