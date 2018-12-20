@@ -8,8 +8,7 @@ case $- in
       *) return;;
 esac
 
-export PATH=$HOME/.ndenv/bin:$/usr/lib/go-1.9/bin:$PATH
-eval "$(ndenv init -)"
+eval "$(anyenv init -)"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
