@@ -1,3 +1,0 @@
-#!/bin/sh
-/usr/local/bin/ctags --tag-relative --recurse --sort=yes  --append=no .
-
