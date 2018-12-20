@@ -127,3 +127,9 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
   }
 fi
 
+# ------------------------------
+#  Private profile
+# ------------------------------
+if [ -e ~/.private_bashrc ]; then
+  source ~/.private_bashrc
+fi
