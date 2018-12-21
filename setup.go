@@ -4,7 +4,9 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"github.com/mitchellh/go-homedir"
+	"strings"
+
+	homedir "github.com/mitchellh/go-homedir"
 )
 
 func createSymlink(fn string) error {
@@ -34,7 +36,15 @@ func searchDotfiles() ([]string, error) {
 		return nil, err
 	}
 
-	return files, nil
+	var ret []string
+	ignore := ".git"
+	for _, f := range files {
+		if !strings.Contains(f, ignore) {
+			ret = append(ret, f)
+		}
+	}
+
+	return ret, nil
 }
 
 func main() {
@@ -45,6 +55,7 @@ func main() {
 
 	for _, f := range files {
 		err := createSymlink(f)
+
 		if err != nil {
 			log.Fatal(err)
 		}
