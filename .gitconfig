@@ -10,6 +10,7 @@
   grep = auto
 
 [core]
+  autoCRLF = false
   editor = vim
   precomposeunicode = true
   quotepath = false
