@@ -1,7 +1,17 @@
+##############################
+# module import
+##############################
 Import-Module posh-git
 Import-Module oh-my-posh
 
+##############################
+# common
+##############################
+# oh-my-posh theme
 Set-Theme Paradox
+# set encoding for Out-File
+# https://stackoverflow.com/questions/40098771/changing-powershells-default-output-encoding-to-utf-8
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 ##############################
 # keybind
