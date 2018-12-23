@@ -18,42 +18,29 @@ function gh () {
   Set-Location $(ghq list --full-path | peco)
 }
 
-# https://qiita.com/twinkfrag/items/f3ecf79b68ea09eadec2
-function Pause () {
-    if ($psISE) {
-        $null = Read-Host 'Press Enter Key...'
-    }
-    else {
-        Write-Host "Press Any Key..."
-        (Get-Host).UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
-    }
+# busybox
+function Busybox-Awk () {
+  busybox awk
 }
 
-# https://qiita.com/twinkfrag/items/3afb9032fd73eabe09be
-function Invoke-CommandRunAs () {
-    $cd = (Get-Location).Path
-    $commands = "Set-Location $cd; Write-Host `"[Administrator] $cd> $args`"; $args; Pause; exit"
-    $bytes = [System.Text.Encoding]::Unicode.GetBytes($commands)
-    $encodedCommand = [Convert]::ToBase64String($bytes)
-    Start-Process powershell.exe -Verb RunAs -ArgumentList "-NoExit","-encodedCommand",$encodedCommand
+function Busybox-Ls () {
+  busybox ls $args
 }
 
-# https://qiita.com/twinkfrag/items/3afb9032fd73eabe09be
-function Start-RunAs () {
-    $cd = (Get-Location).Path
-    $commands = "Set-Location $cd; (Get-Host).UI.RawUI.WindowTitle += `" [Administrator]`""
-    $bytes = [System.Text.Encoding]::Unicode.GetBytes($commands)
-    $encodedCommand = [Convert]::ToBase64String($bytes)
-    Start-Process powershell.exe -Verb RunAs -ArgumentList "-NoExit","-encodedCommand",$encodedCommand
+function Busybox-Sed () {
+  busybox sed
 }
 
 ##############################
 # alias
 ##############################
+Set-Alias -name awk -value Busybox-Awk
+# https://serverfault.com/questions/452430/how-to-override-the-default-dir-alias-in-powershell
+Set-Alias -name ls -value Busybox-Ls -Option AllScope
+Set-Alias -name sed -value Busybox-Sed
+
 Set-Alias -name g -value git
 Set-Alias -name open -value Invoke-Item
-Set-Alias -name su -value Start-RunAs
-Set-Alias -name sudo -value Invoke-CommandRunAs
 Set-Alias -name v -value vim
 
 ##############################
