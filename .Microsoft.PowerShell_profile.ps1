@@ -30,7 +30,7 @@ function gh () {
 
 # busybox
 function Busybox-Awk () {
-  busybox awk
+  busybox awk $args
 }
 
 function Busybox-Ls () {
@@ -38,7 +38,7 @@ function Busybox-Ls () {
 }
 
 function Busybox-Sed () {
-  busybox sed
+  busybox sed $args
 }
 
 ##############################
