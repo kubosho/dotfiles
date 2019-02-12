@@ -12,7 +12,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: '"FuraCode NF", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Fira Code", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -37,7 +37,7 @@ module.exports = {
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: '#171717',
+    backgroundColor: 'rgba(23,23,23,0.6)',
 
     // terminal selection color
     selectionColor: 'rgba(248,28,229,0.3)',
@@ -86,10 +86,22 @@ module.exports = {
     //   lightWhite: '#FFFFFF',
     // },
     colors: {
+      black: '#171717',
       blue: '#1A0093',
+      cyan: '#20C5C6',
       green: '#478F3F',
       magenta: '#9C0853',
+      red: '#C51E14',
+      white: '#C7C7C7',
       yellow: '#938200',
+      lightBlack: '#686868',
+      lightBlue: '#6A76FB',
+      lightCyan: '#68FDFE',
+      lightGreen: '#67F86F',
+      lightMagenta: '#FD7CFC',
+      lightRed: '#FD6F6B',
+      lightWhite: '#FFFFFF',
+      lightYellow: '#FFFA72',
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -104,11 +116,11 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe',
+    shell: '',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
-    shellArgs: [],
+    shellArgs: ['--login'],
 
     // for environment variables
     env: {},
@@ -138,7 +150,11 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: [
+    'hyper-search',
+    'hypercwd',
+    'hyperterm-gruvbox-dark',
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
