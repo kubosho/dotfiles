@@ -1,0 +1,1 @@
+/Users/ShotaKubota/.config/fisherman/ndenv/completions/ndenv.fish
