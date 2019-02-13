@@ -1,8 +1,6 @@
 # Directories
 .sass-cache/
 .idea/
-.config/
-!.config/fish
 
 # Files
 .DS_Store

@@ -32,7 +32,7 @@ alias gco='git-checkout-with-peco'
 # keybind
 
 function fish_user_key_bindings
-  bind \c] peco_select_ghq_repository
+  bind \c] gh
 end
 
 ##################################################

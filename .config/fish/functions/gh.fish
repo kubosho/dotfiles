@@ -1,4 +1,4 @@
-function peco_select_ghq_repository
+function gh
   set -l query (commandline)
 
   if test -n $query
