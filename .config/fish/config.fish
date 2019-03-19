@@ -14,6 +14,9 @@ if status --is-login
   # go
   set -gx GOPATH $HOME
   set -gx PATH $PATH $GOPATH/bin
+
+  # anyenv
+  set -x PATH $HOME/.anyenv/bin $PATH
 end
 
 ##################################################
