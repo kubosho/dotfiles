@@ -1,7 +1,6 @@
 # Directories
 .sass-cache/
 .idea/
-.config/gcloud
 
 # Files
 .DS_Store
