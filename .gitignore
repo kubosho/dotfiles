@@ -11,6 +11,7 @@ tags*
 .node-version
 .tern-project
 .zprivate
+.config/fish/fish_variables
 
 # Emacs
 .emacs.d/ac-comphist.dat
