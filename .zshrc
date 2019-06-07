@@ -55,11 +55,13 @@ bindkey "^N" history-beginning-search-forward-end
 
 ## Prompt
 
-PROMPT="
-[%n] %{${fg[yellow]}%}%~%{${reset_color}%}
-%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%)? <)%{${reset_color}%} "
+setopt prompt_subst
+
+PROMPT='
+[%n] `show_current_path` `git_current_branch`
+`status_code`'
 PROMPT2='[%n]> '
-SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう！(y),違うよ！(n),やーめた(a),直すね(e)]:${reset_color} "
+SPROMPT='`suggest`'
 
 ## Profiling (Must set to end of file)
 
