@@ -13,6 +13,10 @@ tags*
 .zprivate
 .config/fish/fish_variables
 
+# Dotfiles
+.config/anyenv/
+.config/configstore/
+
 # Emacs
 .emacs.d/ac-comphist.dat
 .emacs.d/auto-save-list
