@@ -19,6 +19,7 @@ fi
 path=(
   "/usr/local/bin"
   "/usr/local/sbin"
+  "$HOME/.homebrew/bin"
   "$HOME/bin"
   $path
 )
