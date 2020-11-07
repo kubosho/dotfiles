@@ -6,16 +6,13 @@
 .DS_Store
 *.elc
 *.swp
-tags*
-.tags*
 .node-version
 .tern-project
 .zprivate
-.config/fish/fish_variables
 
 # Dotfiles
-.config/anyenv/
-.config/configstore/
+.zshconfig/anyenv/
+.zshconfig/configstore/
 
 # Emacs
 .emacs.d/ac-comphist.dat

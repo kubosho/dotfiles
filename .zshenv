@@ -3,7 +3,7 @@
 export ANYENV_ROOT="$HOME/.anyenv"
 export DOCKER_HOST="tcp://0.0.0.0:2375"
 export GOPATH="$HOME"
-export ZSH_CONFIG_DIR="${HOME}/.config/zsh"
+export ZSH_CONFIG_DIR="${HOME}/.zshconfig/zsh"
 
 # ref: https://qiita.com/vintersnow/items/7343b9bf60ea468a4180#anyenv-%E9%81%85%E5%BB%B6%E3%83%AD%E3%83%BC%E3%83%89
 if [ -d $ANYENV_ROOT ]; then
