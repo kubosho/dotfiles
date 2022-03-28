@@ -4,6 +4,7 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors && colors
 autoload -Uz compinit
 autoload -Uz history-search-end
+autoload -Uz add-zsh-hook
 
 # ref: http://fnwiya.hatenablog.com/entry/2015/11/03/191902
 if [ -d $ZSH_CONFIG_DIR -a -r $ZSH_CONFIG_DIR -a \
