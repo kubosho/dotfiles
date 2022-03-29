@@ -1,7 +1,6 @@
 # zmodload zsh/zprof && zprof
 
 export ANYENV_ROOT="$HOME/.anyenv"
-export DOCKER_HOST="tcp://0.0.0.0:2375"
 export GOPATH="$HOME"
 export ZSH_CONFIG_DIR="${HOME}/.zshconfig/zsh"
 
