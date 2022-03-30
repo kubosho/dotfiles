@@ -5,12 +5,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-
-	homedir "github.com/mitchellh/go-homedir"
 )
 
 func createSymlink(fn string) error {
-	home, err := homedir.Dir()
+	home, err := os.UserHomeDir()
 	if err != nil {
 		log.Fatal(err)
 	}
