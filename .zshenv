@@ -1,6 +1,7 @@
 # zmodload zsh/zprof && zprof
 
 export ANYENV_ROOT="$HOME/.anyenv"
+export DENO_INSTALL="$HOME/.deno"
 export GOPATH="$HOME"
 export ZSH_CONFIG_DIR="${HOME}/.zshconfig/zsh"
 
@@ -21,5 +22,6 @@ path=(
   "/opt/homebrew/bin"
   "$HOME/.homebrew/bin"
   "$HOME/bin"
+  "$DENO_INSTALL/bin"
   $path
 )
