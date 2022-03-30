@@ -22,6 +22,7 @@ path=(
   "/opt/homebrew/bin"
   "$HOME/.homebrew/bin"
   "$HOME/bin"
+  "$HOME/.nodebrew/current/bin"
   "$DENO_INSTALL/bin"
   $path
 )
