@@ -62,7 +62,7 @@
   fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
   ri = rebase --interactive --autosquash
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-  master-checkout = checkout -b master origin/master
+  sw-develop = switch develop
   b = checkout -b
 
 [difftool "sourcetree"]
