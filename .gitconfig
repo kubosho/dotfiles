@@ -55,6 +55,7 @@
   ps = push
   df = diff
   rb = rebase
+  sw = switch
   gr = grep
   grr = grep --break --heading
   logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cr %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
