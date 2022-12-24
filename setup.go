@@ -7,20 +7,31 @@ import (
 	"strings"
 )
 
-func createSymlink(fn string) error {
-	home, err := os.UserHomeDir()
+const gitDir = ".git"
+
+func createSymlink(filename string) error {
+	fi, err := os.Stat(filename)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
-	n := filepath.Base(fn)
+	if (strings.Contains(filename, gitDir) && fi.IsDir()) {
+		return nil
+	}
+
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return err
+	}
+
+	n := filepath.Base(filename)
 	path := home + `/` + n
 
 	if _, err := os.Lstat(path); err == nil {
 		os.Remove(path)
 	}
 
-	return os.Symlink(fn, path)
+	return os.Symlink(filename, path)
 }
 
 func searchDotfiles() ([]string, error) {
@@ -29,17 +40,15 @@ func searchDotfiles() ([]string, error) {
 		return nil, err
 	}
 
-	files, err := filepath.Glob(dir + `/\.*`)
+	paths, err := filepath.Glob(dir + `/\.*`)
 	if err != nil {
 		return nil, err
 	}
 
 	var ret []string
-	ignore := ".git"
-	for _, f := range files {
-		if !strings.Contains(f, ignore) {
-			ret = append(ret, f)
-		}
+
+	for _, f := range paths {
+		ret = append(ret, f)
 	}
 
 	return ret, nil
