@@ -17,7 +17,7 @@ fi
 if [ -d $ZSH_CONFIG_DIR -a -r $ZSH_CONFIG_DIR -a \
    -x $ZSH_CONFIG_DIR ]; then
   for i in $ZSH_CONFIG_DIR/*; do
-    [[ ${i##*/} = *.zsh ]] &&
+    [[ ${i##*/} = *.sh || ${i##*/} = *.zsh ]] &&
       [ \( -f $i -o -h $i \) -a -r $i ] && . $i
   done
 fi
