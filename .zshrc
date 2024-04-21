@@ -55,6 +55,8 @@ HISTFILE=$HOME/.command_history
 HISTSIZE=50000
 SAVEHIST=50000
 
+setopt share_history
+
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
