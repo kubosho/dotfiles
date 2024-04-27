@@ -29,9 +29,7 @@ setopt correct
 
 ## Aliases
 
-alias a="atom"
 alias c="code"
-alias e="emacs"
 alias g="git"
 alias t="tmux"
 alias v="vim"
