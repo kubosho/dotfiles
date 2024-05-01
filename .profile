@@ -6,11 +6,5 @@ export GOPATH=$HOME
 export WINDOWS_HOME=/mnt/c/Users/kubosho
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:PATH"
 
-
-if [ -n "$BASH_VERSION" ]; then
-  if [ -f $HOME/.bashrc ] ; then
-    . $HOME/.bashrc
-  fi
-fi
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
