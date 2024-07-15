@@ -9,11 +9,10 @@ export ZSH_CONFIG_DIR="${HOME}/.zshconfig"
 path=(
   "/usr/local/bin"
   "/usr/local/sbin"
-  "/opt/homebrew/bin"
-  "$HOME/.homebrew/bin"
   "$HOME/bin"
-  "$HOME/.nodebrew/current/bin"
   "$DENO_INSTALL/bin"
   "$VOLTA_HOME/bin:$PATH"
+  "/opt/homebrew/bin"
+  "$HOME/.homebrew/bin"
   $path
 )
