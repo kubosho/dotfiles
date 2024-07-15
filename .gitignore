@@ -6,7 +6,6 @@
 .DS_Store
 *.elc
 *.swp
-.node-version
 .tern-project
 .zprivate
 
