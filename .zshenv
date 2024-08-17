@@ -2,6 +2,7 @@
 
 export DENO_INSTALL="$HOME/.deno"
 export GOPATH="$HOME"
+export INTERACTIVE_FILTERING_TOOL="peco"
 export VOLTA_HOME="$HOME/.volta"
 export ZSH_CONFIG_DIR="${HOME}/.zshconfig"
 
