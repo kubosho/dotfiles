@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 
+local act = wezterm.action
 local config = wezterm.config_builder()
 
 local color_palette = {
@@ -60,7 +61,6 @@ config.colors = {
 
 wezterm.on("format-tab-title", function(tab)
   local pane_title = tab.active_pane.title
-
   if tab.tab_title and #tab.tab_title > 0 then
     pane_title = tab.tab_title
   end
@@ -91,5 +91,75 @@ config.font = wezterm.font_with_fallback {
 }
 config.font_size = 16
 config.line_height = 1.25
+
+------------------------------
+-- Key bindings
+------------------------------
+config.leader = {
+  key = 't',
+  mods = 'CTRL',
+  timeout_milliseconds = 1000
+}
+config.keys = {
+  -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
+  {
+    key = ',',
+    mods = 'LEADER',
+    action = act.PromptInputLine {
+      description = 'Enter new tab name',
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
+  },
+  -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
+  {
+    key = 'W',
+    mods = 'LEADER',
+    action = act.PromptInputLine {
+      description = "Create new workspace",
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:perform_action(
+            act.SwitchToWorkspace {
+              name = line,
+            },
+            pane
+          )
+        end
+      end),
+    },
+  },
+  -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
+  {
+    key = 'w',
+    mods = 'LEADER',
+    action = wezterm.action_callback (function (win, pane)
+      -- workspace のリストを作成
+      local workspaces = {}
+      for i, name in ipairs(wezterm.mux.get_workspace_names()) do
+        table.insert(workspaces, {
+          id = name,
+          label = string.format("%d. %s", i, name),
+        })
+      end
+
+      win:perform_action(act.InputSelector {
+        action = wezterm.action_callback(function (_, _, id, label)
+          if not id and not label then
+            wezterm.log_info "Workspace selection canceled"
+          else
+            win:perform_action(act.SwitchToWorkspace { name = id }, pane)
+          end
+        end),
+        title = "Select workspace",
+        choices = workspaces,
+        fuzzy = true,
+      }, pane)
+    end),
+  },
+}
 
 return config
