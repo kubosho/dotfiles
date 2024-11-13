@@ -10,8 +10,8 @@
 .zprivate
 
 # Dotfiles
-.zshconfig/anyenv/
-.zshconfig/configstore/
+.config/zsh/anyenv/
+.config/zsh/configstore/
 
 # Emacs
 .emacs.d/ac-comphist.dat
