@@ -11,6 +11,12 @@ wezterm.on('window-config-reloaded', function(window, pane)
 end)
 
 ------------------------------
+-- Automatically check for updates
+------------------------------
+config.check_for_updates = true
+config.check_for_updates_interval_seconds = 86400
+
+------------------------------
 -- Appearance
 ------------------------------
 config.color_scheme = 'One Light (Gogh)'
