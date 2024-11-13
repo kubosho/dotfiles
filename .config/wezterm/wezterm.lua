@@ -35,6 +35,16 @@ config.color_scheme = 'One Light (Gogh)'
 config.window_background_opacity = 0.9
 config.window_decorations = 'RESIZE'
 
+config.window_background_gradient = {
+  colors = {
+    -- color_palette.east_light,
+    color_palette.west_light,
+    color_palette.south_light,
+    -- color_palette.north_light,
+  },
+  orientation = { Linear = { angle = -45.0 } },
+}
+
 ------------------------------
 --- Text
 ------------------------------
