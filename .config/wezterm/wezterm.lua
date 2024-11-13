@@ -2,6 +2,18 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
+local color_palette = {
+  east_light = "#83CBEC",
+  west_light = "#FECA8B",
+  south_light = "#F57988",
+  north_light = "#58C3A9",
+
+  east_dark = "#3A3895",
+  west_dark = "#EE6A37",
+  south_dark = "#D24573",
+  north_dark = "#2D564C",
+}
+
 ------------------------------
 -- Automatically config reload
 ------------------------------
