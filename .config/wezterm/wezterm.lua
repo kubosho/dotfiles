@@ -46,6 +46,39 @@ config.window_background_gradient = {
 }
 
 ------------------------------
+-- Tab bar
+------------------------------
+config.use_fancy_tab_bar = true
+
+config.colors = {
+  tab_bar = {
+    inactive_tab_edge = "none",
+  },
+}
+
+wezterm.on("format-tab-title", function(tab)
+  local pane_title = tab.active_pane.title
+
+  if tab.tab_title and #tab.tab_title > 0 then
+    pane_title = tab.tab_title
+  end
+
+  if tab.is_active then
+    return {
+      { Background = { Color = color_palette.east_light } },
+      { Foreground = { Color = color_palette.east_dark } },
+      { Text = (tab.tab_index + 1) .. ": " .. pane_title .. " " },
+    }
+  else
+    return {
+      { Background = { Color = color_palette.north_light } },
+      { Foreground = { Color = color_palette.north_dark } },
+      { Text = (tab.tab_index + 1) .. ": " .. pane_title .. " " },
+    }
+  end
+end)
+
+------------------------------
 --- Text
 ------------------------------
 config.font = wezterm.font_with_fallback {
