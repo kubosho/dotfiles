@@ -2,7 +2,13 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+------------------------------
+-- Automatically config reload
+------------------------------
 config.automatically_reload_config = true
+wezterm.on('window-config-reloaded', function(window, pane)
+  wezterm.log_info 'The config was reloaded!'
+end)
 
 ------------------------------
 -- Appearance
