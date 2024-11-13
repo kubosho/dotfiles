@@ -81,7 +81,7 @@ wezterm.on("format-tab-title", function(tab)
 end)
 
 ------------------------------
---- Text
+-- Text
 ------------------------------
 config.font = wezterm.font_with_fallback {
   'Bizin Gothic',
