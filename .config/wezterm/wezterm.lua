@@ -9,6 +9,7 @@ config.automatically_reload_config = true
 ------------------------------
 config.color_scheme = 'One Light (Gogh)'
 config.window_background_opacity = 0.9
+config.window_decorations = 'RESIZE'
 
 ------------------------------
 --- Text
