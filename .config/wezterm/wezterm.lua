@@ -162,4 +162,11 @@ config.keys = {
   },
 }
 
+-- TODO: 起動時にWezTermのウインドウを最大化した状態で起動する
+-- TODO: 起動時にworkspaceを指定できるようにする
+-- TODO: workspaceの状態を復元できるようにする
+-- TODO: workspaceの状態を定期的に保存する
+-- TODO: paneをCtrl-t + | や Ctrl-t + - で分割できるようにする
+-- TODO: paneをCtrl-t + h/j/k/l で移動できるようにする
+
 return config
