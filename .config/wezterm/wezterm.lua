@@ -10,4 +10,16 @@ config.automatically_reload_config = true
 config.color_scheme = 'One Light (Gogh)'
 config.window_background_opacity = 0.9
 
+------------------------------
+--- Text
+------------------------------
+config.font = wezterm.font_with_fallback {
+  'Bizin Gothic',
+  'Cascadia Code',
+  'Monaco',
+  'Consolas',
+}
+config.font_size = 16
+config.line_height = 1.25
+
 return config
