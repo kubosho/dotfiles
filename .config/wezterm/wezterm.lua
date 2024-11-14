@@ -1,4 +1,4 @@
-local wezterm = require 'wezterm'
+local wezterm = require "wezterm"
 
 local act = wezterm.action
 local config = wezterm.config_builder()
@@ -19,7 +19,7 @@ local color_palette = {
 ------------------------------
 -- Startup
 ------------------------------
-wezterm.on('gui-startup', function(cmd)
+wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
@@ -41,10 +41,10 @@ config.check_for_updates_interval_seconds = 86400
 ------------------------------
 -- Appearance
 ------------------------------
-config.color_scheme = 'One Light (Gogh)'
+config.color_scheme = "One Light (Gogh)"
 config.window_background_opacity = 0.8
-config.window_decorations = 'RESIZE'
-config.win32_system_backdrop = 'Acrylic'
+config.window_decorations = "RESIZE"
+config.win32_system_backdrop = "Acrylic"
 config.macos_window_background_blur = 8
 
 config.window_background_gradient = {
@@ -93,10 +93,10 @@ end)
 -- Text
 ------------------------------
 config.font = wezterm.font_with_fallback {
-  'Bizin Gothic',
-  'Cascadia Code',
-  'Monaco',
-  'Consolas',
+  "Bizin Gothic",
+  "Cascadia Code",
+  "Monaco",
+  "Consolas",
 }
 config.font_size = 16
 config.line_height = 1.25
@@ -112,10 +112,10 @@ config.leader = {
 config.keys = {
   -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
   {
-    key = ',',
-    mods = 'LEADER',
+    key = ",",
+    mods = "LEADER",
     action = act.PromptInputLine {
-      description = 'Enter new tab name',
+      description = "Enter new tab name",
       action = wezterm.action_callback(function(window, pane, line)
         if line then
           window:active_tab():set_title(line)
@@ -126,8 +126,8 @@ config.keys = {
 
   -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
   {
-    key = 'W',
-    mods = 'LEADER',
+    key = "W",
+    mods = "LEADER",
     action = act.PromptInputLine {
       description = "Create new workspace",
       action = wezterm.action_callback(function(window, pane, line)
@@ -144,9 +144,9 @@ config.keys = {
   },
   -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
   {
-    key = 'w',
-    mods = 'LEADER',
-    action = wezterm.action_callback (function (win, pane)
+    key = "w",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
       local workspaces = {}
       for i, name in ipairs(wezterm.mux.get_workspace_names()) do
         table.insert(workspaces, {
@@ -156,52 +156,52 @@ config.keys = {
       end
 
       win:perform_action(act.InputSelector {
-        action = wezterm.action_callback(function (_, _, id, label)
+        title = "Select workspace",
+        choices = workspaces,
+        fuzzy = true,
+        action = wezterm.action_callback(function(_, _, id, label)
           if not id and not label then
             wezterm.log_info "Workspace selection canceled"
           else
             win:perform_action(act.SwitchToWorkspace { name = id }, pane)
           end
         end),
-        title = "Select workspace",
-        choices = workspaces,
-        fuzzy = true,
       }, pane)
     end),
   },
 
   -- Pane splitting
   {
-    key = '-',
-    mods = 'LEADER',
-    action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+    key = "-",
+    mods = "LEADER",
+    action = act.SplitVertical { domain = "CurrentPaneDomain" },
   },
   {
-    key = '|',
-    mods = 'LEADER',
-    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    key = "|",
+    mods = "LEADER",
+    action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
   },
 
   -- Pane activate direction
   {
-    key = 'h',
-    mods = 'LEADER',
-    action = act.ActivatePaneDirection 'Left',
+    key = "h",
+    mods = "LEADER",
+    action = act.ActivatePaneDirection "Left",
   },
   {
-    key = 'j',
-    mods = 'LEADER',
-    action = act.ActivatePaneDirection 'Down',
+    key = "j",
+    mods = "LEADER",
+    action = act.ActivatePaneDirection "Down",
   },
   {
-    key = 'k',
-    mods = 'LEADER',
-    action = act.ActivatePaneDirection 'Up',
+    key = "k",
+    mods = "LEADER",
+    action = act.ActivatePaneDirection "Up",
   },
   {
-    key = 'l',
-    mods = 'LEADER',
-    action = act.ActivatePaneDirection 'Right',
+    key = "l",
+    mods = "LEADER",
+    action = act.ActivatePaneDirection "Right",
   },
 }
 
