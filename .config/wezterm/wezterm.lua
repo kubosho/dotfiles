@@ -2,6 +2,7 @@ local wezterm = require 'wezterm'
 
 local act = wezterm.action
 local config = wezterm.config_builder()
+local mux = wezterm.mux
 
 local color_palette = {
   east_light = "#83CBEC",
@@ -14,6 +15,14 @@ local color_palette = {
   south_dark = "#D24573",
   north_dark = "#2D564C",
 }
+
+------------------------------
+-- Startup
+------------------------------
+wezterm.on('gui-startup', function(cmd)
+  local _, _, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 ------------------------------
 -- Automatically config reload
@@ -137,7 +146,6 @@ config.keys = {
     key = 'w',
     mods = 'LEADER',
     action = wezterm.action_callback (function (win, pane)
-      -- workspace のリストを作成
       local workspaces = {}
       for i, name in ipairs(wezterm.mux.get_workspace_names()) do
         table.insert(workspaces, {
@@ -162,7 +170,6 @@ config.keys = {
   },
 }
 
--- TODO: 起動時にWezTermのウインドウを最大化した状態で起動する
 -- TODO: 起動時にworkspaceを指定できるようにする
 -- TODO: workspaceの状態を復元できるようにする
 -- TODO: workspaceの状態を定期的に保存する
