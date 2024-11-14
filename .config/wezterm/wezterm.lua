@@ -181,11 +181,32 @@ config.keys = {
     mods = 'LEADER',
     action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
+
+  -- Pane activate direction
+  {
+    key = 'h',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'j',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Down',
+  },
+  {
+    key = 'k',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'l',
+    mods = 'LEADER',
+    action = act.ActivatePaneDirection 'Right',
+  },
 }
 
 -- TODO: 起動時にworkspaceを指定できるようにする
 -- TODO: workspaceの状態を復元できるようにする
 -- TODO: workspaceの状態を定期的に保存する
--- TODO: paneをCtrl-t + h/j/k/l で移動できるようにする
 
 return config
