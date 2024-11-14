@@ -123,6 +123,7 @@ config.keys = {
       end),
     },
   },
+
   -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
   {
     key = 'W',
@@ -168,12 +169,23 @@ config.keys = {
       }, pane)
     end),
   },
+
+  -- Pane splitting
+  {
+    key = '-',
+    mods = 'LEADER',
+    action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = '|',
+    mods = 'LEADER',
+    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
 }
 
 -- TODO: 起動時にworkspaceを指定できるようにする
 -- TODO: workspaceの状態を復元できるようにする
 -- TODO: workspaceの状態を定期的に保存する
--- TODO: paneをCtrl-t + | や Ctrl-t + - で分割できるようにする
 -- TODO: paneをCtrl-t + h/j/k/l で移動できるようにする
 
 return config
