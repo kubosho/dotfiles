@@ -50,7 +50,7 @@ config.scrollback_lines = 5000
 ------------------------------
 -- IME
 ------------------------------
-config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 config.use_ime = true
 
 ------------------------------
@@ -73,10 +73,10 @@ config.window_background_gradient = {
 }
 
 config.window_padding = {
-  left = '1cell',
-  right = '1cell',
-  top = '0.5cell',
-  bottom = '0.5cell',
+  left = "1cell",
+  right = "1cell",
+  top = "0.5cell",
+  bottom = "0.5cell",
 }
 
 ------------------------------
@@ -158,7 +158,7 @@ config.keys = {
     mods = "LEADER|SHIFT",
     action = act.PromptInputLine {
       description = wezterm.format {
-        { Attribute = { Intensity = 'Bold' } },
+        { Attribute = { Intensity = "Bold" } },
         { Text = "Enter name for new workspace" },
       },
       action = wezterm.action_callback(function(window, pane, line)
@@ -239,16 +239,16 @@ config.keys = {
 
   -- Activate copy mode
   {
-    key = '[',
-    mods = 'LEADER',
+    key = "[",
+    mods = "LEADER",
     action = act.ActivateCopyMode,
   },
 
   -- Spawn new tab
   {
-    key = 'c',
-    mods = 'LEADER',
-    action = act.SpawnTab 'CurrentPaneDomain',
+    key = "c",
+    mods = "LEADER",
+    action = act.SpawnTab "CurrentPaneDomain",
   },
 
   -- Session manager bindings
@@ -258,8 +258,8 @@ config.keys = {
     action = act({ EmitEvent = "save_session" })
   },
   {
-    key = 'L',
-    mods = 'LEADER|SHIFT',
+    key = "L",
+    mods = "LEADER|SHIFT",
     action = act({ EmitEvent = "load_session" }),
   },
   {
