@@ -73,13 +73,12 @@ config.window_padding = {
 ------------------------------
 -- Tab bar
 ------------------------------
-config.use_fancy_tab_bar = true
-
 config.colors = {
   tab_bar = {
     inactive_tab_edge = "none",
   },
 }
+config.use_fancy_tab_bar = true
 
 wezterm.on("format-tab-title", function(tab)
   local pane_title = tab.active_pane.title
