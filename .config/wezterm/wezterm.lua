@@ -57,7 +57,7 @@ config.use_ime = true
 -- Appearance
 ------------------------------
 config.color_scheme = "One Light (Gogh)"
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.win32_system_backdrop = "Acrylic"
 config.macos_window_background_blur = 8
