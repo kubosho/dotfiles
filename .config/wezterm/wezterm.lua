@@ -152,6 +152,7 @@ config.keys = {
     },
   },
 
+  -- Workspace
   -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
   {
     key = "W",
@@ -173,7 +174,6 @@ config.keys = {
       end),
     },
   },
-  -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
   {
     key = "w",
     mods = "LEADER",
@@ -201,6 +201,21 @@ config.keys = {
         end),
       }, pane)
     end),
+  },
+  {
+    key = "$",
+    mods = "LEADER|SHIFT",
+    action = act.PromptInputLine {
+      description = "(wezterm) Set new title for workspace:",
+      action = wezterm.action_callback(function(_, _, line)
+        if line then
+          mux.rename_workspace(
+            mux.get_active_workspace(),
+            line
+          )
+        end
+      end),
+    },
   },
 
   -- Pane splitting
