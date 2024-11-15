@@ -4,6 +4,8 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 local mux = wezterm.mux
 
+local session_manager = require "./plugins/wezterm-session-manager/session-manager"
+
 local color_palette = {
   east_light = "#83CBEC",
   west_light = "#FECA8B",
@@ -113,6 +115,13 @@ config.font = wezterm.font_with_fallback {
 }
 config.font_size = 16
 config.line_height = 1.25
+
+------------------------------
+-- State
+------------------------------
+wezterm.on("save_session", function(window) session_manager.save_state(window) end)
+wezterm.on("load_session", function(window) session_manager.load_state(window) end)
+wezterm.on("restore_session", function(window) session_manager.restore_state(window) end)
 
 ------------------------------
 -- Key bindings
@@ -229,6 +238,23 @@ config.keys = {
     key = 'c',
     mods = 'LEADER',
     action = act.SpawnTab 'CurrentPaneDomain',
+  },
+
+  -- Session manager bindings
+  {
+    key = "S",
+    mods = "LEADER|SHIFT",
+    action = act({ EmitEvent = "save_session" })
+  },
+  {
+    key = 'L',
+    mods = 'LEADER|SHIFT',
+    action = act({ EmitEvent = "load_session" }),
+  },
+  {
+    key = "R",
+    mods = "LEADER|SHIFT",
+    action = act({ EmitEvent = "restore_session" }),
   },
 }
 
