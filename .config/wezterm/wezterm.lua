@@ -48,6 +48,12 @@ config.pane_focus_follows_mouse = true
 config.scrollback_lines = 5000
 
 ------------------------------
+-- IME
+------------------------------
+config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+config.use_ime = true
+
+------------------------------
 -- Appearance
 ------------------------------
 config.color_scheme = "One Light (Gogh)"
