@@ -63,6 +63,13 @@ config.window_background_gradient = {
   orientation = { Linear = { angle = -45.0 } },
 }
 
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+
 ------------------------------
 -- Tab bar
 ------------------------------
