@@ -211,4 +211,12 @@ config.keys = {
     action = act.ActivateCopyMode,
   },
 
+  -- Spawn new tab
+  {
+    key = 'c',
+    mods = 'LEADER',
+    action = act.SpawnTab 'CurrentPaneDomain',
+  },
+}
+
 return config
