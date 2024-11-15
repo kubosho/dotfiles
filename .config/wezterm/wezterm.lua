@@ -105,9 +105,9 @@ config.line_height = 1.25
 -- Key bindings
 ------------------------------
 config.leader = {
-  key = 't',
-  mods = 'CTRL',
-  timeout_milliseconds = 1000
+  key = "t",
+  mods = "CTRL",
+  timeout_milliseconds = 2000
 }
 config.keys = {
   -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
