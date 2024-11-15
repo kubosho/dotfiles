@@ -140,7 +140,7 @@ config.keys = {
   -- refs: https://zenn.dev/sankantsu/articles/e713d52825dbbb
   {
     key = "W",
-    mods = "LEADER",
+    mods = "LEADER|SHIFT",
     action = act.PromptInputLine {
       description = "Create new workspace",
       action = wezterm.action_callback(function(window, pane, line)
@@ -159,7 +159,7 @@ config.keys = {
   {
     key = "w",
     mods = "LEADER",
-    action = wezterm.action_callback(function(win, pane)
+    action = wezterm.action_callback(function(window, pane)
       local workspaces = {}
       for i, name in ipairs(wezterm.mux.get_workspace_names()) do
         table.insert(workspaces, {
@@ -168,7 +168,7 @@ config.keys = {
         })
       end
 
-      win:perform_action(act.InputSelector {
+      window:perform_action(act.InputSelector {
         title = "Select workspace",
         choices = workspaces,
         fuzzy = true,
@@ -176,7 +176,7 @@ config.keys = {
           if not id and not label then
             wezterm.log_info "Workspace selection canceled"
           else
-            win:perform_action(act.SwitchToWorkspace { name = id }, pane)
+            window:perform_action(act.SwitchToWorkspace { name = id }, pane)
           end
         end),
       }, pane)
@@ -191,7 +191,7 @@ config.keys = {
   },
   {
     key = "|",
-    mods = "LEADER",
+    mods = "LEADER|SHIFT",
     action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
   },
 
