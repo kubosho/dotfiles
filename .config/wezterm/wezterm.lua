@@ -157,7 +157,10 @@ config.keys = {
     key = "W",
     mods = "LEADER|SHIFT",
     action = act.PromptInputLine {
-      description = "Create new workspace",
+      description = wezterm.format {
+        { Attribute = { Intensity = 'Bold' } },
+        { Text = "Enter name for new workspace" },
+      },
       action = wezterm.action_callback(function(window, pane, line)
         if line then
           window:perform_action(
@@ -176,7 +179,9 @@ config.keys = {
     mods = "LEADER",
     action = wezterm.action_callback(function(window, pane)
       local workspaces = {}
-      for i, name in ipairs(wezterm.mux.get_workspace_names()) do
+      local current = mux.get_active_workspace()
+
+      for i, name in ipairs(mux.get_workspace_names()) do
         table.insert(workspaces, {
           id = name,
           label = string.format("%d. %s", i, name),
@@ -184,9 +189,9 @@ config.keys = {
       end
 
       window:perform_action(act.InputSelector {
-        title = "Select workspace",
         choices = workspaces,
         fuzzy = true,
+        fuzzy_description = string.format("Select workspace: %s -> ", current),
         action = wezterm.action_callback(function(_, _, id, label)
           if not id and not label then
             wezterm.log_info "Workspace selection canceled"
