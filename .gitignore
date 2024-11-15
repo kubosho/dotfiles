@@ -8,6 +8,7 @@
 *.swp
 .tern-project
 .zprivate
+wezterm_state*.json
 
 # Dotfiles
 .config/zsh/anyenv/
