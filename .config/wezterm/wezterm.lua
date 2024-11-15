@@ -182,7 +182,7 @@ config.keys = {
     action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
   },
 
-  -- Pane activate direction
+  -- Activate pane direction
   {
     key = "h",
     mods = "LEADER",
@@ -203,10 +203,12 @@ config.keys = {
     mods = "LEADER",
     action = act.ActivatePaneDirection "Right",
   },
-}
 
--- TODO: 起動時にworkspaceを指定できるようにする
--- TODO: workspaceの状態を復元できるようにする
--- TODO: workspaceの状態を定期的に保存する
+  -- Activate copy mode
+  {
+    key = '[',
+    mods = 'LEADER',
+    action = act.ActivateCopyMode,
+  },
 
 return config
