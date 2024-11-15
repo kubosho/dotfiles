@@ -39,6 +39,12 @@ config.check_for_updates = true
 config.check_for_updates_interval_seconds = 86400
 
 ------------------------------
+-- General
+------------------------------
+config.pane_focus_follows_mouse = true
+config.scrollback_lines = 5000
+
+------------------------------
 -- Appearance
 ------------------------------
 config.color_scheme = "One Light (Gogh)"
