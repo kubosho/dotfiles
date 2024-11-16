@@ -16,6 +16,9 @@ local color_palette = {
   west_dark = "#EE6A37",
   south_dark = "#D24573",
   north_dark = "#2D564C",
+
+  black = "#000000",
+  white = "#FFFFFF",
 }
 
 ------------------------------
@@ -24,6 +27,47 @@ local color_palette = {
 wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
+end)
+
+------------------------------
+-- Status
+------------------------------
+config.status_update_interval = 2000
+
+local statuses_on_right = {}
+local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+
+local function push_to_statuses_on_right(text, bg_color, fg_color, arrow_color)
+  table.insert(statuses_on_right, { Foreground = { Color = arrow_color } })
+  table.insert(statuses_on_right, { Text = SOLID_LEFT_ARROW })
+  table.insert(statuses_on_right, { Foreground = { Color = fg_color } })
+  table.insert(statuses_on_right, { Background = { Color = bg_color } })
+  table.insert(statuses_on_right, { Text = ' ' .. text .. ' ' })
+end
+
+wezterm.on("update-right-status", function(window, pane)
+  statuses_on_right = {}
+
+  local cwd_uri = pane:get_current_working_dir()
+  if cwd_uri then
+    local cwd = cwd_uri.file_path
+    local hostname = cwd_uri.host or wezterm.hostname()
+
+    local dot = hostname:find '[.]'
+    if dot then
+      hostname = hostname:sub(1, dot - 1)
+    end
+    if hostname == '' then
+      hostname = wezterm.hostname()
+    end
+
+    push_to_statuses_on_right(hostname, color_palette.east_light, color_palette.black, color_palette.east_light)
+    push_to_statuses_on_right(cwd, color_palette.west_light, color_palette.black, color_palette.west_light)
+    push_to_statuses_on_right(window:active_workspace(), color_palette.south_light, color_palette.black, color_palette.south_light)
+    push_to_statuses_on_right(wezterm.strftime '%Y年%m月%e日', color_palette.north_light, color_palette.black, color_palette.north_light)
+  end
+
+  window:set_right_status(wezterm.format(statuses_on_right))
 end)
 
 ------------------------------
