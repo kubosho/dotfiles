@@ -1,10 +1,10 @@
 local wezterm = require "wezterm"
 
+local session_manager = require "./plugins/wezterm-session-manager/session-manager"
+
 local act = wezterm.action
 local config = wezterm.config_builder()
 local mux = wezterm.mux
-
-local session_manager = require "./plugins/wezterm-session-manager/session-manager"
 
 local color_palette = {
   east_light = "#83CBEC",
