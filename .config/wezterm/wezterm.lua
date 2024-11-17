@@ -179,7 +179,7 @@ wezterm.on("format-tab-title", function(tab)
     }
   else
     return {
-      { Text = (tab.tab_index + 1) .. ": " .. pane_title .. " " },
+      { Text = (tab.tab_index + 1) .. ": " .. pane_title },
     }
   end
 end)
