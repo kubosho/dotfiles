@@ -186,7 +186,9 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 
 wezterm.on("format-tab-title", function(tab)
-  local pane_title = tab.active_pane.title
+  local pane = tab.active_pane
+  local pane_title = pane.title
+
   if tab.tab_title and #tab.tab_title > 0 then
     pane_title = tab.tab_title
   end
