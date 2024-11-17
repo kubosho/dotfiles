@@ -21,6 +21,13 @@ local color_palette = {
   white = "#FFFFFF",
 }
 
+local icons = {
+  cwd = wezterm.nerdfonts.fa_map_pin,
+  date = wezterm.nerdfonts.fa_calendar,
+  hostname = wezterm.nerdfonts.fa_desktop,
+  workspace = wezterm.nerdfonts.fa_building,
+}
+
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
 local SPACE_1 = ' '
@@ -79,18 +86,24 @@ local function get_host_and_cwd(elements, pane)
     hostname = wezterm.hostname()
   end
 
-  add_element(elements, { Background = color_palette.east_light, Foreground = color_palette.black}, cwd)
-  add_element(elements, { Background = color_palette.west_light, Foreground = color_palette.black }, hostname)
+  add_element(elements, { Background = color_palette.east_light, Foreground = color_palette.black },
+    icons.cwd .. SPACE_1 .. cwd)
+  add_element(elements, { Background = color_palette.west_light, Foreground = color_palette.black },
+    icons.hostname .. SPACE_1 .. hostname)
 end
 
 local function get_active_workspace(elements, window)
   local workspace = window:active_workspace()
 
-  add_element(elements, { Background = color_palette.south_light, Foreground = color_palette.black}, workspace)
+  add_element(elements, { Background = color_palette.south_light, Foreground = color_palette.black },
+    icons.workspace .. SPACE_1 .. workspace)
 end
 
 local function get_date(elements)
-  add_element(elements, {Background = color_palette.north_light, Foreground = color_palette.black }, wezterm.strftime "%Y年%m月%e日")
+  local date = wezterm.strftime "%Y年%m月%e日"
+
+  add_element(elements, { Background = color_palette.north_light, Foreground = color_palette.black },
+    icons.date .. SPACE_1 .. date)
 end
 
 local function update_right_status(window, pane)
