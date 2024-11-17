@@ -23,6 +23,9 @@ local color_palette = {
 
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
+local SPACE_1 = ' '
+local SPACE_2 = '  '
+
 ------------------------------
 -- Startup
 ------------------------------
@@ -41,7 +44,7 @@ local function add_element(elements, colors, text)
   table.insert(elements, { Text = SOLID_LEFT_ARROW })
   table.insert(elements, { Foreground = { Color = colors.Foreground } })
   table.insert(elements, { Background = { Color = colors.Background } })
-  table.insert(elements, { Text = text .. ' ' })
+  table.insert(elements, { Text = SPACE_1 .. text .. SPACE_2 })
 end
 
 local function get_host_and_cwd(elements, pane)
