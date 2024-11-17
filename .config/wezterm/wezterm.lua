@@ -166,6 +166,7 @@ config.colors = {
     inactive_tab_edge = "none",
   },
 }
+config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 
 wezterm.on("format-tab-title", function(tab)
