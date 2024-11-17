@@ -212,6 +212,7 @@ config.leader = {
   timeout_milliseconds = 2000
 }
 config.keys = {
+  -- Edit tab name
   -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
   {
     key = ",",
