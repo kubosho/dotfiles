@@ -141,14 +141,10 @@ wezterm.on("format-tab-title", function(tab)
 
   if tab.is_active then
     return {
-      { Background = { Color = color_palette.east_light } },
-      { Foreground = { Color = color_palette.east_dark } },
-      { Text = (tab.tab_index + 1) .. ": " .. pane_title .. " " },
+      { Text = (tab.tab_index + 1) .. ": " .. pane_title .. "*" },
     }
   else
     return {
-      { Background = { Color = color_palette.north_light } },
-      { Foreground = { Color = color_palette.north_dark } },
       { Text = (tab.tab_index + 1) .. ": " .. pane_title .. " " },
     }
   end
