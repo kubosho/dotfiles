@@ -225,6 +225,12 @@ wezterm.on("load_session", function(window) session_manager.load_state(window) e
 wezterm.on("restore_session", function(window) session_manager.restore_state(window) end)
 
 ------------------------------
+-- Workspaces
+------------------------------
+wezterm.on("save_workspace", function(window) workspaces.save(window) end)
+wezterm.on("choose_workspace", function(window, pane) workspaces.choose(window, pane) end)
+
+------------------------------
 -- Key bindings
 ------------------------------
 config.leader = {
@@ -260,10 +266,10 @@ config.keys = {
       },
       action = wezterm.action_callback(function(window, pane, line)
         if line then
-          workspaces.save(line)
           window:perform_action(
-            act.SwitchToWorkspace {
-              name = line,
+            act.Multiple {
+              act.SwitchToWorkspace { name = line, },
+              act({ EmitEvent = "save_workspace" }),
             },
             pane
           )
@@ -274,7 +280,7 @@ config.keys = {
   {
     key = "w",
     mods = "LEADER",
-    action = workspaces.choose(),
+    action = act({ EmitEvent = "choose_workspace" }),
   },
   {
     key = "$",

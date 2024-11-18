@@ -21,7 +21,14 @@ local function get_workspaces()
   return workspaces
 end
 
-function module.save(name)
+local function get_workspace_name(window)
+  local workspace_name = window:active_workspace()
+
+  return workspace_name
+end
+
+function module.save(window)
+  local name = get_workspace_name(window)
   local file = io.open(workspaces_dir .. "/" .. prefix .. name, "w")
 
   if file then
@@ -33,34 +40,32 @@ function module.save(name)
   end
 end
 
-function module.choose()
-  return wezterm.action_callback(function(window, pane)
-    local choices = {}
-    local current_workspace = mux.get_active_workspace()
-    local workspaces = get_workspaces()
+function module.choose(window, pane)
+  local choices = {}
+  local current_workspace = mux.get_active_workspace()
+  local workspaces = get_workspaces()
 
-    for i, name in ipairs(workspaces) do
-      table.insert(choices, {
-        id = name,
-        label = string.format("%d. %s", i, name),
-      })
-    end
+  for i, name in ipairs(workspaces) do
+    table.insert(choices, {
+      id = name,
+      label = string.format("%d. %s", i, name),
+    })
+  end
 
-    return window:perform_action(act.InputSelector {
-      choices = choices,
-      fuzzy = true,
-      fuzzy_description = string.format("Select workspace: %s -> ", current_workspace),
-      title = "Workspaces",
-      action = wezterm.action_callback(function(_, _, id, label)
-        if not id and not label then
-          wezterm.log_info "Workspace selection canceled"
-          return
-        end
+  return window:perform_action(act.InputSelector {
+    choices = choices,
+    fuzzy = true,
+    fuzzy_description = string.format("Select workspace: %s -> ", current_workspace),
+    title = "Workspaces",
+    action = wezterm.action_callback(function(_, _, id, label)
+      if not id and not label then
+        wezterm.log_info "Workspace selection canceled"
+        return
+      end
 
-        window:perform_action(act.SwitchToWorkspace { name = id, }, pane)
-      end),
-    }, pane)
-  end)
+      window:perform_action(act.SwitchToWorkspace { name = id, }, pane)
+    end),
+  }, pane)
 end
 
 return module
