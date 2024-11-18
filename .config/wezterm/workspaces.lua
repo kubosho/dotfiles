@@ -1,5 +1,5 @@
 local wezterm = require "wezterm"
-local io = require 'io'
+local io = require "io"
 
 local act = wezterm.action
 local mux = wezterm.mux
