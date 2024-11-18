@@ -124,7 +124,7 @@ end)
 -- Automatically config reload
 ------------------------------
 config.automatically_reload_config = true
-wezterm.on("window-config-reloaded", function(window)
+wezterm.on("window-config-reloaded", function()
   local message = "The config was reloaded!"
   wezterm.log_info(message)
 end)
