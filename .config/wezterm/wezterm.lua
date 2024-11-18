@@ -1,6 +1,7 @@
 local wezterm = require "wezterm"
 
 local session_manager = require "./plugins/wezterm-session-manager/session-manager"
+local workspaces = require "./workspaces"
 
 local act = wezterm.action
 local config = wezterm.config_builder()
@@ -259,6 +260,7 @@ config.keys = {
       },
       action = wezterm.action_callback(function(window, pane, line)
         if line then
+          workspaces.save(line)
           window:perform_action(
             act.SwitchToWorkspace {
               name = line,
@@ -272,30 +274,7 @@ config.keys = {
   {
     key = "w",
     mods = "LEADER",
-    action = wezterm.action_callback(function(window, pane)
-      local workspaces = {}
-      local current = mux.get_active_workspace()
-
-      for i, name in ipairs(mux.get_workspace_names()) do
-        table.insert(workspaces, {
-          id = name,
-          label = string.format("%d. %s", i, name),
-        })
-      end
-
-      window:perform_action(act.InputSelector {
-        choices = workspaces,
-        fuzzy = true,
-        fuzzy_description = string.format("Select workspace: %s -> ", current),
-        action = wezterm.action_callback(function(_, _, id, label)
-          if not id and not label then
-            wezterm.log_info "Workspace selection canceled"
-          else
-            window:perform_action(act.SwitchToWorkspace { name = id }, pane)
-          end
-        end),
-      }, pane)
-    end),
+    action = workspaces.choose(),
   },
   {
     key = "$",
