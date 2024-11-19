@@ -41,6 +41,11 @@ wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
+-- Workaround: Gradient grainy
+-- https://github.com/wez/wezterm/issues/4813
+wezterm.on('window-resized', function()
+  wezterm.reload_configuration()
+end)
 
 ------------------------------
 -- Status
