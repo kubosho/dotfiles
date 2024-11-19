@@ -144,7 +144,7 @@ config.check_for_updates_interval_seconds = 86400
 ------------------------------
 -- General
 ------------------------------
-config.pane_focus_follows_mouse = true
+config.pane_focus_follows_mouse = false
 config.scrollback_lines = 5000
 
 ------------------------------
