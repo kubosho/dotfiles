@@ -7,8 +7,6 @@ local mux = wezterm.mux
 local workspaces_dir = wezterm.home_dir .. "/.config/wezterm/workspaces"
 local prefix = "wezterm_workspace_"
 
-local module = {}
-
 local function get_workspaces()
   local workspaces = {}
 
@@ -27,7 +25,7 @@ local function get_workspace_name(window)
   return workspace_name
 end
 
-function module.save(window)
+local function save(window)
   local name = get_workspace_name(window)
   local file = io.open(workspaces_dir .. "/" .. prefix .. name, "w")
 
@@ -40,7 +38,7 @@ function module.save(window)
   end
 end
 
-function module.choose(window, pane)
+local function choose(window, pane)
   local choices = {}
   local current_workspace = mux.get_active_workspace()
   local workspaces = get_workspaces()
@@ -68,4 +66,7 @@ function module.choose(window, pane)
   }, pane)
 end
 
-return module
+return {
+  save = save,
+  choose = choose,
+}
