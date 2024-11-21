@@ -62,7 +62,7 @@ local function get_date(elements)
     constants.icons.date .. constants.space_1 .. date)
 end
 
-function update_right_status(window, pane)
+local function update_right_status(window, pane)
   local statuses = {}
 
   get_host_and_cwd(statuses, pane)
