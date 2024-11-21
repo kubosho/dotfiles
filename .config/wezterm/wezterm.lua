@@ -1,38 +1,13 @@
 local wezterm = require "wezterm"
 
+local constants = require"./constants"
 local session_manager = require "./plugins/wezterm-session-manager/session-manager"
+local status = require "./status"
 local workspaces = require "./workspaces"
 
 local act = wezterm.action
 local config = wezterm.config_builder()
 local mux = wezterm.mux
-
-local color_palette = {
-  east_light = "#83CBEC",
-  west_light = "#FECA8B",
-  south_light = "#F57988",
-  north_light = "#58C3A9",
-
-  east_dark = "#3A3895",
-  west_dark = "#EE6A37",
-  south_dark = "#D24573",
-  north_dark = "#2D564C",
-
-  black = "#000000",
-  white = "#FFFFFF",
-}
-
-local icons = {
-  cwd = wezterm.nerdfonts.fa_map_pin,
-  date = wezterm.nerdfonts.fa_calendar,
-  hostname = wezterm.nerdfonts.fa_desktop,
-  workspace = wezterm.nerdfonts.fa_building,
-}
-
-local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-
-local SPACE_1 = ' '
-local SPACE_2 = '  '
 
 ------------------------------
 -- Startup
@@ -52,78 +27,8 @@ end)
 ------------------------------
 config.status_update_interval = 2000
 
-local function add_element(elements, colors, text)
-  table.insert(elements, { Foreground = { Color = colors.Background } })
-  table.insert(elements, { Text = SOLID_LEFT_ARROW })
-  table.insert(elements, { Foreground = { Color = colors.Foreground } })
-  table.insert(elements, { Background = { Color = colors.Background } })
-  table.insert(elements, { Text = SPACE_1 .. text .. SPACE_2 })
-end
-
-local function get_host_and_cwd(elements, pane)
-  local cwd_uri = pane:get_current_working_dir()
-  if not cwd_uri then
-    return
-  end
-
-  local cwd = ""
-  local hostname = ""
-
-  if type(cwd_uri) == "userdata" then
-    cwd = cwd_uri.file_path
-    hostname = cwd_uri.host or wezterm.hostname()
-  else
-    cwd_uri = cwd_uri:sub(8)
-    local slash = cwd_uri:find "/"
-    if slash then
-      hostname = cwd_uri:sub(1, slash - 1)
-      cwd = cwd_uri:sub(slash):gsub("%%(%x%x)", function(hex)
-        return string.char(tonumber(hex, 16))
-      end)
-    end
-  end
-
-  local dot = hostname:find "[.]"
-  if dot then
-    hostname = hostname:sub(1, dot - 1)
-  end
-
-  if hostname == "" then
-    hostname = wezterm.hostname()
-  end
-
-  add_element(elements, { Background = color_palette.east_light, Foreground = color_palette.black },
-    icons.cwd .. SPACE_1 .. cwd)
-  add_element(elements, { Background = color_palette.west_light, Foreground = color_palette.black },
-    icons.hostname .. SPACE_1 .. hostname)
-end
-
-local function get_active_workspace(elements, window)
-  local workspace = window:active_workspace()
-
-  add_element(elements, { Background = color_palette.south_light, Foreground = color_palette.black },
-    icons.workspace .. SPACE_1 .. workspace)
-end
-
-local function get_date(elements)
-  local date = wezterm.strftime "%Y年%m月%e日"
-
-  add_element(elements, { Background = color_palette.north_light, Foreground = color_palette.black },
-    icons.date .. SPACE_1 .. date)
-end
-
-local function update_right_status(window, pane)
-  local statuses = {}
-
-  get_host_and_cwd(statuses, pane)
-  get_active_workspace(statuses, window)
-  get_date(statuses)
-
-  window:set_right_status(wezterm.format(statuses))
-end
-
 wezterm.on("update-right-status", function(window, pane)
-  update_right_status(window, pane)
+  status.update_right_status(window, pane)
 end)
 
 ------------------------------
@@ -165,10 +70,10 @@ config.macos_window_background_blur = 8
 
 config.window_background_gradient = {
   colors = {
-    color_palette.east_light,
-    color_palette.west_light,
-    color_palette.south_light,
-    color_palette.north_light,
+    constants.color_palette.east_light,
+    constants.color_palette.west_light,
+    constants.color_palette.south_light,
+    constants.color_palette.north_light,
   },
   orientation = { Linear = { angle = -45.0 } },
 }
