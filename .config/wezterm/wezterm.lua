@@ -70,10 +70,10 @@ config.macos_window_background_blur = 8
 
 config.window_background_gradient = {
   colors = {
-    constants.color_palette.east_light,
+    -- constants.color_palette.east_light,
     constants.color_palette.west_light,
     constants.color_palette.south_light,
-    constants.color_palette.north_light,
+    -- constants.color_palette.north_light,
   },
   orientation = { Linear = { angle = -45.0 } },
 }
