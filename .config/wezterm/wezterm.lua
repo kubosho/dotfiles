@@ -63,7 +63,7 @@ config.use_ime = true
 ------------------------------
 config.adjust_window_size_when_changing_font_size = false
 config.color_scheme = "One Light (Gogh)"
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.win32_system_backdrop = "Acrylic"
 config.macos_window_background_blur = 8
