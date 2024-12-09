@@ -1,5 +1,3 @@
-export LANG=ja_JP.UTF-8
-
 # ref: https://medium.com/@rukurx/zsh%E3%81%AEcompinit%E3%81%AB%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%A6%E3%82%8Bautoload%E3%81%AE%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-uz-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-ad471efd84c3
 autoload -Uz colors && colors
 autoload -Uz compinit
