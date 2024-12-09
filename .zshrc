@@ -13,6 +13,12 @@ if [ "$(uname)" = 'Linux' ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+## Runtime
+
+if [ -f ${XDG_BIN_HOME}/mise ]; then
+  eval "$(${XDG_BIN_HOME}/mise activate zsh)"
+fi
+
 # ref: http://fnwiya.hatenablog.com/entry/2015/11/03/191902
 if [ -d $ZSH_CONFIG_DIR -a -r $ZSH_CONFIG_DIR -a \
    -x $ZSH_CONFIG_DIR ]; then
