@@ -10,6 +10,13 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 # ------------------------------
+# WSL Configuration
+# ------------------------------
+export USER=$(whoami)
+export WINDOWS_VSCODE_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
+export WINDOWS_PATH="/mnt/c/windows"
+
+# ------------------------------
 # Zsh Configuration
 # ------------------------------
 export ZSH_CONFIG_DIR="${XDG_CONFIG_HOME}/zsh"
@@ -26,6 +33,8 @@ export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
 path=(
   "${VOLTA_HOME}/bin"
   "/opt/homebrew/bin"
+  "${WINDOWS_PATH}"
+  "${WINDOWS_VSCODE_PATH}"
   "${XDG_BIN_HOME}"
   "${HOME}/bin"
   "/usr/local/bin"
