@@ -9,9 +9,16 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 local mux = wezterm.mux
 
+local is_windows = wezterm.target_triple:find("windows")
+local is_macos = wezterm.target_triple:find("darwin")
+
 ------------------------------
 -- Startup
 ------------------------------
+if is_windows then
+  config.default_prog = { 'wsl' }
+end
+
 wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
@@ -65,8 +72,14 @@ config.adjust_window_size_when_changing_font_size = false
 config.color_scheme = "One Light (Gogh)"
 config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
-config.win32_system_backdrop = "Acrylic"
-config.macos_window_background_blur = 8
+
+if is_windows then
+  config.win32_system_backdrop = "Auto"
+end
+
+if is_macos then
+  config.macos_window_background_blur = 8
+end
 
 config.window_background_gradient = {
   colors = {
@@ -124,8 +137,16 @@ config.font = wezterm.font_with_fallback {
   "Monaco",
   "Consolas",
 }
-config.font_size = 16
-config.line_height = 1.25
+
+if is_windows then
+  config.font_size = 13
+  config.line_height = 1.25
+end
+
+if is_macos then
+  config.font_size = 16
+  config.line_height = 1.25
+end
 
 ------------------------------
 -- State
@@ -149,6 +170,13 @@ config.leader = {
   timeout_milliseconds = 2000
 }
 config.keys = {
+  -- Clipboard
+  {
+    key = "v",
+    mods = "CTRL",
+    action = act.PasteFrom "Clipboard"
+  },
+
   -- Edit tab name
   -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
   {
