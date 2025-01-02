@@ -16,7 +16,7 @@ local is_macos = wezterm.target_triple:find("darwin")
 -- Startup
 ------------------------------
 if is_windows then
-  config.default_prog = { 'wsl' }
+  config.default_prog = { "wsl", "--cd", "~" }
 end
 
 wezterm.on("gui-startup", function(cmd)
