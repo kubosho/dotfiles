@@ -1,6 +1,7 @@
 # Directories
 .sass-cache/
 .idea/
+.volta/
 
 # Files
 .DS_Store
