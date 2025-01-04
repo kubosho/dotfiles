@@ -4,6 +4,7 @@ local constants = require"./constants"
 local session_manager = require "./plugins/wezterm-session-manager/session-manager"
 local status = require "./status"
 local workspaces = require "./workspaces"
+local wsl = require "./wsl"
 
 local act = wezterm.action
 local config = wezterm.config_builder()
@@ -15,10 +16,6 @@ local is_macos = wezterm.target_triple:find("darwin")
 ------------------------------
 -- Startup
 ------------------------------
-if is_windows then
-  config.default_prog = { "wsl", "--cd", "~" }
-end
-
 wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
@@ -28,6 +25,15 @@ end)
 wezterm.on('window-resized', function()
   wezterm.reload_configuration()
 end)
+
+------------------------------
+-- WSL
+------------------------------
+if is_windows then
+  config.default_domain = wsl.default_domain
+  config.default_prog = wsl.default_prog
+  config.wsl_domains = wsl.wsl_domains
+end
 
 ------------------------------
 -- Status
