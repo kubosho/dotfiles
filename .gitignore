@@ -13,6 +13,8 @@ wezterm_state*
 wezterm_workspace*
 
 # Dotfiles
+.config/tmux/plugins/*
+.config/systemd/**/tmux.service
 .config/zsh/anyenv/
 .config/zsh/configstore/
 
