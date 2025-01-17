@@ -6,5 +6,5 @@ My dotfiles.
 environments
 ========
 
-- Windows 10
+- Windows
 - macOS
