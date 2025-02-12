@@ -32,6 +32,7 @@ export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
 # ------------------------------
 path=(
   "${VOLTA_HOME}/bin"
+  "/opt/homebrew/sbin"
   "/opt/homebrew/bin"
   "${WINDOWS_PATH}"
   "${WINDOWS_VSCODE_PATH}"
