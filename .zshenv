@@ -31,6 +31,7 @@ export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
 # Path
 # ------------------------------
 path=(
+  "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
   "${VOLTA_HOME}/bin"
   "/opt/homebrew/sbin"
   "/opt/homebrew/bin"
