@@ -62,27 +62,12 @@
 	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
 	ri = rebase --interactive --autosquash
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-	sw-develop = switch develop
-	b = checkout -b
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 
 [hub]
 	protocol = https
 
 [ghq]
 	root = ~/src
-
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
 
 [grep]
 	lineNumber = true
