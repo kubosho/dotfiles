@@ -1,97 +1,97 @@
 [user]
-  name = Shota Kubota
-  email = ta2@o2p.jp
+	name = Shota Kubota
+	email = ta2@o2p.jp
 
 [color]
-  ui = true
-  status = auto
-  diff = auto
-  branch = auto
-  grep = auto
+	ui = true
+	status = auto
+	diff = auto
+	branch = auto
+	grep = auto
 
 [core]
-  autoCRLF = false
-  editor = vim
-  precomposeunicode = true
-  quotepath = false
-  excludesfile = ~/.gitignore
+	autoCRLF = false
+	editor = vim
+	precomposeunicode = true
+	quotepath = false
+	excludesfile = ~/.gitignore
 
 [commit]
-  template = ~/.gitmessage.txt
+	template = ~/.gitmessage.txt
 
 [push]
-  default = simple
+	default = simple
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 
 [color "grep"]
-  match = cyan
-  linenumber = bold white
-  filename = yellow
+	match = cyan
+	linenumber = bold white
+	filename = yellow
 
 [color "status"]
-  added = yellow
-  changed = green
+	added = yellow
+	changed = green
 
 [alias]
-  ad = add
-  st = status
-  ft = fetch
-  ch = cherry-pick
-  ci = commit
-  co = checkout
-  br = branch
-  pl = pull
-  ps = push
-  df = diff
-  rb = rebase
-  sw = switch
-  gr = grep
-  grr = grep --break --heading
-  logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
-  fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
-  ri = rebase --interactive --autosquash
-  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-  sw-develop = switch develop
-  b = checkout -b
+	ad = add
+	st = status
+	ft = fetch
+	ch = cherry-pick
+	ci = commit
+	co = checkout
+	br = branch
+	pl = pull
+	ps = push
+	df = diff
+	rb = rebase
+	sw = switch
+	gr = grep
+	grr = grep --break --heading
+	logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+	ri = rebase --interactive --autosquash
+	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	sw-develop = switch develop
+	b = checkout -b
 
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [hub]
-  protocol = https
+	protocol = https
 
 [ghq]
-  root = ~/src
+	root = ~/src
 
 [filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
 
 [grep]
-  lineNumber = true
+	lineNumber = true
 
 [github]
- user = kubosho
+	user = kubosho
 
 [ghi]
-  token = !security find-internet-password -a kubosho -s github.com -l 'ghi token' -w
+	token = !security find-internet-password -a kubosho -s github.com -l 'ghi token' -w
 
 [rebase]
-  autosquash = true
+	autosquash = true
