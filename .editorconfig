@@ -18,3 +18,9 @@ trim_trailing_whitespace = true
 [*.go]
 indent_size = 4
 indent_style = tab
+
+# ==================================================
+# Gitconfig
+# ==================================================
+[.gitconfig]
+indent_style = tab
