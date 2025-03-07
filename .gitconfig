@@ -17,6 +17,7 @@
 
 [commit]
 	template = ~/.gitmessage.txt
+	gpgsign = true
 
 [push]
 	default = simple
