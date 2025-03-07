@@ -1,6 +1,5 @@
-[user]
-	name = Shota Kubota
-	email = ta2@o2p.jp
+[include]
+	path = ~/.gitconfig.local
 
 [color]
 	ui = true
