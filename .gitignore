@@ -1,6 +1,7 @@
 # Directories
 .sass-cache/
 .idea/
+.qodo/
 .volta/
 
 # Files
