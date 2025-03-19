@@ -8,6 +8,7 @@
 .DS_Store
 *.elc
 *.swp
+.clinerules
 .gitconfig.local
 .tern-project
 .zprivate
