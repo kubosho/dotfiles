@@ -9,6 +9,7 @@
 *.elc
 *.swp
 .clinerules
+.cursorignore
 .gitconfig.local
 .tern-project
 .zprivate
