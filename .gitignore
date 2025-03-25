@@ -9,7 +9,6 @@
 *.elc
 *.swp
 .clinerules
-.cursorignore
 .gitconfig.local
 .tern-project
 .zprivate
@@ -34,3 +33,7 @@ wezterm_workspace*
 # Vim
 .vim/.netrwhist
 .vim/bundle
+
+# Cursor
+.specstory/
+.cursorignore
