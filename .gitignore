@@ -38,3 +38,4 @@ wezterm_workspace*
 .instructions/
 .specstory/
 .cursorignore
+.cursorindexingignore
