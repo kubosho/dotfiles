@@ -16,6 +16,9 @@
 wezterm_state*
 wezterm_workspace*
 
+# Wezterm
+.config/wezterm/local.lua
+
 # Dotfiles
 .config/systemd/**/tmux.service
 .config/tmux/plugins/*
@@ -36,6 +39,7 @@ wezterm_workspace*
 .vim/bundle
 
 # Cursor
+.cursor/
 .instructions/
 .specstory/
 .cursorignore
