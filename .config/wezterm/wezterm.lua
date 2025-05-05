@@ -1,6 +1,6 @@
 local wezterm = require "wezterm"
 
-local constants = require"./constants"
+local constants = require "./constants"
 local status = require "./status"
 local wsl = require "./wsl"
 
@@ -87,12 +87,12 @@ end
 
 config.window_background_gradient = {
   colors = {
-    -- constants.color_palette.east_light,
+    constants.color_palette.east_light,
     constants.color_palette.west_light,
     constants.color_palette.south_light,
-    -- constants.color_palette.north_light,
+    constants.color_palette.north_light,
   },
-  orientation = { Linear = { angle = -45.0 } },
+  orientation = { Linear = { angle = 45.0 } },
 }
 
 config.window_padding = {
