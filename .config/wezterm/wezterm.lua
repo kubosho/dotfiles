@@ -4,6 +4,8 @@ local constants = require "./constants"
 local status = require "./status"
 local wsl = require "./wsl"
 
+local has_local, local_module = pcall(require, "./.local")
+
 local act = wezterm.action
 local config = wezterm.config_builder()
 local mux = wezterm.mux
@@ -197,5 +199,16 @@ config.keys = {
     action = act.SpawnTab "CurrentPaneDomain",
   },
 }
+
+------------------------------
+-- Local config
+------------------------------
+if has_local and local_module and local_module.get_config then
+  local local_config = local_module.get_config()
+
+  for key, value in pairs(local_config) do
+    config[key] = value
+  end
+end
 
 return config
