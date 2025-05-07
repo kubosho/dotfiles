@@ -7,7 +7,8 @@
 # 2. Remove local branches when their remote branches are removed
 # 3. Remove local branches when a master included squash and merge commits
 
-DEFAULT_BRANCH="main"
+# Determine the default branch from the remote (assuming "origin")
+DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
 
 function git_prune_remote() {
   echo "Start removing out-dated remote merged branches"
@@ -17,7 +18,7 @@ function git_prune_remote() {
 
 function git_remove_merged_local_branch() {
   echo "Start removing out-dated local merged branches"
-  git branch --merged | egrep -v "(^\*|main)" | xargs -I % git branch -d %
+  git branch --merged | egrep -v "(^\*|$DEFAULT_BRANCH)" | xargs -I % git branch -d %
   echo "Finish removing out-dated local merged branches"
 }
 
