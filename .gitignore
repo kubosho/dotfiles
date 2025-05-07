@@ -4,6 +4,7 @@
 .qodo/
 .sass-cache/
 .volta/
+configstore/
 
 # Files
 *.elc
