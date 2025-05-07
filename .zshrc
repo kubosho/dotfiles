@@ -33,7 +33,7 @@ setopt correct
 
 ## Aliases
 
-alias c="code"
+alias c="cursor"
 alias g="git"
 alias t="tmux"
 alias v="vim"
