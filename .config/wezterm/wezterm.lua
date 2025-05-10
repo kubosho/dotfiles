@@ -4,7 +4,7 @@ local constants = require "./constants"
 local status = require "./status"
 local wsl = require "./wsl"
 
-local has_local, local_module = pcall(require, "./.local")
+local has_local, local_module = pcall(require, "./local")
 
 local act = wezterm.action
 local config = wezterm.config_builder()
