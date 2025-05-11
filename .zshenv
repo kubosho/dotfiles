@@ -13,6 +13,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 # WSL Configuration
 # ------------------------------
 export USER=$(whoami)
+export WINDOWS_CURSOR_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
 export WINDOWS_VSCODE_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
 export WINDOWS_PATH="/mnt/c/windows"
 
@@ -37,6 +38,7 @@ path=(
   "/opt/homebrew/sbin"
   "/opt/homebrew/bin"
   "${WINDOWS_PATH}"
+  "${WINDOWS_CURSOR_PATH}"
   "${WINDOWS_VSCODE_PATH}"
   "${XDG_BIN_HOME}"
   "${HOME}/bin"
