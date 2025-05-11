@@ -1,4 +1,5 @@
 # Directories
+.config/go/
 .config/karabiner/
 .idea/
 .qodo/
