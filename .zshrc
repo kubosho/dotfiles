@@ -11,6 +11,12 @@ if [ "$(uname)" = 'Linux' ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+## WSL
+
+if [ "$(uname)" = 'Linux' ]; then
+  source $HOME/.keychain/$HOST-sh
+fi
+
 ## Runtime
 
 if [ -f ${XDG_BIN_HOME}/mise ]; then
