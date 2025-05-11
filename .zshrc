@@ -4,25 +4,6 @@ autoload -Uz compinit
 autoload -Uz history-search-end
 autoload -Uz add-zsh-hook
 
-## Homebrew
-
-if [ "$(uname)" = 'Linux' ]; then
-  # Set PATH, MANPATH, etc., for Homebrew.
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-## WSL
-
-if [ "$(uname)" = 'Linux' ]; then
-  source $HOME/.keychain/$HOST-sh
-fi
-
-## Runtime
-
-if [ -f ${XDG_BIN_HOME}/mise ]; then
-  eval "$(${XDG_BIN_HOME}/mise activate zsh)"
-fi
-
 # ref: http://fnwiya.hatenablog.com/entry/2015/11/03/191902
 if [ -d $ZSH_CONFIG_DIR -a -r $ZSH_CONFIG_DIR -a \
    -x $ZSH_CONFIG_DIR ]; then
