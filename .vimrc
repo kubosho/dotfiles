@@ -41,15 +41,12 @@ set smartcase
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-set backupdir=~/.vim_backup/
-set undodir=~/.vim_backup/
+set swapfile
+set directory=$XDG_CACHE_HOME
+set backupdir=$XDG_CACHE_HOME
+set undodir=$XDG_CACHE_HOME
 set tags=./tags;,tags;
 set clipboard=unnamed,autoselect
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set swapfile
-set directory=$HOME/.vim_swap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
