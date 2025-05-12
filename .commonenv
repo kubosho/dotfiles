@@ -15,9 +15,10 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 if [ -f /proc/version ]; then
   if grep -qEi "(WSL)" /proc/version; then
     export USER=$(whoami)
-    export WINDOWS_CURSOR_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
-    export WINDOWS_VSCODE_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
     export WINDOWS_PATH="/mnt/c/windows"
+    export WINDOWS_HOME="/mnt/c/Users/${USER}"
+    export WINDOWS_CURSOR_PATH="${WINDOWS_HOME}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
+    export WINDOWS_VSCODE_PATH="${WINDOWS_HOME}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
   fi
 fi
 
