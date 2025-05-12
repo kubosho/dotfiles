@@ -1,0 +1,72 @@
+export LANG=ja_JP.UTF-8
+
+# ------------------------------
+# XDG Base Directory
+# ------------------------------
+export XDG_BIN_HOME="${HOME}/.local/bin"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_STATE_HOME="${HOME}/.local/state"
+
+# ------------------------------
+# WSL Configuration
+# ------------------------------
+if [ -f /proc/version ]; then
+  if grep -qEi "(WSL)" /proc/version; then
+    export USER=$(whoami)
+    export WINDOWS_CURSOR_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
+    export WINDOWS_VSCODE_PATH="/mnt/c/Users/${USER}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
+    export WINDOWS_PATH="/mnt/c/windows"
+  fi
+fi
+
+# ------------------------------
+# Homebrew on WSL
+# ------------------------------
+if [ -f /proc/version ]; then
+  if grep -qEi "(WSL)" /proc/version; then
+    # Set PATH, MANPATH, etc., for Homebrew.
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
+fi
+
+# ------------------------------
+# Keychain on WSL
+# ------------------------------
+if [ -f /proc/version ]; then
+  if grep -qEi "(WSL)" /proc/version; then
+    source $HOME/.keychain/$HOST-sh
+  fi
+fi
+
+# ------------------------------
+# Runtime
+# ------------------------------
+if [ -f ${XDG_BIN_HOME}/mise ]; then
+  eval "$(${XDG_BIN_HOME}/mise activate zsh)"
+fi
+
+# ------------------------------
+# Misc
+# ------------------------------
+export GOPATH="${XDG_DATA_HOME}"
+export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
+
+# ------------------------------
+# Path
+# ------------------------------
+export PATH="${XDG_BIN_HOME}:${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="${PATH}:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${VOLTA_HOME}/bin"
+
+# for macOS
+if [ "$(uname)" = "Darwin" ]; then
+  export PATH="${PATH}:/opt/homebrew/sbin:/opt/homebrew/bin"
+fi
+
+# for WSL
+if [ -f /proc/version ]; then
+  if grep -qEi "(WSL)" /proc/version; then
+    export PATH="${PATH}:${WINDOWS_PATH}:${WINDOWS_CURSOR_PATH}:${WINDOWS_VSCODE_PATH}"
+  fi
+fi
