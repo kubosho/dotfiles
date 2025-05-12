@@ -61,12 +61,12 @@ export PATH="${PATH}:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/
 
 # for macOS
 if [ "$(uname)" = "Darwin" ]; then
-  export PATH="${PATH}:/opt/homebrew/sbin:/opt/homebrew/bin"
+  export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:${PATH}"
 fi
 
 # for WSL
 if [ -f /proc/version ]; then
   if grep -qEi "(WSL)" /proc/version; then
-    export PATH="${PATH}:${WINDOWS_PATH}:${WINDOWS_CURSOR_PATH}:${WINDOWS_VSCODE_PATH}"
+    export PATH="${WINDOWS_PATH}:${WINDOWS_CURSOR_PATH}:${WINDOWS_VSCODE_PATH}:${PATH}"
   fi
 fi
