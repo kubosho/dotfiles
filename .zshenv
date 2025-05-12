@@ -1,5 +1,5 @@
 # ------------------------------
-# XDG Base Directory
+# Common Environments
 # ------------------------------
 [ -f "$HOME/.commonenv" ] && . "$HOME/.commonenv"
 
