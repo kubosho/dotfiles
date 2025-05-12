@@ -41,7 +41,8 @@ wezterm_workspace*
 .vim/bundle
 
 # Cursor
-.cursor/
+.cursor/*
+!.cursor/settings.json
 .instructions/
 .specstory/
 .cursorignore

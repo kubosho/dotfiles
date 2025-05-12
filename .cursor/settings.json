@@ -1,0 +1,81 @@
+{
+	"[go]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"[markdown]": {
+		"editor.acceptSuggestionOnEnter": "off",
+		"editor.quickSuggestions": {
+			"comments": false,
+			"other": true,
+			"strings": false
+		}
+	},
+	"chat.editor.wordWrap": "on",
+	"cline.preferredLanguage": "Japanese - 日本語",
+	"cursor.composer.shouldChimeAfterChatFinishes": true,
+	"cursor.cpp.disabledLanguages": ["markdown", "plaintext", "untitled"],
+	"cursorStats.currency": "JPY",
+	"cursorStats.progressBarCriticalThreshold": 90,
+	"cursorStats.showProgressBars": true,
+	"cursorStats.showTotalRequests": true,
+	"cursorStats.statusBarColorThresholds": [
+		{
+			"percentage": 100,
+			"color": "#aa00aa"
+		},
+		{
+			"percentage": 90,
+			"color": "#ff4b00"
+		},
+		{
+			"percentage": 75,
+			"color": "#f6aa00"
+		},
+		{
+			"percentage": 50,
+			"color": "#f2e700"
+		},
+		{
+			"percentage": 30,
+			"color": "#3cffff-"
+		},
+		{
+			"percentage": 0,
+			"color": "#00b06b"
+		}
+	],
+	"cursorStats.usageAlertThresholds": [30, 50, 75, 90, 100],
+	"diffEditor.ignoreTrimWhitespace": false,
+	"editor.accessibilitySupport": "off",
+	"editor.cursorBlinking": "solid",
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.fontFamily": "'Bizin Gothic', 'Cascadia Code', monospace",
+	"editor.fontLigatures": true,
+	"editor.fontSize": 16,
+	"editor.formatOnSave": true,
+	"editor.inlineSuggest.enabled": true,
+	"editor.lineNumbers": "on",
+	"editor.renderLineHighlight": "gutter",
+	"editor.tabSize": 2,
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	"files.associations": {
+		"*.mdc": "markdown"
+	},
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 3000,
+	"files.autoSaveWhenNoErrors": true,
+	"git.blame.editorDecoration.enabled": true,
+	"go.toolsManagement.autoUpdate": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"screencastMode.fontSize": 48,
+	"security.workspace.trust.untrustedFiles": "open",
+	"update.showReleaseNotes": false,
+	"workbench.activityBar.orientation": "vertical",
+	"workbench.colorTheme": "Lapis Aquamarine Light",
+	"workbench.editorAssociations": {
+		"*.mdc": "default"
+	}
+}
