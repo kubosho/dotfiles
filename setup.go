@@ -1,26 +1,20 @@
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 )
 
-func createSymlink(filename string) error {
-	home, err := os.UserHomeDir()
-	if err != nil {
-		return err
+func createSymlink(src, dst string) error {
+	if _, err := os.Lstat(dst); err == nil {
+		os.Remove(dst)
 	}
 
-	n := filepath.Base(filename)
-	path := home + `/` + n
-
-	if _, err := os.Lstat(path); err == nil {
-		os.Remove(path)
-	}
-
-	return os.Symlink(filename, path)
+	return os.Symlink(src, dst)
 }
 
 func readGitignorePatterns() ([]string, error) {
@@ -36,10 +30,12 @@ func readGitignorePatterns() ([]string, error) {
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
+
 		// Ignore negation patterns
 		if strings.HasPrefix(line, "!") {
 			continue
 		}
+
 		patterns = append(patterns, line)
 	}
 	return patterns, nil
@@ -51,6 +47,7 @@ func matchPattern(path string, patterns []string) bool {
 		if pat == "" {
 			continue
 		}
+
 		// Directory pattern
 		if strings.HasSuffix(pat, "/") {
 			pat = strings.TrimSuffix(pat, "/")
@@ -58,11 +55,13 @@ func matchPattern(path string, patterns []string) bool {
 				return true
 			}
 		}
+
 		// Wildcard pattern
 		matched, _ := filepath.Match(pat, filepath.Base(path))
 		if matched {
 			return true
 		}
+
 		// Subdirectory pattern
 		matched, _ = filepath.Match(pat, path)
 		if matched {
@@ -96,10 +95,55 @@ func searchDotfiles() ([]string, error) {
 		if matchPattern(rel, ignore_patterns) {
 			continue
 		}
+
 		ret = append(ret, f)
 	}
 
 	return ret, nil
+}
+
+func isWSL() bool {
+	if runtime.GOOS != "linux" {
+		return false
+	}
+
+	data, err := ioutil.ReadFile("/proc/version")
+	if err != nil {
+		return false
+	}
+
+	return strings.Contains(string(data), "WSL")
+}
+
+func linkCursorSettings() {
+	home, _ := os.UserHomeDir()
+	src := home + "/.cursor/settings.json"
+	var dst string
+
+	if !(runtime.GOOS == "darwin" || isWSL()) {
+		log.Fatal("Unsupported OS")
+	}
+
+	if runtime.GOOS == "darwin" {
+		dst = home + "/Library/Application Support/Cursor/User/settings.json"
+	} else {
+		windowsHome := os.Getenv("WINDOWS_HOME")
+		if windowsHome == "" {
+			log.Fatal("$WINDOWS_HOME is not set")
+		}
+
+		dst = windowsHome + "/AppData/Roaming/Cursor/User/settings.json"
+	}
+
+	dir := filepath.Dir(dst)
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		log.Fatalf("Directory does not exist: %s", dir)
+	}
+
+	err := createSymlink(src, dst)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
@@ -108,11 +152,16 @@ func main() {
 		log.Fatal(err)
 	}
 
-	for _, f := range files {
-		err := createSymlink(f)
+	home, _ := os.UserHomeDir()
 
+	for _, f := range files {
+		n := filepath.Base(f)
+		dst := home + "/" + n
+		err := createSymlink(f, dst)
 		if err != nil {
 			log.Fatal(err)
 		}
 	}
+
+	linkCursorSettings()
 }
