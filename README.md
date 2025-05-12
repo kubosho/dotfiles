@@ -1,10 +1,9 @@
-.files
-========
+# .files
 
 My dotfiles.
 
-environments
-========
+## System requirements
 
 - Windows
+- Windows Subsystem for Linux
 - macOS
