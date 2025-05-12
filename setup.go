@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -107,7 +106,7 @@ func isWSL() bool {
 		return false
 	}
 
-	data, err := ioutil.ReadFile("/proc/version")
+	data, err := os.ReadFile("/proc/version")
 	if err != nil {
 		return false
 	}
@@ -126,6 +125,15 @@ func linkCursorSettings() {
 
 	if runtime.GOOS == "darwin" {
 		dst = home + "/Library/Application Support/Cursor/User/settings.json"
+		dir := filepath.Dir(dst)
+		if _, err := os.Stat(dir); os.IsNotExist(err) {
+			log.Fatalf("Directory does not exist: %s", dir)
+		}
+
+		err := createSymlink(src, dst)
+		if err != nil {
+			log.Fatal(err)
+		}
 	} else {
 		windowsHome := os.Getenv("WINDOWS_HOME")
 		if windowsHome == "" {
@@ -133,16 +141,20 @@ func linkCursorSettings() {
 		}
 
 		dst = windowsHome + "/AppData/Roaming/Cursor/User/settings.json"
-	}
+		dir := filepath.Dir(dst)
+		if _, err := os.Stat(dir); os.IsNotExist(err) {
+			log.Fatalf("Directory does not exist: %s", dir)
+		}
 
-	dir := filepath.Dir(dst)
-	if _, err := os.Stat(dir); os.IsNotExist(err) {
-		log.Fatalf("Directory does not exist: %s", dir)
-	}
+		input, err := os.ReadFile(src)
+		if err != nil {
+			log.Fatalf("Failed to read source file: %v", err)
+		}
 
-	err := createSymlink(src, dst)
-	if err != nil {
-		log.Fatal(err)
+		err = os.WriteFile(dst, input, 0644)
+		if err != nil {
+			log.Fatalf("Failed to write destination file: %v", err)
+		}
 	}
 }
 
