@@ -57,7 +57,10 @@ export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
 # ------------------------------
 # Path
 # ------------------------------
+# Common
 export PATH="${XDG_BIN_HOME}:${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+
+# Runtime
 export PATH="${PATH}:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${VOLTA_HOME}/bin"
 
 # for macOS
