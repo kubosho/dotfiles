@@ -23,16 +23,6 @@ if [ -f /proc/version ]; then
 fi
 
 # ------------------------------
-# Homebrew on WSL
-# ------------------------------
-if [ -f /proc/version ]; then
-  if grep -qEi "(WSL)" /proc/version; then
-    # Set PATH, MANPATH, etc., for Homebrew.
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  fi
-fi
-
-# ------------------------------
 # Keychain on WSL
 # ------------------------------
 if [ -f /proc/version ]; then
@@ -60,9 +50,6 @@ export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
 # Common
 export PATH="${XDG_BIN_HOME}:${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
-# Runtime
-export PATH="${PATH}:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${VOLTA_HOME}/bin"
-
 # for macOS
 if [ "$(uname)" = "Darwin" ]; then
   export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:${PATH}"
@@ -72,5 +59,11 @@ fi
 if [ -f /proc/version ]; then
   if grep -qEi "(WSL)" /proc/version; then
     export PATH="${WINDOWS_PATH}:${WINDOWS_CURSOR_PATH}:${WINDOWS_VSCODE_PATH}:${PATH}"
+
+    # Homebrew on WSL
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 fi
+
+# Runtime
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${VOLTA_HOME}/bin:${PATH}"
