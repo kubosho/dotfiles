@@ -2,6 +2,9 @@
 	"[go]": {
 		"editor.defaultFormatter": "golang.go"
 	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 	"[markdown]": {
 		"editor.acceptSuggestionOnEnter": "off",
 		"editor.quickSuggestions": {
