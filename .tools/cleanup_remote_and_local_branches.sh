@@ -7,8 +7,8 @@
 # 2. Remove local branches when their remote branches are removed
 # 3. Remove local branches when a master included squash and merge commits
 
-# Determine the default branch from the remote (assuming "origin")
-DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+# Get the current branch name
+BASE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 function git_prune_remote() {
   echo "Start removing out-dated remote merged branches"
@@ -18,7 +18,7 @@ function git_prune_remote() {
 
 function git_remove_merged_local_branch() {
   echo "Start removing out-dated local merged branches"
-  git branch --merged | egrep -v "(^\*|$DEFAULT_BRANCH)" | xargs -I % git branch -d %
+  git branch --merged | egrep -v "(^\*|$BASE_BRANCH)" | xargs -I % git branch -d %
   echo "Finish removing out-dated local merged branches"
 }
 
@@ -33,11 +33,11 @@ function git_remove_merged_local_branch() {
 # This clean up function cannot remove local squash-merged branch.
 function git_remove_squash_merged_local_branch() {
   echo "Start removing out-dated local squash-merged branches"
-  git checkout -q $DEFAULT_BRANCH &&
+  git checkout -q $BASE_BRANCH &&
     git for-each-ref refs/heads/ "--format=%(refname:short)" |
     while read branch; do
-      ancestor=$(git merge-base $DEFAULT_BRANCH $branch) &&
-        [[ $(git cherry $DEFAULT_BRANCH $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
+      ancestor=$(git merge-base $BASE_BRANCH $branch) &&
+        [[ $(git cherry $BASE_BRANCH $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
         git branch -D $branch
     done
   echo "Finish removing out-dated local squash-merged branches"
