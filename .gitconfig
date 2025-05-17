@@ -1,32 +1,33 @@
 [include]
 	path = ~/.gitconfig.local
 
+[alias]
+	ad = add
+	br = branch
+	bs = bisect
+	ch = cherry-pick
+	ci = commit
+	co = checkout
+	df = diff
+	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+	ft = fetch
+	gcl = !sh -c '$HOME/.tools/cleanup_remote_and_local_branches.sh'
+	gr = grep
+	grr = grep --break --heading
+	logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+	pl = pull
+	ps = push
+	rb = rebase
+	ri = rebase --interactive --autosquash
+	st = status
+	sw = switch
+
 [color]
-	ui = true
-	status = auto
-	diff = auto
 	branch = auto
+	diff = auto
 	grep = auto
-
-[core]
-	autoCRLF = false
-	editor = vim
-	precomposeunicode = true
-	quotepath = false
-	excludesfile = ~/.gitignore
-
-[commit]
-	template = ~/.gitmessage.txt
-	gpgsign = true
-
-[gpg]
-  format = ssh
-
-[push]
-	default = simple
-
-[pull]
-	rebase = true
+	status = auto
+	ui = true
 
 [color "branch"]
 	current = yellow reverse
@@ -34,61 +35,61 @@
 	remote = green
 
 [color "diff"]
-	meta = yellow bold
 	frag = magenta bold
-	old = red bold
+	meta = yellow bold
 	new = green bold
+	old = red bold
 	whitespace = red reverse
 
 [color "grep"]
-	match = cyan
-	linenumber = bold white
 	filename = yellow
+	linenumber = bold white
+	match = cyan
 
 [color "status"]
 	added = yellow
 	changed = green
 
-[alias]
-	ad = add
-	st = status
-	ft = fetch
-	ch = cherry-pick
-	ci = commit
-	co = checkout
-	br = branch
-	pl = pull
-	ps = push
-	df = diff
-	rb = rebase
-	sw = switch
-	gr = grep
-	grr = grep --break --heading
-	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
-	gcl = !sh -c '$HOME/.tools/cleanup_remote_and_local_branches.sh'
-	logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
-	ri = rebase --interactive --autosquash
+[commit]
+	gpgsign = true
+	template = ~/.gitmessage.txt
 
-[hub]
-	protocol = https
+[core]
+	autoCRLF = false
+	editor = vim
+	excludesfile = ~/.gitignore
+	precomposeunicode = true
+	quotepath = false
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
 
 [ghq]
 	root = ~/src
 
-[grep]
-	lineNumber = true
-
 [github]
 	user = kubosho
 
+[gpg]
+  format = ssh
+
+[grep]
+	lineNumber = true
+
+[hub]
+	protocol = https
+
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+
 [rebase]
 	autosquash = true
-
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
