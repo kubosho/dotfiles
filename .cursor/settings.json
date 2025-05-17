@@ -77,6 +77,7 @@
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"screencastMode.fontSize": 48,
 	"security.workspace.trust.untrustedFiles": "open",
+	"update.releaseTrack": "prerelease",
 	"update.showReleaseNotes": false,
 	"workbench.activityBar.orientation": "vertical",
 	"workbench.colorTheme": "Lapis Aquamarine Light",
