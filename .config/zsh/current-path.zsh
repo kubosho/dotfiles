@@ -6,4 +6,3 @@ show_current_path () {
 
   echo "${color}${path}${reset_color}"
 }
-
