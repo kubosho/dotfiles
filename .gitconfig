@@ -19,6 +19,9 @@
 	template = ~/.gitmessage.txt
 	gpgsign = true
 
+[gpg]
+  format = ssh
+
 [push]
 	default = simple
 
