@@ -42,7 +42,6 @@ fi
 # Misc
 # ------------------------------
 export GOPATH="${XDG_DATA_HOME}"
-export VOLTA_HOME="${XDG_CONFIG_HOME}/.volta"
 
 # ------------------------------
 # Path
@@ -66,4 +65,4 @@ if [ -f /proc/version ]; then
 fi
 
 # Runtime
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${VOLTA_HOME}/bin:${PATH}"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${PATH}"
