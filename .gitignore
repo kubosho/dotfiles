@@ -2,6 +2,7 @@
 .config/go/
 .config/karabiner/
 .idea/
+.obsidian/
 .qodo/
 .sass-cache/
 .volta/
