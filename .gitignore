@@ -11,14 +11,15 @@ node_modules/
 *.swp
 .DS_Store
 .clinerules
-.gitconfig.local
-.tern-project
-.zprivate
 wezterm_state*
 wezterm_workspace*
 
+# Local files
+.gitconfig.local
+.zprivate
+
 # Do not share this configuration
-.config/1Password
+.config/1Password/
 .config/go/
 .config/karabiner/
 
