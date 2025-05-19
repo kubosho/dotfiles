@@ -1,11 +1,8 @@
 # Directories
-.config/go/
-.config/karabiner/
 .idea/
 .obsidian/
 .qodo/
 .sass-cache/
-.volta/
 configstore/
 node_modules/
 
@@ -19,6 +16,11 @@ node_modules/
 .zprivate
 wezterm_state*
 wezterm_workspace*
+
+# Do not share this configuration
+.config/1Password
+.config/go/
+.config/karabiner/
 
 # Wezterm
 .config/wezterm/local.lua
