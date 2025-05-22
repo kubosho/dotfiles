@@ -24,7 +24,6 @@
 	"cursorStats.showProgressBars": true,
 	"cursorStats.showTotalRequests": true,
 	"cursorStats.statusBarColorThresholds": [
-
 		{
 			"percentage": 100,
 			"color": "#aa00aa"
@@ -42,20 +41,11 @@
 			"color": "#f2e700"
 		},
 		{
-			"percentage": 30,
-			"color": "#3cffff"
-		},
-		{
 			"percentage": 0,
 			"color": "#00b06b"
 		}
 	],
-	"cursorStats.usageAlertThresholds": [
-    50,
-    75,
-    90,
-    100
-  ],
+	"cursorStats.usageAlertThresholds": [50, 75, 90, 100],
 	"diffEditor.ignoreTrimWhitespace": false,
 	"editor.accessibilitySupport": "off",
 	"editor.cursorBlinking": "solid",
