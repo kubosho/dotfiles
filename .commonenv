@@ -32,13 +32,6 @@ if [ -f /proc/version ]; then
 fi
 
 # ------------------------------
-# Runtime
-# ------------------------------
-if [ -f ${XDG_BIN_HOME}/mise ]; then
-  eval "$(${XDG_BIN_HOME}/mise activate zsh)"
-fi
-
-# ------------------------------
 # Misc
 # ------------------------------
 export GOPATH="${XDG_DATA_HOME}"
@@ -65,4 +58,7 @@ if [ -f /proc/version ]; then
 fi
 
 # Runtime
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${XDG_CACHE_HOME}/.bun/bin:${PATH}"
+export PATH="${XDG_CACHE_HOME}/.bun/bin:${PATH}"
+if [ -f ${XDG_BIN_HOME}/mise ]; then
+  eval "$(${XDG_BIN_HOME}/mise activate zsh)"
+fi
