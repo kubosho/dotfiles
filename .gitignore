@@ -11,6 +11,7 @@ node_modules/
 *.swp
 .DS_Store
 .clinerules
+.env
 wezterm_state*
 wezterm_workspace*
 
@@ -22,6 +23,7 @@ wezterm_workspace*
 .config/1Password/
 .config/go/
 .config/karabiner/
+.config/op/
 
 # Wezterm
 .config/wezterm/local.lua
