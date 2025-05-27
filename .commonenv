@@ -34,13 +34,13 @@ fi
 # ------------------------------
 # Misc
 # ------------------------------
+export DOTFILES_DIR="${HOME}/src/github.com/kubosho/dotfiles"
 export GOPATH="${XDG_DATA_HOME}"
 
 # ------------------------------
 # Path
 # ------------------------------
 # Common
-export DOTFILES_DIR="${HOME}/src/github.com/kubosho/dotfiles"
 export PATH="${XDG_BIN_HOME}:${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 # for macOS
