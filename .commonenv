@@ -63,3 +63,4 @@ export PATH="${XDG_CACHE_HOME}/.bun/bin:${PATH}"
 if [ -f ${XDG_BIN_HOME}/mise ]; then
   eval "$(${XDG_BIN_HOME}/mise activate zsh)"
 fi
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
