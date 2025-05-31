@@ -15,8 +15,13 @@
 			"strings": false
 		}
 	},
+	"[python]": {
+		"editor.defaultFormatter": "charliermarsh.ruff"
+  },
+	"[toml]": {
+		"editor.defaultFormatter": "tamasfe.even-better-toml"
+	},
 	"chat.editor.wordWrap": "on",
-	"cline.preferredLanguage": "Japanese - 日本語",
 	"cursor.composer.shouldChimeAfterChatFinishes": true,
 	"cursor.cpp.disabledLanguages": ["markdown", "plaintext", "untitled"],
 	"cursorStats.currency": "JPY",
@@ -58,6 +63,7 @@
 	"editor.lineNumbers": "on",
 	"editor.renderLineHighlight": "gutter",
 	"editor.tabSize": 2,
+	"editor.wordWrap": "on",
 	"extensions.experimental.affinity": {
 		"asvetliakov.vscode-neovim": 1
 	},
