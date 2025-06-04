@@ -23,6 +23,7 @@
 	st = status
 	sw = switch
 	wt = worktree
+	wt-add = "!f() { git worktree add \"wt-$1\" \"${@:2}\"; }; f"
 
 [color]
 	branch = auto

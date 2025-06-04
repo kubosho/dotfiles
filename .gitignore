@@ -25,6 +25,9 @@ wezterm_workspace*
 .config/karabiner/
 .config/op/
 
+# Git worktree
+**/wt-*/*
+
 # Wezterm
 .config/wezterm/local.lua
 
