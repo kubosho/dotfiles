@@ -19,6 +19,7 @@
 	ps = push
 	rb = rebase
 	ri = rebase --interactive --autosquash
+	rs = restore
 	st = status
 	sw = switch
 
