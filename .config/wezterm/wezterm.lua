@@ -198,6 +198,13 @@ config.keys = {
     mods = "LEADER",
     action = act.SpawnTab "CurrentPaneDomain",
   },
+
+  -- Shift + Enter in CLI
+  {
+    key = "Enter",
+    mods = "SHIFT",
+    action = wezterm.action.SendString("\n"),
+  },
 }
 
 ------------------------------
