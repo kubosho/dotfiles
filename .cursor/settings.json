@@ -79,6 +79,8 @@
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"screencastMode.fontSize": 48,
 	"security.workspace.trust.untrustedFiles": "open",
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.lineHeight": 1.5,
 	"update.releaseTrack": "prerelease",
 	"update.showReleaseNotes": false,
 	"workbench.activityBar.orientation": "vertical",
