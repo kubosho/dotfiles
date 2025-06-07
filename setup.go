@@ -16,29 +16,6 @@ func createSymlink(src, dst string) error {
 	return os.Symlink(src, dst)
 }
 
-func readGitignorePatterns() ([]string, error) {
-	data, err := os.ReadFile(".gitignore")
-	if err != nil {
-		return nil, err
-	}
-
-	var patterns []string
-	lines := strings.Split(string(data), "\n")
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if line == "" || strings.HasPrefix(line, "#") {
-			continue
-		}
-
-		// Ignore negation patterns
-		if strings.HasPrefix(line, "!") {
-			continue
-		}
-
-		patterns = append(patterns, line)
-	}
-	return patterns, nil
-}
 
 func readDotfilesignorePatterns() ([]string, error) {
 	data, err := os.ReadFile(".dotfilesignore")
@@ -101,10 +78,6 @@ func searchDotfiles() ([]string, error) {
 	}
 
 	ignore_patterns := []string{".git"}
-	gitignore, _ := readGitignorePatterns()
-	if gitignore != nil {
-		ignore_patterns = append(ignore_patterns, gitignore...)
-	}
 	
 	dotfilesignore, _ := readDotfilesignorePatterns()
 	if dotfilesignore != nil {
