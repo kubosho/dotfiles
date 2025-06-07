@@ -40,6 +40,30 @@ func readGitignorePatterns() ([]string, error) {
 	return patterns, nil
 }
 
+func readDotfilesignorePatterns() ([]string, error) {
+	data, err := os.ReadFile(".dotfilesignore")
+	if err != nil {
+		return nil, err
+	}
+
+	var patterns []string
+	lines := strings.Split(string(data), "\n")
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+
+		// Ignore negation patterns
+		if strings.HasPrefix(line, "!") {
+			continue
+		}
+
+		patterns = append(patterns, line)
+	}
+	return patterns, nil
+}
+
 func matchPattern(path string, patterns []string) bool {
 	for _, pat := range patterns {
 		pat = strings.TrimSpace(pat)
@@ -80,6 +104,11 @@ func searchDotfiles() ([]string, error) {
 	gitignore, _ := readGitignorePatterns()
 	if gitignore != nil {
 		ignore_patterns = append(ignore_patterns, gitignore...)
+	}
+	
+	dotfilesignore, _ := readDotfilesignorePatterns()
+	if dotfilesignore != nil {
+		ignore_patterns = append(ignore_patterns, dotfilesignore...)
 	}
 
 	paths, err := filepath.Glob(dir + `/\.*`)
