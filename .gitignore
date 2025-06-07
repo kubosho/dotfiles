@@ -20,10 +20,11 @@ wezterm_workspace*
 .zprivate
 
 # Do not share this configuration
-.config/1Password/
-.config/go/
-.config/karabiner/
-.config/op/
+.config/*
+!.config/gh/
+!.config/nvim/
+!.config/wezterm/
+!.config/zsh/
 
 # Git worktree
 **/wt-*/
