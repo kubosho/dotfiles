@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(~/.claude/**)",
+      "Read(~/.config/**)",
+      "Read(~/.personalities/**)",
+      "Read(~/src/**)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": []
+  }
+}
