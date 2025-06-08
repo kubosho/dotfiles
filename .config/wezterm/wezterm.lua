@@ -98,10 +98,10 @@ config.window_background_gradient = {
 }
 
 config.window_padding = {
-  left = "1cell",
-  right = "1cell",
-  top = "0.5cell",
-  bottom = "0.5cell",
+  left = "0",
+  right = "0",
+  top = "0",
+  bottom = "0",
 }
 
 ------------------------------
