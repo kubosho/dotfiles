@@ -1,5 +1,30 @@
+------------------------------------------------
+-- Import plugins
+--------------------------------------------------
+
+require("config.lazy")
+
+------------------------------------------------
+-- Load keymaps
+--------------------------------------------------
+
+require("config.keymaps")
+
+------------------------------------------------
+-- Editor settings
+--------------------------------------------------
+
+-- Show line numbers
+vim.opt.number = true
+vim.opt.relativenumber = false
+
+------------------------------------------------
+-- Clipboard
+--------------------------------------------------
+
 vim.opt.clipboard = "unnamed"
 
+-- For Windows
 if vim.fn.has('win32') == 1 then
   vim.g.clipboard = {
     name = 'myClipboard',
