@@ -16,9 +16,18 @@ This Neovim configuration provides a VSCode-like experience with modern plugin m
 │       ├── completion.lua  # Autocompletion configuration (nvim-cmp)
 │       ├── filer.lua       # File explorer configuration (nvim-tree)
 │       ├── finder.lua      # Fuzzy finder configuration (telescope)
-│       └── lsp.lua         # LSP configuration with Mason
+│       ├── lsp.lua         # LSP configuration with Mason
+│       └── theme.lua       # Color theme configuration
 └── README.md               # This file
 ```
+
+## Theme
+
+Use [Tokyo Night](https://github.com/folke/tokyonight.nvim). Tokyo Night is Light/dark color scheme with background transparency support.
+
+- **Light Theme**: Tokyo Night Day (default)
+- **Background**: Transparent for terminal integration
+- **Features**: TrueColor support, customizable styles
 
 ## Installed Plugins
 

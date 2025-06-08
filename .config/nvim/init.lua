@@ -18,6 +18,13 @@ require("config.keymaps")
 vim.opt.number = true
 vim.opt.relativenumber = false
 
+-- Enable true color support
+vim.opt.termguicolors = true
+
+-- Background transparency
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
 ------------------------------------------------
 -- Clipboard
 --------------------------------------------------
