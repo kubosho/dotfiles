@@ -5,8 +5,12 @@
       "Read(~/.config/**)",
       "Read(~/.personalities/**)",
       "Read(~/src/**)",
+      "WebFetch(domain:dev.to)",
       "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:qiita.com)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:zenn.dev)"
     ],
     "deny": []
   }

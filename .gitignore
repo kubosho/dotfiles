@@ -51,6 +51,9 @@ wezterm_workspace*
 .vim/.netrwhist
 .vim/bundle
 
+# Neovim
+.config/nvim/lua/plugins/init.lua
+
 # Cursor
 .cursor/*
 !.cursor/mcp.json
