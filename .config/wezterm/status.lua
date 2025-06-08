@@ -31,11 +31,29 @@ local function get_host_and_cwd(elements, pane)
     end
   else
     -- Fallback for tmux environments where OSC 7 doesn't work
-    local process_info = pane:get_foreground_process_info()
-    if process_info and process_info.cwd then
-      cwd = process_info.cwd
+    local tmux_env = os.getenv("TMUX")
+    if tmux_env then
+      -- Try to get current path from tmux
+      local handle = io.popen("tmux display-message -p '#{pane_current_path}' 2>/dev/null")
+      if handle then
+        local tmux_cwd = handle:read("*a")
+        handle:close()
+        if tmux_cwd and tmux_cwd ~= "" then
+          cwd = tmux_cwd:gsub("\n", "")
+        else
+          cwd = "(tmux)"
+        end
+      else
+        cwd = "(tmux)"
+      end
     else
-      cwd = "~"
+      -- Non-tmux environment fallback
+      local process_info = pane:get_foreground_process_info()
+      if process_info and process_info.cwd then
+        cwd = process_info.cwd
+      else
+        cwd = "~"
+      end
     end
     hostname = wezterm.hostname()
   end
