@@ -45,4 +45,21 @@ if vim.fn.has('win32') == 1 then
     },
     cache_enabled = 1,
   }
+
+  -- For WSL
+elseif vim.env.WINDOWS_PATH then
+  vim.g.clipboard = {
+    name = 'WSL Clipboard',
+    copy = {
+      ['+'] = vim.env.WINDOWS_PATH .. '/System32/clip.exe',
+      ['*'] = vim.env.WINDOWS_PATH .. '/System32/clip.exe',
+    },
+    paste = {
+      ['+'] = vim.env.WINDOWS_PATH ..
+          '/System32/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = vim.env.WINDOWS_PATH ..
+          '/System32/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
 end
