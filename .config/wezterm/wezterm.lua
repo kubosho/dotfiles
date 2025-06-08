@@ -138,7 +138,6 @@ end)
 -- Text
 ------------------------------
 config.font = wezterm.font_with_fallback {
-  "Bizin Gothic NF",
   "Bizin Gothic",
   "Cascadia Code",
   "Monaco",
