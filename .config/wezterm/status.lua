@@ -32,23 +32,19 @@ local function get_cwd_fallback()
   local tmux_env = os.getenv("TMUX")
 
   if tmux_env then
-    if is_wsl then
-      -- WSL + tmux: Use PWD environment variable (more reliable in WSL)
-      local pwd = os.getenv("PWD")
-      return pwd and pwd ~= "" and pwd or "(tmux/wsl)"
-    else
-      -- macOS + tmux: Try tmux display-message first, fallback to PWD
-      local handle = io.popen("tmux display-message -p '#{pane_current_path}' 2>/dev/null")
-      if handle then
-        local tmux_cwd = handle:read("*a")
-        handle:close()
-        if tmux_cwd and tmux_cwd ~= "" then
-          return tmux_cwd:gsub("\n", "")
-        end
+    -- Try tmux display-message first for both WSL and macOS
+    local handle = io.popen("tmux display-message -p '#{pane_current_path}' 2>/dev/null")
+    if handle then
+      local tmux_cwd = handle:read("*a")
+      handle:close()
+      if tmux_cwd and tmux_cwd ~= "" then
+        return tmux_cwd:gsub("\n", "")
       end
-      local pwd = os.getenv("PWD")
-      return pwd and pwd ~= "" and pwd or "(tmux)"
     end
+    -- Fallback to PWD environment variable
+    local pwd = os.getenv("PWD")
+    local fallback_label = is_wsl and "(tmux/wsl)" or "(tmux)"
+    return pwd and pwd ~= "" and pwd or fallback_label
   else
     if is_wsl then
       -- WSL without tmux: Use PWD (process info may not work reliably)
