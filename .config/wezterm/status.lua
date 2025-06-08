@@ -27,7 +27,7 @@ local function get_cwd_from_osc7(cwd_uri)
   return "", wezterm.hostname()
 end
 
-local function get_cwd_fallback()
+local function get_cwd_fallback(pane)
   local is_wsl = os.getenv("WSL_DISTRO_NAME") ~= nil
   local tmux_env = os.getenv("TMUX")
 
@@ -82,7 +82,7 @@ local function get_host_and_cwd(elements, pane)
   if cwd_uri then
     cwd, hostname = get_cwd_from_osc7(cwd_uri)
   else
-    cwd = get_cwd_fallback()
+    cwd = get_cwd_fallback(pane)
     hostname = wezterm.hostname()
   end
 
