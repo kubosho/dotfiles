@@ -159,7 +159,7 @@ end
 -- Key bindings
 ------------------------------
 config.leader = {
-  key = "w",
+  key = "\\",
   mods = "CTRL",
   timeout_milliseconds = 2000
 }
