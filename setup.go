@@ -24,8 +24,7 @@ func readDotfilesignorePatterns() ([]string, error) {
 	}
 
 	var patterns []string
-	lines := strings.Split(string(data), "\n")
-	for _, line := range lines {
+	for line := range strings.SplitSeq(string(data), "\n") {
 		line = strings.TrimSpace(line)
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
