@@ -164,13 +164,6 @@ config.leader = {
   timeout_milliseconds = 2000
 }
 config.keys = {
-  -- Clipboard
-  {
-    key = "v",
-    mods = "CTRL",
-    action = act.PasteFrom "Clipboard"
-  },
-
   -- Edit tab name
   -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
   {
@@ -184,13 +177,6 @@ config.keys = {
         end
       end),
     },
-  },
-
-  -- Activate copy mode
-  {
-    key = "[",
-    mods = "LEADER",
-    action = act.ActivateCopyMode,
   },
 
   -- Spawn new tab
