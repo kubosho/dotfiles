@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-This Neovim configuration provides a VSCode-like experience with modern plugin management using lazy.nvim.
+This Neovim configuration provides a modern development experience with plugin management using lazy.nvim.
 
 ## Structure
 
@@ -10,7 +10,7 @@ This Neovim configuration provides a VSCode-like experience with modern plugin m
 ├── lua/
 │   ├── config/
 │   │   ├── lazy.lua        # lazy.nvim bootstrap and setup
-│   │   └── keymaps.lua     # VSCode-like key mappings
+│   │   └── keymaps.lua     # Custom key mappings
 │   └── plugins/
 │       ├── comment.lua     # Comment toggle configuration
 │       ├── completion.lua  # Autocompletion configuration (nvim-cmp)
@@ -37,10 +37,10 @@ Use [Tokyo Night](https://github.com/folke/tokyonight.nvim). Tokyo Night is Ligh
 
 ### nvim-tree
 
-File explorer similar to VSCode's sidebar.
+File explorer sidebar with automatic file synchronization.
 
 - **Toggle**: `Ctrl+B`
-- **Reveal current file**: `Ctrl+Shift+E`
+- **Auto-sync**: Automatically reveals and highlights the current file in the tree
 
 ### telescope.nvim
 
@@ -112,9 +112,9 @@ Autocompletion plugin that provides intelligent code completion.
 
 ### Comment.nvim
 
-Smart commenting plugin with VSCode-like keybindings.
+Smart commenting plugin for quick code commenting.
 
-- `Ctrl+/` - Toggle comment for current line or selection
+- `Alt+/` - Toggle comment for current line or selection
 - `gcc` - Toggle line comment
 - `gbc` - Toggle block comment
 - `gc{motion}` - Comment with motion (e.g., `gcap` for paragraph)
@@ -124,7 +124,7 @@ Smart commenting plugin with VSCode-like keybindings.
 
 ### barbar.nvim
 
-VSCode-like tab line for buffer management.
+Modern tab line for buffer management.
 
 #### Tab Navigation
 
@@ -235,7 +235,7 @@ When you see `<leader>` in key mappings, it refers to the Space key. For example
 
 ### File Operations
 
-- `Ctrl+S` - Save file (works in normal and insert mode)
+- Use `:w` to save files (standard Vim command)
 
 ### File Navigation
 
@@ -245,7 +245,6 @@ When you see `<leader>` in key mappings, it refers to the Space key. For example
 - `Ctrl+Shift+F` - Search in all files (Telescope)
 - `Ctrl+Shift+O` - Switch between open files (Telescope)
 - `Ctrl+B` - Toggle file explorer (nvim-tree)
-- `Ctrl+Shift+E` - Reveal current file in explorer (nvim-tree)
 
 ### Tab Navigation
 
@@ -264,7 +263,7 @@ When you see `<leader>` in key mappings, it refers to the Space key. For example
 
 ### Commenting
 
-- `Ctrl+/` - Toggle comment (works with selection)
+- `Alt+/` - Toggle comment (works with selection)
 
 ## Adding New Plugins
 
