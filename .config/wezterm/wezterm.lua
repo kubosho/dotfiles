@@ -163,6 +163,7 @@ config.leader = {
   mods = "CTRL",
   timeout_milliseconds = 2000
 }
+
 config.keys = {
   -- Edit tab name
   -- refs: https://github.com/wez/wezterm/issues/522#issuecomment-1496894508
@@ -193,6 +194,15 @@ config.keys = {
     action = wezterm.action.SendString("\n"),
   },
 }
+
+-- Windows specific key bindings
+if is_windows then
+  table.insert(config.keys, {
+    key = "v",
+    mods = "CTRL|SHIFT",
+    action = act.PasteFrom "Clipboard"
+  })
+end
 
 ------------------------------
 -- Local config
