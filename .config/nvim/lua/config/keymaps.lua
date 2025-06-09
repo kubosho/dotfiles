@@ -13,8 +13,9 @@ keymap.set("n", "<C-b>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explor
 keymap.set("n", "<C-S-e>", "<cmd>NvimTreeFindFile<cr>", { desc = "Reveal file in explorer" })
 
 -- VSCode-like tab navigation (Barbar.nvim)
-keymap.set("n", "<C-Tab>", "<Cmd>BufferNext<CR>", { desc = "Next tab" })
-keymap.set("n", "<C-S-Tab>", "<Cmd>BufferPrevious<CR>", { desc = "Previous tab" })
+keymap.set("n", "<A-Tab>", "<Cmd>BufferNext<CR>", { desc = "Next tab" })
+keymap.set("n", "<A-S-Tab>", "<Cmd>BufferPrevious<CR>", { desc = "Previous tab" })
+keymap.set("n", "<A-t>", "<Cmd>BufferNew<CR>", { desc = "New tab" })
 keymap.set("n", "<A-w>", "<Cmd>BufferClose<CR>", { desc = "Close tab" })
 keymap.set("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", { desc = "Go to tab 1" })
 keymap.set("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", { desc = "Go to tab 2" })
