@@ -18,6 +18,10 @@ require("config.keymaps")
 vim.opt.number = true
 vim.opt.relativenumber = false
 
+-- Show invisible characters
+vim.opt.list = true
+vim.opt.listchars = { tab = '▸ ', trail = '-', nbsp = ' ' }
+
 -- Enable true color support
 vim.opt.termguicolors = true
 
