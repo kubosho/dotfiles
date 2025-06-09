@@ -17,6 +17,9 @@ This Neovim configuration provides a VSCode-like experience with modern plugin m
 │       ├── filer.lua       # File explorer configuration (nvim-tree)
 │       ├── finder.lua      # Fuzzy finder configuration (telescope)
 │       ├── lsp.lua         # LSP configuration with Mason
+│       ├── session.lua     # Session management configuration (auto-session)
+│       ├── statusline.lua  # Status line configuration (lualine)
+│       ├── tabline.lua     # Tab line configuration (barbar)
 │       └── theme.lua       # Color theme configuration
 └── README.md               # This file
 ```
@@ -118,6 +121,74 @@ Smart commenting plugin with VSCode-like keybindings.
 - `gcO` - Add comment above current line
 - `gcA` - Add comment at end of line
 
+### barbar.nvim
+
+VSCode-like tab line for buffer management.
+
+#### Tab Navigation
+
+- `Alt+h` - Previous tab
+- `Alt+l` - Next tab
+- `Alt+t` - New tab
+- `Alt+w` - Close tab
+- `Alt+1-9` - Go to specific tab by number
+
+#### Features
+
+- Visual buffer tabs with file icons
+- Git status indicators
+- Clickable tabs
+- Automatic tab reordering
+- Integration with file tree sidebar
+
+### auto-session
+
+Automatic session management for persistent Neovim sessions.
+
+#### Session Management
+
+- `<leader>ss` - Save current session
+- `<leader>sr` - Restore session  
+- `<leader>sd` - Delete session
+- `<leader>sf` - Find sessions (Telescope)
+
+#### Features
+
+- Automatic session saving on exit
+- Automatic session restoration when opening directories
+- Directory-based session management
+- Suppresses sessions for temporary directories (home, downloads, root)
+- Git branch-independent sessions
+- Integration with Telescope for session browsing
+
+#### Usage
+
+Sessions are automatically saved when you exit Neovim and restored when you open the same directory again. To ensure proper session restoration, open directories explicitly:
+
+```bash
+nvim .                    # Recommended - explicit directory
+nvim /path/to/project     # Also recommended
+```
+
+### lualine.nvim
+
+Fast and easy to configure statusline plugin.
+
+#### Features
+
+- **Theme Integration**: Matches Tokyo Night theme
+- **Git Integration**: Shows branch name and diff status
+- **LSP Integration**: Displays diagnostics (errors, warnings)
+- **File Information**: Shows encoding, format, and file type
+- **Mode Indicator**: Visual mode display
+- **Progress**: Shows cursor position and file progress
+
+#### Status Line Sections
+
+- **Left**: Mode indicator, git branch, git diff, diagnostics
+- **Center**: File name
+- **Right**: File encoding, format, type, progress, cursor location
+
 ## Custom Key Mappings
 
 ### Leader Key Configuration
@@ -148,8 +219,18 @@ When you see `<leader>` in key mappings, it refers to the Space key. For example
 
 ### Tab Navigation
 
-- `Ctrl+Tab` - Next buffer
-- `Ctrl+Shift+Tab` - Previous buffer
+- `Alt+h` - Previous tab (barbar)
+- `Alt+l` - Next tab (barbar)
+- `Alt+t` - New tab
+- `Alt+w` - Close tab
+- `Alt+1-9` - Go to specific tab by number
+
+### Session Management
+
+- `<leader>ss` (Space+ss) - Save current session
+- `<leader>sr` (Space+sr) - Restore session
+- `<leader>sd` (Space+sd) - Delete session
+- `<leader>sf` (Space+sf) - Find sessions (Telescope)
 
 ### Commenting
 
