@@ -148,7 +148,7 @@ Automatic session management for persistent Neovim sessions.
 #### Session Management
 
 - `<leader>ss` - Save current session
-- `<leader>sr` - Restore session  
+- `<leader>sr` - Restore session
 - `<leader>sd` - Delete session
 - `<leader>sf` - Find sessions (Telescope)
 
