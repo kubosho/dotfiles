@@ -139,6 +139,7 @@ end)
 ------------------------------
 config.font = wezterm.font_with_fallback {
   "Bizin Gothic",
+  "Inconsolata Nerd Font Mono",
   "Cascadia Code",
   "Monaco",
   "Consolas",
