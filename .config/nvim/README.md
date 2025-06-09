@@ -16,6 +16,7 @@ This Neovim configuration provides a VSCode-like experience with modern plugin m
 │       ├── completion.lua  # Autocompletion configuration (nvim-cmp)
 │       ├── filer.lua       # File explorer configuration (nvim-tree)
 │       ├── finder.lua      # Fuzzy finder configuration (telescope)
+│       ├── formatter.lua   # Code formatting configuration (conform.nvim)
 │       ├── lsp.lua         # LSP configuration with Mason
 │       ├── session.lua     # Session management configuration (auto-session)
 │       ├── statusline.lua  # Status line configuration (lualine)
@@ -169,6 +170,35 @@ Sessions are automatically saved when you exit Neovim and restored when you open
 nvim .                    # Recommended - explicit directory
 nvim /path/to/project     # Also recommended
 ```
+
+### conform.nvim
+
+Code formatting plugin with support for multiple formatters per language.
+
+#### Supported Languages and Formatters
+
+- **JavaScript/TypeScript**: Biome → Prettier (fallback)
+- **React (JSX/TSX)**: Biome → Prettier (fallback)
+- **JSON/JSONC**: Biome → Prettier (fallback)
+- **CSS/SCSS**: Biome → Prettier (fallback)
+- **HTML**: Prettier
+- **Markdown**: Prettier
+- **YAML**: Prettier
+- **Lua**: stylua
+
+#### Features
+
+- **Format on Save**: Automatically formats files when saving
+- **Fallback Support**: If Biome is unavailable, falls back to Prettier
+- **LSP Integration**: Uses LSP formatting as fallback if configured formatters fail
+- **Timeout Protection**: 500ms timeout prevents hanging
+
+#### Manual Formatting
+
+While format-on-save is enabled by default, you can also format manually:
+
+- Use LSP formatting keybind: `<leader>f` (Space+f)
+- Run `:ConformInfo` to see available formatters for current file
 
 ### lualine.nvim
 
