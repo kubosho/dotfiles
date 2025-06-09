@@ -10,7 +10,6 @@ keymap.set("n", "<C-S-o>", "<cmd>Telescope buffers<cr>", { desc = "Switch betwee
 
 -- nvim-tree (VSCode-like file explorer)
 keymap.set("n", "<C-b>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file explorer" })
-keymap.set("n", "<C-S-e>", "<cmd>NvimTreeFindFile<cr>", { desc = "Reveal file in explorer" })
 
 -- VSCode-like tab navigation (Barbar.nvim)
 keymap.set("n", "<A-l>", "<Cmd>BufferNext<CR>", { desc = "Next tab" })

@@ -27,6 +27,13 @@ return {
         timeout = 400,
       },
 
+      -- automatically update nvim-tree to show current file location
+      update_focused_file = {
+        enable = true,
+        update_cwd = false,
+        ignore_list = {},
+      },
+
       view = {
         -- width of the window, can be either a number (columns) or a string in `%`
         width = 30,
