@@ -2,43 +2,49 @@
 -- Import plugins
 --------------------------------------------------
 
-require("config.lazy")
+if not vim.g.vscode then
+  require("config.lazy")
+end
 
 ------------------------------------------------
 -- Load keymaps
 --------------------------------------------------
 
-require("config.keymaps")
+if not vim.g.vscode then
+  require("config.keymaps")
+end
 
 ------------------------------------------------
 -- Editor settings
 --------------------------------------------------
 
--- Show line numbers
-vim.opt.number = true
-vim.opt.relativenumber = false
+if not vim.g.vscode then
+  -- Show line numbers
+  vim.opt.number = true
+  vim.opt.relativenumber = false
 
--- Force line numbers in all windows except specific filetypes
-vim.api.nvim_create_autocmd({"BufEnter", "WinEnter"}, {
-  pattern = "*",
-  callback = function()
-    local excluded_filetypes = {"NvimTree", "neo-tree", "alpha", "dashboard", "startify"}
-    if not vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
-      vim.opt_local.number = true
-    end
-  end,
-})
+  -- Force line numbers in all windows except specific filetypes
+  vim.api.nvim_create_autocmd({"BufEnter", "WinEnter"}, {
+    pattern = "*",
+    callback = function()
+      local excluded_filetypes = {"NvimTree", "neo-tree", "alpha", "dashboard", "startify"}
+      if not vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
+        vim.opt_local.number = true
+      end
+    end,
+  })
 
--- Show invisible characters
-vim.opt.list = true
-vim.opt.listchars = { tab = '▸ ', trail = '-', nbsp = ' ' }
+  -- Show invisible characters
+  vim.opt.list = true
+  vim.opt.listchars = { tab = '▸ ', trail = '-', nbsp = ' ' }
 
--- Enable true color support
-vim.opt.termguicolors = true
+  -- Enable true color support
+  vim.opt.termguicolors = true
 
--- Background transparency
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  -- Background transparency
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
 
 ------------------------------------------------
 -- Clipboard
