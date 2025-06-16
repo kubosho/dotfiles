@@ -59,7 +59,7 @@
 
 [core]
 	autoCRLF = false
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore
 	precomposeunicode = true
 	quotepath = false
