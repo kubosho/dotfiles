@@ -65,5 +65,6 @@ wezterm_workspace*
 
 # Claude
 **/.claude/*
+**/CLAUDE.local.md
 !**/.claude/CLAUDE.md
 !**/.claude/settings.json
