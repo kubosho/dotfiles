@@ -33,6 +33,8 @@ setopt correct
 # ------------------------------
 
 alias c="cursor"
+alias cc='claude -p'
+alias claude-stream='claude -p --verbose --output-format=stream-json'
 alias g="git"
 alias t="tmux"
 alias v="vim"
