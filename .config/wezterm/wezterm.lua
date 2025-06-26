@@ -138,21 +138,22 @@ end)
 -- Text
 ------------------------------
 config.font = wezterm.font_with_fallback {
-  "Bizin Gothic",
-  "Inconsolata Nerd Font Mono",
-  "Cascadia Code",
-  "Monaco",
-  "Consolas",
+  { family = "Inconsolata Nerd Font Mono" },
+  { family = "Inconsolata Nerd Font Mono", assume_emoji_presentation = true },
+  { family = "Bizin Gothic" },
+  { family = "Cascadia Code" },
+  { family = "Monaco" },
+  { family = "Consolas" },
 }
 
 if is_windows then
-  config.font_size = 13
+  config.font_size = 14
   config.line_height = 1.25
 end
 
 if is_macos then
   config.font_size = 16
-  config.line_height = 1.25
+  config.line_height = 1.4
 end
 
 ------------------------------
