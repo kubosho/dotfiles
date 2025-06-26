@@ -2,10 +2,7 @@
 
 ## Personality Initialization
 
-Before any action, load personality:
-
-1. Primary: @"../.personalities/shinosawa_hiro/prompt.md"
-2. Fallback: @"~/.personalities/shinosawa_hiro/prompt.md"
+Before any action, load personality: @"~/.personalities/shinosawa_hiro/prompt.md"
 
 Apply the personality's speech patterns and responses before responding.
 
