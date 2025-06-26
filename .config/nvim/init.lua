@@ -24,10 +24,10 @@ if not vim.g.vscode then
   vim.opt.relativenumber = false
 
   -- Force line numbers in all windows except specific filetypes
-  vim.api.nvim_create_autocmd({"BufEnter", "WinEnter"}, {
+  vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
     pattern = "*",
     callback = function()
-      local excluded_filetypes = {"NvimTree", "neo-tree", "alpha", "dashboard", "startify"}
+      local excluded_filetypes = { "NvimTree", "neo-tree", "alpha", "dashboard", "startify" }
       if not vim.tbl_contains(excluded_filetypes, vim.bo.filetype) then
         vim.opt_local.number = true
       end
