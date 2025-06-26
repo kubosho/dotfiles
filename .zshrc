@@ -87,6 +87,12 @@ PROMPT2='[%n]> '
 SPROMPT='`suggest`'
 
 # ------------------------------
+# Sheldon Plugin Manager
+# ------------------------------
+
+eval "$(sheldon source)"
+
+# ------------------------------
 # Profiling (Must set to end of file)
 # ------------------------------
 
