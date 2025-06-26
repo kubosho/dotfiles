@@ -23,6 +23,7 @@ wezterm_workspace*
 .config/*
 !.config/gh/
 !.config/nvim/
+!.config/sheldon/
 !.config/wezterm/
 !.config/zsh/
 
