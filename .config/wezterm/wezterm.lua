@@ -3,6 +3,7 @@ local wezterm = require "wezterm"
 local constants = require "./constants"
 local status = require "./status"
 local wsl = require "./wsl"
+local session = require "./session"
 
 local has_local, local_module = pcall(require, "./local")
 
@@ -20,6 +21,7 @@ wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
+
 -- Workaround: Gradient grainy
 -- https://github.com/wez/wezterm/issues/4813
 wezterm.on('window-resized', function()
@@ -49,8 +51,8 @@ end)
 ------------------------------
 config.automatically_reload_config = true
 wezterm.on("window-config-reloaded", function()
-  local message = "The config was reloaded!"
-  wezterm.log_info(message)
+  wezterm.log_info("The config was reloaded!")
+  session.setup_auto_save()
 end)
 
 ------------------------------
@@ -194,7 +196,13 @@ config.keys = {
     mods = "SHIFT",
     action = wezterm.action.SendString("\n"),
   },
+
 }
+
+-- Add session management key bindings
+for _, key in ipairs(session.get_keys()) do
+  table.insert(config.keys, key)
+end
 
 -- Windows specific key bindings
 if is_windows then
