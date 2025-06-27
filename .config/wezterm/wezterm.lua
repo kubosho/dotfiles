@@ -160,7 +160,7 @@ end
 -- Key bindings
 ------------------------------
 config.leader = {
-  key = "\\",
+  key = "t",
   mods = "CTRL",
   timeout_milliseconds = 2000
 }
