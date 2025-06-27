@@ -57,7 +57,6 @@ wezterm_workspace*
 
 # Cursor
 .cursor/*
-!.cursor/mcp.json
 !.cursor/settings.json
 .instructions/
 .specstory/
