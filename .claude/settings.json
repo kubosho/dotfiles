@@ -1,22 +1,42 @@
 {
+  "defaultMode": "plan",
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
+      "Bash(bun run test:*)",
+      "Bash(npm run test:*)",
+      "Bash(find:*)",
       "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(jq:*)",
+      "Bash(ls:*)",
       "Read(**/.claude/**)",
+      "Read(**/.config/**)",
+      "Read(**/.personalities/**)",
       "Read(**/src/**)",
-      "Read(~/.config/**)",
-      "Read(~/.personalities/**)",
       "WebFetch(domain:dev.to)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:qiita.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:stackoverflow.com)",
-      "WebFetch(domain:zenn.dev)"
+      "WebFetch(domain:zenn.dev)",
+      "mcp__container-use__*"
     ],
     "deny": [
+      "Bash(bun test:*)",
+      "Bash(git cherry-pick*)",
+      "Bash(git clean*)",
+      "Bash(git filter-branch*)",
+      "Bash(git filter-repo*)",
+      "Bash(git gc*)",
+      "Bash(git merge*)",
       "Bash(git push*)",
-      "Bash(npm publish*)"
+      "Bash(git rebase*)",
+      "Bash(git reset*)",
+      "Bash(npm publish)",
+      "Bash(rm -rf*)",
+      "Bash(sudo*)"
     ]
   }
 }
