@@ -1,3 +1,3 @@
 gs () {
-  cd $(ghq list --full-path | peco)
+  cd $(ghq list --full-path | fzf)
 }
