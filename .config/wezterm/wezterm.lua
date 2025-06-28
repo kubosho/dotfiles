@@ -1,6 +1,7 @@
 local wezterm = require "wezterm"
 
 local constants = require "./constants"
+local copy_mode = require "./copy_mode"
 local status = require "./status"
 local wsl = require "./wsl"
 local session = require "./session"
@@ -196,11 +197,15 @@ config.keys = {
     mods = "SHIFT",
     action = wezterm.action.SendString("\n"),
   },
-
 }
 
 -- Add session management key bindings
 for _, key in ipairs(session.get_keys()) do
+  table.insert(config.keys, key)
+end
+
+-- Add copy mode key bindings
+for _, key in ipairs(copy_mode.get_keys()) do
   table.insert(config.keys, key)
 end
 
@@ -212,6 +217,11 @@ if is_windows then
     action = act.PasteFrom "Clipboard"
   })
 end
+
+------------------------------
+-- Copy mode key table
+------------------------------
+config.key_tables = copy_mode.get_key_tables()
 
 ------------------------------
 -- Local config
