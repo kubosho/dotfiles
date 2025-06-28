@@ -33,8 +33,9 @@ setopt correct
 # ------------------------------
 
 alias c="cursor"
-alias cc='claude -p'
-alias claude-stream='claude -p --verbose --output-format=stream-json'
+alias cc="claude -p"
+alias ccusage="deno run -E -R=$HOME/.claude -R=/var/folders/ -R=$XDG_CONFIG_HOME/claude -S=homedir -N='raw.githubusercontent.com:443' --no-prompt npm:ccusage@latest"
+alias claude-stream="claude -p --verbose --output-format=stream-json"
 alias g="git"
 alias t="tmux"
 alias v="nvim"
