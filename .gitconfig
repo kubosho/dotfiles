@@ -19,7 +19,7 @@
 	pl = pull
 	ps = push
 	rb = rebase
-	ri = rebase --interactive --autosquash
+	ri = "!git rebase --interactive --autosquash $(git log --oneline | fzf | cut -d ' ' -f 1)~"
 	rs = restore
 	st = status
 	sw = switch
