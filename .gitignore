@@ -28,7 +28,7 @@ wezterm_workspace*
 !.config/zsh/
 
 # Git worktree
-**/wt-*/
+**/.git-worktrees/
 
 # Wezterm
 .config/wezterm/local.lua

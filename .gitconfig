@@ -3,6 +3,9 @@
 
 [alias]
 	zzz-fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+	zzz-wt-add-internal = "!f() { branch=$1; git worktree add \".git-worktrees/$branch\" \"$branch\"; }; f"
+	zzz-wt-create-internal = "!f() { branch=$1; git worktree add \".git-worktrees/$branch\" -b \"$branch\"; }; f"
+	zzz-wt-remove-internal = "!git worktree remove $(git worktree list | fzf | awk '{print $1}')"
 	ad = add
 	br = branch
 	bs = bisect
@@ -24,7 +27,13 @@
 	st = status
 	sw = "!f() { if [ $# -gt 0 ]; then git switch \"$@\"; else git switch $(git branch | fzf); fi; }; f"
 	wt = worktree
-	wt-add = "!f() { name=$1; shift; git worktree add \"wt-$name\" \"$@\"; }; f"
+	wt-add = "!git zzz-wt-add-internal"
+	wt-ad = "!git zzz-wt-add-internal"
+	wt-create = "!git zzz-wt-create-internal"
+	wt-cr = "!git zzz-wt-create-internal"
+	wt-path = "!git worktree list | fzf | awk '{print $1}'"
+	wt-remove = "!git zzz-wt-remove-internal"
+	wt-rm = "!git zzz-wt-remove-internal"
 
 [color]
 	branch = auto
