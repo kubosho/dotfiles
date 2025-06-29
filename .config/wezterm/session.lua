@@ -80,11 +80,6 @@ function M.get_keys()
       action = act({ EmitEvent = "delete_session" }),
     },
     {
-      key = "l",
-      mods = "LEADER",
-      action = act({ EmitEvent = "load_session" }),
-    },
-    {
       key = "r",
       mods = "LEADER",
       action = act({ EmitEvent = "restore_session" }),
