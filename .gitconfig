@@ -2,6 +2,7 @@
 	path = ~/.gitconfig.local
 
 [alias]
+	zzz-fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
 	ad = add
 	br = branch
 	bs = bisect
@@ -9,7 +10,7 @@
 	ci = commit
 	co = checkout
 	df = diff
-	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+	fixup = !sh -c 'git zzz-fixup $(git log --oneline | fzf | cut -d \" \" -f 1)' -
 	ft = fetch
 	gcl = "!$HOME/.tools/cleanup-branches.sh"
 	gr = grep
