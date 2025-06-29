@@ -2,6 +2,7 @@ local wezterm = require "wezterm"
 
 local constants = require "./constants"
 local copy_mode = require "./copy_mode"
+local pane = require "./pane"
 local status = require "./status"
 local wsl = require "./wsl"
 local session = require "./session"
@@ -201,6 +202,11 @@ config.keys = {
 
 -- Add session management key bindings
 for _, key in ipairs(session.get_keys()) do
+  table.insert(config.keys, key)
+end
+
+-- Add pane key bindings
+for _, key in ipairs(pane.get_keys()) do
   table.insert(config.keys, key)
 end
 
