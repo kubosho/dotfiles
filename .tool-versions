@@ -6,3 +6,6 @@ python 3.13.2
 rust   1.87.0
 task   3.43.3
 uv     0.7.8
+
+npm:@anthropic-ai/claude-code latest
+npm:@google/gemini-cli latest
