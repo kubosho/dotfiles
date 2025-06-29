@@ -225,11 +225,6 @@ if is_windows then
 end
 
 ------------------------------
--- Copy mode key table
-------------------------------
-config.key_tables = copy_mode.get_key_tables()
-
-------------------------------
 -- Local config
 ------------------------------
 if has_local and local_module and local_module.get_config then
