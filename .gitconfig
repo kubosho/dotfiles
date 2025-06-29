@@ -11,7 +11,7 @@
 	df = diff
 	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
 	ft = fetch
-	gcl = !sh -c '$HOME/.tools/cleanup-branches.sh'
+	gcl = "!$HOME/.tools/cleanup-branches.sh"
 	gr = grep
 	grr = grep --break --heading
 	logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
