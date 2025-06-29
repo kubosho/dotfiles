@@ -1,7 +1,7 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-wezterm.plugin.require("https://github.com/abidibo/wezterm-sessions")
+wezterm.plugin.require("https://github.com/kubosho/wezterm-sessions")
 
 local M = {}
 
