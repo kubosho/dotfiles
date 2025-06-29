@@ -22,7 +22,7 @@
 	ri = "!git rebase --interactive --autosquash $(git log --oneline | fzf | cut -d ' ' -f 1)~"
 	rs = restore
 	st = status
-	sw = switch
+	sw = "!f() { if [ $# -gt 0 ]; then git switch \"$@\"; else git switch $(git branch | fzf); fi; }; f"
 	wt = worktree
 	wt-add = "!f() { name=$1; shift; git worktree add \"wt-$name\" \"$@\"; }; f"
 
