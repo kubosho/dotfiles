@@ -1,4 +1,4 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 local act = wezterm.action
 
 wezterm.plugin.require("https://github.com/kubosho/wezterm-sessions")
@@ -23,7 +23,7 @@ local function create_save_state()
 
     update_save_time = function()
       last_save_time = os.time()
-    end
+    end,
   }
 end
 
@@ -75,8 +75,8 @@ end
 function M.get_keys()
   return {
     {
-      key = 'd',
-      mods = 'LEADER',
+      key = "d",
+      mods = "LEADER",
       action = act({ EmitEvent = "delete_session" }),
     },
     {

@@ -1,11 +1,10 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 
-local constants = require "./constants"
-local copy_mode = require "./copy_mode"
-local pane = require "./pane"
-local status = require "./status"
-local wsl = require "./wsl"
-local session = require "./session"
+local constants = require("./constants")
+local copy_mode = require("./copy_mode")
+local pane = require("./pane")
+local status = require("./status")
+local wsl = require("./wsl")
 
 local has_local, local_module = pcall(require, "./local")
 
@@ -26,7 +25,7 @@ end)
 
 -- Workaround: Gradient grainy
 -- https://github.com/wez/wezterm/issues/4813
-wezterm.on('window-resized', function()
+wezterm.on("window-resized", function()
   wezterm.reload_configuration()
 end)
 
@@ -141,14 +140,14 @@ end)
 ------------------------------
 -- Text
 ------------------------------
-config.font = wezterm.font_with_fallback {
+config.font = wezterm.font_with_fallback({
   { family = "Inconsolata Nerd Font Mono" },
   { family = "Inconsolata Nerd Font Mono", assume_emoji_presentation = true },
   { family = "Bizin Gothic" },
   { family = "Cascadia Code" },
   { family = "Monaco" },
   { family = "Consolas" },
-}
+})
 
 if is_windows then
   config.font_size = 14
@@ -166,7 +165,7 @@ end
 config.leader = {
   key = "t",
   mods = "CTRL",
-  timeout_milliseconds = 2000
+  timeout_milliseconds = 2000,
 }
 
 config.keys = {
@@ -175,21 +174,21 @@ config.keys = {
   {
     key = ",",
     mods = "LEADER",
-    action = act.PromptInputLine {
+    action = act.PromptInputLine({
       description = "Enter new tab name",
       action = wezterm.action_callback(function(window, _, line)
         if line then
           window:active_tab():set_title(line)
         end
       end),
-    },
+    }),
   },
 
   -- Spawn new tab
   {
     key = "c",
     mods = "LEADER",
-    action = act.SpawnTab "CurrentPaneDomain",
+    action = act.SpawnTab("CurrentPaneDomain"),
   },
 
   -- Shift + Enter in CLI
@@ -220,7 +219,7 @@ if is_windows then
   table.insert(config.keys, {
     key = "v",
     mods = "CTRL|SHIFT",
-    action = act.PasteFrom "Clipboard"
+    action = act.PasteFrom("Clipboard"),
   })
 end
 
