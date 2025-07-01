@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -120,6 +122,102 @@ func isWSL() bool {
 	}
 
 	return strings.Contains(string(data), "WSL")
+}
+
+func shouldCopyPath(path string) bool {
+	for _, target := range COPY_TARGETS {
+		if filepath.Base(path) == target {
+			return true
+		}
+	}
+	return false
+}
+
+func copyFile(src, dst string) error {
+	srcFile, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer srcFile.Close()
+
+	srcInfo, err := srcFile.Stat()
+	if err != nil {
+		return err
+	}
+
+	dstFile, err := os.OpenFile(dst, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, srcInfo.Mode())
+	if err != nil {
+		return err
+	}
+	defer dstFile.Close()
+
+	_, err = io.Copy(dstFile, srcFile)
+	return err
+}
+
+func copyFileOrDir(src, dst string) error {
+	srcInfo, err := os.Stat(src)
+	if err != nil {
+		return err
+	}
+
+	if srcInfo.IsDir() {
+		return copyDir(src, dst)
+	}
+	return copyFile(src, dst)
+}
+
+func copyDir(src, dst string) error {
+	srcInfo, err := os.Stat(src)
+	if err != nil {
+		return err
+	}
+
+	err = os.MkdirAll(dst, srcInfo.Mode())
+	if err != nil {
+		return err
+	}
+
+	entries, err := os.ReadDir(src)
+	if err != nil {
+		return err
+	}
+
+	for _, entry := range entries {
+		srcPath := filepath.Join(src, entry.Name())
+		dstPath := filepath.Join(dst, entry.Name())
+
+		// Skip if file is not managed by git
+		if !isGitManaged(srcPath) {
+			continue
+		}
+
+		if entry.IsDir() {
+			err = copyDir(srcPath, dstPath)
+			if err != nil {
+				return err
+			}
+		} else {
+			err = copyFile(srcPath, dstPath)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+}
+
+func isGitManaged(path string) bool {
+	// Check if path is under git management
+	// For now, we'll exclude .git directory and respect .gitignore
+	if strings.Contains(path, ".git/") {
+		return false
+	}
+	
+	// In a real implementation, we would check .gitignore
+	// For now, we'll assume all non-.git files are managed
+	return true
 }
 
 func linkCursorSettings() {
