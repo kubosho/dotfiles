@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 
 local constants = require("./constants")
 local copy_mode = require("./copy_mode")
+local llm_cli = require("./llm_cli")
 local pane = require("./pane")
 local status = require("./status")
 local wsl = require("./wsl")
@@ -27,6 +28,23 @@ end)
 -- https://github.com/wez/wezterm/issues/4813
 wezterm.on("window-resized", function()
   wezterm.reload_configuration()
+end)
+
+wezterm.on("bell", function(window, pane)
+  if llm_cli.is_claude(pane) then
+    local claude_state = llm_cli.detect_claude_state(pane)
+    local tab_id = llm_cli.get_tab_id(window, pane)
+    local notification = llm_cli.notification_message_from_claude(tab_id, claude_state)
+
+    if notification then
+      window:toast_notification(
+        notification.title,
+        notification.message,
+        nil,
+        notification.timeout
+      )
+    end
+  end
 end)
 
 ------------------------------
