@@ -326,12 +326,37 @@ func main() {
 		n := filepath.Base(f)
 		dst := home + "/" + n
 		
-		if dryRun {
-			log.Printf("Would create symlink: %s -> %s", f, dst)
-		} else {
-			err := createSymlink(f, dst)
+		// Check if this path should be copied instead of symlinked
+		if shouldCopyPath(f) {
+			// Handle existing path
+			err := handleExistingPath(dst, dryRun)
 			if err != nil {
+				if strings.Contains(err.Error(), "skipping") {
+					log.Printf("Skipping %s", dst)
+					continue
+				}
 				log.Fatal(err)
+			}
+			
+			// Copy the file or directory
+			if dryRun {
+				log.Printf("Would copy: %s -> %s", f, dst)
+			} else {
+				log.Printf("Copying: %s -> %s", f, dst)
+				err := copyFileOrDir(f, dst)
+				if err != nil {
+					log.Fatal(err)
+				}
+			}
+		} else {
+			// Create symlink as before
+			if dryRun {
+				log.Printf("Would create symlink: %s -> %s", f, dst)
+			} else {
+				err := createSymlink(f, dst)
+				if err != nil {
+					log.Fatal(err)
+				}
 			}
 		}
 	}
