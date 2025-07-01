@@ -7,6 +7,9 @@
     "version": "LuaJIT"
   },
   "workspace": {
-    "library": ["lua", "$VIMRUNTIME", "${3rd}/luv/library"]
+    "ignoreDir": ["/.vscode", "/3rd", "/libs/", "/locale/", "/meta", "/node_modules"],
+    "library": ["lua", "$VIMRUNTIME", "${3rd}/luv/library"],
+    "maxPreload": 1600,
+    "preloadFileSize": 1000
   }
 }
