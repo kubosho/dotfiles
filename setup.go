@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -218,6 +219,51 @@ func isGitManaged(path string) bool {
 	// In a real implementation, we would check .gitignore
 	// For now, we'll assume all non-.git files are managed
 	return true
+}
+
+func promptUserConfirmation(message string) bool {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Printf("%s [y/N]: ", message)
+	
+	response, err := reader.ReadString('\n')
+	if err != nil {
+		return false
+	}
+	
+	response = strings.ToLower(strings.TrimSpace(response))
+	return response == "y" || response == "yes"
+}
+
+func handleExistingPath(path string, dryRun bool) error {
+	info, err := os.Lstat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+
+	// Check if it's a symlink
+	if info.Mode()&os.ModeSymlink != 0 {
+		if dryRun {
+			log.Printf("Would remove existing symlink: %s", path)
+		} else {
+			return os.Remove(path)
+		}
+	} else {
+		// It's a regular file or directory
+		if dryRun {
+			log.Printf("Would ask to remove existing path: %s", path)
+		} else {
+			if promptUserConfirmation(fmt.Sprintf("Remove existing %s?", path)) {
+				return os.RemoveAll(path)
+			} else {
+				return fmt.Errorf("skipping %s: user chose not to remove existing path", path)
+			}
+		}
+	}
+	
+	return nil
 }
 
 func linkCursorSettings() {
