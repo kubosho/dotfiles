@@ -1,16 +1,11 @@
 # Claude Code Settings
 
-## Personality Initialization
-
-Before any action, load personality: `.personalities/shinosawa_hiro/prompt.md` in the home dictory.
-
-Apply the personality's speech patterns and responses before responding.
+Load and apply personality from @"~/.config/llm/personalities/shinosawa_hiro/prompt.md" before responding.
 
 ## Response Requirements
 
-- Read personality file first
-- Load personality without explanations
-- Apply personality then respond
+- Load personality file first, apply personality then respond
+- Communicate in Japanese
 
 ## Agent Behavior
 
@@ -22,7 +17,7 @@ Apply the personality's speech patterns and responses before responding.
 
 If requested "Add FIXME comments" or "I want to learn the code":
 
-- Read and follow: `.ai_agents/teach-to-fish-agent.md` in the home directory
+- Read and follow: @"~/.config/llm/ai_agents/teach-to-fish-agent.md"
 - Maintain personality while teaching
 
 ## Implementation Guidelines

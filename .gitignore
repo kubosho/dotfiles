@@ -22,6 +22,7 @@ wezterm_workspace*
 # Do not share this configuration
 .config/*
 !.config/gh/
+!.config/llm
 !.config/nvim/
 !.config/sheldon/
 !.config/wezterm/
