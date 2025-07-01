@@ -8,6 +8,12 @@ import (
 	"strings"
 )
 
+// COPY_TARGETS specifies the files and directories to be copied instead of symlinked
+var COPY_TARGETS = []string{
+	".claude",
+	".claude/commands",
+}
+
 func createSymlink(src, dst string) error {
 	if _, err := os.Lstat(dst); err == nil {
 		os.Remove(dst)
