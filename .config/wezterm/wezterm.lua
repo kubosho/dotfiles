@@ -6,6 +6,7 @@ local llm_cli = require("./llm_cli")
 local pane = require("./pane")
 local status = require("./status")
 local wsl = require("./wsl")
+-- local session = require("./session")
 
 local has_local, local_module = pcall(require, "./local")
 
@@ -71,7 +72,7 @@ end)
 config.automatically_reload_config = true
 wezterm.on("window-config-reloaded", function()
   wezterm.log_info("The config was reloaded!")
-  session.setup_auto_save()
+  -- session.setup_auto_save()
 end)
 
 ------------------------------
@@ -218,9 +219,9 @@ config.keys = {
 }
 
 -- Add session management key bindings
-for _, key in ipairs(session.get_keys()) do
-  table.insert(config.keys, key)
-end
+-- for _, key in ipairs(session.get_keys()) do
+--   table.insert(config.keys, key)
+-- end
 
 -- Add pane key bindings
 for _, key in ipairs(pane.get_keys()) do
