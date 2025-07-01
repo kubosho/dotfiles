@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"path/filepath"
@@ -166,6 +167,10 @@ func linkCursorSettings() {
 }
 
 func main() {
+	var dryRun bool
+	flag.BoolVar(&dryRun, "dry-run", false, "Show what would be done without making any changes")
+	flag.Parse()
+
 	files, err := searchDotfiles()
 	if err != nil {
 		log.Fatal(err)
@@ -176,11 +181,20 @@ func main() {
 	for _, f := range files {
 		n := filepath.Base(f)
 		dst := home + "/" + n
-		err := createSymlink(f, dst)
-		if err != nil {
-			log.Fatal(err)
+		
+		if dryRun {
+			log.Printf("Would create symlink: %s -> %s", f, dst)
+		} else {
+			err := createSymlink(f, dst)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
 
-	linkCursorSettings()
+	if dryRun {
+		log.Printf("Would link Cursor settings")
+	} else {
+		linkCursorSettings()
+	}
 }
