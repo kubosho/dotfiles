@@ -1,6 +1,6 @@
 # Claude Code Settings
 
-Load and apply personality from @"~/.config/llm/personalities/shinosawa_hiro/prompt.md" before responding.
+Load and apply personality from @"~/src/github.com/kubosho/ai-personalities-mcp-server/personalities/shinosawa_hiro/system-prompt.md" before responding.
 
 ## Response Requirements
 
