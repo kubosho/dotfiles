@@ -30,18 +30,17 @@
     ],
     "deny": [
       "Bash(bun test:*)",
-      "Bash(git cherry-pick*)",
-      "Bash(git clean*)",
-      "Bash(git filter-branch*)",
-      "Bash(git filter-repo*)",
-      "Bash(git gc*)",
-      "Bash(git merge*)",
-      "Bash(git push*)",
-      "Bash(git rebase*)",
-      "Bash(git reset*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git clean:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git filter-repo:*)",
+      "Bash(git gc:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
       "Bash(npm publish)",
-      "Bash(rm -rf*)",
-      "Bash(sudo*)"
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)"
     ]
   }
 }
