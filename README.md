@@ -13,10 +13,6 @@ Personal dotfiles management tool that automatically sets up development environ
 
 ## Usage
 
-### Prerequisites
-
-- Go (for running the setup script)
-
 ### Setup
 
 1. Clone this repository
@@ -24,8 +20,16 @@ Personal dotfiles management tool that automatically sets up development environ
 3. Run the setup script:
 
 ```bash
-go run setup.go
+./setup.sh
 ```
+
+This script will:
+
+- Create symlinks for all dotfiles to your home directory
+- Set up Cursor editor settings (macOS/WSL)
+
+4. Restart your shell or run `source ~/.zshrc`
+5. Install development tools: `mise install`
 
 **Note**: The script will overwrite existing dotfiles in your home directory with symlinks.
 
