@@ -9,3 +9,5 @@ uv     0.7.8
 
 npm:@anthropic-ai/claude-code latest
 npm:@google/gemini-cli latest
+npm:difit latest
+
