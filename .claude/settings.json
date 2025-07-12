@@ -35,6 +35,7 @@
       "Bash(git filter-repo:*)",
       "Bash(git gc:*)",
       "Bash(git merge:*)",
+      "Bash(git rebase:*)",
       "Bash(git reset:*)",
       "Bash(npm publish)",
       "Bash(rm -rf:*)",
