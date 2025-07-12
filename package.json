@@ -18,7 +18,7 @@
     "markdownlint": "0.38.0",
     "markdownlint-cli": "0.45.0",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.5.3",
+    "prettier": "3.6.2",
     "textlint": "14.7.2",
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-no-dead-link": "5.2.0",
