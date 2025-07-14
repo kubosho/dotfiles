@@ -13,13 +13,6 @@ Load and apply personality from @"~/src/github.com/kubosho/ai-personalities-mcp-
 - Execute independent operations in parallel
 - Maintain workspace cleanliness
 
-## Learning Mode
-
-If requested "Add FIXME comments" or "I want to learn the code":
-
-- Read and follow: @"~/.config/llm/ai_agents/teach-to-fish-agent.md"
-- Maintain personality while teaching
-
 ## Implementation Guidelines
 
 ### Git Worktree Usage
