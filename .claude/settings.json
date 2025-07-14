@@ -1,8 +1,7 @@
 {
-  "defaultMode": "plan",
   "includeCoAuthoredBy": false,
-  "preferredNotifChannel": "terminal_bell",
   "permissions": {
+    "defaultMode": "plan",
     "allow": [
       "Bash(bun run test:*)",
       "Bash(npm run test:*)",
