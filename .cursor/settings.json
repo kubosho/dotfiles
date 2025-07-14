@@ -1,100 +1,101 @@
 {
-	"[github-actions-workflow]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[go]": {
-		"editor.defaultFormatter": "golang.go"
-	},
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[markdown]": {
-		"editor.acceptSuggestionOnEnter": "off",
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": false,
-		"editor.quickSuggestions": {
-			"comments": false,
-			"other": true,
-			"strings": false
-		}
-	},
-	"[python]": {
-		"editor.defaultFormatter": "charliermarsh.ruff"
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-	"[toml]": {
-		"editor.defaultFormatter": "tamasfe.even-better-toml"
-	},
-	"chat.editor.wordWrap": "on",
-	"cursor.composer.shouldChimeAfterChatFinishes": true,
-	"cursor.cpp.disabledLanguages": ["markdown", "plaintext", "untitled"],
-	"cursorStats.currency": "JPY",
-	"cursorStats.progressBarCriticalThreshold": 90,
-	"cursorStats.showProgressBars": true,
-	"cursorStats.showTotalRequests": true,
-	"cursorStats.statusBarColorThresholds": [
-		{
-			"percentage": 100,
-			"color": "#aa00aa"
-		},
-		{
-			"percentage": 90,
-			"color": "#ff4b00"
-		},
-		{
-			"percentage": 70,
-			"color": "#f6aa00"
-		},
-		{
-			"percentage": 50,
-			"color": "#f2e700"
-		},
-		{
-			"percentage": 0,
-			"color": "#00b06b"
-		}
-	],
-	"cursorStats.usageAlertThresholds": [50, 75, 90, 100],
-	"diffEditor.ignoreTrimWhitespace": false,
-	"editor.accessibilitySupport": "off",
-	"editor.cursorBlinking": "solid",
-	"editor.defaultFormatter": "biomejs.biome",
-	"editor.fontFamily": "'Bizin Gothic', 'Cascadia Code', monospace",
-	"editor.fontLigatures": true,
-	"editor.fontSize": 16,
-	"editor.formatOnSave": true,
-	"editor.inlineSuggest.enabled": true,
-	"editor.lineNumbers": "on",
-	"editor.renderLineHighlight": "gutter",
-	"editor.tabSize": 2,
-	"editor.wordWrap": "on",
-	"extensions.experimental.affinity": {
-		"asvetliakov.vscode-neovim": 1
-	},
-	"files.associations": {
-		"*.mdc": "markdown"
-	},
-	"files.autoSave": "afterDelay",
-	"files.autoSaveDelay": 3000,
-	"files.autoSaveWhenNoErrors": true,
-	"git.blame.editorDecoration.enabled": true,
-	"go.toolsManagement.autoUpdate": true,
-	"javascript.updateImportsOnFileMove.enabled": "always",
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"screencastMode.fontSize": 48,
-	"security.workspace.trust.untrustedFiles": "open",
-	"terminal.integrated.fontSize": 14,
-	"terminal.integrated.lineHeight": 1.5,
-	"update.releaseTrack": "prerelease",
-	"update.showReleaseNotes": false,
-	"workbench.activityBar.orientation": "vertical",
-	"workbench.colorTheme": "Lapis Aquamarine Light",
-	"workbench.editorAssociations": {
-		"*.mdc": "default"
-	}
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[markdown]": {
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": false
+    }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "biome.suggestInstallingGlobally": false,
+  "chat.editor.wordWrap": "on",
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "cursor.cpp.disabledLanguages": ["markdown", "plaintext", "untitled"],
+  "cursorStats.currency": "JPY",
+  "cursorStats.progressBarCriticalThreshold": 90,
+  "cursorStats.showProgressBars": true,
+  "cursorStats.showTotalRequests": true,
+  "cursorStats.statusBarColorThresholds": [
+    {
+      "percentage": 100,
+      "color": "#aa00aa"
+    },
+    {
+      "percentage": 90,
+      "color": "#ff4b00"
+    },
+    {
+      "percentage": 70,
+      "color": "#f6aa00"
+    },
+    {
+      "percentage": 50,
+      "color": "#f2e700"
+    },
+    {
+      "percentage": 0,
+      "color": "#00b06b"
+    }
+  ],
+  "cursorStats.usageAlertThresholds": [50, 75, 90, 100],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  "editor.cursorBlinking": "solid",
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.fontFamily": "'Bizin Gothic', 'Cascadia Code', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "on",
+  "editor.renderLineHighlight": "gutter",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "files.associations": {
+    "*.mdc": "markdown"
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 3000,
+  "files.autoSaveWhenNoErrors": true,
+  "git.blame.editorDecoration.enabled": true,
+  "go.toolsManagement.autoUpdate": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "screencastMode.fontSize": 48,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.lineHeight": 1.5,
+  "update.releaseTrack": "prerelease",
+  "update.showReleaseNotes": false,
+  "workbench.activityBar.orientation": "vertical",
+  "workbench.colorTheme": "Lapis Aquamarine Light",
+  "workbench.editorAssociations": {
+    "*.mdc": "default"
+  }
 }
