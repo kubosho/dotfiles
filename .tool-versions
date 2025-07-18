@@ -5,7 +5,7 @@ nodejs 24.4.0
 python 3.13.5
 rust   1.88.0
 task   3.44.0
-uv     0.7.20
+uv     0.7.21
 
 npm:@anthropic-ai/claude-code latest
 npm:@google/gemini-cli latest
