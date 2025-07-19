@@ -1,7 +1,7 @@
 bun    1.2.18
 deno   2.4.1
 go     1.24.5
-nodejs 24.4.0
+nodejs 24.4.1
 python 3.13.5
 rust   1.88.0
 task   3.44.0
