@@ -4,7 +4,7 @@ go     1.24.6
 nodejs 24.4.1
 python 3.13.5
 rust   1.89.0
-task   3.44.0
+task   3.44.1
 uv     0.8.10
 
 npm:@anthropic-ai/claude-code latest
