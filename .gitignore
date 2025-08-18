@@ -24,6 +24,7 @@ wezterm_workspace*
 !.config/gh/*
 .config/gh/hosts.yml
 !.config/llm
+!.config/mise/
 !.config/nvim/
 !.config/sheldon/
 !.config/wezterm/
