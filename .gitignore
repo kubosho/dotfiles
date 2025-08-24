@@ -70,6 +70,5 @@ wezterm_workspace*
 **/.ccspecs/*
 **/.claude/*
 **/CLAUDE.local.md
-**/CLAUDE.md
-!./.claude/CLAUDE.md
-!./.claude/settings.json
+!/.claude/commands/
+!/.claude/commands/*
