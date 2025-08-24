@@ -67,6 +67,7 @@ wezterm_workspace*
 .cursorindexingignore
 
 # Claude
+**/.ccspecs/*
 **/.claude/*
 **/CLAUDE.local.md
 **/CLAUDE.md
