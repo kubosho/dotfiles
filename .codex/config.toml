@@ -1,0 +1,9 @@
+hide_agent_reasoning = true
+model_reasoning_effort = "high"
+
+[mcp_servers.serena]
+command = "uvx"
+args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "codex"]
+
+[projects."/home/kubosho/src/github.com/kubosho/blog.kubosho.com"]
+trust_level = "trusted"
