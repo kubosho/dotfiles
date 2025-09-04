@@ -72,3 +72,8 @@ wezterm_workspace*
 **/CLAUDE.local.md
 !/.claude/commands/
 !/.claude/commands/*
+
+# Codex
+**/.codex/*
+!**/.codex/AGENTS.md
+!**/.codex/config.toml
