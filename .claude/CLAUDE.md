@@ -9,6 +9,8 @@
 - Clean up temporary files upon task completion
 - Execute independent operations in parallel
 - Maintain workspace cleanliness
+- Write code comments in English
+- Do not write comments that are already obvious from the code or that simply indicate code removal
 
 ## Implementation Guidelines
 
