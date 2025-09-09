@@ -1,4 +1,5 @@
 # Directories
+.ai_specs/
 .idea/
 .obsidian/
 .qodo/
@@ -67,7 +68,6 @@ wezterm_workspace*
 .cursorindexingignore
 
 # Claude
-**/.ccspecs/*
 **/.claude/*
 **/CLAUDE.local.md
 !/.claude/commands/
