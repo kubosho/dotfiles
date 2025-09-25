@@ -11,4 +11,5 @@ npm:@google/gemini-cli        latest
 npm:@openai/codex             latest
 npm:difit                     latest
 npm:opencode-ai               latest
+npm:pnpm                      latest
 npm:wrangler                  latest
