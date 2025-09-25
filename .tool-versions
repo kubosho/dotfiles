@@ -1,5 +1,5 @@
 bun                           1.2.22
-deno                          2.5.0
+deno                          2.5.1
 golang                        1.25.1
 nodejs                        24.6.0
 python                        3.13.7
