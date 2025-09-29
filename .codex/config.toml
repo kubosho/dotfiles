@@ -7,3 +7,6 @@ args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-s
 
 [projects."/home/kubosho/src/github.com/kubosho/blog.kubosho.com"]
 trust_level = "trusted"
+
+[projects."/home/kubosho/src/github.com/kubosho/articles"]
+trust_level = "trusted"
