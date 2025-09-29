@@ -4,7 +4,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      style = "day",
+      style = "moon",
       light_style = "day",
       transparent = true,
       terminal_colors = true,
@@ -22,9 +22,5 @@ return {
       dim_inactive = false,
       lualine_bold = false,
     },
-    config = function(_, opts)
-      require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-day")
-    end,
   },
 }
