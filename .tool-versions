@@ -1,15 +1,22 @@
-bun                           1.2.22
-deno                          2.5.1
-golang                        1.25.1
-nodejs                        24.8.0
-python                        3.13.7
-rust                          1.90.0
-task                          3.45.4
-uv                            0.8.19
-npm:@anthropic-ai/claude-code latest
-npm:@google/gemini-cli        latest
-npm:@openai/codex             latest
-npm:difit                     latest
-npm:opencode-ai               latest
-npm:pnpm                      latest
-npm:wrangler                  latest
+bun                              1.2.22
+deno                             2.5.0
+golang                           1.25.1
+nodejs                           24.6.0
+python                           3.13.7
+rust                             1.90.0
+task                             3.45.4
+uv                               0.8.19
+npm:@anthropic-ai/claude-code    latest
+npm:@github/copilot              latest
+npm:@google/gemini-cli           latest
+npm:@openai/codex                latest
+npm:difit                        latest
+npm:opencode-ai                  latest
+npm:pnpm                         latest
+npm:wrangler                     latest
+
+# For Neovim
+npm:typescript                   latest
+npm:typescript-language-server   latest
+npm:vscode-langservers-extracted latest
+npm:yaml-language-server         latest
