@@ -1,4 +1,6 @@
+approval_policy = "untrusted"
 hide_agent_reasoning = true
+model = "gpt-5-codex"
 model_reasoning_effort = "high"
 
 [mcp_servers.serena]
@@ -10,3 +12,6 @@ trust_level = "trusted"
 
 [projects."/home/kubosho/src/github.com/kubosho/articles"]
 trust_level = "trusted"
+
+[tools]
+web_search = true
