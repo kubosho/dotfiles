@@ -1,7 +1,6 @@
 {
   "includeCoAuthoredBy": false,
   "permissions": {
-    "defaultMode": "plan",
     "allow": [
       "Bash(bun run test:*)",
       "Bash(npm run test:*)",
@@ -39,6 +38,8 @@
       "Bash(npm publish)",
       "Bash(rm -rf:*)",
       "Bash(sudo:*)"
-    ]
-  }
+    ],
+    "defaultMode": "plan"
+  },
+  "alwaysThinkingEnabled": true
 }
