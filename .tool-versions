@@ -1,6 +1,6 @@
 bun                              1.2.23
 deno                             2.5.3
-golang                           1.25.1
+golang                           1.25.2
 nodejs                           24.10.0
 python                           3.13.7
 rust                             1.90.0
