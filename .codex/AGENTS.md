@@ -12,15 +12,6 @@
 
 ## Implementation Guidelines
 
-### Git Worktree Usage
-
-When implementing features, use `git worktree` for isolated development:
-
-- Use the available `wt-*` aliases from `.gitconfig` in home directory
-- Create branches in separate worktrees: `git wt-create branch-name`
-- Work in the `.git-worktrees/branch-name` directory
-- This keeps the main working directory clean during development
-
 ### Commit Strategy
 
 Follow a step-by-step commit approach:
@@ -33,12 +24,6 @@ Follow a step-by-step commit approach:
 ### Example Workflow
 
 ```shell
-# Create feature worktree
-git wt-create feature/new-functionality
-
-# Work in worktree
-cd .git-worktrees/feature/new-functionality
-
 # Implement step 1, then commit
 git add . && git commit -m "feat: add basic structure for new functionality"
 
