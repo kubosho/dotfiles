@@ -1,7 +1,6 @@
 approval_policy = "untrusted"
-hide_agent_reasoning = true
 model = "gpt-5-codex"
-model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
 
 [mcp_servers.serena]
 command = "uvx"
@@ -15,6 +14,9 @@ trust_level = "trusted"
 
 [projects."/home/kubosho/src/github.com/kubosho/sensei-mode"]
 trust_level = "trusted"
+
+[sandbox_workspace_write]
+network_access = true
 
 [tools]
 web_search = true
