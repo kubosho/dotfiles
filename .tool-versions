@@ -7,7 +7,6 @@ rust                                1.90.0
 task                                3.45.5
 uv                                  0.9.3
 go:github.com/evilmartians/lefthook latest
-npm:@anthropic-ai/claude-code       latest
 npm:@devcontainers/cli              latest
 npm:@github/copilot                 latest
 npm:@google/gemini-cli              latest
