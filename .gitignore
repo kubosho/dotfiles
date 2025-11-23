@@ -12,7 +12,6 @@ node_modules/
 *.swp
 .DS_Store
 .clinerules
-.env
 wezterm_state*
 wezterm_workspace*
 
