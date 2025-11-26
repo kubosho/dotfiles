@@ -65,5 +65,10 @@ if [ -f /proc/version ]; then
   fi
 fi
 
+# Snapcraft
+if [ -d "/snap/bin" ]; then
+  export PATH="/snap/bin:${PATH}"
+fi
+
 # Runtime
 export PATH="${XDG_CACHE_HOME}/.bun/bin:${PATH}"
