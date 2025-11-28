@@ -60,6 +60,8 @@ if [ -f /proc/version ]; then
   if grep -qEi "(WSL)" /proc/version; then
     export PATH="${WINDOWS_OPENSSH_PATH}:${WINDOWS_PWSH_PATH}:${WINDOWS_SYSTEM_PATH}:${WINDOWS_PATH}:${WINDOWS_CURSOR_PATH}:${WINDOWS_VSCODE_PATH}:${PATH}"
 
+    export BROWSER="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+
     # Homebrew on WSL
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
