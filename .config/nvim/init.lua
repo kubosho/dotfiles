@@ -36,7 +36,7 @@ if not vim.g.vscode then
 
   -- Show invisible characters
   vim.opt.list = true
-  vim.opt.listchars = { tab = '▸ ', trail = '-', nbsp = ' ' }
+  vim.opt.listchars = { tab = "▸ ", trail = "-", nbsp = " " }
 
   -- Enable true color support
   vim.opt.termguicolors = true
@@ -53,33 +53,33 @@ end
 vim.opt.clipboard = "unnamed"
 
 -- For Windows
-if vim.fn.has('win32') == 1 then
+if vim.fn.has("win32") == 1 then
   vim.g.clipboard = {
-    name = 'myClipboard',
+    name = "myClipboard",
     copy = {
-      ['+'] = 'win32yank.exe -i',
-      ['*'] = 'win32yank.exe -i',
+      ["+"] = "win32yank.exe -i",
+      ["*"] = "win32yank.exe -i",
     },
     paste = {
-      ['+'] = 'win32yank.exe -o',
-      ['*'] = 'win32yank.exe -o',
+      ["+"] = "win32yank.exe -o",
+      ["*"] = "win32yank.exe -o",
     },
     cache_enabled = 1,
   }
 
-  -- For WSL
+-- For WSL
 elseif vim.env.WINDOWS_PATH then
   vim.g.clipboard = {
-    name = 'WSL Clipboard',
+    name = "WSL Clipboard",
     copy = {
-      ['+'] = vim.env.WINDOWS_PATH .. '/System32/clip.exe',
-      ['*'] = vim.env.WINDOWS_PATH .. '/System32/clip.exe',
+      ["+"] = vim.env.WINDOWS_PATH .. "/System32/clip.exe",
+      ["*"] = vim.env.WINDOWS_PATH .. "/System32/clip.exe",
     },
     paste = {
-      ['+'] = vim.env.WINDOWS_PATH ..
-          '/System32/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = vim.env.WINDOWS_PATH ..
-          '/System32/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["+"] = vim.env.WINDOWS_PATH
+        .. '/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = vim.env.WINDOWS_PATH
+        .. '/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
     cache_enabled = 0,
   }
