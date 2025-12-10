@@ -22,7 +22,7 @@ if [ -f /proc/version ]; then
     export WINDOWS_PATH="/mnt/c/Windows"
     export WINDOWS_SYSTEM_PATH="${WINDOWS_PATH}/System32"
     export WINDOWS_OPENSSH_PATH="${WINDOWS_SYSTEM_PATH}/OpenSSH"
-    export WINDOWS_PWSH_PATH="/mnt/c/Program Files/PowerShell/7"
+    export WINDOWS_PWSH_PATH="/mnt/c/Program\ Files/PowerShell/7"
     export WINDOWS_HOME="/mnt/c/Users/${USER}"
     export WINDOWS_CURSOR_PATH="${WINDOWS_HOME}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
     export WINDOWS_VSCODE_PATH="${WINDOWS_HOME}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
