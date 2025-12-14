@@ -16,7 +16,7 @@
   "devDependencies": {
     "@kubosho/configs": "6.5.12",
     "markdownlint": "0.39.0",
-    "markdownlint-cli": "0.46.0",
+    "markdownlint-cli": "0.47.0",
     "npm-run-all2": "8.0.4",
     "prettier": "3.7.4",
     "textlint": "15.5.0",
