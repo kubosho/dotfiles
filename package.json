@@ -14,7 +14,7 @@
     "lint:text": "textlint \"**/*.md\""
   },
   "devDependencies": {
-    "@kubosho/configs": "6.5.14",
+    "@kubosho/configs": "6.5.15",
     "markdownlint": "0.40.0",
     "markdownlint-cli": "0.47.0",
     "npm-run-all2": "8.0.4",
