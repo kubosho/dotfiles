@@ -1,5 +1,5 @@
 {
-  "includeCoAuthoredBy": false,
+  "includeCoAuthoredBy": true,
   "permissions": {
     "allow": [
       "Bash(bun run test:*)",
@@ -41,5 +41,8 @@
     ],
     "defaultMode": "plan"
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  }
 }
