@@ -11,6 +11,8 @@ npm:@devcontainers/cli              latest
 npm:@github/copilot                 latest
 npm:@google/gemini-cli              latest
 npm:@openai/codex                   latest
+npm:ccstatusline                    latest
+npm:ccusage                         latest
 npm:difit                           latest
 npm:opencode-ai                     latest
 npm:pnpm                            latest
