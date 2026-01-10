@@ -97,7 +97,7 @@ config.use_ime = true
 -- Appearance
 ------------------------------
 config.adjust_window_size_when_changing_font_size = false
-config.color_scheme = "Tokyo Night Day"
+config.color_scheme = "Tokyo Night"
 config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 
