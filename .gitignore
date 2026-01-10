@@ -71,6 +71,7 @@ wezterm_workspace*
 **/CLAUDE.local.md
 !**/.claude/commands/
 !**/.claude/commands/*
+!**/.claude/settings.json
 
 # Codex
 **/.codex/*
