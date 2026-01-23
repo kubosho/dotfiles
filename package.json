@@ -21,7 +21,7 @@
     "prettier": "3.8.0",
     "textlint": "15.5.1",
     "textlint-filter-rule-comments": "1.2.2",
-    "textlint-rule-no-dead-link": "6.1.0",
+    "textlint-rule-no-dead-link": "6.2.0",
     "textlint-rule-no-doubled-joshi": "5.1.1",
     "textlint-rule-preset-jtf-style": "3.0.3"
   }
