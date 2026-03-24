@@ -1,81 +1,78 @@
-# Directories
-.ai_specs/
-.idea/
-.obsidian/
-.qodo/
-.sass-cache/
-configstore/
+# --------------------
+# Node.js
+# --------------------
+
 node_modules/
 
-# Files
-*.elc
-*.swp
-.DS_Store
-.clinerules
-wezterm_state*
-wezterm_workspace*
+# Nushell history
+dot_config/nushell/history.txt
 
-# Local files
-.gitconfig.local
-.zprivate
 
-# Do not share this configuration
-.config/*
-!.config/gh/*
-.config/gh/hosts.yml
-!.config/llm
-!.config/mise/
-!.config/nvim/
-!.config/sheldon/
-!.config/wezterm/
-!.config/zsh/
-
-# Git worktree
-**/.git-worktrees/
-
-# Wezterm
-.config/wezterm/local.lua
-
-# Dotfiles
-.config/systemd/**/tmux.service
-.config/tmux/plugins/*
-.config/zsh/anyenv/
-.config/zsh/configstore/
-
-# Emacs
-.emacs.d/.recentf
-.emacs.d/ac-comphist.dat
-.emacs.d/auto-save-list
-.emacs.d/el-get
-.emacs.d/history
-.emacs.d/rsense
-.emacs.d/site-lisp
-
-# Vim
-.vim/.netrwhist
-.vim/bundle
-
-# Neovim
-.config/nvim/lua/plugins/init.lua
-
-# Cursor
-.cursor/*
-!.cursor/settings.json
-.instructions/
-.specstory/
-.cursorignore
-.cursorindexingignore
-
+# --------------------
 # Claude
-**/.claude/*
-**/CLAUDE.local.md
-!**/.claude/commands/
-!**/.claude/commands/*
-!**/.claude/settings.json
+# --------------------
 
-# Codex
-**/.codex/*
-!**/.codex/AGENTS.md
-!**/.codex/config.toml
-!**/.codex/prompts/
-!**/.codex/prompts/*
+# Claude Code
+**/.claude/settings.local.json
+**/.serena/cache/*
+
+# Skill eval workspaces
+dot_claude/skills/*-workspace/
+
+
+# --------------------
+# Windows
+# --------------------
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+
+# --------------------
+# macOS
+# --------------------
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
