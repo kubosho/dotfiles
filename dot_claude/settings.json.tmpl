@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "JJ_EDITOR": "false"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(chezmoi *)",
+      "Bash(jj config:*)",
+      "Bash(jj diff:*)",
+      "Bash(jj evolog:*)",
+      "Bash(jj file list:*)",
+      "Bash(jj file show:*)",
+      "Bash(jj help:*)",
+      "Bash(jj interdiff:*)",
+      "Bash(jj log:*)",
+      "Bash(jj op log:*)",
+      "Bash(jj operation log:*)",
+      "Bash(jj root:*)",
+      "Bash(jj show:*)",
+      "Bash(jj status:*)",
+      "Bash(jj version:*)"
+    ],
+    "deny": [
+      "NotebookEdit"
+    ],
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-session-start.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-pre-tool-use.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-post-tool-use.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-stop-check.sh"
+          }
+        ]
+      }
+    ]
+  },
+{{- if eq .chezmoi.hostname "local" }}
+  "model": "opus[1m]",
+{{- end }}
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true,
+    "document-skills@anthropic-agent-skills": true,
+    "dig@kuu-marketplace": true,
+    "anti-slop-code@kubosho-skills": true,
+    "baseline@kubosho-skills": true,
+    "pr-description@kubosho-skills": true,
+    "test-principles@kubosho-skills": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "kuu-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "fumiya-kume/claude-code"
+      }
+    },
+    "kubosho-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kubosho/my-skills"
+      }
+    }
+  },
+  "includeGitInstructions": false,
+  "language": "japanese",
+  "autoUpdatesChannel": "latest",
+  "skipAutoPermissionPrompt": true
+}

@@ -1,0 +1,38 @@
+# Appearance
+background = #003760
+background-blur = 8
+background-opacity = 0.95
+background-opacity-cells = true
+font-size = 14
+minimum-contrast = 3
+unfocused-split-opacity = 0.8
+
+# Cursor
+cursor-color = cell-foreground
+cursor-opacity = 1
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+selection-clear-on-copy = true
+
+# Keybinds
+keybind = shift+enter=text:\n
+keybind = cmd+0=reset_font_size
+
+# Window
+link-previews = true
+maximize = true
+notify-on-command-finish = unfocused
+title-report = false
+window-padding-balance = true
+window-padding-color = extend
+window-save-state = always
+
+# macOS
+macos-auto-secure-input = true
+macos-titlebar-style = tabs
