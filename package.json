@@ -2,27 +2,11 @@
   "name": "dotfiles",
   "version": "1.0.0",
   "private": true,
-  "description": "My dotfiles",
   "scripts": {
-    "fix": "run-p fix:*",
-    "fix:markdown": "markdownlint --ignore node_modules/ --fix \"**/*.md\"",
-    "fix:prettier": "prettier --write \"**/*.md\"",
-    "fix:text": "textlint --fix \"**/*.md\"",
-    "lint": "run-p lint:*",
-    "lint:markdown": "markdownlint --ignore node_modules/ \"**/*.md\"",
-    "lint:prettier": "prettier --check \"**/*.md\"",
-    "lint:text": "textlint \"**/*.md\""
+    "lint:secret": "secretlint \"**/*\""
   },
   "devDependencies": {
-    "@kubosho/configs": "6.5.15",
-    "markdownlint": "0.40.0",
-    "markdownlint-cli": "0.47.0",
-    "npm-run-all2": "8.0.4",
-    "prettier": "3.7.4",
-    "textlint": "15.5.2",
-    "textlint-filter-rule-comments": "1.2.2",
-    "textlint-rule-no-dead-link": "6.1.0",
-    "textlint-rule-no-doubled-joshi": "5.1.1",
-    "textlint-rule-preset-jtf-style": "3.0.3"
+    "@secretlint/secretlint-rule-preset-recommend": "11.3.0",
+    "secretlint": "11.3.0"
   }
 }
