@@ -1,0 +1,111 @@
+[include]
+	path = ~/.gitconfig.local
+
+[alias]
+	zzz-fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+	zzz-wt-add-internal = "!f() { branch=$1; git worktree add \".git-worktrees/$branch\" \"$branch\"; }; f"
+	zzz-wt-create-internal = "!f() { branch=$1; git worktree add \".git-worktrees/$branch\" -b \"$branch\"; }; f"
+	zzz-wt-remove-internal = "!git worktree remove $(git worktree list | fzf | awk '{print $1}')"
+	ad = add
+	br = branch
+	bs = bisect
+	ch = cherry-pick
+	ci = commit
+	co = checkout
+	df = diff
+	fixup = !sh -c 'git zzz-fixup $(git log --oneline | fzf | cut -d \" \" -f 1)' -
+	ft = fetch
+	gcl = "!$HOME/.tools/cleanup-branches.sh"
+	gr = grep
+	grr = grep --break --heading
+	logg = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+	pl = pull
+	ps = push
+	rb = rebase
+	ri = "!git rebase --interactive --autosquash $(git log --oneline | fzf | cut -d ' ' -f 1)~"
+	rs = restore
+	st = status
+	sw = "!f() { if [ $# -gt 0 ]; then git switch \"$@\"; else git switch $(git branch | fzf); fi; }; f"
+	wt = worktree
+	wt-add = "!git zzz-wt-add-internal"
+	wt-ad = "!git zzz-wt-add-internal"
+	wt-create = "!git zzz-wt-create-internal"
+	wt-cr = "!git zzz-wt-create-internal"
+	wt-path = "!git worktree list | fzf | awk '{print $1}'"
+	wt-remove = "!git zzz-wt-remove-internal"
+	wt-rm = "!git zzz-wt-remove-internal"
+
+[color]
+	branch = auto
+	diff = auto
+	grep = auto
+	status = auto
+	ui = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	frag = magenta bold
+	meta = yellow bold
+	new = green bold
+	old = red bold
+	whitespace = red reverse
+
+[color "grep"]
+	filename = yellow
+	linenumber = bold white
+	match = cyan
+
+[color "status"]
+	added = yellow
+	changed = green
+
+[commit]
+	gpgsign = true
+	template = ~/.gitmessage.txt
+
+[core]
+	autoCRLF = false
+	editor = nvim
+	excludesfile = ~/.gitignore
+	precomposeunicode = true
+	quotepath = false
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
+
+[ghq]
+	root = ~/src
+
+[github]
+	user = kubosho
+
+[gpg]
+	format = ssh
+
+[grep]
+	lineNumber = true
+
+[hub]
+	protocol = https
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+
+[rebase]
+	autosquash = true
+
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/

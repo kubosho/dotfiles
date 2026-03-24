@@ -1,0 +1,35 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+scan_timeout = 10
+
+palette = 'trapezium'
+[palettes.trapezium]
+east = '#83cbec'
+west = '#feca8b'
+south = '#f57988'
+north = '#58c3a9'
+
+# Jujutsu VCS integration
+[custom.jj]
+description = "Jujutsu VCS status"
+command = '''
+jj log -r @ -n1 --no-graph --ignore-working-copy --color always -T '
+separate(" ",
+  bookmarks.map(|x| if(x.remote(), "", x.name())).join(" "),
+  tags.map(|x| x.name()).join(" "),
+  if(conflict, label("conflict", "󰀨")),
+  if(divergent, label("divergent", "󰓢")),
+  if(hidden, label("hidden", "󰈉")),
+  if(empty, label("empty", "󰝦"), "󰝥"),
+  surround("\"", "\"", truncate_end(24, description.first_line(), "…")),
+)
+'
+'''
+when = 'jj root --ignore-working-copy 2>/dev/null'
+detect_folders = [".jj"]
+symbol = "🥋"
+style = "bold east"
+format = "[$symbol$output]($style) "
+shell = ["sh", "--norc", "--noprofile"]
+

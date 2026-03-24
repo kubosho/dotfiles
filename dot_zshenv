@@ -1,0 +1,15 @@
+# ------------------------------
+# Common Environments
+# ------------------------------
+[ -f "$HOME/.commonenv" ] && . "$HOME/.commonenv"
+
+# ------------------------------
+# Nix Environments
+# ------------------------------
+export PATH=/nix/var/nix/profiles/default/bin:$PATH
+
+# ------------------------------
+# Zsh Configuration
+# ------------------------------
+export ZSH_CONFIG_DIR="${XDG_CONFIG_HOME}/zsh"
+
