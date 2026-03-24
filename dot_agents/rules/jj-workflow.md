@@ -51,3 +51,4 @@ A hook provides `jj diff --stat` before `jj describe`. Use the output to judge:
 - Single context → proceed
 - Multiple contexts (describable only with "and") → `jj split -m "type: summary" <filesets>` to separate by context, then describe remaining commit separately
 - Changes address multiple review comments → each comment is a separate context, split per comment
+- Executing a plan with Phase/Step/numbered headings → commit per top-level heading
