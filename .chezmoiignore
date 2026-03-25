@@ -14,12 +14,10 @@ package-lock.json
 
 # OS-specific ignores
 {{- if eq .chezmoi.os "darwin" }}
-# macOS: ignore Windows-only files
-dot_config/wezterm
-dot_config/zsh/shell-integration.zsh
-dot_config/zsh/wsl
+.config/wezterm
+.config/zsh/shell-integration.zsh
+.config/zsh/wsl
 {{- end }}
 {{- if eq .chezmoi.os "windows" }}
-# Windows: ignore macOS-only files
-dot_config/ghostty
+.config/ghostty
 {{- end }}
