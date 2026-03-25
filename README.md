@@ -1,65 +1,22 @@
 # .files
 
-Personal dotfiles management tool that automatically sets up development environment configurations across multiple platforms.
+Personal dotfiles managed by [chezmoi](https://www.chezmoi.io/).
 
-## Overview
+## Setup
 
-### Features
-
-- Automatic symlink creation for dotfiles to home directory
-- Cross-platform support (macOS, Windows, WSL)
-- Cursor editor settings synchronization
-- Selective file exclusion with `.dotfilesignore`
-
-## Usage
-
-### Setup
-
-1. Clone this repository
-2. Navigate to the repository directory
-3. Run the setup script:
+1. Install chezmoi
+2. Initialize with this repository:
 
 ```bash
-./setup.sh
+chezmoi init --source ~/src/github.com/kubosho/dotfiles
+chezmoi apply
 ```
 
-This script will:
+3. Restart your shell or run `source ~/.zshrc`
 
-- Create symlinks for all dotfiles to your home directory
-- Set up Cursor editor settings (macOS/WSL)
+## OS support
 
-4. Restart your shell or run `source ~/.zshrc`
-5. Install development tools: `mise install`
-
-**Note**: The script will overwrite existing dotfiles in your home directory with symlinks.
-
-## Configuration
-
-### Excluding files
-
-Use `.dotfilesignore` to exclude specific files from symlink creation. Supports directory patterns and wildcards.
-
-### Cursor settings sync
-
-- macOS: Automatically syncs to `~/Library/Application Support/Cursor/User/settings.json`
-- WSL: Copies to Windows home directory (requires `$WINDOWS_HOME` environment variable)
-
-## System requirements
-
-- Windows
-- Windows Subsystem for Linux
 - macOS
+- Windows (WSL)
 
-## Troubleshooting
-
-### WSL Setup
-
-For WSL users, set the `WINDOWS_HOME` environment variable:
-
-```bash
-export WINDOWS_HOME="/mnt/c/Users/YourUsername"
-```
-
-### Existing Files
-
-The setup script will remove existing files before creating symlinks. Back up important configurations before running.
+OS-specific files are managed via `.chezmoiignore` (e.g., WezTerm is excluded on macOS, Ghostty on Windows).
