@@ -2,13 +2,41 @@
 eval "$(devbox global shellenv | grep -v '^export PATH=')"
 eval "$(mise activate zsh)"
 
+autoload -Uz colors && colors
+
 # Sheldon plugin manager
 eval "$(sheldon source)"
 
 # Completion settings
-autoload -Uz compinit && compinit
+# ref: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 
 eval "$(starship init zsh)"
+
+# History
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history
+
+# Typo correction
+setopt correct
+
+SPROMPT="もしかして %B%r%b かな？ [%{${fg[green]}%}そう(y)%{${reset_color}%},%{${fg[red]}%}違うよ(n)%{${reset_color}%},%{${fg[blue]}%}やーめた(a)%{${reset_color}%},%{${fg[cyan]}%}直すね(e)%{${reset_color}%}]: "
+
+# Aliases
+alias c="cursor"
+alias e="code"
+alias g="git"
+alias h="hx"
+alias t="tmux"
 
 # Force non-blinking bar cursor on each prompt
 # Ghostty's cursor-style-blink=false only sets the initial state;
