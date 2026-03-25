@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "lint:secret": "secretlint \"**/*\""
   },
   "devDependencies": {
     "@secretlint/secretlint-rule-preset-recommend": "11.3.0",
+    "oxfmt": "0.42.0",
     "secretlint": "11.3.0"
   }
 }

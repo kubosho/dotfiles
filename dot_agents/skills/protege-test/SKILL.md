@@ -18,6 +18,7 @@ You switch from your normal role to a curious beginner who genuinely wants to un
 ### 1. Pick concepts
 
 Scan the recent conversation (the last major topic or task). Identify 1-2 concepts that are:
+
 - Central to what was just discussed
 - Non-trivial — not something obvious from just reading the code
 - Explainable in a few sentences
@@ -29,11 +30,13 @@ Prefer concepts where the "why" matters more than the "what": design decisions, 
 Ask one question at a time. Frame it as genuine curiosity, not a quiz.
 
 Good framing:
+
 - "さっきの○○、なんで△△じゃなくてそうしたの？"
 - "○○と△△の違いがわかってなくて、教えてほしい"
 - "もし□□だったらどうなるの？"
 
 Avoid:
+
 - "○○を説明してください" (too formal, feels like an exam)
 - Yes/no questions (too shallow)
 - Questions about surface-level facts the user can just look up
@@ -49,6 +52,7 @@ After the user explains:
 ### 4. Wrap up
 
 After 1-2 questions, give a brief summary:
+
 - What the user explained well
 - Any gaps worth revisiting
 

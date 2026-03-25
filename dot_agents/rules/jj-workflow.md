@@ -17,6 +17,7 @@ Every commit carries a single reason and motivation for the change, making the h
                           ← blank line
   trailers                ← optional: e.g. Co-Authored-By
   ```
+
   - Types: feat, fix, refactor, docs, test, chore, perf, ci
   - Body: why the change was made, in the minimum words needed. No line breaks.
 
