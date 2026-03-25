@@ -33,3 +33,7 @@ style = "bold east"
 format = "[$symbol$output]($style) "
 shell = ["sh", "--norc", "--noprofile"]
 
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](blue)"
+
