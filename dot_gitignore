@@ -1,11 +1,10 @@
 # --------------------
-# Node.js
+# Jujutsu (jj)
 # --------------------
 
-node_modules/
-
-# Nushell history
-dot_config/nushell/history.txt
+# Conflict representation directories created by jj in Git commits
+.jjconflict-base-*/
+.jjconflict-side-*/
 
 
 # --------------------
@@ -14,10 +13,8 @@ dot_config/nushell/history.txt
 
 # Claude Code
 **/.claude/settings.local.json
+**/.claude/worktrees
 **/.serena/cache/*
-
-# Skill eval workspaces
-dot_claude/skills/*-workspace/
 
 
 # --------------------

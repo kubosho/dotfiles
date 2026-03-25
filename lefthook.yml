@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    oxfmt:
+      glob: "*.{js,mjs,ts,json}"
+      run: npx oxfmt --check {staged_files}
+    secretlint:
+      glob: "*"
+      run: npx secretlint {staged_files}

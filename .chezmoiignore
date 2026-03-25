@@ -1,0 +1,23 @@
+# Repository management files (not deployed to home directory)
+AGENTS.md
+CLAUDE.md
+LICENSE
+README.md
+lefthook.yml
+node_modules
+package.json
+package-lock.json
+.secretlintrc.json
+
+# Local overrides
+**/.claude/settings.local.json
+
+# OS-specific ignores
+{{- if eq .chezmoi.os "darwin" }}
+.config/wezterm
+.config/zsh/shell-integration.zsh
+.config/zsh/wsl
+{{- end }}
+{{- if eq .chezmoi.os "windows" }}
+.config/ghostty
+{{- end }}

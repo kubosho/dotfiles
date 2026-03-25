@@ -1,0 +1,11 @@
+[user]
+name = "KUBOTA Shota"
+email = "ta2@o2p.jp"
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICi8mJiS5xrs/FbLQ71zb/k99OdzTBATEjWIheTWzs1h"
+
+[signing.backends.ssh]
+program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
