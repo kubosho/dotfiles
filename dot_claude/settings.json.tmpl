@@ -23,10 +23,23 @@
       "Bash(jj root:*)",
       "Bash(jj show:*)",
       "Bash(jj status:*)",
-      "Bash(jj version:*)"
+      "Bash(jj version:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "WebFetch(domain:caniuse.com)",
+      "WebFetch(domain:dev.to)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:qiita.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:zenn.dev)"
     ],
     "deny": [
-      "NotebookEdit"
+      "NotebookEdit",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(npm publish)"
     ],
     "defaultMode": "auto"
   },
