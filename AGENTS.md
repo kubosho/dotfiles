@@ -26,5 +26,7 @@ chezmoi edit ~/.file   # Edit a managed file
 ## Environment
 
 - macOS and WSL supported
-- devbox for global tool management
-- Starship prompt with Jujutsu VCS integration
+- [devbox](https://www.jetify.com/devbox) for global tool management
+- [Starship](https://starship.rs/) prompt with Jujutsu VCS integration
+- [sheldon](https://sheldon.cli.rs/) for zsh plugin management
+- [lefthook](https://github.com/evilmartians/lefthook) for git hooks
