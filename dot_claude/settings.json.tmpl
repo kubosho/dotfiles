@@ -96,6 +96,16 @@
           }
         ]
       }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\a'"
+          }
+        ]
+      }
     ]
   },
 {{- if eq .chezmoi.hostname "local" }}
