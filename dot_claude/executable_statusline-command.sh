@@ -144,6 +144,17 @@ if (( is_jj )) && [[ -n "$wc_desc" ]]; then
 fi
 
 # --------------------------------------------------------------------------
+# Set terminal/tmux tab title via OSC
+# --------------------------------------------------------------------------
+tab_title="claude: ${wc_desc:-no description}"
+if [[ -n "${TMUX:-}" ]]; then
+  # DCS passthrough for tmux
+  printf '\033Ptmux;\033\033]0;%s\007\033\\' "$tab_title" > /dev/tty 2>/dev/null || true
+else
+  printf '\033]0;%s\007' "$tab_title" > /dev/tty 2>/dev/null || true
+fi
+
+# --------------------------------------------------------------------------
 # Output
 # --------------------------------------------------------------------------
 printf "%s\n%s\n%s\n" "$LINE1" "$LINE2" "$LINE3"
