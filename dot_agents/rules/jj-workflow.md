@@ -29,7 +29,7 @@ Some invariants are enforced by hooks (`~/.claude/hooks/jj-*.sh`). Those marked 
 
 ### Pre-existing undescribed changes are resolved at session start **[hook: SessionStart]**
 
-A hook detects undescribed changes in the working copy when a session begins. Use AskUserQuestion to ask the user how to handle them (describe, abandon, or ignore) before starting any work. This prevents the Stop hook from repeatedly firing about changes unrelated to the current session.
+A hook detects undescribed changes in the working copy when a session begins. Use AskUserQuestion to ask the user how to handle them before starting any work. Present only the options listed in the hook message (describe, abandon, or start new working copy).
 
 ### Working copy belongs to the current task
 
