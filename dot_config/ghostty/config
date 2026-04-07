@@ -3,6 +3,7 @@ background = #003760
 background-blur = 8
 background-opacity = 0.95
 background-opacity-cells = true
+# font-family = "Bizin Gothic NF Regular"
 font-size = 14
 minimum-contrast = 3
 unfocused-split-opacity = 0.8
