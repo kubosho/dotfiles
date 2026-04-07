@@ -9,7 +9,7 @@ $directory\
 ${custom.jj}\
 $git_branch\
 $git_status\
-[](fg:north) \
+[](fg:north)
 $character\
 """
 
