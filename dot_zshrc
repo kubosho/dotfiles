@@ -31,6 +31,14 @@ setopt correct
 
 SPROMPT="もしかして %B%r%b かな？ [%{${fg[green]}%}そう(y)%{${reset_color}%},%{${fg[red]}%}違うよ(n)%{${reset_color}%},%{${fg[blue]}%}やーめた(a)%{${reset_color}%},%{${fg[cyan]}%}直すね(e)%{${reset_color}%}]: "
 
+# Inject GitHub Packages auth token from 1Password when running package managers
+_with_npm_auth() {
+  NPM_AUTH_TOKEN=$(op read "op://Development/.npmrc/password") command "$@"
+}
+npm() { _with_npm_auth npm "$@" }
+pnpm() { _with_npm_auth pnpm "$@" }
+bun() { _with_npm_auth bun "$@" }
+
 # Aliases
 alias c="cursor"
 alias e="code"

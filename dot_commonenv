@@ -39,6 +39,11 @@ if [ -f /proc/version ]; then
 fi
 
 # ------------------------------
+# 1Password CLI
+# ------------------------------
+export OP_BIOMETRIC_UNLOCK_ENABLED=true
+
+# ------------------------------
 # Devbox
 # ------------------------------
 export LIBRARY_PATH=${HOME}/.devbox/nix/profile/default/lib
