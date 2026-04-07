@@ -1,7 +1,17 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
+add_newline = true
 scan_timeout = 10
+
+format = """
+[](fg:north)\
+$directory\
+${custom.jj}\
+$git_branch\
+$git_status\
+[](fg:north) \
+$character\
+"""
 
 palette = 'trapezium'
 [palettes.trapezium]
@@ -9,19 +19,23 @@ east = '#83cbec'
 west = '#feca8b'
 south = '#f57988'
 north = '#58c3a9'
+text = '#1a1b26'
+
+[directory]
+format = "[ $path$read_only](bg:north fg:text bold)"
 
 # Jujutsu VCS integration
 [custom.jj]
 description = "Jujutsu VCS status"
 command = '''
-jj log -r @ -n1 --no-graph --ignore-working-copy --color always -T '
+jj log -r @ -n1 --no-graph --ignore-working-copy -T '
 separate(" ",
   bookmarks.map(|x| if(x.remote(), "", x.name())).join(" "),
   tags.map(|x| x.name()).join(" "),
-  if(conflict, label("conflict", "󰀨")),
-  if(divergent, label("divergent", "󰓢")),
-  if(hidden, label("hidden", "󰈉")),
-  if(empty, label("empty", "󰝦"), "󰝥"),
+  if(conflict, "󰀨"),
+  if(divergent, "󰓢"),
+  if(hidden, "󰈉"),
+  if(empty, "○", "●"),
   surround("\"", "\"", truncate_end(24, description.first_line(), "…")),
 )
 '
@@ -29,11 +43,15 @@ separate(" ",
 when = 'jj root --ignore-working-copy 2>/dev/null'
 detect_folders = [".jj"]
 symbol = "🥋"
-style = "bold east"
-format = "[$symbol$output]($style) "
+format = "[  $symbol$output](bg:north fg:text bold)"
 shell = ["sh", "--norc", "--noprofile"]
 
-[character]
-success_symbol = "[❯](green)"
-error_symbol = "[❯](blue)"
+[git_branch]
+format = "[  $symbol$branch](bg:north fg:text bold)"
 
+[git_status]
+format = "[$all_status$ahead_behind](bg:north fg:text bold)"
+
+[character]
+success_symbol = "[❯](west)"
+error_symbol = "[❯](south)"
