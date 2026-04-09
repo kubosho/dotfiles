@@ -33,7 +33,10 @@ SPROMPT="もしかして %B%r%b かな？ [%{${fg[green]}%}そう(y)%{${reset_co
 
 # Inject GitHub Packages auth token from 1Password when running package managers
 __with_npm_auth() {
-  NPM_AUTH_TOKEN=$(op read "op://Development/.npmrc/password") command "$@"
+  if [[ -z "$_NPM_AUTH_TOKEN_CACHE" ]]; then
+    _NPM_AUTH_TOKEN_CACHE=$(op read "op://Development/.npmrc/password")
+  fi
+  NPM_AUTH_TOKEN=$_NPM_AUTH_TOKEN_CACHE command "$@"
 }
 npm() { __with_npm_auth npm "$@" }
 pnpm() { __with_npm_auth pnpm "$@" }
