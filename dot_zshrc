@@ -32,9 +32,18 @@ setopt correct
 SPROMPT="もしかして %B%r%b かな？ [%{${fg[green]}%}そう(y)%{${reset_color}%},%{${fg[red]}%}違うよ(n)%{${reset_color}%},%{${fg[blue]}%}やーめた(a)%{${reset_color}%},%{${fg[cyan]}%}直すね(e)%{${reset_color}%}]: "
 
 # Inject GitHub Packages auth token from 1Password when running package managers
+# Cache token to file to avoid 1Password auth dialog on every new shell session
 __with_npm_auth() {
   if [[ -z "$_NPM_AUTH_TOKEN_CACHE" ]]; then
-    _NPM_AUTH_TOKEN_CACHE=$(op read "op://Development/.npmrc/password")
+    local cache_file="${TMPDIR:-/tmp}/npm-auth-token"
+    local max_age=28800  # 8 hours
+    if [[ -f "$cache_file" ]] && (( $(date +%s) - $(stat -f %m "$cache_file") < max_age )); then
+      _NPM_AUTH_TOKEN_CACHE=$(<"$cache_file")
+    else
+      _NPM_AUTH_TOKEN_CACHE=$(op read "op://Development/.npmrc/password")
+      printf '%s' "$_NPM_AUTH_TOKEN_CACHE" > "$cache_file"
+      chmod 600 "$cache_file"
+    fi
   fi
   NPM_AUTH_TOKEN=$_NPM_AUTH_TOKEN_CACHE command "$@"
 }
