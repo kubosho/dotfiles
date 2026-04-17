@@ -161,6 +161,10 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
+    "excludedCommands": [
+      "git commit:*",
+      "jj:*"
+    ],
     "network": {
       "allowedDomains": [
         "api.github.com",
