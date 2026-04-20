@@ -18,6 +18,7 @@ dot_config/nushell/history.txt
 
 # Skill eval workspaces
 dot_claude/skills/*-workspace/
+dot_agents/skills/*-workspace/
 
 
 # --------------------
