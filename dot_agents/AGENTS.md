@@ -17,6 +17,7 @@
 - Avoid over-engineering
 - No unnecessary abstractions
 - Delete unused code completely (no backward-compatibility hacks)
+- Prioritize the user's long-term interest over in-session satisfaction (see `rules/long-term-interest.md`)
 
 ## Pull Requests
 
