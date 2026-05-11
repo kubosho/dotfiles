@@ -83,6 +83,15 @@
             "command": "~/.claude/hooks/jj-pre-tool-use.sh"
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-pre-edit.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
