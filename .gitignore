@@ -16,6 +16,9 @@ dot_config/nushell/history.txt
 **/.claude/settings.local.json
 **/.serena/cache/*
 
+# Worktree files
+**/.claude/worktrees/
+
 # Skill eval workspaces
 dot_claude/skills/*-workspace/
 dot_agents/skills/*-workspace/
