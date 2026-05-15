@@ -124,6 +124,28 @@
           }
         ]
       }
+    ],
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-worktree-create.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "WorktreeRemove": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/jj-worktree-remove.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   },
 {{- if eq .chezmoi.hostname "local" }}
