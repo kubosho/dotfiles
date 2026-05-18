@@ -10,7 +10,7 @@ command -v jq >/dev/null 2>&1 || exit 0
 INPUT=$(cat)
 CWD=$(echo "$INPUT" | jq -r '.cwd')
 
-cd "$CWD" 2>/dev/null || exit 0
+[[ -d "$CWD" ]] || exit 0
 
 # Walk up to find the workspace root: a dir with mani.yaml or *.code-workspace.
 # Fall back to the cwd itself.
@@ -25,7 +25,6 @@ while [[ "$DIR" != "/" && "$DIR" != "." ]]; do
 done
 [[ -z "$ROOT" ]] && ROOT="$CWD"
 
-# Collect subdirectory VCS state. Use a temp file to keep the loop simple.
 JJ_LIST=""
 GIT_LIST=""
 for SUBDIR in "$ROOT"/*/; do
@@ -41,12 +40,11 @@ for SUBDIR in "$ROOT"/*/; do
   fi
 done
 
-# Only report when there is at least one repo to list.
 [[ -z "$JJ_LIST" && -z "$GIT_LIST" ]] && exit 0
 
 MSG="[vcs-overview] Workspace root: $ROOT"
 if [[ -n "$JJ_LIST" ]]; then
-  MSG+=$'\n\njj repositories (use jj commands; git mutation is blocked by git-prefer-jj hook):'"$JJ_LIST"
+  MSG+=$'\n\njj repositories (use jj commands. git mutations are blocked by the git-prefer-jj hook):'"$JJ_LIST"
 fi
 if [[ -n "$GIT_LIST" ]]; then
   MSG+=$'\n\ngit repositories (use git commands):'"$GIT_LIST"
