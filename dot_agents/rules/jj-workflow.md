@@ -1,6 +1,6 @@
 # Jujutsu (jj) Workflow
 
-Applies when `.jj` exists in the project root.
+Applies when `.jj` exists in the project root. The vcs-overview SessionStart hook auto-reports per-subdir VCS state at session start, so the activation condition does not need a manual probe.
 
 ## Outcome
 
@@ -25,29 +25,31 @@ Every commit carries a single reason and motivation for the change, making the h
 
 These conditions must hold true at each stage. When violated, the fix restores them.
 
-Some invariants are enforced by hooks (`~/.claude/hooks/jj-*.sh`). Those marked **[hook]** are automated and do not require manual checks.
+Some invariants are enforced by hooks (`~/.claude/hooks/*.sh`). Those marked **[hook]** are automated.
 
 ### Pre-existing undescribed changes are resolved at session start **[hook: SessionStart]**
 
-A hook detects undescribed changes in the working copy when a session begins. Use AskUserQuestion to ask the user how to handle them before starting any work. Present only the options listed in the hook message (describe, abandon, or start new working copy).
+Use AskUserQuestion to ask the user how to handle them before starting any work. Present only the options listed in the hook message (describe, abandon, or start new working copy).
 
-### Working copy belongs to the current task
+### Working copy belongs to the current task **[hook: PreToolUse]**
 
-**Check**: `jj status` before file modifications.
+The git-prefer-jj hook blocks `git checkout -b` / `git switch -c` / `git branch <name>` / `git commit` in jj repos and points at the jj equivalent.
 
-- Matches current task → proceed
-- Empty or different task → `jj new <base>` where `<base>` is the branch the task depends on (default: `main`)
+Use the jj equivalents:
+
+- New task → `jj new <base>` where `<base>` is the branch the task depends on (default: `main`)
+- Commit → `jj describe -m "type: summary"` (or `jj new -m "..."` to stack a new commit)
 
 ### Bookmarks stay attached after rewrites **[hook: PostToolUse]**
 
-A hook runs `jj log` after `jj squash` and provides context. Act on it:
+After `jj squash`, the hook provides `jj log`. Act on it:
 
 - Attached → proceed
 - Detached (`<name>@origin` only, no local counterpart) → `jj bookmark set <name> -r <rev>`
 
 ### Each commit contains one logical context **[hook: PreToolUse]**
 
-A hook provides `jj diff --stat` before `jj describe`. Use the output to judge:
+Before `jj describe`, the hook provides `jj diff --stat`. Use the output to judge:
 
 - Single context → proceed
 - Multiple contexts (describable only with "and") → `jj split -m "type: summary" <filesets>` to separate by context, then describe remaining commit separately
