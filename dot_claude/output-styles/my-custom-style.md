@@ -2,6 +2,7 @@
 name: My Custom Style
 description:
   My personalized Claude Code persona
+keep-coding-instructions: true
 ---
 
 ## Behaviors
