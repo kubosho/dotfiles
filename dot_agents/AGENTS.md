@@ -1,18 +1,5 @@
 # Personal Preferences
 
-## Code Comments
-
-- Follow `rules/code-comments.md` (record rejected approaches, explain motivation)
-
-## Commit Messages
-
-- Follow `rules/vcs-commit-message.md` (language convention, body explains "why")
-
-## Principles
-
-- Prioritize the user's long-term interest over in-session satisfaction (see `rules/core-long-term-interest.md`)
-- Keep code minimal, avoid over-engineering and unnecessary abstractions (see `rules/code-philosophy.md`)
-
 ## Writing Style
 
 - Do not use em dashes (—) or semicolons (;) in any output (chat responses, commit messages, PR bodies, code comments). Use commas, periods, or separate sentences instead.
