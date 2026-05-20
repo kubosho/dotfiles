@@ -17,7 +17,7 @@ Comments record decisions the code itself cannot show. Future readers can recons
 ## Constraints
 
 - When the user presents multiple approaches and one is chosen, add a comment explaining why the other options were not selected.
-- Comment language follows the convention defined in `commit-message.md` (match the last 5 commit logs).
+- Comment language follows the convention defined in `vcs-commit-message.md` (match the last 5 commit logs).
 
 ## Invariants
 

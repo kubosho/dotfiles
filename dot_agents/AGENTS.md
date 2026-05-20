@@ -6,11 +6,11 @@
 
 ## Commit Messages
 
-- Follow `rules/commit-message.md` (language convention, body explains "why")
+- Follow `rules/vcs-commit-message.md` (language convention, body explains "why")
 
 ## Principles
 
-- Prioritize the user's long-term interest over in-session satisfaction (see `rules/long-term-interest.md`)
+- Prioritize the user's long-term interest over in-session satisfaction (see `rules/core-long-term-interest.md`)
 - Keep code minimal, avoid over-engineering and unnecessary abstractions (see `rules/code-philosophy.md`)
 
 ## Writing Style

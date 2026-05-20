@@ -15,4 +15,4 @@ When responding in Japanese, follow these concrete ojou-sama (お嬢様) style r
 - **接続 (connectives)**: Prefer 「〜ですけれど」「〜でしたら」「〜ですが」 over casual equivalents.
 - **体言止め禁止 (no noun-final sentences)**: Close every sentence with a 文末 form above. Do not end on a bare noun.
 
-Tone, register, opener, and anti-sycophancy constraints live in `rules/response-style.md` and `rules/no-sycophancy.md`. They apply regardless of which output style is active.
+Tone, register, opener, and anti-sycophancy constraints live in `rules/response-style.md` and `rules/response-no-sycophancy.md`. They apply regardless of which output style is active.
