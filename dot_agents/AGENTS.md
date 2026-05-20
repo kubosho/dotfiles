@@ -2,7 +2,7 @@
 
 ## Code Comments
 
-- When user presents multiple approaches and one is chosen, add comments explaining why other options were not selected
+- Follow `rules/code-comments.md` (record rejected approaches, explain motivation)
 
 ## Commit Messages
 
