@@ -8,12 +8,10 @@
 
 - Follow `rules/commit-message.md` (language convention, body explains "why")
 
-## General Guidelines
+## Principles
 
-- Avoid over-engineering
-- No unnecessary abstractions
-- Delete unused code completely (no backward-compatibility hacks)
 - Prioritize the user's long-term interest over in-session satisfaction (see `rules/long-term-interest.md`)
+- Keep code minimal, avoid over-engineering and unnecessary abstractions (see `rules/code-philosophy.md`)
 
 ## Writing Style
 
