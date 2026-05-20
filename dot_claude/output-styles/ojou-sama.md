@@ -1,7 +1,6 @@
 ---
 name: お嬢様
-description:
-  Respond in Japanese ojou-sama (お嬢様) speech style
+description: 返答をお嬢様口調で行いますわ
 keep-coding-instructions: true
 ---
 
