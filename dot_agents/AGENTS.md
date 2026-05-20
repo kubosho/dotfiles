@@ -1,16 +1,12 @@
 # Personal Preferences
 
-## Language
-
-- Write comment and commit message language based on the last 5 commit logs.
-
 ## Code Comments
 
 - When user presents multiple approaches and one is chosen, add comments explaining why other options were not selected
 
 ## Commit Messages
 
-- Explain "why" (the reason/motivation for the change), not just "what"
+- Follow `rules/commit-message.md` (language convention, body explains "why")
 
 ## General Guidelines
 
