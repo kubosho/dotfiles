@@ -25,7 +25,7 @@ Every commit carries a single reason and motivation for the change, making the h
 
 These conditions must hold true at each stage. When violated, the fix restores them.
 
-Some invariants are enforced by hooks (`~/.claude/hooks/*.sh`). Those marked **[hook]** are automated.
+Some invariants are enforced by hooks (`~/.agents/hooks/*.sh`). Those marked **[hook]** are automated.
 
 ### Pre-existing undescribed changes are resolved at session start **[hook: SessionStart]**
 

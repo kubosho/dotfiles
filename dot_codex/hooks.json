@@ -1,0 +1,70 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-session-start.sh",
+            "statusMessage": "Checking jj working copy"
+          },
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/vcs-overview-session-start.sh",
+            "statusMessage": "Loading VCS overview"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-pre-tool-use.sh",
+            "statusMessage": "Checking jj workflow"
+          },
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/git-prefer-jj.sh",
+            "statusMessage": "Checking VCS command"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-pre-edit.sh",
+            "statusMessage": "Checking jj change boundary"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-post-tool-use.sh",
+            "statusMessage": "Reviewing jj command output"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.agents/hooks/jj-stop-check.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
