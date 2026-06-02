@@ -6,7 +6,7 @@ argument-hint: "<goal, rough plan, or docs/specs/spec-file.md>"
 
 Draft or refine a spec under `docs/specs/`, relative to the project root (`jj root`).
 
-Follow `docs/specs/_template.md` when it exists. If it does not exist, use the same structure.
+Follow `~/.docs/specs/_template.md` when it exists. If it does not exist, use the same structure.
 
 The user owns and approves the purpose, acceptance criteria, negative requirements, scope limit, and final spec.
 
