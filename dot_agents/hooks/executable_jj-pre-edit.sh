@@ -17,7 +17,7 @@ cd "$CWD" 2>/dev/null || exit 0
 DESC=$(jj log --no-graph -r @ -T 'description.first_line()' 2>/dev/null || echo "")
 [[ -z "$DESC" ]] && exit 0
 
-jq -n --arg ctx "[jj-workflow] 現在の作業コピーは「${DESC}」という動機で名付けられている。コミットには一つの動機のみ担うべきなので、これから書く変更が別の動機になるならコミットを分割するのが、あとから履歴を読む者が迷わない。同一の動機なら引き続き手を動かし、別の動機なら jj new で新しいコミットを用意してから手を動かす。いま判断するべき。" \
+jq -n --arg ctx "[jj-workflow] The current working copy is described as \"${DESC}\". A commit should carry one motivation. If the change you are about to write belongs to a different motivation, split now. Same motivation: proceed. Different motivation: run jj new first." \
   '{hookSpecificOutput: {hookEventName: "PreToolUse", additionalContext: $ctx}}'
 
 exit 0
