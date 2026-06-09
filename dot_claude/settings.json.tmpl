@@ -153,9 +153,6 @@
       }
     ]
   },
-{{- if eq .chezmoi.hostname "local" }}
-  "model": "opus[1m]",
-{{- end }}
 {{- if ne .chezmoi.hostname "local" }}
   "deniedMcpServers": [
     { "serverUrl": "https://mcp.atlassian.com/*" }
