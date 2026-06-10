@@ -18,9 +18,16 @@ If no project-defined test command exists, mark Axis A skipped only for document
 
 Do not create GitHub Issues, `docs/tasks`, Agent Teams, dependency-order blockers, or front-matter consistency tools.
 
+When the judgement is a return, classify the failure:
+
+- 変換エラー: the spec is right and the code mistranscribed it. Fix locally and stay in implementation.
+- 仕様欠陥: implementation revealed an ambiguity or error in the spec. Return to spec-authoring, fix the spec in its own commit, then re-implement.
+
+Treat an Axis C overflow candidate as a 仕様欠陥 signal, not merely a volume problem: the design grew during implementation, which means the spec was not settled.
+
 Report:
 
 - Axis A: passed / failed / skipped
 - Axis B: no candidates / candidates / skipped
 - Axis C: no candidates / candidates / skipped
-- Judgement: commit allowed / human judgement needed / return to implementation
+- Judgement: commit allowed / human judgement needed / return to implementation (変換エラー) / return to spec (仕様欠陥)
