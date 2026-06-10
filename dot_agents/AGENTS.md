@@ -20,6 +20,7 @@
 Use this workflow for spec-driven development.
 
 - `docs/specs/` is the source of truth for specifications. Do not move tasks into GitHub Issues or `docs/tasks`.
+- Each phase has a skill: `spec-authoring` writes and settles the spec, `spec-implement` implements one AC, `spec-implementation-check` verifies before commit.
 - `docs/specs/` is relative to the project root (`jj root`). Written specs live there.
 - Each acceptance criterion is one task, one verification unit, and one jj commit context.
 - Keep AC progress in the spec file's task list. Use only GFM task boxes: `[ ]`, `[x]`, and `[ ] （進行中）`.
