@@ -5,7 +5,17 @@ description: "Control herdr from inside it. Manage workspaces, tabs, and panes, 
 
 Check that `HERDR_ENV=1`. If it is not, you are not inside a herdr-managed pane. Say so and stop.
 
-You are one pane inside herdr, a terminal multiplexer for agents. Structure: workspace (project context) > tab (subcontext) > pane (one terminal process). Discover your surroundings with `herdr pane list` (the focused pane is you). All command syntax is self-documented: run `herdr pane --help`, `herdr tab --help`, `herdr workspace --help`, `herdr wait --help`. Raw protocol reference: https://herdr.dev/docs/socket-api/
+You are one pane inside herdr, a terminal multiplexer for agents. Structure: workspace (project context) > tab (subcontext) > pane (one terminal process). This means you can:
+
+- see what other panes and agents are doing
+- create tabs for separate subcontexts inside one workspace
+- split panes and run commands in them
+- start servers, watch logs, and run tests in sibling panes
+- wait for specific output before continuing
+- wait for another agent to finish
+- spawn more agent instances
+
+Discover your surroundings with `herdr pane list` (the focused pane is you). All command syntax is self-documented: run `herdr pane --help`, `herdr tab --help`, `herdr workspace --help`, `herdr wait --help`. Raw protocol reference: https://herdr.dev/docs/socket-api/
 
 Things `--help` will not tell you:
 
@@ -26,3 +36,7 @@ herdr pane read "$NEW" --source recent --lines 20
 ```
 
 To spawn another agent: split, `pane run` the agent command, `wait output` for its prompt, then `pane run` the task. To coordinate with one: `herdr wait agent-status <pane> --status done --timeout 120000`, then `pane read` its result.
+
+---
+
+Condensed from the upstream herdr skill: https://github.com/ogulcancelik/herdr/blob/6cbdba4/SKILL.md (license: [AGPL-3.0](https://github.com/ogulcancelik/herdr/blob/6cbdba4/LICENSE))
