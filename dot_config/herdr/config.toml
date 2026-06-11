@@ -3,3 +3,9 @@ prefix = "ctrl+t"
 
 [ui]
 agent_panel_scope = "all"
+
+[ui.toast]
+delivery = "terminal"
+
+[experimental]
+switch_ascii_input_source_in_prefix = true
