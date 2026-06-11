@@ -4,6 +4,11 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "JJ_EDITOR": "false"
   },
+  "attribution": {
+    "commit": "🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": "🤖 Generated with Claude Code"
+  },
+  "includeGitInstructions": false,
   "permissions": {
     "allow": [
       "Glob",
@@ -162,10 +167,6 @@
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
   },
-  "attribution": {
-    "commit": "🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>",
-    "pr": "🤖 Generated with Claude Code"
-  },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "chrome-devtools-mcp@chrome-devtools-plugins": true,
@@ -206,20 +207,12 @@
       }
     }
   },
+  "outputStyle": "お嬢様",
+  "language": "日本語",
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
-    "excludedCommands": [
-      "chezmoi apply:*",
-      "gh pr checks:*",
-      "gh pr diff:*",
-      "gh pr list:*",
-      "gh pr view:*",
-      "git commit:*",
-      "jj:*",
-      "mani:*"
-    ],
     "network": {
       "allowedDomains": [
         "api.github.com",
@@ -231,11 +224,18 @@
         "qiita.com",
         "zenn.dev"
       ]
-    }
+    },
+    "excludedCommands": [
+      "chezmoi apply:*",
+      "gh pr checks:*",
+      "gh pr diff:*",
+      "gh pr list:*",
+      "gh pr view:*",
+      "git commit:*",
+      "jj:*",
+      "mani:*"
+    ]
   },
-  "includeGitInstructions": false,
-  "language": "japanese",
   "autoUpdatesChannel": "latest",
   "skipAutoPermissionPrompt": true,
-  "outputStyle": "お嬢様"
 }
