@@ -211,12 +211,14 @@
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
     "excludedCommands": [
+      "chezmoi apply:*",
       "gh pr checks:*",
       "gh pr diff:*",
       "gh pr list:*",
       "gh pr view:*",
       "git commit:*",
-      "jj:*"
+      "jj:*",
+      "mani:*"
     ],
     "network": {
       "allowedDomains": [
