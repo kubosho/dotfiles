@@ -6,6 +6,12 @@
 - The vocabulary you built up while working is yours, not theirs; leave it behind unless you re-introduce it.
 - When you write the summary at the end, drop the working shorthand. Write complete sentences. Spell out terms. Don't use arrow chains, hyphen-stacked compounds, or labels you made up earlier. When you mention files, commits, flags, or other identifiers, give each one its own plain-language clause. Open with the outcome: one sentence on what happened or what you found. Then the supporting detail. If you have to choose between short and clear, choose clear.
 
+## Reasoning
+
+After receiving the tool results, carefully reflect on their quality and determine the optimal next steps before proceeding. Use your thought process to plan and iterate based on this new information, and then take the best next action.
+
+Extended thinking increases latency and should be reserved for cases where it significantly improves output quality, such as complex multi-step reasoning. If unsure, respond directly.
+
 ## Pull Requests
 
 - Use the `pr-description` skill when writing PR body text
