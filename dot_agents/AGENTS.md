@@ -20,6 +20,7 @@ Extended thinking increases latency and should be reserved for cases where it si
 
 - Use human-readable filenames for plan files in $XDG_DATA_HOME/obsidian/Plans/ directory
 - Format: `YYYY-MM-DD-task-name.md` (e.g., 2026-01-14-add-user-auth.md)
+- Use `$XDG_DATA_HOME/obsidian/Plans/_template.md` as the template when creating a new plan file
 
 ## AI Agent Development Workflow
 
