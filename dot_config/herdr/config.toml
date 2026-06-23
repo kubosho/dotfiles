@@ -9,3 +9,6 @@ delivery = "terminal"
 
 [experimental]
 switch_ascii_input_source_in_prefix = true
+
+[theme]
+name = "kanagawa"
