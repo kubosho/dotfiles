@@ -35,5 +35,6 @@ window-padding-color = extend
 window-save-state = always
 
 # macOS
+font-thicken = true
 macos-auto-secure-input = true
 macos-titlebar-style = tabs
