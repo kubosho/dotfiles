@@ -13,6 +13,7 @@ dot_config/nushell/history.txt
 # --------------------
 
 # Claude Code
+**/.claude/.cc-writes/
 **/.claude/settings.local.json
 **/.claude/scheduled_tasks.lock
 **/.serena/cache/*
