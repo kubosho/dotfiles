@@ -18,7 +18,29 @@ CWD=$(echo "$INPUT" | jq -r '.cwd')
 cd "$CWD" 2>/dev/null || exit 0
 [[ -d ".jj" ]] || exit 0
 
+# Skip the perl fork below for the common case of commands with no "jj" substring
+# at all, since stripping quotes/heredocs can only remove characters, never add
+# a "jj" that wasn't already there.
 case "$COMMAND" in
+  *jj*) ;;
+  *) exit 0 ;;
+esac
+
+# Strip heredoc bodies and quoted string contents before matching, so data appended
+# to unrelated files (e.g. a diary entry mentioning "jj describe") or a pattern
+# passed to another command (e.g. `grep "jj git push"`) isn't mistaken for an
+# actual jj invocation. Falls back to the raw command if perl is unavailable.
+if command -v perl >/dev/null 2>&1; then
+  MATCH_TARGET=$(printf '%s' "$COMMAND" | perl -0777 -pe '
+    s/<<-?\s*(["\x27]?)(\w+)\1[^\n]*\n.*?\n\s*\2\b//gs;
+    s/"(?:[^"\\]|\\.)*"//gs;
+    s/'"'"'(?:[^'"'"'\\]|\\.)*'"'"'//gs;
+  ')
+else
+  MATCH_TARGET="$COMMAND"
+fi
+
+case "$MATCH_TARGET" in
   *"jj git push"*)
     if [[ -f "lefthook.yml" ]]; then
       OUTPUT=$(lefthook run pre-commit 2>&1) || {
