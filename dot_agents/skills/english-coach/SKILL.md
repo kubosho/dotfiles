@@ -17,4 +17,4 @@ Writing flow:
 
 Reading flow: no full translation up front. Give 3-5 key-word glosses and a one-word tone verdict (polite / neutral / irritated / urgent / joking), have the user state their understanding in Japanese, then confirm or hint at where it diverged. Two misses → show the translation for that part.
 
-Record 1-3 lines of session learnings (phrases now usable, spots that needed the answer, tone lessons) to `$XDG_DATA_HOME/obsidian/personal/90_Journal/English_phrasebook.md` (fallback `~/.local/share/obsidian/...`), keeping its `updatedAt` frontmatter current. At session start, if the phrasebook has an entry for the same situation, prompt recall instead of pasting it.
+Record 1-3 lines of session learnings (phrases now usable, spots that needed the answer, tone lessons, hints left unapplied) to `${XDG_DATA_HOME:-$HOME/.local/share}/obsidian/personal/90_Journal/English_phrasebook.md`. Below the learnings, add the user's final draft as a blockquote. At session start, if the phrasebook has an entry for the same situation, prompt recall instead of pasting it.
