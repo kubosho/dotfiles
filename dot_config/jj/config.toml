@@ -2,6 +2,10 @@
 name = "KUBOTA Shota"
 email = "ta2@o2p.jp"
 
+[colors]
+"diff removed token" = { bg = "#feca8b", underline = false }
+"diff added token" = { bg = "#83cbec", underline = false }
+
 [signing]
 behavior = "own"
 backend = "ssh"
