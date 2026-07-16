@@ -31,16 +31,22 @@ setopt correct
 
 SPROMPT="もしかして %B%r%b かな？ [%{${fg[green]}%}そう(y)%{${reset_color}%},%{${fg[red]}%}違うよ(n)%{${reset_color}%},%{${fg[blue]}%}やーめた(a)%{${reset_color}%},%{${fg[cyan]}%}直すね(e)%{${reset_color}%}]: "
 
-# GitHub Packages auth token, read from 1Password (the single source of truth)
-# at shell startup and exported so child processes (git hooks via lefthook, npx,
-# editors) can expand ${NPM_AUTH_TOKEN}. Nothing is persisted locally.
-__load_npm_auth_token() {
+# GitHub Packages auth token from 1Password (the single source of truth).
+# Resolved lazily on the first npm/pnpm/bun call so the 1Password prompt appears
+# only when a package manager actually runs, then exported for the rest of the
+# shell session so later commands and child processes (git hooks, npx) inherit it
+# without re-prompting. Nothing is persisted locally.
+__ensure_npm_auth_token() {
+  [[ -n "$NPM_AUTH_TOKEN" ]] && return
   local token
   token=$(op read "op://Development/.npmrc/password") || return
   [[ -n "$token" ]] || return
   export NPM_AUTH_TOKEN="$token"
 }
-__load_npm_auth_token
+npm()  { __ensure_npm_auth_token; command npm "$@" }
+npx()  { __ensure_npm_auth_token; command npx "$@" }
+pnpm() { __ensure_npm_auth_token; command pnpm "$@" }
+bun()  { __ensure_npm_auth_token; command bun "$@" }
 
 # Aliases
 alias c="cursor"
