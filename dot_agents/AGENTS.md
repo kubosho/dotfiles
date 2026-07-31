@@ -12,10 +12,6 @@ After receiving the tool results, carefully reflect on their quality and determi
 
 Extended thinking increases latency and should be reserved for cases where it significantly improves output quality, such as complex multi-step reasoning. If unsure, respond directly.
 
-## Pull Requests
-
-- Use the `pr-description` skill when writing PR body text
-
 ## Plan Files
 
 - Use human-readable filenames for plan files in $XDG_DATA_HOME/obsidian/Plans/ directory
