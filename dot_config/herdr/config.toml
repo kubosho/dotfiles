@@ -1,8 +1,7 @@
+onboarding = false
+
 [keys]
 prefix = "ctrl+t"
-
-[ui]
-agent_panel_scope = "all"
 
 [ui.toast]
 delivery = "terminal"
