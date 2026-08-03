@@ -14,7 +14,7 @@
       "Glob",
       "Grep",
       "Read",
-      "Edit({{ env "XDG_DATA_HOME" | default (printf "%s/.local/share" .chezmoi.homeDir) }}/obsidian/personal/01_Temporary/AI_diary/*)",
+      "Edit({{ env "XDG_DATA_HOME" | default (printf "%s/.local/share" .chezmoi.homeDir) }}/obsidian/personal/90_Journal/AI_diary/*)",
       "Bash(~/.agents/scripts/spec-scope-check.sh:*)",
       "Bash(cat:*)",
       "Bash(chezmoi *)",
@@ -211,7 +211,7 @@
     }
   },
   "outputStyle": "お嬢様",
-  "language": "日本語",
+  "language": "Japanese",
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
@@ -244,9 +244,9 @@
       "mani:*"
     ]
   },
+  "promptSuggestionEnabled": false,
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "theme": "light",
-  "skipAutoPermissionPrompt": true,
-  "promptSuggestionEnabled": false
+  "skipAutoPermissionPrompt": true
 }
