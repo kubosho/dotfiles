@@ -39,6 +39,11 @@ if [ -f /proc/version ]; then
 fi
 
 # ------------------------------
+# GitHub Token
+# ------------------------------
+export GITHUB_TOKEN=$(gh auth token)
+
+# ------------------------------
 # 1Password CLI
 # ------------------------------
 export OP_BIOMETRIC_UNLOCK_ENABLED=true
