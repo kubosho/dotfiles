@@ -1,4 +1,6 @@
 # Appearance
+adjust-cell-width = "-5%"
+adjust-cell-height = "5%"
 theme = Catppuccin Latte
 background-blur = 8
 background-opacity = 0.95
