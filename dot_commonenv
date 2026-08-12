@@ -14,54 +14,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 # ------------------------------
-# WSL Configuration
-# ------------------------------
-if [ -f /proc/version ]; then
-  if grep -qEi "(WSL)" /proc/version; then
-    export USER=$(whoami)
-    export WINDOWS_PATH="/mnt/c/Windows"
-    export WINDOWS_SYSTEM_PATH="${WINDOWS_PATH}/System32"
-    export WINDOWS_OPENSSH_PATH="${WINDOWS_SYSTEM_PATH}/OpenSSH"
-    export WINDOWS_PWSH_PATH="/mnt/c/Program\ Files/PowerShell/7"
-    export WINDOWS_HOME="/mnt/c/Users/${USER}"
-    export WINDOWS_CURSOR_PATH="${WINDOWS_HOME}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
-    export WINDOWS_VSCODE_PATH="${WINDOWS_HOME}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
-  fi
-fi
-
-# ------------------------------
-# Keychain on WSL
-# ------------------------------
-if [ -f /proc/version ]; then
-  if grep -qEi "(WSL)" /proc/version; then
-    source $HOME/.keychain/$HOST-sh
-  fi
-fi
-
-# ------------------------------
-# GitHub Token
-# ------------------------------
-export GITHUB_TOKEN=$(gh auth token)
-
-# ------------------------------
-# 1Password CLI
-# ------------------------------
-export OP_BIOMETRIC_UNLOCK_ENABLED=true
-
-# ------------------------------
-# Devbox
-# ------------------------------
-export LIBRARY_PATH=${HOME}/.devbox/nix/profile/default/lib
-export RUSTUP_HOME=${HOME}/.devbox/virtenv/rustup
-
-# ------------------------------
-# Misc
-# ------------------------------
-export DOTFILES_DIR="${HOME}/src/github.com/kubosho/dotfiles"
-export GOPATH="${XDG_DATA_HOME}"
-
-# ------------------------------
-# Path
+# PATH
 # ------------------------------
 # Priority (highest to lowest):
 #   1. mise shims - project-specific tool versions
@@ -107,3 +60,50 @@ export PATH="${XDG_DATA_HOME}/devbox/global/default/.devbox/nix/profile/default/
 
 # mise shims (highest priority - project-specific versions override devbox)
 export PATH="${XDG_DATA_HOME}/mise/shims:${PATH}"
+
+# ------------------------------
+# WSL Configuration
+# ------------------------------
+if [ -f /proc/version ]; then
+  if grep -qEi "(WSL)" /proc/version; then
+    export USER=$(whoami)
+    export WINDOWS_PATH="/mnt/c/Windows"
+    export WINDOWS_SYSTEM_PATH="${WINDOWS_PATH}/System32"
+    export WINDOWS_OPENSSH_PATH="${WINDOWS_SYSTEM_PATH}/OpenSSH"
+    export WINDOWS_PWSH_PATH="/mnt/c/Program\ Files/PowerShell/7"
+    export WINDOWS_HOME="/mnt/c/Users/${USER}"
+    export WINDOWS_CURSOR_PATH="${WINDOWS_HOME}/AppData/Local/Programs/cursor/resources/app/bin/cursor"
+    export WINDOWS_VSCODE_PATH="${WINDOWS_HOME}/AppData/Local/Programs/Microsoft\ VS\ Code/bin"
+  fi
+fi
+
+# ------------------------------
+# Keychain on WSL
+# ------------------------------
+if [ -f /proc/version ]; then
+  if grep -qEi "(WSL)" /proc/version; then
+    source $HOME/.keychain/$HOST-sh
+  fi
+fi
+
+# ------------------------------
+# GitHub Token
+# ------------------------------
+export GITHUB_TOKEN=$(gh auth token)
+
+# ------------------------------
+# 1Password CLI
+# ------------------------------
+export OP_BIOMETRIC_UNLOCK_ENABLED=true
+
+# ------------------------------
+# Devbox
+# ------------------------------
+export LIBRARY_PATH=${HOME}/.devbox/nix/profile/default/lib
+export RUSTUP_HOME=${HOME}/.devbox/virtenv/rustup
+
+# ------------------------------
+# Misc
+# ------------------------------
+export DOTFILES_DIR="${HOME}/src/github.com/kubosho/dotfiles"
+export GOPATH="${XDG_DATA_HOME}"
