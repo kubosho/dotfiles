@@ -1,0 +1,79 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "~/.agents/hooks/jj-post-tool-use.sh",
+            "statusMessage": "Reviewing jj command output",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "~/.agents/hooks/jj-pre-tool-use.sh",
+            "statusMessage": "Checking jj workflow",
+            "type": "command"
+          },
+          {
+            "command": "~/.agents/hooks/git-prefer-jj.sh",
+            "statusMessage": "Checking VCS command",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      },
+      {
+        "hooks": [
+          {
+            "command": "~/.agents/hooks/jj-pre-edit.sh",
+            "statusMessage": "Checking jj change boundary",
+            "type": "command"
+          }
+        ],
+        "matcher": "Edit|Write"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "~/.agents/hooks/jj-session-start.sh",
+            "statusMessage": "Checking jj working copy",
+            "type": "command"
+          },
+          {
+            "command": "~/.agents/hooks/vcs-overview-session-start.sh",
+            "statusMessage": "Loading VCS overview",
+            "type": "command"
+          }
+        ]
+      }{{ if stat (joinPath .chezmoi.homeDir ".codex/herdr-agent-state.sh") }},
+      {
+        "hooks": [
+          {
+            "command": "bash '{{ joinPath .chezmoi.homeDir ".codex/herdr-agent-state.sh" }}' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ]
+      }{{ end }}
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "~/.agents/hooks/jj-stop-check.sh",
+            "timeout": 30,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}{{- "" -}}
