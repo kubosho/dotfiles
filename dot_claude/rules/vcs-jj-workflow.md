@@ -10,6 +10,7 @@ Every commit carries a single reason and motivation for the change, making the h
 
 - Claude Code has no TTY. Commands that open an interactive UI (editor launch, `--interactive` flag) always fail. Use non-interactive alternatives instead: `-m "message"` for commits, fileset arguments for splits, etc.
 - Commit message format:
+
   ```
   type: summary
                           ← blank line

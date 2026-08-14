@@ -1,6 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>kubosho/configs//renovate/default"
-  ]
+  "extends": ["github>kubosho/configs//renovate/default"]
 }
