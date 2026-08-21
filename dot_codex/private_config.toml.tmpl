@@ -1,0 +1,58 @@
+personality = "pragmatic"
+
+service_tier = "default"
+sandbox_mode = "workspace-write"
+web_search = "indexed"
+
+{{- if stat (joinPath .chezmoi.sourceDir "dot_codex/private_config.local.toml") }}
+{{ include "dot_codex/private_config.local.toml" }}
+{{- end }}
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[tui]
+session_picker_view = "comfortable"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 4
+
+[plugins."figma@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[features]
+hooks = true
+js_repl = false
+memories = true
+
+[memories]
+generate_memories = true
+use_memories = true

@@ -18,6 +18,9 @@ dot_config/nushell/history.txt
 **/.claude/scheduled_tasks.lock
 **/.serena/cache/*
 
+# Local Codex configuration
+dot_codex/private_config.local.toml
+
 # Worktree files
 **/.claude/worktrees/
 
