@@ -1,35 +1,44 @@
-# Personal Preferences
+# 個人設定
 
-## Writing Style
+## 文体
 
-- Do not use em dashes (—) or semicolons (;) in any output (chat responses, commit messages, PR bodies, code comments). Use commas, periods, or separate sentences instead.
-- The vocabulary you built up while working is yours, not theirs; leave it behind unless you re-introduce it.
-- When you write the summary at the end, drop the working shorthand. Write complete sentences. Spell out terms. Don't use arrow chains, hyphen-stacked compounds, or labels you made up earlier. When you mention files, commits, flags, or other identifiers, give each one its own plain-language clause. Open with the outcome: one sentence on what happened or what you found. Then the supporting detail. If you have to choose between short and clear, choose clear.
-- 日本語の出力では、法律・行政・出版など他分野の硬い語（「正本」「未決」「憲法」「布告」など）を、比喩や格付けとして使わない。「唯一の参照元」「最優先のルール」「未確定」のように、指す内容をそのまま書く。
-- 「効く」は、辞書に載っている次の五つの意味の場面に限って使う。効果や働きが現れる（薬が効く）、本来の機能を発揮する（鼻が効く）、それをすることが可能である（学割が効く）、口を利く、腕が立つ。それ以外の場面では、「適用される」「対象になる」「反映される」「届く」など、その場面に合った語を選ぶ。他に当てはまる語がどうしても見つからないときだけ「効く」を使う。
+- `—`（em ダッシュ）と `;`（セミコロン）を出力に使わない。チャットの返答、コミットメッセージ、PR 本文、コードコメントのすべてが対象になる。読点、句点、文の分割で書く。
+- 作業中に自分で組み立てた言い回しは、読み手と共有されていない。返答の中で改めて説明しないかぎり、その言い回しを持ち込まない。
+- 最後のまとめでは、作業中の略記を捨てる。
+  - 完全な文で書き、省略した語を元に戻す。矢印でつないだ記法、ハイフンで連ねた複合語、作業中に自分で付けたラベルを使わない。
+  - ファイル、コミット、フラグなどの識別子は、一つずつ平易な言葉の節に分けて書く。
+  - 書き出しは結果から始める。何が起きたか、何が分かったかを 1 文で述べ、裏付けとなる詳細はそのあとに置く。
+  - 短さと明確さのどちらかを選ぶなら、明確さを選ぶ。
+- 法律、行政、出版など他分野の硬い語を、比喩や格付けとして使わない。「正本」「未決」「憲法」「布告」などが該当する。「唯一の参照元」「最優先のルール」「未確定」のように、指す内容をそのまま書く。
+- 「効く」は、辞書に載っている次の五つの意味の場面に限って使う。それ以外の場面では「適用される」「対象になる」「反映される」「届く」など、その場面に合った語を選び、当てはまる語がどうしても見つからないときだけ「効く」を使う。
+  - **効果や働きが現れる**：薬が効く
+  - **本来の機能を発揮する**：鼻が効く
+  - **それをすることが可能である**：学割が効く
+  - **言葉を発する、または間に入って話をつける**：口を利く
+  - **技能がすぐれている**：腕が利く
 
-## Reasoning
+## 推論
 
-After receiving the tool results, carefully reflect on their quality and determine the optimal next steps before proceeding. Use your thought process to plan and iterate based on this new information, and then take the best next action.
+ツールの結果を受け取ったら、その内容が求めた質に達しているかを確かめ、次に取る手順を決めてから先へ進む。得られた情報に基づいて計画を立て直し、そのうえで行動する。
 
-Extended thinking increases latency and should be reserved for cases where it significantly improves output quality, such as complex multi-step reasoning. If unsure, respond directly.
+拡張思考は待ち時間を増やす。複雑な多段階の推論のように、出力の質が大きく上がる場面に限って使う。判断がつかないなら、そのまま応答する。
 
-## Plan Files
+## 計画ファイル
 
-- Use human-readable filenames for plan files in $XDG_DATA_HOME/obsidian/Plans/ directory
-- Format: `YYYY-MM-DD-task-name.md` (e.g., 2026-01-14-add-user-auth.md)
-- Use `$XDG_DATA_HOME/obsidian/Plans/_template.md` as the template when creating a new plan file
+- 計画ファイルは `$XDG_DATA_HOME/obsidian/Plans/` に置き、人が読めるファイル名を付ける。
+- ファイル名の形式は `YYYY-MM-DD-task-name.md` とする（例：`2026-01-14-add-user-auth.md`）。
+- 新しい計画ファイルを作るときは `$XDG_DATA_HOME/obsidian/Plans/_template.md` をテンプレートとして使う。
 
-## AI Agent Development Workflow
+## AI エージェントによる開発の進め方
 
-Use this workflow for spec-driven development.
+仕様駆動開発では次の進め方に従う。
 
-- `docs/specs/` is the source of truth for specifications. Do not move tasks into GitHub Issues or `docs/tasks`.
-- Each phase has a skill: `spec-authoring` writes and settles the spec, `spec-implement` implements one AC, `spec-implementation-check` verifies before commit.
-- `docs/specs/` is relative to the project root (`jj root`). Written specs live there.
-- Each acceptance criterion is one task, one verification unit, and one jj commit context.
-- Keep AC progress in the spec file's task list. Use only GFM task boxes: `[ ]`, `[x]`, and `[ ] （進行中）`.
-- Tests must always be run before marking work complete. If the required tests are not green, the task is not complete.
-- Negative requirements are prohibitions. Do not implement anything listed there.
-- Common conventions live in this file. AC-specific technical constraints live in the spec file.
-- Update the spec progress marker in the same commit as the implementation for that AC.
+- `docs/specs/` を仕様の唯一の参照元とする。タスクを GitHub Issues や `docs/tasks` へ移さない。
+- 各段階に skill がある。`spec-authoring` が仕様を書いて固め、`spec-implement` が **受け入れ基準（AC）** を 1 つ実装し、`spec-implementation-check` がコミット前に検証する。
+- `docs/specs/` はプロジェクトルート（`jj root`）からの相対パスとして解決する。書いた仕様はそこに置く。
+- AC の 1 つが、1 つのタスク、1 つの検証単位、1 つの jj コミットの文脈にあたる。
+- AC の進捗は仕様ファイルのタスクリストで管理する。GFM のタスクボックスだけを使い、`[ ]`、`[x]`、`[ ] （進行中）` で表す。
+- 作業を完了とする前に必ずテストを実行する。必要なテストが通っていないなら、そのタスクは完了していない。
+- 否定要件は禁止事項である。そこに挙がっているものは実装しない。
+- 共通の規約はこのファイルに置く。AC 固有の技術的制約は仕様ファイルに置く。
+- 仕様の進捗マーカーの更新は、その AC の実装と同じコミットに含める。
