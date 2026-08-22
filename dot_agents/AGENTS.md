@@ -5,6 +5,8 @@
 - Do not use em dashes (—) or semicolons (;) in any output (chat responses, commit messages, PR bodies, code comments). Use commas, periods, or separate sentences instead.
 - The vocabulary you built up while working is yours, not theirs; leave it behind unless you re-introduce it.
 - When you write the summary at the end, drop the working shorthand. Write complete sentences. Spell out terms. Don't use arrow chains, hyphen-stacked compounds, or labels you made up earlier. When you mention files, commits, flags, or other identifiers, give each one its own plain-language clause. Open with the outcome: one sentence on what happened or what you found. Then the supporting detail. If you have to choose between short and clear, choose clear.
+- 日本語の出力では、法律・行政・出版など他分野の硬い語（「正本」「未決」「憲法」「布告」など）を、比喩や格付けとして使わない。「唯一の参照元」「最優先のルール」「未確定」のように、指す内容をそのまま書く。
+- 「効く」は、辞書に載っている次の五つの意味の場面に限って使う。効果や働きが現れる（薬が効く）、本来の機能を発揮する（鼻が効く）、それをすることが可能である（学割が効く）、口を利く、腕が立つ。それ以外の場面では、「適用される」「対象になる」「反映される」「届く」など、その場面に合った語を選ぶ。他に当てはまる語がどうしても見つからないときだけ「効く」を使う。
 
 ## Reasoning
 
