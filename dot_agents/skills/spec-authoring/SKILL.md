@@ -1,10 +1,10 @@
 ---
 name: spec-authoring
-description: Draft or refine a docs/specs spec from a user goal or rough plan. Use when creating a new spec, turning a plan into acceptance criteria, or updating an existing spec.
-argument-hint: "<goal, rough plan, or docs/specs/spec-file.md>"
+description: Draft or refine a spec from a user goal or rough plan. Use when creating a new spec, turning a plan into acceptance criteria, or updating an existing spec.
+argument-hint: "<goal, rough plan, docs/specs/spec-file.md, or GitHub Issue URL>"
 ---
 
-Draft or refine a spec under `docs/specs/`, relative to the project root (`jj root`).
+Ask the user where the spec lives before writing: `docs/specs/`, relative to the project root (`jj root`), or a GitHub Issue. `docs/specs/` is the default.
 
 Follow `~/.docs/specs/_template.md` when it exists. If it does not exist, use the same structure.
 
@@ -23,4 +23,4 @@ Before declaring the spec settled, verify:
 
 While any check fails, the spec is not settled and implementation does not start.
 
-Do not create GitHub Issues or `docs/tasks`. Keep tasks inside the spec file.
+Do not create `docs/tasks`. Keep tasks inside the spec itself, whether it is a file or a GitHub Issue.

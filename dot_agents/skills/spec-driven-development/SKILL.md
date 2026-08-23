@@ -7,8 +7,8 @@ Follow this workflow for spec-driven development.
 
 ## Managing the spec
 
-- `docs/specs/` is the source of truth for specs. Do not move them into GitHub Issues or `docs/tasks`.
-- `docs/specs/` is relative to the project root (`jj root`). Written specs live there.
+- `docs/specs/` is the default location for a spec. Ask the user where it lives before writing, and place it in a GitHub Issue when the user chooses that. Do not use `docs/tasks`.
+- `docs/specs/` is relative to the project root (`jj root`).
 
 ## Implementation and verification
 

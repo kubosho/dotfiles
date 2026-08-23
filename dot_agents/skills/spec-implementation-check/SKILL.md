@@ -1,7 +1,7 @@
 ---
 name: spec-implementation-check
-description: Check the current implementation diff against a docs/specs spec. Use before committing a completed AC, or when asked to run spec-implementation-check.
-argument-hint: "<docs/specs/spec-file.md>"
+description: Check the current implementation diff against a spec. Use before committing a completed AC, or when asked to run spec-implementation-check.
+argument-hint: "<docs/specs/spec-file.md or GitHub Issue URL>"
 ---
 
 Check the current implementation diff against the given spec.
@@ -16,7 +16,7 @@ If no spec path is provided, ask for it.
 
 If no project-defined test command exists, mark Axis A skipped only for documentation-only work or with user approval.
 
-Do not create GitHub Issues, `docs/tasks`, Agent Teams, dependency-order blockers, or front-matter consistency tools.
+Do not create `docs/tasks`, Agent Teams, dependency-order blockers, or front-matter consistency tools. Report findings in the reply instead of opening new GitHub Issues.
 
 When the judgement is a return, classify the failure:
 
