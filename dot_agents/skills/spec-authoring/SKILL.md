@@ -23,4 +23,4 @@ Before declaring the spec settled, verify:
 
 While any check fails, the spec is not settled and implementation does not start.
 
-Do not create `docs/tasks`. Keep tasks inside the spec itself, whether it is a file or a GitHub Issue.
+Keep tasks inside the spec itself, whether it is a file or a GitHub Issue.

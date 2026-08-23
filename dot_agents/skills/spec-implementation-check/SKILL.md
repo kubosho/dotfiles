@@ -16,7 +16,7 @@ If no spec path is provided, ask for it.
 
 If no project-defined test command exists, mark Axis A skipped only for documentation-only work or with user approval.
 
-Do not create `docs/tasks`, Agent Teams, dependency-order blockers, or front-matter consistency tools. Report findings in the reply instead of opening new GitHub Issues.
+Do not create Agent Teams, dependency-order blockers, or front-matter consistency tools. Report findings in the reply instead of opening new GitHub Issues.
 
 When the judgement is a return, classify the failure:
 
