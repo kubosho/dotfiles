@@ -17,7 +17,7 @@ Before declaring the spec settled, verify:
 - The purpose section states the current problem, the solution applied, and what to build, in that order, in a form that can be skimmed. Design decisions do not accumulate in the purpose section.
 - Every design decision carries its reason, written as a nested list item directly under the decision, in negative requirements or technical constraints. Decisions without reasons have caused fabricated reasons in later rewrites.
 - Each AC bullet is written as an observable outcome (input or operation, then expected result), with no design decisions left to the implementer.
-- A failing test can be written directly from each AC bullet, before any implementation code.
+- A failing test can be written directly from each AC bullet, before any implementation code. When the AC has no runnable behavior, an existence check takes the place of the test.
 - No unresolved items (TBD, 要検討, 〜かもしれない) remain in the spec body.
 - The scope limit has concrete numbers.
 

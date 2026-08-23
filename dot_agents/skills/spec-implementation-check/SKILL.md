@@ -8,7 +8,7 @@ Check the current implementation diff against the given spec.
 
 If no spec path is provided, ask for it.
 
-1. Run the project's narrowest relevant test command.
+1. Run the project's narrowest relevant test command, or the AC's existence check when the AC has no runnable behavior.
 2. Read the current diff.
 3. Ask `negative-requirements-reviewer` to compare the diff with the spec's negative requirements.
 4. Run `~/.agents/scripts/spec-scope-check.sh <spec-path>` to compare the current diff with the spec's scope limit.
@@ -23,7 +23,7 @@ When the judgement is a return, classify the failure:
 - 変換エラー: the spec is right and the code mistranscribed it. Fix locally and stay in implementation.
 - 仕様欠陥: implementation revealed an ambiguity or error in the spec. Return to spec-authoring, fix the spec in its own commit, then re-implement.
 
-Treat an Axis C overflow candidate as a 仕様欠陥 signal, not merely a volume problem: the design grew during implementation, which means the spec was not settled.
+A human makes the final call on Axis B and Axis C candidates, so report them as human judgement needed instead of deciding alone. For an Axis C overflow, say that it may signal the design grew during implementation and the spec was not settled, and leave the call to the user.
 
 Report:
 

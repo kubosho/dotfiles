@@ -8,7 +8,7 @@ Implement exactly one AC from the given spec.
 
 If no spec location is provided, ask for it. If no AC is specified, pick the first incomplete AC whose Depends On entries are all done.
 
-1. Read the entire spec, not just the target AC. Mark the AC as 進行中 in the task list.
+1. Read the entire spec, not just the target AC. Mark the AC as `- [ ] AC-N：（進行中）タスク名` in the task list.
 2. Collect transcription context before writing anything: find existing code closest to what this AC touches (same layer, similar feature), and note its naming, error handling, and test style. New code follows these observed patterns.
 
    If an observed pattern appears inferior to a general best practice, present a discussion draft BEFORE starting implementation:
@@ -20,7 +20,7 @@ If no spec location is provided, ask for it. If no AC is specified, pick the fir
 
    Wait for the user's decision. If the user defers, follow the observed pattern for this AC.
 
-3. Write a failing test transcribed directly from the AC's 入力 → 結果 line.
+3. Write a failing test transcribed directly from the AC's input or operation and its expected observable result. When the AC has no runnable behavior, transcribe it into an existence check instead.
 4. Implement in one pass. If a decision the spec does not determine arises mid-implementation, stop. Report it as a spec defect and return to spec-authoring. Do not resolve it inline and keep typing.
-5. Run the narrowest relevant test until green.
+5. Run the narrowest relevant test until green, or confirm the existence check succeeds.
 6. Run spec-implementation-check and follow its judgement.

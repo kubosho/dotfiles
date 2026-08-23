@@ -15,10 +15,10 @@ Follow this workflow for spec-driven development.
 - `spec-authoring` writes and settles the spec, `spec-implement` implements one **acceptance criterion (AC)**, and `spec-implementation-check` verifies the implementation.
 - Each AC is one task, one verification unit, and one jj commit context.
 - Negative requirements are prohibitions. Do not implement anything listed there.
-- Always run the tests before marking work complete. If the required tests are not green, the task is not complete.
+- Always run each AC's test, or its existence check when the AC has no runnable behavior, before marking work complete. If it does not succeed, the task is not complete.
 
 ## Progress and commits
 
-- Keep AC progress in the spec's task list. Use only GFM task boxes: `[ ]`, `[x]`, and `[ ] （進行中）`.
+- Keep AC progress in the spec's task list. Write an in-progress task as `- [ ] AC-N：（進行中）タスク名` and a finished one as `- [x] AC-N：タスク名`.
 - Update the spec progress marker in the same commit as the implementation for that AC.
 - Once every AC is implemented, set the spec status to `done`.
