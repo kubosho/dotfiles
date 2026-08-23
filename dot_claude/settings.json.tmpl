@@ -82,6 +82,16 @@
             "command": "~/.claude/hooks/vcs-overview-session-start.sh"
           }
         ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/herdr-agent-state.sh session",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -250,5 +260,22 @@
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "theme": "light",
-  "skipAutoPermissionPrompt": true
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(jj status:*)",
+      "Bash(jj log:*)",
+      "Bash(jj diff:*)",
+      "Bash(chezmoi diff:*)",
+      "Bash(chezmoi status:*)"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(chezmoi apply:*)",
+      "Bash(jj abandon:*)",
+      "Bash(jj op restore:*)"
+    ]
+  }
 }
