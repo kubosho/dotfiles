@@ -1,12 +1,12 @@
 ---
 name: spec-implement
-description: Implement one acceptance criterion from a docs/specs spec as a transcription of the settled design. Use when starting implementation work on a spec, or when asked to implement an AC.
-argument-hint: "<docs/specs/spec-file.md> [AC-N]"
+description: Implement one acceptance criterion from a spec as a transcription of the settled design. Use when starting implementation work on a spec, or when asked to implement an AC.
+argument-hint: "<docs/specs/spec-file.md or GitHub Issue URL> [AC-N]"
 ---
 
 Implement exactly one AC from the given spec.
 
-If no spec path is provided, ask for it. If no AC is specified, pick the first incomplete AC whose Depends On entries are all done.
+If no spec location is provided, ask for it. If no AC is specified, pick the first incomplete AC whose Depends On entries are all done.
 
 1. Read the entire spec, not just the target AC. Mark the AC as 進行中 in the task list.
 2. Collect transcription context before writing anything: find existing code closest to what this AC touches (same layer, similar feature), and note its naming, error handling, and test style. New code follows these observed patterns.
