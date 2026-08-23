@@ -12,6 +12,7 @@
 # --------------------
 
 # Claude Code
+**/.claude/.cc-writes/
 **/.claude/settings.local.json
 **/.claude/worktrees
 **/.serena/cache/*
