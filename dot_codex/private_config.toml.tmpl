@@ -13,13 +13,27 @@ default_permissions = "workspace-with-dev-tools"
 [permissions.workspace-with-dev-tools]
 extends = ":workspace"
 
-[permissions.workspace-with-dev-tools.filesystem.":workspace_roots"]
-".git" = "write"
-".jj" = "write"
+[permissions.workspace-with-dev-tools.filesystem]
+"{{ joinPath .chezmoi.homeDir ".agents/scripts" }}" = "read"
+"{{ joinPath .chezmoi.homeDir ".local/share/obsidian/personal/90_Journal/AI_diary" }}" = "write"
+"{{ joinPath .chezmoi.homeDir ".local/share/obsidian/personal/91_Tasks" }}" = "write"
+":workspace_roots".".git" = "write"
+":workspace_roots".".jj" = "write"
 
 [permissions.workspace-with-dev-tools.network]
 enabled = true
 mode = "limited"
+
+[permissions.workspace-with-dev-tools.network.domains]
+"api.github.com" = "allow"
+"caniuse.com" = "allow"
+"dev.to" = "allow"
+"docs.anthropic.com" = "allow"
+"github.com" = "allow"
+"qiita.com" = "allow"
+"raw.githubusercontent.com" = "allow"
+"stackoverflow.com" = "allow"
+"zenn.dev" = "allow"
 
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
