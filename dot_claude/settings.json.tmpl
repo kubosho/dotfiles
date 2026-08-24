@@ -88,7 +88,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/herdr-agent-state.sh session",
+            "command": "bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10
           }
         ]
@@ -194,7 +194,8 @@
     "a11y-specialist-skills@a11y-specialist-skills": true,
     "security-guidance@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "anti-slop-comment@kubosho-skills": true
   },
   "extraKnownMarketplaces": {
     "kuu-marketplace": {
