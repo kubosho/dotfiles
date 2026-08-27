@@ -4,15 +4,22 @@ description: |
   Reviews code the user just finished writing in the current session, for missing considerations that could cause security, privacy, performance, or edge-case bugs. Leaves each finding as an inline code comment asking whether the omission was intentional, then follows up based on the user's response.
 ---
 
-Review the diff from the current session for these omissions. Do not list every possible nitpick, only ones with plausible real-world impact.
+Review the diff from the current session for these omissions. Only ones with plausible real-world impact, not every nitpick.
 
-For each finding, add a code comment at the relevant line, phrased as a question about intent, for example:
+Each finding is a code comment at the relevant line, in two lines: what breaks, then what to decide or check. A question about intent alone leaves the next move unstated, and the review stalls there.
 
-    # Is it intentional that this doesn't handle [edge case]?
+    # `items` can be empty here, so `items[0]` is undefined. Intentional?
+    # Decide: reject empty `items` up front, or let the caller handle undefined?
+
+Line 1 names the input or state that triggers it and what happens, so the claim can be checked against the code. Not the abstract form:
+
+    # Is it intentional that this doesn't handle the edge case here?
+
+Line 2 names a decision or a fact to check, never the fix. "Decide: A or B?" or "Check: does any caller pass an empty list?"
 
 Do not use an external diff viewer such as difit. Write comments directly into the code.
 
 The user responds in one of two ways:
 
-- They reply in the comment thread or in chat. Check whether they can state the tradeoff in their own words. If they can, accept it as fine for this context and remove the comment. If the explanation is thin or missing, ask one follow-up question that pushes on the specific gap, at most one per finding.
-- They remove the comment and change the code directly instead of replying. Check whether the new code addresses the concern. If it does, accept the removal. If it doesn't, raise the same finding again.
+- Replies in the thread or in chat. If they can state the tradeoff in their own words, accept it and remove the comment. If the explanation is thin, ask one follow-up on the specific gap, at most one per finding.
+- Removes the comment and changes the code instead. If the new code addresses the concern, accept it. If not, raise the finding again.

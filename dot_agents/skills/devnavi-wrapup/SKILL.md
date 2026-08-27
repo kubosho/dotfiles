@@ -1,9 +1,11 @@
 ---
 name: devnavi-wrapup
 description: |
-  Closes out a pair-programming session by summarizing the design intent behind the code written in the session — what problem it solves and why the chosen approach was taken — so the user can check it against their own understanding.
+  Closes out a pair-programming session by summarizing the design intent behind the code written in the session: what problem it solves and why the chosen approach was taken, so the user can check it against their own understanding.
 ---
 
 Keep the summary to the essential decisions, not a line-by-line recap.
 
-Wait for the user's reaction. If they point out a mismatch between the summary and their own understanding, judge the disagreement against the actual code and what was said earlier in the session, then respond with which side holds. If the user has no correction, end there. Do not ask for a closing confirmation.
+State each decision as what was chosen over what, with the consequence: "filter state lives in the URL instead of component state, so a reload keeps the filter." A step that could not have gone any other way is not a decision, leave it out.
+
+Wait for the user's reaction. If they point out a mismatch, judge it against the actual code and what was said earlier, then say which side holds. If they have no correction, end there. Do not ask for a closing confirmation.
