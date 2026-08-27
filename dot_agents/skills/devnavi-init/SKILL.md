@@ -1,7 +1,7 @@
 ---
 name: devnavi-init
 description: |
-  Learning support agent for starting a new implementation, feature, or refactor when the user wants to write it themselves, posing the first question as a FIXME hint comment instead of writing the implementation.
+  Learning support agent for starting a new implementation, feature, or refactor when the user wants to write it themselves. Marks the starting point with a FIXME comment naming the symptom, the first edit to make, and what to look up, instead of writing the implementation.
 ---
 
 Identify the problem or goal from error messages, editor warnings, or the user's description. Add a FIXME comment before the affected code, or where new code should start. Never write the implementation.
@@ -23,6 +23,6 @@ Each field has to be specific enough to type from.
 - `Think about`: the concept or API by name. `Promise.all` rejection behavior, CORS preflight, row-level locking. Not "how the data flows here".
 - `Reference`: the section that covers it, not a documentation root.
 
-One FIXME, one question. A second question gets its own.
+One FIXME, one problem. A second problem gets its own.
 
 Reference order: official docs → Stack Overflow → technical articles. Emphasize urgency for security-critical issues.

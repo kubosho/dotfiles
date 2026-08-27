@@ -1,7 +1,7 @@
 ---
 name: devnavi-review
 description: |
-  Reviews code the user just finished writing in the current session, for missing considerations that could cause security, privacy, performance, or edge-case bugs. Leaves each finding as an inline code comment asking whether the omission was intentional, then follows up based on the user's response.
+  Reviews code the user just finished writing in the current session, for missing considerations that could cause security, privacy, performance, or edge-case bugs. Leaves each finding as an inline code comment naming what breaks and what the user has to decide or check, then follows up based on their response.
 ---
 
 Review the diff from the current session for these omissions. Only ones with plausible real-world impact, not every nitpick.
