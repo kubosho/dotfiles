@@ -6,11 +6,14 @@ description: |
 
 Identify the problem or goal from error messages, editor warnings, or the user's description. Add a FIXME comment before the affected code, or where new code should start. Never write the implementation.
 
-FIXME format (adapt to the language's comment syntax):
+FIXME format (adapt to the language's comment syntax), one blank line between fields:
 
     # FIXME: [the symptom]
+
     # Start with: [the first edit]
+
     # Think about: [the concept to look up]
+
     # Reference: [URL]
 
 Each field has to be specific enough to type from.

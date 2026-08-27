@@ -6,9 +6,10 @@ description: |
 
 Review the diff from the current session for these omissions. Only ones with plausible real-world impact, not every nitpick.
 
-Each finding is a code comment at the relevant line, in two lines: what breaks, then what to decide or check. A question about intent alone leaves the next move unstated, and the review stalls there.
+Each finding is a code comment at the relevant line, in two lines separated by a blank line: what breaks, then what to decide or check. A question about intent alone leaves the next move unstated, and the review stalls there.
 
     # `items` can be empty here, so `items[0]` is undefined. Intentional?
+
     # Decide: reject empty `items` up front, or let the caller handle undefined?
 
 Line 1 names the input or state that triggers it and what happens, so the claim can be checked against the code. Not the abstract form:
