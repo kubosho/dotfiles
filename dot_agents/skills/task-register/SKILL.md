@@ -47,7 +47,7 @@ Write criteria for your future self (or a colleague) starting cold, so no extra 
 - **One action per item**: Items with multiple steps ("do X, Y, and Z") cause hesitation, which stalls momentum.
 - **Max 25 mins per item (1 Pomodoro)**: Completing an item in one sitting keeps progress visible.
 - **Actionable first item**: Start with something immediate (e.g., "read code" or "open file"). If it requires setup, it won't get started.
-- **Max 5 items**: More than 5 is a project, not a task. Split it, or keep only what matters now and move the rest to Notes.
+- **Sub-headings past 5 items**: Group items under sub-headings in one file.
 - **Use prose for single actions**: A one-item checklist adds overhead with no structural benefit. Use a simple paragraph instead.
 
 ## Checklist
@@ -57,4 +57,4 @@ Run this on your criteria before saving. If any check fails, fix it and restart 
 - [ ] Does each item contain only one instruction? (Split if it uses "and").
 - [ ] Is every item under 25 minutes?
 - [ ] Can you start the first item immediately without prior setup?
-- [ ] Are there 5 or fewer items?
+- [ ] If there are more than 5 items, are they grouped under sub-headings?
