@@ -84,7 +84,7 @@ stt:
     model: base
   openai:
     model: whisper-1
-    language: ''
+    language: ""
   use_gateway: true
 memory:
   memory_enabled: true
