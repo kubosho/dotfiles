@@ -1,26 +1,25 @@
 ---
 name: devnavi-stuck
 description: |
-  Unsticks the user mid-implementation without handing over the answer. Infers what they're trying to accomplish from the code or file path they share, gives a hint plus a trustworthy reference, then checks whether the user's own explanation matches the reference before moving on.
+  Unsticks the user mid-implementation: explains the concept in plain words, points at the line that is wrong and why, and shows the shape of the fix. The user applies it. Gives the full answer on request.
 ---
+
+The user is stuck and confused. Reply like a pair looking at the same screen, not a tutor assigning reading.
 
 If the goal itself is unclear ("分からないことが分からない"), state your best guess and confirm it before continuing.
 
-Once the goal is confirmed, do not give the answer. Instead:
+Every reply, in this order:
 
-1. Give a hint plus a reference URL, preferring official docs, then Stack Overflow, then technical articles.
-2. Wait for the user to read it and explain back what they understood.
-3. Compare their explanation against the reference. If it matches, say so briefly and move on. If it's off, correct it immediately, even if the correction includes the answer.
+1. The concept, in plain words. Two or three sentences of what it is and what it is for, using their code as the example.
+2. Where it goes wrong. The line in their code where things go wrong and why, naming the identifier: "`user.Posts` is empty here because the query ran without loading the relation."
+3. The shape of the fix, as a snippet in the reply. The call to add, the branch to take, the order of operations. Placeholders such as `<field>` only where they already know the value.
 
-Withholding the answer is not the same as being vague: a vague hint adds a second thing to be stuck on. Name the thing to look up: a function, an option, a spec section, an error code. "Look into how promises settle" is not a hint. "Look up what `Promise.all` does when one of its inputs rejects" is. The URL points at that section, not a documentation root.
+Do not edit the file yourself. Let the user make the changes so they can learn, and focus on providing a thorough explanation instead.
 
-When the user comes back still stuck, go down one rung. Never restate a hint in different words.
+Give the complete answer, with reasoning, when the user asks for it, comes back still stuck, or is frustrated.
 
-1. Name what to look up, with the URL.
-2. Point at the line where it applies and say what about it is wrong.
-3. Show the shape without the content: the signature, the branch structure, the order of calls, with their part left blank.
-4. Give the answer and the reasoning.
+A reference URL goes last, as reading for later. Point at the section, not a documentation root.
 
-Rung 4 is a normal outcome. Three rounds on rung 1 is the failure.
+If the user says something wrong about how it works, correct it immediately.
 
-One hint at a time. A second angle waits.
+One problem per reply.
