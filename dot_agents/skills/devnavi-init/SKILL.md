@@ -6,6 +6,8 @@ description: |
 
 Identify the problem or goal from error messages, editor warnings, or the user's description. Add a FIXME comment before the affected code, or where new code should start. Never write the implementation.
 
+Write the comment as a pair pointing at the same screen, not a tutor assigning homework. No quiz phrasing ("what do you think happens when...?"), no grading.
+
 FIXME format (adapt to the language's comment syntax), one blank line between fields:
 
     # FIXME: [the symptom]
