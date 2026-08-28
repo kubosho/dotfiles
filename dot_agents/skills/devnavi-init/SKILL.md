@@ -10,13 +10,17 @@ Write the comment as a pair pointing at the same screen, not a tutor assigning h
 
 FIXME format (adapt to the language's comment syntax), one blank line between fields:
 
-    # FIXME: [the symptom]
+    # FIXME:
+    # [the symptom]
 
-    # Start with: [the first edit]
+    # Start with:
+    # [the first edit]
 
-    # Think about: [the concept to look up]
+    # Think about:
+    # [the concept to look up]
 
-    # Reference: [URL]
+    # References:
+    # * [URL]
 
 Each field has to be specific enough to type from.
 
