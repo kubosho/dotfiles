@@ -8,8 +8,8 @@
     "lint:secret": "secretlint \"**/*\""
   },
   "devDependencies": {
-    "@secretlint/secretlint-rule-preset-recommend": "13.0.4",
+    "@secretlint/secretlint-rule-preset-recommend": "13.0.5",
     "oxfmt": "0.64.0",
-    "secretlint": "13.0.4"
+    "secretlint": "13.0.5"
   }
 }
