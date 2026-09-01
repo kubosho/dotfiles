@@ -20,6 +20,7 @@ chezmoi edit ~/.file   # Edit a managed file
 - `dot_config/` → `~/.config/` (jj/, starship.toml)
 - `dot_claude/` → `~/.claude/`
 - `dot_agents/` → `~/.agents/`
+- `dot_apm/` → `~/.apm/` (global APM manifest; skills themselves live in [my-skills](https://github.com/kubosho/my-skills), installed via `apm install -g`)
 - Shell: `dot_zshenv`, `dot_zshrc`, `dot_commonenv`
 - Git: `dot_gitconfig`
 

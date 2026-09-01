@@ -1,0 +1,21 @@
+name: kubosho
+version: 1.0.0
+description: APM project for kubosho
+author:
+  name: kubosho
+# Which agent platforms to deploy to.
+# Resolution order: --target flag > this field > auto-detect from filesystem.
+# Accepted values: agent-skills, antigravity, claude, codex, copilot, cursor, gemini, grok-build, kiro, opencode, vscode, windsurf
+targets:
+  - claude
+  - codex
+dependencies:
+  apm:
+    - kubosho/my-skills/plugins/anti-slop-code
+    - kubosho/my-skills/plugins/anti-slop-comment
+    - kubosho/my-skills/plugins/baseline
+    - kubosho/my-skills/plugins/spec-driven-development
+    - kubosho/my-skills/plugins/test-principles
+  mcp: []
+includes: auto
+scripts: {}
