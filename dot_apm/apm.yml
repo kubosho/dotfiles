@@ -14,6 +14,7 @@ dependencies:
     - kubosho/my-skills/plugins/anti-slop-code
     - kubosho/my-skills/plugins/anti-slop-comment
     - kubosho/my-skills/plugins/baseline
+    - kubosho/my-skills/plugins/devnavi
     - kubosho/my-skills/plugins/spec-driven-development
     - kubosho/my-skills/plugins/test-principles
   mcp: []
