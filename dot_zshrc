@@ -1,5 +1,6 @@
 # devbox: skip PATH replacement to preserve commonenv's priority order
 eval "$(devbox global shellenv | grep -v '^export PATH=')"
+eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
 
 autoload -Uz colors && colors
