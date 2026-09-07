@@ -43,10 +43,6 @@ mode = "limited"
 [tui]
 session_picker_view = "comfortable"
 
-[tui.model_availability_nux]
-"gpt-5.5" = 4
-"gpt-5.6-sol" = 4
-
 [plugins."figma@openai-curated"]
 enabled = true
 
@@ -80,8 +76,10 @@ enabled = true
 [features]
 hooks = true
 js_repl = false
-memories = true
+memories = false
+chronicle = false
 
 [memories]
-generate_memories = true
-use_memories = true
+generate_memories = false
+use_memories = false
+disable_on_external_context = true
