@@ -4,7 +4,7 @@
     "chezmoi@1.8.11",
     "bun@0.1.13",
     "devcontainer@latest",
-    "dotenvx@latest",
+    "dotenvx@1.75.1",
     "gh@latest",
     "ghq@1.1.7",
     "git@latest",
