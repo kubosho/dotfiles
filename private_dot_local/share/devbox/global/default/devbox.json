@@ -7,7 +7,7 @@
     "dotenvx@latest",
     "gh@latest",
     "ghq@1.1.7",
-    "git@latest",
+    "git@2.55.0",
     "go@latest",
     "helix@latest",
     "jujutsu@latest",
