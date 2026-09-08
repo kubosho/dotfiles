@@ -3,7 +3,7 @@
   "packages": [
     "chezmoi@1.8.11",
     "bun@0.1.13",
-    "devcontainer@latest",
+    "devcontainer@0.87.0",
     "dotenvx@1.75.1",
     "gh@latest",
     "ghq@1.1.7",
