@@ -12,6 +12,7 @@ package-lock.json
 # Local overrides
 **/.claude/settings.local.json
 dot_codex/private_config.local.toml
+.local/share/devbox/global/default/devbox.lock
 
 # OS-specific ignores
 {{- if eq .chezmoi.os "darwin" }}

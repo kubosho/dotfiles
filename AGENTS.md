@@ -21,6 +21,7 @@ chezmoi edit ~/.file   # Edit a managed file
 - `dot_claude/` → `~/.claude/`
 - `dot_agents/` → `~/.agents/`
 - `dot_apm/` → `~/.apm/` (global APM manifest; skills themselves live in [my-skills](https://github.com/kubosho/my-skills), installed via `apm install -g`)
+- `private_dot_local/share/devbox/global/default/devbox.json` → `~/.local/share/devbox/global/default/devbox.json` (devbox global package list; `devbox.lock` is machine-specific and ignored)
 - Shell: `dot_zshenv`, `dot_zshrc`, `dot_commonenv`
 - Git: `dot_gitconfig`
 
