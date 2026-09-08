@@ -14,7 +14,7 @@
     "mise@2024.1.35",
     "nodejs@latest",
     "nushell@latest",
-    "opencode@latest",
+    "opencode@0.0.52",
     "pnpm@latest",
     "python3@latest",
     "rustup@latest",
