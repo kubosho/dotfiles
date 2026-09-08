@@ -20,7 +20,7 @@
     "rustup@latest",
     "starship@latest",
     "tmux@latest",
-    "terraform@latest"
+    "terraform@0.12.31"
   ],
   "shell": {
     "init_hook": [
