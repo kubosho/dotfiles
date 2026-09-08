@@ -11,7 +11,7 @@
     "go@latest",
     "helix@latest",
     "jujutsu@latest",
-    "mise@latest",
+    "mise@2024.1.35",
     "nodejs@latest",
     "nushell@latest",
     "opencode@latest",
