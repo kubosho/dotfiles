@@ -6,7 +6,7 @@
     "devcontainer@latest",
     "dotenvx@latest",
     "gh@latest",
-    "ghq@1.1.7",
+    "ghq@1.10.1",
     "git@latest",
     "go@latest",
     "helix@latest",
