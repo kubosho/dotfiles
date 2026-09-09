@@ -1,6 +1,6 @@
 ---
 name: write-diary
-description: Append a work observation entry to today's AI diary file. Use at the end of any session where files were edited or commands were run.
+description: Append a work observation entry to today's AI diary file only when explicitly requested by the user.
 ---
 
 1. Use vault `${XDG_DATA_HOME:-$HOME/.local/share}/obsidian/personal`. Read `00_Templates/AI作業日報.md` for the format and intro.
