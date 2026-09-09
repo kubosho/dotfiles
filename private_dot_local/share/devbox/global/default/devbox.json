@@ -9,7 +9,7 @@
     "ghq@1.1.7",
     "git@latest",
     "go@latest",
-    "helix@latest",
+    "helix@0.6.0",
     "jujutsu@latest",
     "mise@2024.1.35",
     "nodejs@latest",
