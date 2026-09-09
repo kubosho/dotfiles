@@ -17,6 +17,7 @@ dependencies:
     - kubosho/my-skills/plugins/devnavi
     - kubosho/my-skills/plugins/spec-driven-development
     - kubosho/my-skills/plugins/test-principles
+    - herdrdev/herdr/skills/herdr#v0.9.0
   mcp: []
 includes: auto
 scripts: {}
