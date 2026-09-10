@@ -1,0 +1,70 @@
+tap "dotenvx/brew"
+tap "k1low/tap", "https://github.com/k1LoW/homebrew-tap"
+tap "stablyai/orca", trusted: { casks: ["orca"] }
+# Zstandard is a real-time compression algorithm
+brew "zstd"
+# Package acting as bridge between Node projects and their package managers
+brew "corepack"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# Libraries for security-enabled client and server applications
+brew "nss"
+# Unified AI rules management CLI tool
+brew "rulesync"
+# SQLite extension providing 256-bit AES encryption
+brew "sqlcipher"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Command-line interface for 1Password
+cask "1password-cli"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Write, edit, and chat about your code with AI
+cask "cursor"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+# VPN client for secure and private internet access
+cask "expressvpn"
+# Collaborative team software
+cask "figma"
+# Web browser
+cask "firefox"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# AI-powered translator
+cask "nani"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
+# Music streaming service
+cask "spotify"
+# Multiplayer code editor
+cask "zed"
+vscode "anysphere.remote-containers"
+vscode "anysphere.remote-ssh"
+vscode "astro-build.astro-vscode"
+vscode "brody715.vscode-cuelang"
+vscode "dbaeumer.vscode-eslint"
+vscode "esbenp.prettier-vscode"
+vscode "github.github-vscode-theme"
+vscode "github.vscode-github-actions"
+vscode "github.vscode-pull-request-github"
+vscode "golang.go"
+vscode "mermaidchart.vscode-mermaid-chart"
+vscode "metaphore.kanagawa-vscode-color-theme"
+vscode "oxc.oxc-vscode"
+vscode "visualjj.visualjj"
+vscode "waderyan.gitblame"
