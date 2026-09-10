@@ -1,5 +1,11 @@
-# Directories that coding agents (Claude Code, Codex) may write to.
-# Paths are relative to the home directory, resolved by each agent's config template.
+# Paths are relative to the home directory.
 agentWritePaths:
+  - .cache
   - .local/share/obsidian/personal/90_Journal/AI_diary
   - .local/share/obsidian/personal/91_Tasks
+
+# These hold code that runs later. .cache/.bun/bin is on PATH.
+# .cache/codex-runtimes holds plugin code that Codex loads.
+agentReadOnlyPaths:
+  - .cache/.bun
+  - .cache/codex-runtimes

@@ -49,6 +49,9 @@
       "WebFetch(domain:zenn.dev)"
     ],
     "deny": [
+{{- range $.agentReadOnlyPaths }}
+      "Edit({{ joinPath $.chezmoi.homeDir . }}/**)",
+{{- end }}
       "NotebookEdit",
       "Bash(dotenvx get)",
       "Bash(git clean:*)",
@@ -228,6 +231,18 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": true,
+    "filesystem": {
+      "allowWrite": [
+{{- range $i, $p := $.agentWritePaths }}{{ if $i }},{{ end }}
+        "{{ joinPath $.chezmoi.homeDir $p }}"
+{{- end }}
+      ],
+      "denyWrite": [
+{{- range $i, $p := $.agentReadOnlyPaths }}{{ if $i }},{{ end }}
+        "{{ joinPath $.chezmoi.homeDir $p }}"
+{{- end }}
+      ]
+    },
     "network": {
       "allowedDomains": [
         "api.github.com",

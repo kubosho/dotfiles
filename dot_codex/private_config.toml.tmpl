@@ -18,6 +18,9 @@ extends = ":workspace"
 {{- range $.agentWritePaths }}
 "{{ joinPath $.chezmoi.homeDir . }}" = "write"
 {{- end }}
+{{- range $.agentReadOnlyPaths }}
+"{{ joinPath $.chezmoi.homeDir . }}" = "read"
+{{- end }}
 ":workspace_roots".".git" = "write"
 ":workspace_roots".".jj" = "write"
 
