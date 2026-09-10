@@ -15,8 +15,9 @@ extends = ":workspace"
 
 [permissions.workspace-with-dev-tools.filesystem]
 "{{ joinPath .chezmoi.homeDir ".agents/scripts" }}" = "read"
-"{{ joinPath .chezmoi.homeDir ".local/share/obsidian/personal/90_Journal/AI_diary" }}" = "write"
-"{{ joinPath .chezmoi.homeDir ".local/share/obsidian/personal/91_Tasks" }}" = "write"
+{{- range $.agentWritePaths }}
+"{{ joinPath $.chezmoi.homeDir . }}" = "write"
+{{- end }}
 ":workspace_roots".".git" = "write"
 ":workspace_roots".".jj" = "write"
 

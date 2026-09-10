@@ -1,0 +1,5 @@
+# Directories that coding agents (Claude Code, Codex) may write to.
+# Paths are relative to the home directory, resolved by each agent's config template.
+agentWritePaths:
+  - .local/share/obsidian/personal/90_Journal/AI_diary
+  - .local/share/obsidian/personal/91_Tasks
