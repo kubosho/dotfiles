@@ -1,11 +1,11 @@
 ---
 name: task-register
 description: |
-  Create a draft task file in Obsidian's 91_Tasks from a description. Use this whenever the user wants something recorded as a task instead of done now, including `/task-register <description>`, 「これタスクにしておいて」「後で見直すからタスク作って」「タスクに登録して」, or any request to park work as a task file, even when the word "task" is not used.
+  Create a draft task file in Obsidian's 91_Tasks/Lists from a description. Use this whenever the user wants something recorded as a task instead of done now, including `/task-register <description>`, 「これタスクにしておいて」「後で見直すからタスク作って」「タスクに登録して」, or any request to park work as a task file, even when the word "task" is not used.
 argument-hint: "<description of the task>"
 ---
 
-Receive a task description and create a task file directly under `$XDG_DATA_HOME/obsidian/personal/91_Tasks/`.
+Receive a task description and create a task file under `$XDG_DATA_HOME/obsidian/personal/91_Tasks/Lists/`.
 
 ## Steps
 
@@ -13,7 +13,7 @@ Receive a task description and create a task file directly under `$XDG_DATA_HOME
 2. Read `$XDG_DATA_HOME/obsidian/personal/00_Templates/タスク登録.md` to check structure and guidelines.
 3. Assemble file name and section contents from description and context.
 4. Run "Checklist" before saving.
-5. Save to `$XDG_DATA_HOME/obsidian/personal/91_Tasks/<task name>.md`. If the file exists, inspect its current progress and ask for confirmation before overwriting.
+5. Save to `$XDG_DATA_HOME/obsidian/personal/91_Tasks/Lists/<task name>.md`. If the file exists, inspect its current progress and ask for confirmation before overwriting.
 6. Return file path, `status`, and count of criteria items. Mention any trimmed items or empty sections.
 
 ## File metadata
