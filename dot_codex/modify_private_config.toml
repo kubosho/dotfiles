@@ -1,0 +1,13 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $current := fromToml .chezmoi.stdin -}}
+{{- $common := includeTemplate "codex-config.toml.tmpl" . | fromToml -}}
+{{- $local := dict -}}
+{{- if stat (joinPath .chezmoi.sourceDir "dot_codex/private_config.local.toml") -}}
+{{- $local = include "dot_codex/private_config.local.toml" | fromToml -}}
+{{- end -}}
+{{- $updated := mustMergeOverwrite (deepCopy $current) $common $local -}}
+{{- if deepEqual $current $updated -}}
+{{- .chezmoi.stdin -}}
+{{- else -}}
+{{- $updated | toToml -}}
+{{- end -}}

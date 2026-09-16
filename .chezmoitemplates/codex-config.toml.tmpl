@@ -4,9 +4,7 @@ service_tier = "default"
 sandbox_mode = "workspace-write"
 web_search = "indexed"
 
-{{- if stat (joinPath .chezmoi.sourceDir "dot_codex/private_config.local.toml") }}
-{{ include "dot_codex/private_config.local.toml" }}
-{{- else }}
+{{- if not (stat (joinPath .chezmoi.sourceDir "dot_codex/private_config.local.toml")) }}
 default_permissions = "workspace-with-dev-tools"
 {{- end }}
 
@@ -38,9 +36,6 @@ mode = "limited"
 "raw.githubusercontent.com" = "allow"
 "stackoverflow.com" = "allow"
 "zenn.dev" = "allow"
-
-[notice.model_migrations]
-"gpt-5.3-codex" = "gpt-5.4"
 
 [tui]
 session_picker_view = "comfortable"
