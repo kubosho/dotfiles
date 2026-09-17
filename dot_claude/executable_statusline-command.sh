@@ -32,6 +32,25 @@ colored_pct() {
   ansi_rgb "$r" "$g" "$b" "${pct}%"
 }
 
+colored_bar() {
+  local pct="$1" width="$2"
+  local filled=$(( pct * width / 100 ))
+  (( filled > width )) && filled=$width
+  (( filled < 0 )) && filled=0
+  local empty=$(( width - filled ))
+  local bar="" color
+  color="$(color_for_pct "$pct")"
+  if (( filled > 0 )); then
+    printf -v fill_str "%${filled}s" ""
+    bar="$(ansi_rgb ${color} "${fill_str// /█}")"
+  fi
+  if (( empty > 0 )); then
+    printf -v empty_str "%${empty}s" ""
+    bar+="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "${empty_str// /░}")"
+  fi
+  printf '%s' "$bar"
+}
+
 SEP="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B " │ ")"
 
 # --------------------------------------------------------------------------
@@ -45,41 +64,76 @@ context_pct="$(printf '%.0f' "$context_pct_raw")"
 context_size="$(echo "$INPUT" | jq -r '.context_window.context_window_size // 0')"
 cwd="$(echo "$INPUT" | jq -r '.workspace.current_dir // .cwd // ""')"
 
-# cost
+effort="$(echo "$INPUT" | jq -r '.effort.level // "default"')"
 total_cost="$(echo "$INPUT" | jq -r '.cost.total_cost_usd // 0')"
-
-format_tokens() {
-  local n="$1"
-  if (( n >= 1000 )); then
-    awk "BEGIN{printf \"%.0fk\", ${n}/1000}"
-  else
-    echo "$n"
-  fi
-}
-
-# effort level from settings
-effort="$(jq -r '.effortLevel // "default"' ~/.claude/settings.json 2>/dev/null || echo "default")"
 
 # --------------------------------------------------------------------------
 # Line 1: Model name + effort
 # --------------------------------------------------------------------------
-LINE1="$(ansi_rgb 217 119 87 "🤖 ${model_display}")${SEP}$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "🧠 ${effort}")"
+LINE1="$(ansi_rgb 217 119 87 "🤖 ${model_display}") $(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "🧠 ${effort}")"
 
 # --------------------------------------------------------------------------
 # Line 2: context usage + cost
 # --------------------------------------------------------------------------
-context_used=$(( context_size * context_pct / 100 ))
-ctx_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📊 ")$(colored_pct "$context_pct")$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B " $(format_tokens $context_used)/$(format_tokens $context_size)")"
+context_used="$(echo "$INPUT" | jq -r '.context_window.total_input_tokens // 0')"
+
+compact_threshold="${CLAUDE_AUTOCOMPACT_PCT_OVERRIDE:-}"
+if [[ -z "$compact_threshold" ]]; then
+  compact_threshold="$(jq -r '.env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE // empty' ~/.claude/settings.json 2>/dev/null || true)"
+fi
+
+if [[ -n "$compact_threshold" ]] && (( compact_threshold > 0 )); then
+  # color reflects distance to auto-compact, not the full context window
+  compact_ceiling=$(( context_size * compact_threshold / 100 ))
+  if (( compact_ceiling > 0 )); then
+    pct_to_compact=$(( context_used * 100 / compact_ceiling ))
+  else
+    pct_to_compact=0
+  fi
+  ctx_bar="$(colored_bar "$pct_to_compact" 10)"
+  ctx_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📊 ")${ctx_bar} $(colored_pct "$pct_to_compact")"
+else
+  ctx_bar="$(colored_bar "$context_pct" 10)"
+  ctx_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📊 ")${ctx_bar} $(colored_pct "$context_pct")"
+fi
 cost_str="$(printf '$%.2f' "$total_cost")"
 cost_display="$(ansi_rgb 255 215 0 "💰 ${cost_str}")"  # #FFD700 gold
 
 LINE2="${ctx_display}${SEP}${cost_display}"
 
 # --------------------------------------------------------------------------
-# Line 3: diff stats + VCS info (jj or git)
+# Line 3: rate limits
+# --------------------------------------------------------------------------
+LINE3=""
+rl_5h_pct="$(echo "$INPUT" | jq -r '.rate_limits.five_hour.used_percentage // empty')"
+rl_7d_pct="$(echo "$INPUT" | jq -r '.rate_limits.seven_day.used_percentage // empty')"
+
+rl_parts=()
+if [[ -n "$rl_5h_pct" ]]; then
+  rl_5h_rounded="$(printf '%.0f' "$rl_5h_pct")"
+  rl_color="$(color_for_pct "$rl_5h_rounded")"
+  rl_bar="$(colored_bar "$rl_5h_rounded" 8)"
+  rl_parts+=("$(ansi_rgb ${rl_color} "5h:") ${rl_bar} $(ansi_rgb ${rl_color} "${rl_5h_rounded}%")")
+fi
+if [[ -n "$rl_7d_pct" ]]; then
+  rl_7d_rounded="$(printf '%.0f' "$rl_7d_pct")"
+  rl_color="$(color_for_pct "$rl_7d_rounded")"
+  rl_bar="$(colored_bar "$rl_7d_rounded" 8)"
+  rl_parts+=("$(ansi_rgb ${rl_color} "7d:") ${rl_bar} $(ansi_rgb ${rl_color} "${rl_7d_rounded}%")")
+fi
+
+if (( ${#rl_parts[@]} > 0 )); then
+  LINE3="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "⏳ ")${rl_parts[0]}"
+  if (( ${#rl_parts[@]} > 1 )); then
+    LINE3+="${SEP}${rl_parts[1]}"
+  fi
+fi
+
+# --------------------------------------------------------------------------
+# Line 4: diff stats + VCS info + commit message (jj or git)
 # --------------------------------------------------------------------------
 added=0; deleted=0; files_changed=0
-vcs_info="?"
+vcs_colored="?"
 is_jj=0
 
 if [[ -n "$cwd" ]] && cd "$cwd" 2>/dev/null; then
@@ -133,20 +187,16 @@ fi
 files_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📄 ${files_changed}")"
 diff_colored="$(ansi_rgb $GREEN_R $GREEN_G $GREEN_B "+${added}")$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "/")$(ansi_rgb $RED_R $RED_G $RED_B "-${deleted}")"
 diff_colored="✏️ ${diff_colored} ${files_display}"
-LINE3="${diff_colored}${SEP}${vcs_colored}"
-
-# --------------------------------------------------------------------------
-# Line 4: jj working copy description (jj only)
-# --------------------------------------------------------------------------
-LINE4=""
+LINE4="${diff_colored}${SEP}${vcs_colored}"
 if (( is_jj )) && [[ -n "$wc_desc" ]]; then
-  LINE4="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "💬 ${wc_desc}")"
+  LINE4+="${SEP}$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "💬 ${wc_desc}")"
 fi
 
 # --------------------------------------------------------------------------
 # Output
 # --------------------------------------------------------------------------
-printf "%s\n%s\n%s\n" "$LINE1" "$LINE2" "$LINE3"
-if [[ -n "$LINE4" ]]; then
-  printf "%s\n" "$LINE4"
+printf "%s\n%s\n" "$LINE1" "$LINE2"
+if [[ -n "$LINE3" ]]; then
+  printf "%s\n" "$LINE3"
 fi
+printf "%s\n" "$LINE4"
