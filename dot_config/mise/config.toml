@@ -2,5 +2,5 @@
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
-herdr = "latest"
+herdr = "0.9.1"
 node = "26.8.2"
