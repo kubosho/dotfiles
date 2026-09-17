@@ -7,7 +7,6 @@ lefthook.yml
 node_modules
 package.json
 package-lock.json
-tests
 .secretlintrc.json
 
 # Local overrides
