@@ -104,30 +104,47 @@ LINE2="${ctx_display}${SEP}${cost_display}"
 # --------------------------------------------------------------------------
 # Line 3: rate limits
 # --------------------------------------------------------------------------
-LINE3=""
-rl_5h_pct="$(echo "$INPUT" | jq -r '.rate_limits.five_hour.used_percentage // empty')"
-rl_7d_pct="$(echo "$INPUT" | jq -r '.rate_limits.seven_day.used_percentage // empty')"
+# rate_limits is absent until the session's first API response. The limits are
+# account-wide rather than per-session, so the last values any session saw are
+# still accurate: cache them and fall back to the cache while the field is missing.
+RL_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/claude/statusline-rate-limits.json"
 
-rl_parts=()
-if [[ -n "$rl_5h_pct" ]]; then
-  rl_5h_rounded="$(printf '%.0f' "$rl_5h_pct")"
-  rl_color="$(color_for_pct "$rl_5h_rounded")"
-  rl_bar="$(colored_bar "$rl_5h_rounded" 8)"
-  rl_parts+=("$(ansi_rgb ${rl_color} "5h:") ${rl_bar} $(ansi_rgb ${rl_color} "${rl_5h_rounded}%")")
-fi
-if [[ -n "$rl_7d_pct" ]]; then
-  rl_7d_rounded="$(printf '%.0f' "$rl_7d_pct")"
-  rl_color="$(color_for_pct "$rl_7d_rounded")"
-  rl_bar="$(colored_bar "$rl_7d_rounded" 8)"
-  rl_parts+=("$(ansi_rgb ${rl_color} "7d:") ${rl_bar} $(ansi_rgb ${rl_color} "${rl_7d_rounded}%")")
+rl_json="$(echo "$INPUT" | jq -c '.rate_limits // empty')"
+if [[ -n "$rl_json" ]]; then
+  rl_tmp="${RL_CACHE}.$$"
+  { mkdir -p "${RL_CACHE%/*}" && printf '%s' "$rl_json" > "$rl_tmp" && mv "$rl_tmp" "$RL_CACHE"; } 2>/dev/null \
+    || rm -f "$rl_tmp" 2>/dev/null || true
+else
+  # Each window resets on its own schedule, so drop them one by one: a cached
+  # value stays the latest known one until its own window resets.
+  rl_json="$(jq -c --argjson now "$(date +%s)" \
+    'with_entries(select(.value.resets_at > $now))' "$RL_CACHE" 2>/dev/null || true)"
 fi
 
-if (( ${#rl_parts[@]} > 0 )); then
-  LINE3="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "⏳ ")${rl_parts[0]}"
-  if (( ${#rl_parts[@]} > 1 )); then
-    LINE3+="${SEP}${rl_parts[1]}"
+rl_5h_pct="$(echo "$rl_json" | jq -r '.five_hour.used_percentage // empty' 2>/dev/null || true)"
+rl_7d_pct="$(echo "$rl_json" | jq -r '.seven_day.used_percentage // empty' 2>/dev/null || true)"
+
+rl_window() {
+  # Usage: rl_window <label> <percentage or empty>
+  # A window with no usable value shows a placeholder, keeping the line and the
+  # other window in place instead of letting them disappear.
+  local label="$1" pct="$2" rounded color
+  if [[ -z "$pct" ]]; then
+    printf '%s %s %s' \
+      "$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "${label}:")" \
+      "$(colored_bar 0 8)" \
+      "$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "--%")"
+    return
   fi
-fi
+  rounded="$(printf '%.0f' "$pct")"
+  color="$(color_for_pct "$rounded")"
+  printf '%s %s %s' \
+    "$(ansi_rgb ${color} "${label}:")" \
+    "$(colored_bar "$rounded" 8)" \
+    "$(ansi_rgb ${color} "${rounded}%")"
+}
+
+LINE3="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "⏳ ")$(rl_window 5h "$rl_5h_pct")${SEP}$(rl_window 7d "$rl_7d_pct")"
 
 # --------------------------------------------------------------------------
 # Line 4: diff stats + VCS info + commit message (jj or git)
@@ -195,8 +212,5 @@ fi
 # --------------------------------------------------------------------------
 # Output
 # --------------------------------------------------------------------------
-printf "%s\n%s\n" "$LINE1" "$LINE2"
-if [[ -n "$LINE3" ]]; then
-  printf "%s\n" "$LINE3"
-fi
+printf "%s\n%s\n%s\n" "$LINE1" "$LINE2" "$LINE3"
 printf "%s\n" "$LINE4"
