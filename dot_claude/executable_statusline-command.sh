@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ~/.claude/statusline-command.sh
-# Claude Code status line: model, context %, git/jj diff stats, rate limit bars
+# Claude Code status line: model, context %, cost, rate limit bars
 
 set -euo pipefail
 
@@ -62,7 +62,6 @@ model_display="$(echo "$INPUT" | jq -r '.model.display_name // "Unknown"')"
 context_pct_raw="$(echo "$INPUT" | jq -r '.context_window.used_percentage // 0')"
 context_pct="$(printf '%.0f' "$context_pct_raw")"
 context_size="$(echo "$INPUT" | jq -r '.context_window.context_window_size // 0')"
-cwd="$(echo "$INPUT" | jq -r '.workspace.current_dir // .cwd // ""')"
 
 effort="$(echo "$INPUT" | jq -r '.effort.level // "default"')"
 total_cost="$(echo "$INPUT" | jq -r '.cost.total_cost_usd // 0')"
@@ -147,70 +146,6 @@ rl_window() {
 LINE3="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "⏳ ")$(rl_window 5h "$rl_5h_pct")${SEP}$(rl_window 7d "$rl_7d_pct")"
 
 # --------------------------------------------------------------------------
-# Line 4: diff stats + VCS info + commit message (jj or git)
-# --------------------------------------------------------------------------
-added=0; deleted=0; files_changed=0
-vcs_colored="?"
-is_jj=0
-
-if [[ -n "$cwd" ]] && cd "$cwd" 2>/dev/null; then
-  # Detect jj repo
-  if [[ -d ".jj" ]] || jj root >/dev/null 2>&1; then
-    is_jj=1
-
-    # diff stats from jj
-    jj_diff="$(jj diff --stat --no-pager 2>/dev/null | tail -1 || true)"
-    if [[ -n "$jj_diff" && "$jj_diff" == *"changed"* ]]; then
-      files_changed="$(echo "$jj_diff" | grep -oE '[0-9]+ file' | grep -oE '[0-9]+' || echo 0)"
-      added="$(echo "$jj_diff" | grep -oE '[0-9]+ insertion' | grep -oE '[0-9]+' || echo 0)"
-      deleted="$(echo "$jj_diff" | grep -oE '[0-9]+ deletion' | grep -oE '[0-9]+' || echo 0)"
-    fi
-
-    # change ID (shortest)
-    change_id="$(jj log -r @ --no-graph -T 'change_id.shortest()' --no-pager 2>/dev/null || echo "?")"
-
-    # bookmarks on current change
-    bookmarks="$(jj log -r @ --no-graph -T 'bookmarks' --no-pager 2>/dev/null || true)"
-
-    # working copy status: empty or modified
-    wc_empty="$(jj log -r @ --no-graph -T 'if(empty, "empty", "modified")' --no-pager 2>/dev/null || echo "?")"
-
-    # working copy description (first line)
-    wc_desc="$(jj log -r @ --no-graph -T 'description.first_line()' --no-pager 2>/dev/null || true)"
-
-    # Build vcs display: 🥋 <change_id> <bookmark> (<status>)
-    vcs_colored="🥋 $(ansi_rgb 178 132 190 "$change_id")"  # #B284BE purple for revision
-    if [[ -n "$bookmarks" ]]; then
-      vcs_colored+=" $(ansi_rgb $GREEN_R $GREEN_G $GREEN_B "$bookmarks")"  # green for bookmark
-    fi
-    vcs_colored+="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B " (${wc_empty})")"
-  else
-    # Fall back to git
-    branch="$(git -c core.hooksPath=/dev/null rev-parse --abbrev-ref HEAD 2>/dev/null || echo "?")"
-    diff_stat="$(git -c core.hooksPath=/dev/null diff --shortstat HEAD 2>/dev/null || true)"
-    if [[ -n "$diff_stat" ]]; then
-      files_changed="$(echo "$diff_stat" | grep -oE '[0-9]+ file' | grep -oE '[0-9]+' || echo 0)"
-      added="$(echo "$diff_stat" | grep -oE '[0-9]+ insertion' | grep -oE '[0-9]+' || echo 0)"
-      deleted="$(echo "$diff_stat" | grep -oE '[0-9]+ deletion' | grep -oE '[0-9]+' || echo 0)"
-    fi
-    vcs_colored="🐙 $(ansi_rgb $GREEN_R $GREEN_G $GREEN_B "$branch")"  # green for branch
-  fi
-fi
-
-[[ -z "$added" ]]         && added=0
-[[ -z "$deleted" ]]       && deleted=0
-[[ -z "$files_changed" ]] && files_changed=0
-
-files_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📄 ${files_changed}")"
-diff_colored="$(ansi_rgb $GREEN_R $GREEN_G $GREEN_B "+${added}")$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "/")$(ansi_rgb $RED_R $RED_G $RED_B "-${deleted}")"
-diff_colored="✏️ ${diff_colored} ${files_display}"
-LINE4="${diff_colored}${SEP}${vcs_colored}"
-if (( is_jj )) && [[ -n "$wc_desc" ]]; then
-  LINE4+="${SEP}$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "💬 ${wc_desc}")"
-fi
-
-# --------------------------------------------------------------------------
 # Output
 # --------------------------------------------------------------------------
 printf "%s\n%s\n%s\n" "$LINE1" "$LINE2" "$LINE3"
-printf "%s\n" "$LINE4"
