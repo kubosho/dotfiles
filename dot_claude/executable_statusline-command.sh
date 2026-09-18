@@ -67,12 +67,7 @@ effort="$(echo "$INPUT" | jq -r '.effort.level // "default"')"
 total_cost="$(echo "$INPUT" | jq -r '.cost.total_cost_usd // 0')"
 
 # --------------------------------------------------------------------------
-# Line 1: Model name + effort
-# --------------------------------------------------------------------------
-LINE1="$(ansi_rgb 217 119 87 "🤖 ${model_display}") $(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "🧠 ${effort}")"
-
-# --------------------------------------------------------------------------
-# Line 2: context usage + cost
+# Line 1: model + effort, context usage, cost
 # --------------------------------------------------------------------------
 context_used="$(echo "$INPUT" | jq -r '.context_window.total_input_tokens // 0')"
 
@@ -85,23 +80,23 @@ if [[ -n "$compact_threshold" ]] && (( compact_threshold > 0 )); then
   # color reflects distance to auto-compact, not the full context window
   compact_ceiling=$(( context_size * compact_threshold / 100 ))
   if (( compact_ceiling > 0 )); then
-    pct_to_compact=$(( context_used * 100 / compact_ceiling ))
+    ctx_pct=$(( context_used * 100 / compact_ceiling ))
   else
-    pct_to_compact=0
+    ctx_pct=0
   fi
-  ctx_bar="$(colored_bar "$pct_to_compact" 10)"
-  ctx_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📊 ")${ctx_bar} $(colored_pct "$pct_to_compact")"
 else
-  ctx_bar="$(colored_bar "$context_pct" 10)"
-  ctx_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📊 ")${ctx_bar} $(colored_pct "$context_pct")"
+  ctx_pct="$context_pct"
 fi
 cost_str="$(printf '$%.2f' "$total_cost")"
+
+model_display_colored="$(ansi_rgb 217 119 87 "🤖 ${model_display}") $(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "🧠 ${effort}")"
+ctx_display="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "📊 ")$(colored_bar "$ctx_pct" 10) $(colored_pct "$ctx_pct")"
 cost_display="$(ansi_rgb 255 215 0 "💰 ${cost_str}")"  # #FFD700 gold
 
-LINE2="${ctx_display}${SEP}${cost_display}"
+LINE1="${model_display_colored}${SEP}${ctx_display}${SEP}${cost_display}"
 
 # --------------------------------------------------------------------------
-# Line 3: rate limits
+# Line 2: rate limits
 # --------------------------------------------------------------------------
 # rate_limits is absent until the session's first API response. The limits are
 # account-wide rather than per-session, so the last values any session saw are
@@ -143,9 +138,9 @@ rl_window() {
     "$(ansi_rgb ${color} "${rounded}%")"
 }
 
-LINE3="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "⏳ ")$(rl_window 5h "$rl_5h_pct")${SEP}$(rl_window 7d "$rl_7d_pct")"
+LINE2="$(ansi_rgb $GRAY_R $GRAY_G $GRAY_B "⏳ ")$(rl_window 5h "$rl_5h_pct")${SEP}$(rl_window 7d "$rl_7d_pct")"
 
 # --------------------------------------------------------------------------
 # Output
 # --------------------------------------------------------------------------
-printf "%s\n%s\n%s\n" "$LINE1" "$LINE2" "$LINE3"
+printf "%s\n%s\n" "$LINE1" "$LINE2"
