@@ -3,4 +3,4 @@ idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
 herdr = "0.9.1"
-node = "26.8.2"
+node = "26.9.0"
