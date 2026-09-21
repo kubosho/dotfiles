@@ -1,0 +1,6 @@
+{
+  "tui.editor.cursorUp": ["up", "ctrl+p"],
+  "tui.editor.cursorDown": ["down", "ctrl+n"],
+  "tui.editor.deleteCharBackward": ["backspace", "ctrl+h"],
+  "app.model.cycleForward": []
+}
