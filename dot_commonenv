@@ -17,12 +17,11 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 # PATH
 # ------------------------------
 # Priority (highest to lowest):
-#   1. mise shims - project-specific tool versions
-#   2. devbox global - system-wide development tools
-#   3. Runtime (bun)
-#   4. Platform package manager (Homebrew, Snapcraft)
-#   5. User bins (XDG_BIN_HOME, XDG_DATA_HOME/bin, ~/bin)
-#   6. System paths
+#   1. mise shims - global and project-specific tool versions
+#   2. Runtime (bun)
+#   3. Platform package manager (Homebrew, Snapcraft)
+#   4. User bins (XDG_BIN_HOME, XDG_DATA_HOME/bin, ~/bin)
+#   5. System paths
 
 # Base
 export PATH="${XDG_BIN_HOME}:${XDG_DATA_HOME}/bin:${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
@@ -55,10 +54,7 @@ fi
 # Runtime
 export PATH="${XDG_CACHE_HOME}/.bun/bin:${PATH}"
 
-# Devbox global tools
-export PATH="${XDG_DATA_HOME}/devbox/global/default/.devbox/nix/profile/default/bin:${PATH}"
-
-# mise shims (highest priority - project-specific versions override devbox)
+# mise shims
 export PATH="${XDG_DATA_HOME}/mise/shims:${PATH}"
 
 # ------------------------------
@@ -95,12 +91,6 @@ export GITHUB_TOKEN=$(gh auth token)
 # 1Password CLI
 # ------------------------------
 export OP_BIOMETRIC_UNLOCK_ENABLED=true
-
-# ------------------------------
-# Devbox
-# ------------------------------
-export LIBRARY_PATH=${HOME}/.devbox/nix/profile/default/lib
-export RUSTUP_HOME=${HOME}/.devbox/virtenv/rustup
 
 # ------------------------------
 # Misc

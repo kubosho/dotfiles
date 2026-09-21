@@ -4,12 +4,13 @@ Personal dotfiles managed by [chezmoi](https://www.chezmoi.io/).
 
 ## Setup
 
-1. Install chezmoi
-2. Initialize with this repository:
+1. Install [chezmoi](https://www.chezmoi.io/install/) and [mise](https://mise.jdx.dev/getting-started.html)
+2. Initialize with this repository and install the global tools:
 
 ```bash
 chezmoi init --source ~/src/github.com/kubosho/dotfiles
 chezmoi apply
+mise bootstrap
 ```
 
 3. Restart your shell or run `source ~/.zshrc`

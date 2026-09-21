@@ -21,14 +21,14 @@ chezmoi edit ~/.file   # Edit a managed file
 - `dot_claude/` → `~/.claude/`
 - `dot_agents/` → `~/.agents/`
 - `dot_apm/` → `~/.apm/` (global APM manifest; skills themselves live in [my-skills](https://github.com/kubosho/my-skills), installed via `apm install -g`)
-- `private_dot_local/share/devbox/global/default/devbox.json` → `~/.local/share/devbox/global/default/devbox.json` (devbox global package list; `devbox.lock` is machine-specific and ignored)
+- `dot_config/mise/config.toml` → `~/.config/mise/config.toml` (global development tool versions)
 - Shell: `dot_zshenv`, `dot_zshrc`, `dot_commonenv`
 - Git: `dot_gitconfig`
 
 ## Environment
 
 - macOS and WSL supported
-- [devbox](https://www.jetify.com/devbox) for global tool management
+- [mise](https://mise.jdx.dev/) for global tool management
 - [Starship](https://starship.rs/) prompt with Jujutsu VCS integration
 - [sheldon](https://sheldon.cli.rs/) for zsh plugin management
 - [lefthook](https://github.com/evilmartians/lefthook) for git hooks

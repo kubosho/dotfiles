@@ -1,6 +1,31 @@
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
+python.github_attestations = false
 
 [tools]
+bun = "1.3.13"
+chezmoi = "2.72.0"
+devcontainer-cli = "0.87.0"
+direnv = "2.37.1"
+dotenvx = "2.21.0"
+fzf = "0.74.3"
+gh = "2.98.0"
+ghq = "1.10.1"
+go = "1.27.0"
+helix = "25.07.1"
 herdr = "0.9.1"
+jj = "0.44.0"
+mani = "0.32.1"
 node = "26.9.0"
+"aqua:nushell/nushell" = "0.115.1"
+opencode = "1.18.21"
+pnpm = "11.22.0"
+python = "3.12.8"
+rust = "1.98.1"
+sheldon = "0.8.5"
+starship = "1.26.0"
+terraform = "1.15.9"
+"github:jdx/mise" = "2026.8.6"
+
+[bootstrap.packages]
+"brew:git" = "latest"
