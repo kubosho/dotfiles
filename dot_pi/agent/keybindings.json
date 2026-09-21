@@ -2,7 +2,5 @@
   "tui.editor.cursorUp": ["up", "ctrl+p"],
   "tui.editor.cursorDown": ["down", "ctrl+n"],
   "tui.editor.deleteCharBackward": ["backspace", "ctrl+h"],
-  "tui.input.newLine": ["enter", "shift+enter", "ctrl+j"],
-  "tui.input.submit": ["ctrl+enter"],
   "app.model.cycleForward": []
 }
