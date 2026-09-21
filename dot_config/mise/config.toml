@@ -3,7 +3,7 @@ idiomatic_version_file_enable_tools = ["node"]
 python.github_attestations = false
 
 [tools]
-bun = "1.3.14"
+bun = "1.4.2"
 chezmoi = "2.72.2"
 devcontainer-cli = "0.87.0"
 direnv = "2.37.1"
