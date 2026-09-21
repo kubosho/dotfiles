@@ -1,8 +1,7 @@
-import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import test from "node:test";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { KeybindingsManager, setKeybindings, TUI_KEYBINDINGS } from "@earendil-works/pi-tui";
+import { expect, test } from "vitest";
 
 import configureEditor from "../index.ts";
 
@@ -15,7 +14,7 @@ function createEditor() {
 
   configureEditor({
     on(event: string, handler: (event: unknown, ctx: any) => void) {
-      assert.equal(event, "session_start");
+      expect(event).toBe("session_start");
       onSessionStart = handler;
     },
   } as ExtensionAPI);
@@ -33,7 +32,7 @@ function createEditor() {
     },
   );
 
-  assert.ok(editorFactory);
+  if (!editorFactory) throw new Error("Editor component was not registered");
   const keybindingsManager = new KeybindingsManager(TUI_KEYBINDINGS, keybindings);
   setKeybindings(keybindingsManager);
 
@@ -49,7 +48,7 @@ test("the main editor keeps one column of horizontal padding", () => {
 
   editor.setPaddingX(0);
 
-  assert.equal(editor.getPaddingX(), 1);
+  expect(editor.getPaddingX()).toBe(1);
 });
 
 test("Enter submits a slash command without arguments", () => {
@@ -63,8 +62,8 @@ test("Enter submits a slash command without arguments", () => {
 
     editor.handleInput("\r");
 
-    assert.equal(submitted, command);
-    assert.equal(editor.getText(), "");
+    expect(submitted).toBe(command);
+    expect(editor.getText()).toBe("");
   }
 });
 
@@ -78,11 +77,11 @@ test("Enter inserts a newline when a slash command has arguments", () => {
 
   editor.handleInput("\r");
 
-  assert.equal(submitted, undefined);
-  assert.equal(editor.getText(), "/reload now\n");
+  expect(submitted).toBeUndefined();
+  expect(editor.getText()).toBe("/reload now\n");
 });
 
 test("submit is bound to Ctrl+Enter but not Super+Enter", () => {
-  assert.deepEqual(keybindings["tui.input.newLine"], ["enter", "shift+enter", "ctrl+j"]);
-  assert.deepEqual(keybindings["tui.input.submit"], ["ctrl+enter"]);
+  expect(keybindings["tui.input.newLine"]).toEqual(["enter", "shift+enter", "ctrl+j"]);
+  expect(keybindings["tui.input.submit"]).toEqual(["ctrl+enter"]);
 });
