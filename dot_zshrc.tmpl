@@ -55,6 +55,8 @@ __op_service_account_token() {
   print -r -- "$sa_token"
 }
 
+export SSH_AUTH_SOCK="{{ joinPath .chezmoi.homeDir "Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" }}"
+
 # Aliases
 alias c="cursor"
 alias e="code"
