@@ -22,3 +22,6 @@ package-lock.json
 {{- if eq .chezmoi.os "windows" }}
 .config/ghostty
 {{- end }}
+{{- if ne .chezmoi.os "darwin" }}
+.ssh/config
+{{- end }}
