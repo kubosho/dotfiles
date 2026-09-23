@@ -89,6 +89,10 @@
 [gpg]
 	format = ssh
 
+[gpg "ssh"]
+	allowedSignersFile = ~/.gitallowedsigners
+	defaultKeyCommand = ssh-add -L
+
 [grep]
 	lineNumber = true
 
@@ -109,3 +113,5 @@
 
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
+
+{{ onepasswordRead "op://Development/.gitconfig-user/notesPlain" | trim }}
