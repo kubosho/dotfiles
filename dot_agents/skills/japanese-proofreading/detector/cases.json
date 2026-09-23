@@ -1,0 +1,795 @@
+[
+  {
+    "id": "literal-verb-translation/problem",
+    "text": "2つに割ることで落ちます。",
+    "expected": [
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割る"
+      }
+    ]
+  },
+  {
+    "id": "literal-verb-translation/problem-forms",
+    "text": "PR を2つに割った。\n変更を割って出す。\nコミットを割ります。\nコミットを割りました。\n差分が大きければ割れば良い。\n差分を割ろう。",
+    "expected": [
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割った"
+      },
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割って"
+      },
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割ります"
+      },
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割りました"
+      },
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割れば"
+      },
+      {
+        "ruleId": "literal-verb-translation",
+        "match": "割ろう"
+      }
+    ]
+  },
+  {
+    "id": "literal-verb-translation/normal-role",
+    "text": "レビュアーの役割って何かを決める。",
+    "expected": []
+  },
+  {
+    "id": "literal-verb-translation/normal-split",
+    "text": "コミットを2つに分割する。",
+    "expected": []
+  },
+  {
+    "id": "literal-verb-translation/normal-established-verbs",
+    "text": "CI が落ちたので Issue を閉じる。",
+    "expected": []
+  },
+  {
+    "id": "literal-verb-translation/normal-division",
+    "text": "合計を件数で割ると平均になる。",
+    "expected": []
+  },
+  {
+    "id": "literal-verb-translation/normal-assign",
+    "text": "各タスクに担当者を割り当てる。",
+    "expected": []
+  },
+  {
+    "id": "literal-verb-translation/normal-arithmetic",
+    "text": "100 を先に掛けてから割った。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/problem",
+    "text": "FIXME のヒントが要るなら devnavi-init を呼んでもらえれば置く。",
+    "expected": [
+      {
+        "ruleId": "request-in-condition",
+        "match": "でもらえれば"
+      }
+    ]
+  },
+  {
+    "id": "request-in-condition/problem-writer-investigates",
+    "text": "エラーの全文を貼ってくれれば原因を調べる。",
+    "expected": [
+      {
+        "ruleId": "request-in-condition",
+        "match": "てくれれば"
+      }
+    ]
+  },
+  {
+    "id": "request-in-condition/problem-forms",
+    "text": "設定を送ってもらえたら反映する。\nログを貼ってくれたら確認する。\n手順を書いていただければ試す。\n画面を見せていただけたら直す。",
+    "expected": [
+      {
+        "ruleId": "request-in-condition",
+        "match": "てもらえたら"
+      },
+      {
+        "ruleId": "request-in-condition",
+        "match": "てくれたら"
+      },
+      {
+        "ruleId": "request-in-condition",
+        "match": "ていただければ"
+      },
+      {
+        "ruleId": "request-in-condition",
+        "match": "ていただけたら"
+      }
+    ]
+  },
+  {
+    "id": "request-in-condition/normal-subject-markers",
+    "text": "設定してもらえれば、CI が通る。\n読んでもらえれば、理由は分かる。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-closings",
+    "text": "見てもらえればありがたい。\n直してもらえれば有り難い。\n教えてくれたらうれしい。\nレビューしてもらえれば嬉しい。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-other-subject",
+    "text": "高校生に使ってもらえれば、大学生にも広がる。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-copula",
+    "text": "当てはまるものだけ埋めていただければ大丈夫です。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-request-idiom",
+    "text": "あわせて読んでいただければと思います。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-request-in-main-clause",
+    "text": "FIXME のヒントが欲しければ devnavi-init を実行してほしい。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-polite-closing",
+    "text": "レビューしてもらえれば助かります。",
+    "expected": []
+  },
+  {
+    "id": "request-in-condition/normal-humble-closing",
+    "text": "確認していただければ幸いです。",
+    "expected": []
+  },
+  {
+    "id": "calqued-metaphor/problem",
+    "text": "4エージェントに同じ骨格で書き直させます。",
+    "expected": [
+      {
+        "ruleId": "calqued-metaphor",
+        "match": "骨格"
+      }
+    ]
+  },
+  {
+    "id": "calqued-metaphor/normal",
+    "text": "4エージェントに同じ構成で書き直させます。",
+    "expected": []
+  },
+  {
+    "id": "calqued-metaphor/normal-technical-term",
+    "text": "カメラ映像から骨格推定を行う。",
+    "expected": []
+  },
+  {
+    "id": "calqued-metaphor/normal-anatomy-terms",
+    "text": "骨格筋の図を描く。\n骨格標本を展示する。\n画像から骨格検出を行う。",
+    "expected": []
+  },
+  {
+    "id": "foreign-field-term/problem-rise",
+    "text": "比喩が読み手の側で立ち上がってしまう。",
+    "expected": [
+      {
+        "ruleId": "foreign-field-term",
+        "match": "比喩が読み手の側で立ち上が"
+      }
+    ]
+  },
+  {
+    "id": "foreign-field-term/problem-abstract-subjects",
+    "text": "意味が文脈の中で立ち上がる。\nイメージが立ち上がる。\n概念が立ち上がる。\n物語が立ち上がる。\n文脈が立ち上がる。\n印象が立ち上がる。\n感覚が立ち上がる。\n輪郭が立ち上がる。\n問いが立ち上がる。\n論点は議論の中で立ち上がる。",
+    "expected": [
+      {
+        "ruleId": "foreign-field-term",
+        "match": "意味が文脈の中で立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "イメージが立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "概念が立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "物語が立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "文脈が立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "印象が立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "感覚が立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "輪郭が立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "問いが立ち上が"
+      },
+      {
+        "ruleId": "foreign-field-term",
+        "match": "論点は議論の中で立ち上が"
+      }
+    ]
+  },
+  {
+    "id": "foreign-field-term/problem-limitation",
+    "text": "技術的な限定が落ちる。",
+    "expected": [
+      {
+        "ruleId": "foreign-field-term",
+        "match": "限定が落ち"
+      }
+    ]
+  },
+  {
+    "id": "foreign-field-term/problem-authoritative-copy",
+    "text": "この README を正本として扱う。",
+    "expected": [
+      {
+        "ruleId": "foreign-field-term",
+        "match": "正本"
+      }
+    ]
+  },
+  {
+    "id": "foreign-field-term/normal-server",
+    "text": "サーバーが立ち上がるまで待つ。",
+    "expected": []
+  },
+  {
+    "id": "foreign-field-term/normal-environment",
+    "text": "開発環境が立ち上がったらブラウザで開く。",
+    "expected": []
+  },
+  {
+    "id": "legal-metaphor/problem-overload",
+    "text": "基準の1項目としては過積載だった。",
+    "expected": [
+      {
+        "ruleId": "legal-metaphor",
+        "match": "過積載"
+      }
+    ]
+  },
+  {
+    "id": "legal-metaphor/problem-overreach",
+    "text": "このskillがレビューまで行うのは越権だ。",
+    "expected": [
+      {
+        "ruleId": "legal-metaphor",
+        "match": "越権"
+      }
+    ]
+  },
+  {
+    "id": "legal-metaphor/normal",
+    "text": "1項目に規則以外の要素まで入れていた。",
+    "expected": []
+  },
+  {
+    "id": "nominalized-kango/problem",
+    "text": "不一致を 403 で返すと resultId が実在することが漏れるため、設計書では不存在と同じ 404 に寄せている。",
+    "expected": [
+      {
+        "ruleId": "nominalized-kango",
+        "match": "不存在"
+      }
+    ]
+  },
+  {
+    "id": "nominalized-kango/normal",
+    "text": "不一致を 403 で返すと resultId が実在することが漏れるため、設計書ではリソースが存在しない場合と同じ 404 に寄せている。",
+    "expected": []
+  },
+  {
+    "id": "person-word-for-code/problem",
+    "text": "GetLotteryResultPrizeCode が返す zerrors.NotFound は誰が404へ変換しているか。",
+    "expected": [
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      }
+    ]
+  },
+  {
+    "id": "person-word-for-code/problem-actions-and-identifiers",
+    "text": "`fetchUser` を誰から呼んでいるか。\nuser_id は誰が生成しているか。\nFoo::bar の結果は誰が検証しているか。\ninit() の例外は誰が捕捉しているか。\nHttpClient のレスポンスは誰が解析しているか。\nfetchUser の入力は誰がパースしているか。\nconfig.yaml は誰が参照しているか。\nErrNotFound は誰が書き換えているか。\nio.EOF は誰が握りつぶしているか。\nerrors.Wrap で誰がラップしているか。\nhandleGet の値は誰が返しているか。\nqueue_name のジョブは誰が処理しているか。\nValidationError は誰が投げているか。",
+    "expected": [
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰から"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      },
+      {
+        "ruleId": "person-word-for-code",
+        "match": "誰が"
+      }
+    ]
+  },
+  {
+    "id": "person-word-for-code/normal-no-identifier",
+    "text": "この問い合わせは誰が処理するか。",
+    "expected": []
+  },
+  {
+    "id": "person-word-for-code/normal",
+    "text": "GetLotteryResultPrizeCode が返す zerrors.NotFound は、コード上のどの部分で404へ変換しているか。",
+    "expected": []
+  },
+  {
+    "id": "person-word-for-code/normal-person",
+    "text": "このリリースは誰が承認したか。",
+    "expected": []
+  },
+  {
+    "id": "person-word-for-code/normal-person-with-code",
+    "text": "`main` ブランチに誰がマージしたか確認する。",
+    "expected": []
+  },
+  {
+    "id": "unspecified-behavior/missing-information",
+    "text": "抽出できない形では、誤った差分を出すより無言で降りるほうが安全。",
+    "expected": [
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言で降り"
+      }
+    ]
+  },
+  {
+    "id": "unspecified-behavior/problem-silently-return",
+    "text": "重複した申し込みには黙って既存結果を返す。",
+    "expected": [
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って既存結果を返"
+      }
+    ]
+  },
+  {
+    "id": "unspecified-behavior/problem-behaviors",
+    "text": "エラー時は無言で終了する。\nループを黙って終わらせる。\n処理を静かに抜ける。\nテストが黙って落ちる。\n例外を握って黙って戻る。\n不正な行は無言でスキップする。\nエラーを黙って握りつぶす。\nキューが無言で進む。\n検証が黙って通る。\nイベントを静かに処理する。\nコマンドを無言で実行する。\nリトライが黙って成功する。\nキャッシュが無言で壊れる。\n失敗時は無言で exit する。\n空配列なら黙って return する。\n表示上の日時が黙って動く。\n設定が黙って無視される。\n行が黙って捨てられる。",
+    "expected": [
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言で終了"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って終わ"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "静かに抜け"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って落ち"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って戻"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言でスキップ"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って握りつぶ"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言で進"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って通"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "静かに処理"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言で実行"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って成功"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言で壊れ"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "無言で exit"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って return"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って動"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って無視"
+      },
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "黙って捨て"
+      }
+    ]
+  },
+  {
+    "id": "unspecified-behavior/normal-person",
+    "text": "レビュアーが黙って修正した。",
+    "expected": []
+  },
+  {
+    "id": "unspecified-behavior/normal-become-quiet",
+    "text": "会議が静かになると落ち着かなくなる。",
+    "expected": []
+  },
+  {
+    "id": "unspecified-behavior/problem-silently-fail",
+    "text": "設定ファイルがなければ静かに失敗する。",
+    "expected": [
+      {
+        "ruleId": "unspecified-behavior",
+        "match": "静かに失敗"
+      }
+    ]
+  },
+  {
+    "id": "unspecified-behavior/normal-specified",
+    "text": "抽出できない形では、注入せずに exit 0 する。",
+    "expected": []
+  },
+  {
+    "id": "unspecified-behavior/normal-approval",
+    "text": "申請の許可が降りたら作業を始める。",
+    "expected": []
+  },
+  {
+    "id": "vague-evaluative-ending/problem-slash-command",
+    "text": "スラッシュコマンド化が効いた。",
+    "expected": [
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いた"
+      }
+    ]
+  },
+  {
+    "id": "vague-evaluative-ending/problem-separation",
+    "text": "処理の分離が効いた。",
+    "expected": [
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いた"
+      }
+    ]
+  },
+  {
+    "id": "vague-evaluative-ending/problem-construction",
+    "text": "特に効いたのは、処理の分離です。",
+    "expected": [
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いたのは"
+      }
+    ]
+  },
+  {
+    "id": "vague-evaluative-ending/problem-endings",
+    "text": "分離が効く。\n分離が効きます。\n分離が効きました。\n分離が効いている。\n分離が効いています。\n分離が効いていた。\n分離が効いていました。\n説明が刺さる。\n説明が刺さります。\n説明が刺さりました。\n説明が刺さった。\n説明が刺さっている。\n説明が刺さっています。\n説明が響く。\n説明が響きます。\n説明が響きました。\n説明が響いた。\n説明が響いている。\n説明が響いています。\n分離が効果的だ。\n分離が効果的です。\n分離が効果的だった。\n分離が効果的でした。\n分離が効いたね。\n分離が効くよ。",
+    "expected": [
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効く"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効きます"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効きました"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いている"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いています"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いていた"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いていました"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さる"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さります"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さりました"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さった"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さっている"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さっています"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響く"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響きます"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響きました"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響いた"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響いている"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響いています"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効果的だ"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効果的です"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効果的だった"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効果的でした"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いた"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効く"
+      }
+    ]
+  },
+  {
+    "id": "vague-evaluative-ending/problem-constructions",
+    "text": "ここで効くのが分離です。\n効いているのは分離です。\n刺さるのは短い説明だ。\n刺さったのが意外だった。\n響くのは具体例だ。\n響いたのが結論だ。",
+    "expected": [
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効くのが"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "効いているのは"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さるのは"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "刺さったのが"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響くのは"
+      },
+      {
+        "ruleId": "vague-evaluative-ending",
+        "match": "響いたのが"
+      }
+    ]
+  },
+  {
+    "id": "vague-evaluative-ending/normal-result-stated",
+    "text": "キャッシュが効き、2回目以降の応答時間が短くなった。",
+    "expected": []
+  },
+  {
+    "id": "vague-evaluative-ending/normal-rewritten",
+    "text": "スラッシュコマンド化によって起動条件が明示され、意図しないタイミングでの実行が減った。",
+    "expected": []
+  },
+  {
+    "id": "vague-evaluative-ending/normal-enabled",
+    "text": "この設定は有効です。",
+    "expected": []
+  },
+  {
+    "id": "sentence-connection/problem-dakara",
+    "text": "先行者有利の構造。だから今やる。",
+    "expected": [
+      {
+        "ruleId": "sentence-connection",
+        "match": "だから"
+      }
+    ]
+  },
+  {
+    "id": "sentence-connection/problem-dash",
+    "text": "技術資産 ── すでに社内で運用している基盤",
+    "expected": [
+      {
+        "ruleId": "sentence-connection",
+        "match": "──"
+      }
+    ]
+  },
+  {
+    "id": "sentence-connection/problem-list-items",
+    "text": "- 先行者有利の構造\n- だから今やる\n1. だから今やる",
+    "expected": [
+      {
+        "ruleId": "sentence-connection",
+        "match": "だから"
+      },
+      {
+        "ruleId": "sentence-connection",
+        "match": "だから"
+      }
+    ]
+  },
+  {
+    "id": "sentence-connection/problem-dash-variants",
+    "text": "技術資産 — すでにあるもの\n技術資産 ― すでにあるもの",
+    "expected": [
+      {
+        "ruleId": "sentence-connection",
+        "match": "—"
+      },
+      {
+        "ruleId": "sentence-connection",
+        "match": "―"
+      }
+    ]
+  },
+  {
+    "id": "sentence-connection/normal-mid-sentence",
+    "text": "期限が近いのだから今やる。",
+    "expected": []
+  },
+  {
+    "id": "sentence-connection/normal-dakara-toitte",
+    "text": "だからといって急ぐ必要はない。",
+    "expected": []
+  },
+  {
+    "id": "sentence-connection/normal",
+    "text": "今から着手することで先行者有利を獲得",
+    "expected": []
+  },
+  {
+    "id": "quoted/brackets",
+    "text": "「過積載」「越権」などで文章や設計を評価すると、何が余分で何を直すべきかが分からなくなる。",
+    "expected": []
+  },
+  {
+    "id": "quoted/example-with-explanation",
+    "text": "- 「2つに割ることで落ちます」：何を割り、何が落ちるのか不明。",
+    "expected": []
+  },
+  {
+    "id": "quoted/rewrite-pair",
+    "text": "- 「処理の分離が効いた」→「分析処理を分離したことで責務が明確になり、変更時に確認すべき範囲を限定できた」",
+    "expected": []
+  },
+  {
+    "id": "quoted/inline-code",
+    "text": "`無言で降りる` のような表現を避ける。",
+    "expected": []
+  },
+  {
+    "id": "quoted/blockquote",
+    "text": "> FIXME のヒントが要るなら devnavi-init を呼んでもらえれば置く。",
+    "expected": []
+  },
+  {
+    "id": "quoted/connection-example",
+    "text": "- **短文を「だから」でつなぐ**：「先行者有利の構造。だから今やる。」",
+    "expected": []
+  }
+]
