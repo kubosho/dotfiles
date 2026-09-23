@@ -1,0 +1,20 @@
+{{- $gitUser := (onepasswordRead "op://Development/.gitconfig-user/notesPlain" | fromIni).user -}}
+[user]
+name = {{ $gitUser.name | quote }}
+email = {{ $gitUser.email | quote }}
+
+[colors]
+"diff removed token" = { bg = "#feca8b", underline = false }
+"diff added token" = { bg = "#83cbec", underline = false }
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = {{ $gitUser.signingkey | quote }}
+
+[signing.backends.ssh]
+allowed-signers = {{ joinPath .chezmoi.homeDir ".gitallowedsigners" | quote }}
+
+[snapshot]
+auto-update-stale = true
+max-new-file-size = "5MiB"
