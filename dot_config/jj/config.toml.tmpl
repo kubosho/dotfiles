@@ -8,12 +8,15 @@ email = {{ $gitUser.email | quote }}
 "diff added token" = { bg = "#83cbec", underline = false }
 
 [signing]
-behavior = "own"
+behavior = "drop"
 backend = "ssh"
 key = {{ $gitUser.signingkey | quote }}
 
 [signing.backends.ssh]
 allowed-signers = {{ joinPath .chezmoi.homeDir ".gitallowedsigners" | quote }}
+
+[git]
+sign-on-push = true
 
 [snapshot]
 auto-update-stale = true
