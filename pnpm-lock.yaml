@@ -15,8 +15,8 @@ importers:
         specifier: 0.86.0
         version: 0.86.0(supports-color@10.2.2)(ws@8.21.3)
       '@earendil-works/pi-tui':
-        specifier: 0.86.0
-        version: 0.86.0
+        specifier: 0.87.1
+        version: 0.87.1
       '@secretlint/secretlint-rule-preset-recommend':
         specifier: 13.0.5
         version: 13.0.5
@@ -166,6 +166,10 @@ packages:
 
   '@earendil-works/pi-tui@0.86.0':
     resolution: {integrity: sha512-R68axQIwP3yxMJH9Sz8QnzD/4emRiSIsj+k2ahxlJUUJR84bN7YBFul+ZuBvy8Qn+Er4NIoBLTGpPf/4iHMKVA==}
+    engines: {node: '>=22.19.0'}
+
+  '@earendil-works/pi-tui@0.87.1':
+    resolution: {integrity: sha512-YEH2vRyOeiO7hhN6j6AE6YwKSq2Kz2f3XR8bj1TbR+aGE/JsnY1hLPMI2pvaZfRM1n9Y00tejxFQ4zbzvF7nkQ==}
     engines: {node: '>=22.19.0'}
 
   '@esbuild/aix-ppc64@0.28.2':
@@ -1764,6 +1768,11 @@ snapshots:
   '@earendil-works/pi-telemetry@0.86.0': {}
 
   '@earendil-works/pi-tui@0.86.0':
+    dependencies:
+      get-east-asian-width: 1.6.0
+      marked: 18.0.11
+
+  '@earendil-works/pi-tui@0.87.1':
     dependencies:
       get-east-asian-width: 1.6.0
       marked: 18.0.11
