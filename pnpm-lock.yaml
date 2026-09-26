@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@earendil-works/pi-ai':
-        specifier: 0.86.0
-        version: 0.86.0(supports-color@10.2.2)(ws@8.21.3)
+        specifier: 0.86.1
+        version: 0.86.1(supports-color@10.2.2)(ws@8.21.3)
       '@earendil-works/pi-coding-agent':
         specifier: 0.86.0
         version: 0.86.0(supports-color@10.2.2)(ws@8.21.3)
@@ -150,8 +150,8 @@ packages:
     resolution: {integrity: sha512-0nGRbPeR2Sx+TXCP+xTNeCoZDegRXshQ9ROWE+wc1XR2l6bARgbelkjiiFwVVJRslbwQa5Hmo/r2JXfAqqkK+A==}
     engines: {node: '>=22.19.0'}
 
-  '@earendil-works/pi-ai@0.86.0':
-    resolution: {integrity: sha512-7jc4tNTBiJrfg+2/nra6JPz2d3OGiGHDKrSVHpnfvsMgMy0uy4noGb7WidDNcqSEAK1S0kcRRTmpYAK66ZlTSw==}
+  '@earendil-works/pi-ai@0.86.1':
+    resolution: {integrity: sha512-1XHhI6D/fyQdsBieHC/E/4zGKVOoGe4yDyX67VXvzoYkFsX/qE7NpZE7E1RC8e6Bz8B9oG/P+MQFXikv2/BGEg==}
     engines: {node: '>=22.19.0'}
     hasBin: true
 
@@ -162,6 +162,10 @@ packages:
 
   '@earendil-works/pi-telemetry@0.86.0':
     resolution: {integrity: sha512-vbKNbFpFe6BgeL+N5/EKsZzGa9I2X+pz2icibNNA8JxTlVk2UHup5DXSKYl4yMG5VlXz5aWq4CBJCqb3pRO4fg==}
+    engines: {node: '>=22.19.0'}
+
+  '@earendil-works/pi-telemetry@0.86.1':
+    resolution: {integrity: sha512-SOcEqOS3oVGgKeahs2jHB906d8hFjuLP+RBee8xKYMRgw5KAeWHNg+YABfL0ALlp3Bt6tW4b632MLghc3vnTog==}
     engines: {node: '>=22.19.0'}
 
   '@earendil-works/pi-tui@0.86.0':
@@ -1699,7 +1703,7 @@ snapshots:
   '@earendil-works/pi-agent-core@0.86.0(supports-color@10.2.2)(ws@8.21.3)':
     dependencies:
       '@earendil-works/chord': 0.86.0
-      '@earendil-works/pi-ai': 0.86.0(supports-color@10.2.2)(ws@8.21.3)
+      '@earendil-works/pi-ai': 0.86.1(supports-color@10.2.2)(ws@8.21.3)
       '@earendil-works/pi-telemetry': 0.86.0
       diff: 8.0.4
       ignore: 7.0.8
@@ -1714,11 +1718,11 @@ snapshots:
       - ws
       - zod
 
-  '@earendil-works/pi-ai@0.86.0(supports-color@10.2.2)(ws@8.21.3)':
+  '@earendil-works/pi-ai@0.86.1(supports-color@10.2.2)(ws@8.21.3)':
     dependencies:
       '@anthropic-ai/sdk': 0.124.0
       '@aws-sdk/client-bedrock-runtime': 3.1127.0
-      '@earendil-works/pi-telemetry': 0.86.0
+      '@earendil-works/pi-telemetry': 0.86.1
       '@google/genai': 2.21.0(supports-color@10.2.2)
       '@smithy/node-http-handler': 4.12.1
       http-proxy-agent: 9.1.0(supports-color@10.2.2)
@@ -1739,7 +1743,7 @@ snapshots:
     dependencies:
       '@earendil-works/chord': 0.86.0
       '@earendil-works/pi-agent-core': 0.86.0(supports-color@10.2.2)(ws@8.21.3)
-      '@earendil-works/pi-ai': 0.86.0(supports-color@10.2.2)(ws@8.21.3)
+      '@earendil-works/pi-ai': 0.86.1(supports-color@10.2.2)(ws@8.21.3)
       '@earendil-works/pi-tui': 0.86.0
       '@silvia-odwyer/photon-node': 0.3.4
       chalk: 6.0.0
@@ -1766,6 +1770,8 @@ snapshots:
       - zod
 
   '@earendil-works/pi-telemetry@0.86.0': {}
+
+  '@earendil-works/pi-telemetry@0.86.1': {}
 
   '@earendil-works/pi-tui@0.86.0':
     dependencies:
