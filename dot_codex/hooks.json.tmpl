@@ -10,6 +10,15 @@
           }
         ],
         "matcher": "Bash"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -37,6 +46,15 @@
           }
         ],
         "matcher": "Edit|Write"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "SessionStart": [
@@ -62,7 +80,16 @@
             "type": "command"
           }
         ]
-      }{{ end }}
+      }{{ end }},
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
     ],
     "Stop": [
       {
@@ -73,7 +100,60 @@
             "type": "command"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -r '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ] && [ -x '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh' ]; then /bin/sh '{{ .chezmoi.homeDir }}/.orca/agent-hooks/codex-hook.sh'; else { command -p cat 2>/dev/null || cat; } >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
       }
     ]
   }
-}{{- "" -}}
+}

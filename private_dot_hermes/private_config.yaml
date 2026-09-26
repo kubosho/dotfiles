@@ -152,6 +152,7 @@ video_gen:
 plugins:
   enabled:
     - herdr-agent-state
+    - orca-status
 
 # ── Security ──────────────────────────────────────────────────────────
 # Secret redaction is ON by default — strings that look like API keys,
