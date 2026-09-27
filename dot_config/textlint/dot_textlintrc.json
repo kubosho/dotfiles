@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "preset-ja-no-ai-slop": true,
+    "no-doubled-joshi": {
+      "min_interval": 1,
+      "strict": false,
+      "allow": []
+    }
+  }
+}
