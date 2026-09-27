@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+
+# {{ include "dot_config/textlint/dot_textlintrc.json" | sha256sum }}
+# {{ include "dot_config/textlint/package.json" | sha256sum }}
+# {{ include "dot_config/textlint/pnpm-lock.yaml" | sha256sum }}
+
+mise -C "$HOME" install node pnpm
+mise -C "$HOME" exec -- pnpm install --dir "${HOME}/.config/textlint" --frozen-lockfile --ignore-scripts

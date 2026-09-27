@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+textlint_home="${XDG_CONFIG_HOME:-$HOME/.config}/textlint"
+exec "$textlint_home/node_modules/.bin/textlint" --config "$textlint_home/.textlintrc.json" "$@"
