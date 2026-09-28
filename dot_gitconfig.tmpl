@@ -114,4 +114,6 @@
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 
-{{ onepasswordRead "op://Development/.gitconfig-user/notesPlain" | trim }}
+{{- $gitconfigUserItem := ".gitconfig-user" -}}
+{{- if hasKey . "gitconfigUserItem" }}{{ $gitconfigUserItem = .gitconfigUserItem }}{{ end }}
+{{ onepasswordRead (printf "op://Development/%s/notesPlain" $gitconfigUserItem) | trim }}

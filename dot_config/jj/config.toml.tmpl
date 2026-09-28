@@ -1,4 +1,6 @@
-{{- $gitUser := (onepasswordRead "op://Development/.gitconfig-user/notesPlain" | fromIni).user -}}
+{{- $gitconfigUserItem := ".gitconfig-user" -}}
+{{- if hasKey . "gitconfigUserItem" }}{{ $gitconfigUserItem = .gitconfigUserItem }}{{ end -}}
+{{- $gitUser := (onepasswordRead (printf "op://Development/%s/notesPlain" $gitconfigUserItem) | fromIni).user -}}
 [user]
 name = {{ $gitUser.name | quote }}
 email = {{ $gitUser.email | quote }}

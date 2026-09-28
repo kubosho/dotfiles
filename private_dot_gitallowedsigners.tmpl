@@ -1,1 +1,3 @@
-{{ onepasswordRead "op://Development/.gitallowedsigners/notesPlain" | trim }}
+{{- $gitAllowedSignersItem := ".gitallowedsigners" -}}
+{{- if hasKey . "gitAllowedSignersItem" }}{{ $gitAllowedSignersItem = .gitAllowedSignersItem }}{{ end -}}
+{{ onepasswordRead (printf "op://Development/%s/notesPlain" $gitAllowedSignersItem) | trim }}
