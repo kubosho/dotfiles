@@ -368,18 +368,6 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": true,
-    "filesystem": {
-      "allowWrite": [
-{{- range $i, $p := $.agentWritePaths }}{{ if $i }},{{ end }}
-        "{{ joinPath $.chezmoi.homeDir $p }}"
-{{- end }}
-      ],
-      "denyWrite": [
-{{- range $i, $p := $.agentReadOnlyPaths }}{{ if $i }},{{ end }}
-        "{{ joinPath $.chezmoi.homeDir $p }}"
-{{- end }}
-      ]
-    },
     "network": {
       "allowedDomains": [
         "api.github.com",
@@ -390,6 +378,18 @@
         "dev.to",
         "qiita.com",
         "zenn.dev"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+{{- range $i, $p := $.agentWritePaths }}{{ if $i }},{{ end }}
+        "{{ joinPath $.chezmoi.homeDir $p }}"
+{{- end }}
+      ],
+      "denyWrite": [
+{{- range $i, $p := $.agentReadOnlyPaths }}{{ if $i }},{{ end }}
+        "{{ joinPath $.chezmoi.homeDir $p }}"
+{{- end }}
       ]
     },
     "excludedCommands": [
@@ -408,8 +408,8 @@
       "mani:*"
     ]
   },
-  "promptSuggestionEnabled": false,
   "advisorModel": "fable",
+  "promptSuggestionEnabled": false,
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "theme": "light",
