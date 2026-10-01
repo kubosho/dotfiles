@@ -15,8 +15,8 @@ importers:
         specifier: 5.1.1
         version: 5.1.1
       textlint-rule-preset-ja-no-ai-slop:
-        specifier: 0.1.0
-        version: 0.1.0
+        specifier: 0.1.2
+        version: 0.1.2
 
 packages:
 
@@ -595,8 +595,8 @@ packages:
   textlint-rule-no-doubled-joshi@5.1.1:
     resolution: {integrity: sha512-bxiuqZiHE9ZZGHDX+O6J4vzhre7ghb7NBkPi/5TAWVvnQLULgY3COx/KXJgFItPmSrpYF8/AT/uTHC4QOg59qw==}
 
-  textlint-rule-preset-ja-no-ai-slop@0.1.0:
-    resolution: {integrity: sha512-RySnaw0YU55bu3wKMB+Eh8HOMQtDA59wDWQkWoIWxosRuSOQR39LCF0zgdGGO3tytrL5bFEnMS2i2GDoIMd5Cw==}
+  textlint-rule-preset-ja-no-ai-slop@0.1.2:
+    resolution: {integrity: sha512-9W2M4soDnXIiaiOGpBIYHacqZWSk2EBaCWTtJN0IhkicNlJSJo/9Fi4VXycAlg/LLmf+hMgLjSSkqamV+8Dy6w==}
 
   textlint-util-to-string@3.3.4:
     resolution: {integrity: sha512-XF4Qfw0ES+czKy03BwuvBUoXC8NAg920VuRxW0pd72fW76zMeMbPI/bRN5PHq3SbCdOm7U69/Pk+DX34xqIYqA==}
@@ -1406,7 +1406,7 @@ snapshots:
       textlint-rule-helper: 2.5.0
       textlint-util-to-string: 3.3.4
 
-  textlint-rule-preset-ja-no-ai-slop@0.1.0: {}
+  textlint-rule-preset-ja-no-ai-slop@0.1.2: {}
 
   textlint-util-to-string@3.3.4:
     dependencies:
