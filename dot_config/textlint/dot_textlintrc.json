@@ -1,6 +1,7 @@
 {
   "rules": {
     "preset-ja-no-ai-slop": true,
+    "preset-ai-words-ja": true,
     "no-doubled-joshi": {
       "min_interval": 1,
       "strict": false,

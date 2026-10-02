@@ -14,6 +14,9 @@ importers:
       textlint-rule-no-doubled-joshi:
         specifier: 5.1.1
         version: 5.1.1
+      textlint-rule-preset-ai-words-ja:
+        specifier: 1.2.1
+        version: 1.2.1
       textlint-rule-preset-ja-no-ai-slop:
         specifier: 0.1.2
         version: 0.1.2
@@ -454,6 +457,15 @@ packages:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
     engines: {node: '>=16 || 14 >=14.17'}
 
+  morpheme-match-all@2.0.5:
+    resolution: {integrity: sha512-a6B6Nh4AhjMoEzVz8NOT5M9f3XwFVPM395gqnFNUXG/KTqQFTb9qM5JJFHJe+SvWfRVXTZSejyXNt+h+jmHUuQ==}
+
+  morpheme-match-textlint@2.0.6:
+    resolution: {integrity: sha512-CX+iQaUjjPMLvas+hZ8zg6Csxx5j1RLaytr+5w6lpBi/oTEV2pv6sgW5Vu3+pNJHbYcaqcuofQZsKocMNUNH8g==}
+
+  morpheme-match@2.0.4:
+    resolution: {integrity: sha512-C3U5g2h47dpztGVePLA8w2O1aQEvuJORwIcahWaCG91YPrq+0u7qcPsF9Nqqe8noFvHwgO7b2EEk3iPnYuGTew==}
+
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -594,6 +606,9 @@ packages:
 
   textlint-rule-no-doubled-joshi@5.1.1:
     resolution: {integrity: sha512-bxiuqZiHE9ZZGHDX+O6J4vzhre7ghb7NBkPi/5TAWVvnQLULgY3COx/KXJgFItPmSrpYF8/AT/uTHC4QOg59qw==}
+
+  textlint-rule-preset-ai-words-ja@1.2.1:
+    resolution: {integrity: sha512-yTXyIn+3QvtTBffSqLAJoGfhCNkR6hjTlGbOJ6vnlN9/qhtqMWOo69DyYeDj7WVWjlljgxbadFkLQd6winGb1w==}
 
   textlint-rule-preset-ja-no-ai-slop@0.1.2:
     resolution: {integrity: sha512-9W2M4soDnXIiaiOGpBIYHacqZWSk2EBaCWTtJN0IhkicNlJSJo/9Fi4VXycAlg/LLmf+hMgLjSSkqamV+8Dy6w==}
@@ -1219,6 +1234,17 @@ snapshots:
 
   minipass@7.1.3: {}
 
+  morpheme-match-all@2.0.5:
+    dependencies:
+      morpheme-match: 2.0.4
+
+  morpheme-match-textlint@2.0.6:
+    dependencies:
+      morpheme-match: 2.0.4
+      morpheme-match-all: 2.0.5
+
+  morpheme-match@2.0.4: {}
+
   ms@2.1.3: {}
 
   neotraverse@0.6.18: {}
@@ -1405,6 +1431,11 @@ snapshots:
       sentence-splitter: 5.0.1
       textlint-rule-helper: 2.5.0
       textlint-util-to-string: 3.3.4
+
+  textlint-rule-preset-ai-words-ja@1.2.1:
+    dependencies:
+      kuromojin: 3.0.1
+      morpheme-match-textlint: 2.0.6
 
   textlint-rule-preset-ja-no-ai-slop@0.1.2: {}
 
