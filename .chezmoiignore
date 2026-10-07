@@ -12,6 +12,7 @@ package-lock.json
 # Local overrides
 **/.claude/settings.local.json
 .codex/config.local.toml
+.config/textlint/node_modules
 
 # OS-specific ignores
 {{- if eq .chezmoi.os "darwin" }}
