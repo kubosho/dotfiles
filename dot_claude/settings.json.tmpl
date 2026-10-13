@@ -328,7 +328,8 @@
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "i-have-adhd@i-have-adhd": true,
-    "explainer@explainer": true
+    "explainer@explainer": true,
+    "cache-tools@claude-code-cache-tools": true
   },
   "extraKnownMarketplaces": {
     "kubosho-skills": {
@@ -359,6 +360,12 @@
       "source": {
         "source": "github",
         "repo": "mizchi/explainer"
+      }
+    },
+    "claude-code-cache-tools": {
+      "source": {
+        "source": "github",
+        "repo": "Sigsiguma/claude-code-cache-tools"
       }
     }
   },
@@ -429,5 +436,15 @@
       "Bash(jj abandon:*)",
       "Bash(jj op restore:*)"
     ]
+  },
+  "pluginConfigs": {
+    "cache-tools@claude-code-cache-tools": {
+      "options": {
+        "cacheTtlWatch": true,
+        "cacheGuard": true,
+        "cacheGuardMode": "compact",
+        "cacheGuardAtPercent": 90
+      }
+    }
   }
 }
