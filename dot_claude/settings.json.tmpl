@@ -377,6 +377,9 @@
     "allowUnsandboxedCommands": true,
     "network": {
       "allowLocalBinding": true,
+      "allowUnixSockets": [
+        "{{ joinPath $.chezmoi.homeDir ".config/herdr/herdr.sock" }}"
+      ],
       "allowedDomains": [
         "api.github.com",
         "github.com",
