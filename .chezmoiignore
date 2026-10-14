@@ -16,7 +16,6 @@ package-lock.json
 
 # OS-specific ignores
 {{- if eq .chezmoi.os "darwin" }}
-.config/wezterm
 .config/zsh/shell-integration.zsh
 .config/zsh/wsl
 {{- end }}
