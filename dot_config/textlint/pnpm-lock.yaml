@@ -18,8 +18,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
       textlint-rule-preset-ja-no-ai-slop:
-        specifier: 0.1.2
-        version: 0.1.2
+        specifier: 0.2.0
+        version: 0.2.0
 
 packages:
 
@@ -610,8 +610,8 @@ packages:
   textlint-rule-preset-ai-words-ja@1.2.1:
     resolution: {integrity: sha512-yTXyIn+3QvtTBffSqLAJoGfhCNkR6hjTlGbOJ6vnlN9/qhtqMWOo69DyYeDj7WVWjlljgxbadFkLQd6winGb1w==}
 
-  textlint-rule-preset-ja-no-ai-slop@0.1.2:
-    resolution: {integrity: sha512-9W2M4soDnXIiaiOGpBIYHacqZWSk2EBaCWTtJN0IhkicNlJSJo/9Fi4VXycAlg/LLmf+hMgLjSSkqamV+8Dy6w==}
+  textlint-rule-preset-ja-no-ai-slop@0.2.0:
+    resolution: {integrity: sha512-CKJp8G1CgIV4D0z5gqEnDYeh0UlpqX+ZYAeAhdxu+WLweo4LeM5wvyicJQMMjFbE94DUoH78XmJRpntcapN2YQ==}
 
   textlint-util-to-string@3.3.4:
     resolution: {integrity: sha512-XF4Qfw0ES+czKy03BwuvBUoXC8NAg920VuRxW0pd72fW76zMeMbPI/bRN5PHq3SbCdOm7U69/Pk+DX34xqIYqA==}
@@ -1437,7 +1437,9 @@ snapshots:
       kuromojin: 3.0.1
       morpheme-match-textlint: 2.0.6
 
-  textlint-rule-preset-ja-no-ai-slop@0.1.2: {}
+  textlint-rule-preset-ja-no-ai-slop@0.2.0:
+    dependencies:
+      kuromojin: 3.0.1
 
   textlint-util-to-string@3.3.4:
     dependencies:
