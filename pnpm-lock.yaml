@@ -15,8 +15,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(@aws-sdk/credential-provider-node@3.972.83)(@smithy/signature-v4@5.7.3)(supports-color@10.2.2)(ws@8.21.3)(zod@4.6.5)
       '@earendil-works/pi-tui':
-        specifier: 0.99.2
-        version: 0.99.2
+        specifier: 1.2.0
+        version: 1.2.0
       '@secretlint/secretlint-rule-preset-recommend':
         specifier: 13.0.7
         version: 13.0.7
@@ -184,10 +184,6 @@ packages:
 
   '@earendil-works/pi-telemetry@1.2.0':
     resolution: {integrity: sha512-NZ3aJE6dr7aTgzzXDe53OW7BsAsF8ZUKHPJTtnjaQcxtlagkUT0Ew8Qas0EvYQsZqR/KpF1lB+z209XBzIC7xg==}
-    engines: {node: '>=22.19.0'}
-
-  '@earendil-works/pi-tui@0.99.2':
-    resolution: {integrity: sha512-IOcNnd390NCIwBEKeOiBK/bvaR7Z+vEsvB5TtKsFdsY/vAZE6qRHbQqt6jpTefTiKPfQlwG8eS1BU42DeG2v4w==}
     engines: {node: '>=22.19.0'}
 
   '@earendil-works/pi-tui@1.2.0':
@@ -1850,11 +1846,6 @@ snapshots:
   '@earendil-works/pi-telemetry@0.99.2': {}
 
   '@earendil-works/pi-telemetry@1.2.0': {}
-
-  '@earendil-works/pi-tui@0.99.2':
-    dependencies:
-      get-east-asian-width: 1.6.0
-      marked: 18.0.11
 
   '@earendil-works/pi-tui@1.2.0':
     dependencies:
