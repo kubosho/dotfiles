@@ -25,7 +25,7 @@ pnpm = "12.11.2"
 python = "3.15.0"
 rust = "1.99.1"
 sheldon = "0.8.5"
-starship = "1.26.0"
+starship = "1.27.0"
 terraform = "1.16.6"
 
 [bootstrap.packages]
