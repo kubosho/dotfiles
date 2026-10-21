@@ -67,12 +67,12 @@ packages:
   '@kvs/types@2.2.2':
     resolution: {integrity: sha512-5lmBuah+wOdypBf0O9t6BoHrnq5hX5MlhEPTDPBNKN38ayQwVc5gYgJOBR3Dg4EF7OwL+1c7JNtWXQEJXXVXlg==}
 
-  '@modelcontextprotocol/core@2.1.0':
-    resolution: {integrity: sha512-YdFj5gMRHr0gYNAhTbQDgjLHiEJdIAUYxomhKseUNye7ZGlISQmUoLh2sveFFCiQ7j2YMffT1kgSND0FSfIFjQ==}
+  '@modelcontextprotocol/core@2.3.1':
+    resolution: {integrity: sha512-laVmIhPGpWi7rG9q+0UigblRN0Hws/Yjlb6qLFtVqryXVLkc4h+yN8z731POD2LnAGQlFe7/tXhUm7Bi0YB91g==}
     engines: {node: '>=20'}
 
-  '@modelcontextprotocol/server@2.1.0':
-    resolution: {integrity: sha512-FdvwZU5N03O77Suh35JqjAqq5R1ZTEPFtwu6N4BgBq28qrQtrCnpbLL5U2pwYCuE194jAw0xnlOVmIqhfoYuUQ==}
+  '@modelcontextprotocol/server@2.3.1':
+    resolution: {integrity: sha512-e59MfWuSssj6DoQ96JCTqdW1AXT5/XtnTl0WWd6MU1Ka434fFUGGosCLJbGNySDhHGvxQWoRWK137FXYFkYNWw==}
     engines: {node: '>=20'}
 
   '@textlint/ast-node-types@13.4.1':
@@ -747,13 +747,13 @@ snapshots:
 
   '@kvs/types@2.2.2': {}
 
-  '@modelcontextprotocol/core@2.1.0':
+  '@modelcontextprotocol/core@2.3.1':
     dependencies:
       zod: 4.6.5
 
-  '@modelcontextprotocol/server@2.1.0':
+  '@modelcontextprotocol/server@2.3.1':
     dependencies:
-      '@modelcontextprotocol/core': 2.1.0
+      '@modelcontextprotocol/core': 2.3.1
       zod: 4.6.5
 
   '@textlint/ast-node-types@13.4.1': {}
@@ -1450,7 +1450,7 @@ snapshots:
 
   textlint@15.8.0:
     dependencies:
-      '@modelcontextprotocol/server': 2.1.0
+      '@modelcontextprotocol/server': 2.3.1
       '@textlint/ast-node-types': 15.8.0
       '@textlint/ast-traverse': 15.8.0
       '@textlint/config-loader': 15.8.0
