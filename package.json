@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@earendil-works/pi-ai": "0.99.2",
-    "@earendil-works/pi-coding-agent": "1.2.0",
+    "@earendil-works/pi-coding-agent": "1.4.0",
     "@earendil-works/pi-tui": "1.2.0",
     "@secretlint/secretlint-rule-preset-recommend": "13.0.7",
     "oxfmt": "0.72.0",
