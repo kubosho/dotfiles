@@ -388,7 +388,8 @@
         "zenn.dev"
       ],
       "allowUnixSockets": [
-        "{{ joinPath $.chezmoi.homeDir ".config/herdr/herdr.sock" }}"
+        "{{ joinPath $.chezmoi.homeDir ".config/herdr/herdr.sock" }}",
+        "{{ joinPath $.chezmoi.homeDir "Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" }}"
       ],
       "allowLocalBinding": true
     },
