@@ -17,9 +17,6 @@ key = {{ $gitUser.signingkey | quote }}
 [signing.backends.ssh]
 allowed-signers = {{ joinPath .chezmoi.homeDir ".gitallowedsigners" | quote }}
 
-[git]
-sign-on-push = true
-
 [snapshot]
 auto-update-stale = true
 max-new-file-size = "5MiB"
