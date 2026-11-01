@@ -10,7 +10,7 @@ email = {{ $gitUser.email | quote }}
 "diff added token" = { bg = "#83cbec", underline = false }
 
 [signing]
-behavior = "drop"
+behavior = "own"
 backend = "ssh"
 key = {{ $gitUser.signingkey | quote }}
 
