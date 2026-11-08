@@ -21,7 +21,7 @@ mani = "0.32.1"
 node = "26.13.0"
 "aqua:nushell/nushell" = "0.116.1"
 opencode = "1.19.5"
-pnpm = "12.17.0"
+pnpm = "12.18.0"
 python = "3.15.2"
 rust = "1.99.1"
 "cargo:sheldon" = { version = "0.8.5", features = "vendored" }
