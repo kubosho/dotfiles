@@ -13,7 +13,7 @@
     "@earendil-works/pi-coding-agent": "1.4.0",
     "@earendil-works/pi-tui": "1.5.0",
     "@secretlint/secretlint-rule-preset-recommend": "13.1.0",
-    "oxfmt": "0.76.0",
+    "oxfmt": "0.77.0",
     "secretlint": "13.1.0",
     "typebox": "1.4.4",
     "vitest": "5.1.0"
