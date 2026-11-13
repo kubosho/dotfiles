@@ -1,0 +1,103 @@
+{
+  "SessionStart": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-session-start.sh"
+        },
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/vcs-overview-session-start.sh"
+        }
+      ]
+    },
+    {
+      "matcher": "^(startup|resume|clear|compact|fork)$",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session",
+          "timeout": 10
+        }
+      ]
+    }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-pre-tool-use.sh"
+        },
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/git-prefer-jj.sh"
+        }
+      ]
+    },
+    {
+      "matcher": "Edit|Write",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-pre-edit.sh"
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-post-tool-use.sh"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-stop-check.sh"
+        }
+      ]
+    }
+  ],
+  "Notification": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "printf '\\a'"
+        }
+      ]
+    }
+  ],
+  "WorktreeCreate": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-worktree-create.sh",
+          "timeout": 30
+        }
+      ]
+    }
+  ],
+  "WorktreeRemove": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "~/.claude/hooks/jj-worktree-remove.sh",
+          "timeout": 30
+        }
+      ]
+    }
+  ]
+}
