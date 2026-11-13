@@ -15,7 +15,7 @@
     "@secretlint/secretlint-rule-preset-recommend": "13.1.0",
     "oxfmt": "0.76.0",
     "secretlint": "13.1.0",
-    "typebox": "1.4.3",
+    "typebox": "1.4.6",
     "vitest": "5.1.0"
   }
 }
