@@ -27,7 +27,7 @@ python = "3.15.2"
 rust = "1.99.1"
 "cargo:sheldon" = { version = "0.8.5", features = "vendored" }
 starship = "1.27.0"
-terraform = "1.17.1"
+terraform = "1.17.2"
 
 [bootstrap.packages]
 "brew:git" = "latest"
