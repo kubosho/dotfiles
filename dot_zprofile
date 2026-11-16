@@ -1,0 +1,10 @@
+# /etc/zprofile runs path_helper after ~/.zshenv, which moves /etc/paths
+# (including /usr/bin) ahead of Homebrew. Restore the priority set in .commonenv.
+if [ -x /usr/libexec/path_helper ]; then
+  export PATH="${XDG_DATA_HOME}/mise/shims:/opt/homebrew/sbin:/opt/homebrew/bin:${PATH}"
+  typeset -U path
+fi
+
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:${HOME}/.docker/bin"
+# End of Docker Desktop section.
