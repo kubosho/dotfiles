@@ -28,6 +28,9 @@ plus the hook groups that Orca already installed in the destination file.
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_THRIFTY_SONIC": "false",
     "JJ_EDITOR": "false"
+{{- if eq .chezmoi.os "darwin" }},
+    "SSL_CERT_FILE": "/etc/ssl/cert.pem"
+{{- end }}
   },
   "permissions": {
     "allow": [
