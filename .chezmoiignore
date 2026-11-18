@@ -8,6 +8,7 @@ node_modules
 package.json
 package-lock.json
 .secretlintrc.json
+.agents/skills/README*.md
 
 # Local overrides
 **/.claude/settings.local.json
