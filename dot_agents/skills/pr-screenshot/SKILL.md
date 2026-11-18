@@ -41,7 +41,39 @@ Storybook は次の場合に補助として使う。
 
 ## 撮影
 
-- 画像をファイルとして保存できる手段を使う。プロジェクトに撮影用のスクリプトがあれば優先し、なければセッションで使えるブラウザ操作の手段から、保存先のパスを指定できるものを選ぶ。画像を会話に返すだけで保存できない手段は、`gh` に渡すファイルが作れないので使わない。
+- 撮影は `npx playwright` で行う。次の理由で、ブラウザ操作の MCP は使わない。
+  - 並列に動かす別のエージェントとブラウザのプロファイルを取り合い、起動できなくなる。
+  - 画像を会話に返すだけで、`gh` に渡すファイルとして保存できないものがある。
+- 撮影の対象のリポジトリに Playwright の依存を足さない。package.json と lockfile が変わり、PR の範囲を超える。`npx` が取得するので、リポジトリの依存は変わらない。
+- 使う版の Chromium が無ければ `npx playwright install chromium` で入れる。
+- 操作が要らない撮影は `npx playwright screenshot` で撮る。
+
+  ```sh
+  npx playwright screenshot --viewport-size=1280,800 --wait-for-timeout=500 \
+    http://localhost:3000/campaign "$TMPDIR/campaign-logged-in.png"
+  ```
+
+  画面全体を撮るときは `--full-page`、描画を待つ要素があるときは `--wait-for-selector <selector>` を付ける。ログイン済みの状態は、`--save-storage` で保存した状態を `--load-storage` で読み込んで作れる。
+- クリックやモーダルを開くなどの操作、アニメーションの停止が要る撮影は、スクラッチパッドにスクリプトを書いて撮る。スクリプトはリポジトリの外に置く。`npx -p playwright` で取得した playwright は、`NODE_PATH` を渡さないと `require` で解決できない。
+
+  ```js
+  // shot.cjs
+  const { chromium } = require('playwright');
+
+  (async () => {
+    const browser = await chromium.launch();
+    const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+    await page.goto('http://localhost:3000/campaign');
+    await page.getByRole('button', { name: '詳細' }).click();
+    await page.screenshot({ path: process.argv[2], animations: 'disabled' });
+    await browser.close();
+  })();
+  ```
+
+  ```sh
+  npx -p playwright sh -c 'NODE_PATH="$(dirname "$(dirname "$(command -v playwright)")")" node shot.cjs "$TMPDIR/campaign-modal.png"'
+  ```
+- サンドボックスでネットワークや書き込みが拒否されたら、そのコマンドだけサンドボックスの外で実行する。
 - 保存先はスクラッチパッド、なければ `$TMPDIR` にする。jj はリポジトリ内のファイルを作業コピーに自動で取り込むため、リポジトリ内には保存しない。
 - ファイル名は状態が分かる ASCII の名前にする（例：`campaign-logged-in.png`）。`gh` は `#` をファイル名と代替テキストの区切りに使うので、ファイル名に `#` を含めない。
 - 変更が画面幅によって変わる場合は、変わる幅ごとに撮る。そうでなければ通常の幅で撮る。
