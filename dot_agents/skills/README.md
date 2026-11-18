@@ -9,7 +9,7 @@ Agent skills deployed to `~/.agents/skills/` by chezmoi. Each directory holds a 
 | Skill | Description |
 | --- | --- |
 | [delegate-implementation](delegate-implementation/SKILL.md) | Hands an implementation task to a Sonnet agent in a new Herdr pane, with a self-contained brief written to the scratchpad. Requires `HERDR_ENV=1`. |
-| [reports](reports/SKILL.md) | Reports the work done across Herdr panes as one Artifact page with a tab per pane, including diagrams, related prompts and replies, and a button to focus each pane. Requires `HERDR_ENV=1`. |
+| [reports](reports/SKILL.md) | Reports the work done across Herdr panes as one Artifact page with a tab per pane, including diagrams and related prompts and replies. Requires `HERDR_ENV=1`. |
 | [decision-list](decision-list/SKILL.md) | Lists what the user has to decide, taken from the recent conversation and from delegated agents' reports, as an Artifact page with a diagram and an answer field per decision. |
 | [task-register](task-register/SKILL.md) | Creates a draft task file in Obsidian's `91_Tasks/Lists` from a description, for work to park instead of doing now. |
 | [pr-screenshot](pr-screenshot/SKILL.md) | Checks UI changes on the actual screen, takes a screenshot per state, and attaches them to the PR with `gh --attach`. |
