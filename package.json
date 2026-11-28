@@ -9,7 +9,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@earendil-works/pi-ai": "1.5.2",
+    "@earendil-works/pi-ai": "1.6.1",
     "@earendil-works/pi-coding-agent": "1.5.2",
     "@earendil-works/pi-tui": "1.6.0",
     "@secretlint/secretlint-rule-preset-recommend": "13.1.0",
